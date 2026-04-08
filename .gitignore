@@ -1,0 +1,51 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux / editors
+*~
+*.swp
+*.swo
+
+# Mathematica autosave / temporary files
+*.mx
+*.m~
+*.nb~
+*.wl~
+*.out
+*.tmp
+
+# Wolfram / notebook generated cache-like files
+*.cache
+*.log
+
+# Python cache, in case helper scripts are added later
+__pycache__/
+*.py[cod]
+
+# Generated archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Local environment files
+.env
+.env.*
+
+# Optional: ignore generated outputs if you do not want to track them
+# Uncomment these only if output files are reproducible and should not be versioned
+# output/*
+ !output/.gitkeep
+
+# Optional: ignore large exported model files
+ *.ufo
+ *.tex
+ *.pdf
+
+# GitHub / patch leftovers
+*.orig
+*.rej

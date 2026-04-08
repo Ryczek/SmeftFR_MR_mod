@@ -1,0 +1,91 @@
+cff-version: 1.2.0
+message: "If you use SmeftFR in your work, please cite the software and the associated publications."
+title: "SmeftFR"
+abstract: >-
+  Mathematica / FeynRules package for deriving Feynman rules for the Standard
+  Model Effective Field Theory (SMEFT) directly in the physical mass-eigenstate
+  basis, including the complete dimension-6 SMEFT operator set and the complete
+  bosonic dimension-8 operator set in version 3.0.
+type: software
+authors:
+  - family-names: "Dedes"
+    given-names: "A."
+  - family-names: "Rosiek"
+    given-names: "J."
+  - family-names: "Ryczkowski"
+    given-names: "M."
+  - family-names: "Suxho"
+    given-names: "K."
+  - family-names: "Trifyllis"
+    given-names: "L."
+version: "3.0"
+license: "GPL-3.0-or-later"
+repository-code: "https://github.com/<ORG_OR_USER>/SmeftFR"
+url: "https://github.com/<ORG_OR_USER>/SmeftFR"
+keywords:
+  - SMEFT
+  - Standard Model Effective Field Theory
+  - Feynman rules
+  - Mathematica
+  - FeynRules
+  - dimension-6
+  - dimension-8
+  - UFO
+  - FeynArts
+
+preferred-citation:
+  type: article
+  title: "SmeftFR v3 – Feynman rules generator for the Standard Model Effective Field Theory"
+  authors:
+    - family-names: "Dedes"
+      given-names: "A."
+    - family-names: "Rosiek"
+      given-names: "J."
+    - family-names: "Ryczkowski"
+      given-names: "M."
+    - family-names: "Suxho"
+      given-names: "K."
+    - family-names: "Trifyllis"
+      given-names: "L."
+  journal: "Computer Physics Communications"
+  volume: 294
+  year: 2024
+  article-number: 108943
+  doi: "10.1016/j.cpc.2023.108943"
+
+references:
+  - type: article
+    title: "SmeftFR – Feynman rules generator for the Standard Model Effective Field Theory"
+    authors:
+      - family-names: "Dedes"
+        given-names: "A."
+      - family-names: "Paraskevas"
+        given-names: "M."
+      - family-names: "Rosiek"
+        given-names: "J."
+      - family-names: "Suxho"
+        given-names: "K."
+      - family-names: "Trifyllis"
+        given-names: "L."
+    journal: "Computer Physics Communications"
+    volume: 247
+    year: 2020
+    article-number: 106931
+
+  - type: article
+    title: "Feynman rules for the Standard Model Effective Field Theory in Rξ-gauges"
+    authors:
+      - family-names: "Dedes"
+        given-names: "A."
+      - family-names: "Materkowska"
+        given-names: "W."
+      - family-names: "Paraskevas"
+        given-names: "M."
+      - family-names: "Rosiek"
+        given-names: "J."
+      - family-names: "Suxho"
+        given-names: "K."
+    journal: "JHEP"
+    year: 2017
+    month: 6
+    article-number: 143
