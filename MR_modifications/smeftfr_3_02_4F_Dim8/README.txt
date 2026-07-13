@@ -82,3 +82,25 @@ and example of numerical input for Wilson coefficients in WCxf format
 and output for Feynman rules in various formats, by default
 Mathematica, Latex, UFO and FeynArts are generated.
 
+
+=================================================================
+MODIFICATION DESCRIPTION
+=================================================================
+
+This version implements selected 4-fermion dimension-8 operators for
+ongoing research project. The implementation includes:
+
+- Extended operator basis in the lagrangian/ directory
+- Modified smeft_fr_init.m and smeft_fr_interfaces.m to handle
+  the additional dimension-8 operators
+- Updated FeynRules model files to support the new interactions
+
+Purpose: Enable phenomenological studies requiring dimension-8
+         4-fermion operators beyond the standard SMEFT v3.0 scope.
+
+Status: Work in progress - not all 4-fermion dimension-8 operators
+        are implemented, only those needed for current research.
+
+For usage, follow the standard SmeftFR workflow. No special
+configuration is required beyond the normal setup.
+

@@ -1,84 +1,50 @@
-*****************************************************************
-* SmeftFR 3.0 - Feynman rules generator for the Standard Model  *
-* Effective Field Theory                                        *
-*****************************************************************
+=================================================================
+MR_Modifications: Private SmeftFR v3 Modifications
+=================================================================
 
-AUTHORS: A. Dedes, J. Rosiek, M. Ryczkowski, K. Suxho, L. Trifyllis
+This directory contains private, research-specific modifications to the
+SmeftFR v3.0 package. Each subfolder represents a distinct modification
+with its own purpose and scope.
 
-Latest version can be downloaded from www.fuw.edu.pl/smeft
+-----------------------------------------------------------------
+AVAILABLE MODIFICATIONS
+-----------------------------------------------------------------
 
-Program maintainer: janusz.rosiek@fuw.edu.pl
+1. smeftfr_3_02_LoopIO
+   - Purpose: Adds InteractionOrder (IO) tracking to distinguish
+     loop-generated operators from tree-level operators
+   - Key feature: Modified smeft_io.m to support custom IO tags
+   - Use case: Enables proper ordering of loop-generated Wilson
+     coefficients (e.g., CphiG) in UFO/FeynRules exports
+   - Workaround: Requires manual addition of IO definitions to
+     generated .fr files before running smeft_fr_interfaces.m
+   - Documentation: See subfolder README.txt for detailed workflow
 
-SmeftFR is distributed under the GPLv3 license
+2. smeftfr_3_02_4F_Dim8
+   - Purpose: Implementation of 4-fermion dimension-8 operators
+   - Scope: Selected operators for ongoing research projects
+   - Status: Work in progress
+   - Documentation: See subfolder README.txt
 
-*************************
-* PACKAGE INSTALLATION: *
-*************************
+3. smeftfr_3_02_4F_Dim8_Dim12
+   - Purpose: Addition of dimension-12 operators relevant for
+     arXiv:2509.02680
+   - Key feature: Enables dim-12 operators in the SMEFT framework
+   - Status: Research-ready
+   - Documentation: See subfolder README.txt
 
-Running package requires installing Wolfram Mathematica. It has been
-tested with Mathematica version 12.1 or later, earlier versions were
-reported to have problems running this code.
+-----------------------------------------------------------------
+USAGE NOTES
+-----------------------------------------------------------------
 
-SmeftFR package works using the FeynRules system.  A recent version
-and installation instructions for the FeynRules package can be
-downloaded from the address feynrules.irmp.ucl.ac.be.  SmeftFR has
-been tested with FeynRules version 2.3.
+Each modification folder contains a complete copy of SmeftFR v3.0 with
+the respective changes applied. Use the appropriate folder for your
+specific research needs.
 
-After installing FeynRules:
+All modifications follow the standard SmeftFR two-stage workflow:
+  1. Run SmeftFR-init.nb (or << smeft_fr_init.m)
+  2. Quit Mathematica kernel
+  3. Run SmeftFR-interfaces.nb (or << smeft_fr_interfaces.m)
 
-1. Create subdirectory Models/SMEFT_3_02 in the main FeynRules
-installation directory.
-
-2. Unpack SmefrFR distribution into Models/SMEFT_3_02 subdirectory.
-
-3. Edit the $FeynRulesPath variable at the top of SmeftFR-init.nb and
-SmeftFR-interfaces.nb Mathematica notebooks (both files located in
-Models/SMEFT_3_02 subdirectory). $FeynRulesPath should be equal to the
-absolute path to the main FeynRules installation directory
-(e.g. $FeynRulesPath = "/home/rosiek/FeynRules" etc.)
-
-4. Run the SmeftFR-init.nb first to produce the output in Mathematica
-format. Quit the Mathematica kernel and run SmeftFR-interfaces.nb in
-the new kernel to get the output in other supported formats.
-
-Steps 3 and 4 can be also performed editing and executing in
-Mathematica window the text scripts
-
-<< smeft_fr_init.m
-<< smeft_fr_interfaces.m
-
-Further user-defined options of the SmeftFR package are described in
-the manual.
-
-
-********************
-* PACKAGE CONTENT: *
-********************
-
-Models/SMEFT_3_02 subdirectory contains the following files and
-subdirectories:
-
-*** SmeftFR-init.nb (smeft_fr_init.m) -- notebook and equivalent text
-script generating SMEFT Lagrangian in mass basis and Feynman rules in
-Mathematica format.
-
-*** SmeftFR-interfaces.nb (smeft_fr_interfaces.m) -- notebook and
-equivalent text script with routines for exporting Feynman rules in
-various formats: WCxf, Latex, UFO and FeynArts.
-
-*** SmeftFR_v3.pdf --  package manual in pdf format
-
-*** README.txt -- brief installation instructions
-
-*** code -- subdirectory with package code and utilities
-
-*** lagrangian -- subdirectory with expressions for the SM Lagrangian and
-dimension-5, 6 and 8 operators coded in FeynRules format
-
-*** definitions -- subdirectory with templates of SMEFT ``model files''
-and example of numerical input for Wilson coefficients in WCxf format
-
-*** output -- subdirectory with dynamically generated ``parameter files''
-and output for Feynman rules in various formats, by default
-Mathematica, Latex, UFO and FeynArts are generated.
-
+See individual subfolder README files for modification-specific
+instructions and caveats.

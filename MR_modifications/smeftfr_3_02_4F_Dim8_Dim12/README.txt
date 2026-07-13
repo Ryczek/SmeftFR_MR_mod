@@ -82,3 +82,39 @@ and example of numerical input for Wilson coefficients in WCxf format
 and output for Feynman rules in various formats, by default
 Mathematica, Latex, UFO and FeynArts are generated.
 
+
+=================================================================
+MODIFICATION DESCRIPTION
+=================================================================
+
+PURPOSE:
+  Enable dimension-12 operators for SMEFT studies extending beyond
+  the standard dimension-6 and dimension-8 framework.
+
+SPECIFIC OPERATORS:
+  This modification includes the dimension-12 operator(s) referenced
+  in arXiv:2509.02680 [hep-ph].
+
+IMPLEMENTATION:
+  - Added dim-12 operator definitions to the lagrangian/ directory
+  - Updated smeft_fr_init.m to handle dimension-12 terms
+  - Modified smeft_fr_interfaces.m for proper export of dim-12 operators
+  - Ensured consistent EFT expansion and truncation at dim-12
+
+RESEARCH CONTEXT:
+  This modification supports the physics analysis presented in
+  arXiv:2509.02680. The specific dim-12 operator(s) enable studies
+  of higher-dimensional effects in SMEFT phenomenology.
+
+USAGE:
+  Follow the standard SmeftFR workflow. The dim-12 operators are
+  automatically included in the model generation and Feynman rule
+  extraction.
+
+STATUS:
+  Research-ready. Tested and validated for the specific operators
+  referenced in arXiv:2509.02680.
+
+REFERENCE:
+  arXiv:2509.02680 [hep-ph]
+
