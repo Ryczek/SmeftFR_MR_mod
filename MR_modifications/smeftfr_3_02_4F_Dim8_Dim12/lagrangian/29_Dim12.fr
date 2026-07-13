@@ -1,0 +1,37 @@
+(* SmeftFR v3.0 package *)
+(* dim-10 and 12 operators *)
+(* Operators: {LQG2phi4D2n1 and LQG2phi4D4n1} *)
+
+LQG2phi4D2n1 := Module[{mu,nu,al,a,aux,jj,ii},
+
+aux = Phi8bar[ii] Phi8[ii] del[Phi8bar[jj],al] del[Phi8[jj],nu] FS[Gl,mu,al,a] FS[Gl,mu,nu,a];
+aux = ExpandIndices[ aux,FlavorExpand->{SU2W,SU2D}];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "G2phi4D2n1"] ] aux /. SMEFTGaugeRules
+];
+
+LQG2phi4D4n1 := Module[{mu,nu,al,be,ga,a,aux,jj,ii},
+
+aux = Phi8bar[ii] Phi8[ii] del[del[Phi8bar[jj],nu],mu] del[del[Phi8[jj],be],al] FS[Gl,mu,al,a] FS[Gl,nu,be,a];
+aux = ExpandIndices[ aux,FlavorExpand->{SU2W,SU2D}];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "G2phi4D4n1"] ] aux /. SMEFTGaugeRules
+];
+
+LQG2phi4D4n2 := Module[{mu,nu,al,be,ga,a,aux,jj,ii},
+
+aux = Phi8bar[ii] Phi8[ii] del[del[Phi8bar[jj],al],be] del[del[Phi8[jj],al],be] FS[Gl,mu,nu,a] FS[Gl,mu,nu,a];
+
+aux = ExpandIndices[ aux,FlavorExpand->{SU2W,SU2D}];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "G2phi4D4n2"] ] aux /. SMEFTGaugeRules
+];
+
+LQG2phi4D4n3 := Module[{mu,nu,al,be,ga,om,rho,sig,a,aux,jj,ii},
+
+aux = Phi8bar[ii] Phi8[ii] del[del[Phi8bar[jj],nu],mu]del[del[Phi8[jj],be],al] Eps[mu,al,rho,sig]/2 HC[FS[Gl,rho,sig,a]] Eps[nu,be,ga,om]/2 HC[FS[Gl,ga,om,a]];
+
+aux = ExpandIndices[aux,FlavorExpand->{SU2W,SU2D}];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "G2phi4D4n3"] ] aux /. SMEFTGaugeRules
+];

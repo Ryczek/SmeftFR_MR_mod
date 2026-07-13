@@ -1,0 +1,12 @@
+{
+	"eft":"SMEFT",
+	"basis":"Warsaw mass",
+	"metadata":{
+		"generator":" SmeftFR v3.02, SMEFTToWCXF routine",
+		"description":"Generated from the FeynRules model file \/Users\/michalryczkowski\/Library\/Mathematica\/Applications\/feynrules-current\/Models\/smeftfr_3_02\/output\/smeft_par_MB.fr on 16.3.2025 20:24"
+	},
+	"scale":0,
+	"values":{
+		"Wphi4D2n1":0
+	}
+}

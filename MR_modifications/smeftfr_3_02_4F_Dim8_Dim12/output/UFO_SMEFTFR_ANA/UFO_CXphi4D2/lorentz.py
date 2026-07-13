@@ -1,0 +1,326 @@
+# This file was automatically created by FeynRules 2.3.49
+# Mathematica version: 14.0.0 for Mac OS X x86 (64-bit) (December 13, 2023)
+# Date: Mon 7 Apr 2025 14:06:22
+
+
+from object_library import all_lorentz, Lorentz
+
+from function_library import complexconjugate, re, im, csc, sec, acsc, asec, cot
+try:
+   import form_factors as ForFac 
+except ImportError:
+   pass
+
+
+SSS1 = Lorentz(name = 'SSS1',
+               spins = [ 1, 1, 1 ],
+               structure = '1')
+
+FFS1 = Lorentz(name = 'FFS1',
+               spins = [ 2, 2, 1 ],
+               structure = 'Identity(2,1)')
+
+FFV1 = Lorentz(name = 'FFV1',
+               spins = [ 2, 2, 3 ],
+               structure = 'Gamma(3,2,1)')
+
+FFV2 = Lorentz(name = 'FFV2',
+               spins = [ 2, 2, 3 ],
+               structure = 'Gamma(3,2,-1)*ProjM(-1,1)')
+
+FFV3 = Lorentz(name = 'FFV3',
+               spins = [ 2, 2, 3 ],
+               structure = 'Gamma(3,2,-1)*ProjP(-1,1)')
+
+VVS1 = Lorentz(name = 'VVS1',
+               spins = [ 3, 3, 1 ],
+               structure = 'Metric(1,2)')
+
+VVS2 = Lorentz(name = 'VVS2',
+               spins = [ 3, 3, 1 ],
+               structure = 'P(1,3)*P(2,1) - P(-1,1)*P(-1,3)*Metric(1,2)')
+
+VVS3 = Lorentz(name = 'VVS3',
+               spins = [ 3, 3, 1 ],
+               structure = 'P(1,3)*P(2,1) + P(1,2)*P(2,3) - P(-1,1)*P(-1,3)*Metric(1,2) - P(-1,2)*P(-1,3)*Metric(1,2)')
+
+VVS4 = Lorentz(name = 'VVS4',
+               spins = [ 3, 3, 1 ],
+               structure = 'P(1,3)*P(2,1) - P(1,2)*P(2,3) - P(-1,1)*P(-1,3)*Metric(1,2) + P(-1,2)*P(-1,3)*Metric(1,2)')
+
+VVV1 = Lorentz(name = 'VVV1',
+               spins = [ 3, 3, 3 ],
+               structure = 'P(3,1)*Metric(1,2) - P(2,1)*Metric(1,3)')
+
+VVV2 = Lorentz(name = 'VVV2',
+               spins = [ 3, 3, 3 ],
+               structure = 'P(3,1)*Metric(1,2) + P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) - P(1,2)*Metric(2,3)')
+
+VVV3 = Lorentz(name = 'VVV3',
+               spins = [ 3, 3, 3 ],
+               structure = 'P(3,1)*Metric(1,2) - P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) + P(1,2)*Metric(2,3)')
+
+VVV4 = Lorentz(name = 'VVV4',
+               spins = [ 3, 3, 3 ],
+               structure = 'P(2,3)*Metric(1,3) - P(1,3)*Metric(2,3)')
+
+VVV5 = Lorentz(name = 'VVV5',
+               spins = [ 3, 3, 3 ],
+               structure = 'P(3,1)*Metric(1,2) - P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) + P(2,3)*Metric(1,3) + P(1,2)*Metric(2,3) - P(1,3)*Metric(2,3)')
+
+SSSS1 = Lorentz(name = 'SSSS1',
+                spins = [ 1, 1, 1, 1 ],
+                structure = '1')
+
+VVSS1 = Lorentz(name = 'VVSS1',
+                spins = [ 3, 3, 1, 1 ],
+                structure = 'Metric(1,2)')
+
+VVSS2 = Lorentz(name = 'VVSS2',
+                spins = [ 3, 3, 1, 1 ],
+                structure = 'P(1,3)*P(2,1) + P(1,4)*P(2,1) - P(-1,1)*P(-1,3)*Metric(1,2) - P(-1,1)*P(-1,4)*Metric(1,2)')
+
+VVSS3 = Lorentz(name = 'VVSS3',
+                spins = [ 3, 3, 1, 1 ],
+                structure = 'P(1,3)*P(2,1) + P(1,4)*P(2,1) + P(1,2)*P(2,3) + P(1,2)*P(2,4) - P(-1,1)*P(-1,3)*Metric(1,2) - P(-1,2)*P(-1,3)*Metric(1,2) - P(-1,1)*P(-1,4)*Metric(1,2) - P(-1,2)*P(-1,4)*Metric(1,2)')
+
+VVSS4 = Lorentz(name = 'VVSS4',
+                spins = [ 3, 3, 1, 1 ],
+                structure = 'P(1,3)*P(2,1) + P(1,4)*P(2,1) - P(1,2)*P(2,3) - P(1,2)*P(2,4) - P(-1,1)*P(-1,3)*Metric(1,2) + P(-1,2)*P(-1,3)*Metric(1,2) - P(-1,1)*P(-1,4)*Metric(1,2) + P(-1,2)*P(-1,4)*Metric(1,2)')
+
+VVVS1 = Lorentz(name = 'VVVS1',
+                spins = [ 3, 3, 3, 1 ],
+                structure = 'P(3,4)*Metric(1,2)')
+
+VVVS2 = Lorentz(name = 'VVVS2',
+                spins = [ 3, 3, 3, 1 ],
+                structure = 'P(3,1)*Metric(1,2) - P(2,1)*Metric(1,3)')
+
+VVVS3 = Lorentz(name = 'VVVS3',
+                spins = [ 3, 3, 3, 1 ],
+                structure = 'P(3,4)*Metric(1,2) - P(2,4)*Metric(1,3)')
+
+VVVS4 = Lorentz(name = 'VVVS4',
+                spins = [ 3, 3, 3, 1 ],
+                structure = 'P(3,4)*Metric(1,2) + P(2,4)*Metric(1,3)')
+
+VVVS5 = Lorentz(name = 'VVVS5',
+                spins = [ 3, 3, 3, 1 ],
+                structure = 'P(1,4)*Metric(2,3)')
+
+VVVS6 = Lorentz(name = 'VVVS6',
+                spins = [ 3, 3, 3, 1 ],
+                structure = 'P(3,1)*Metric(1,2) + P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) - P(1,2)*Metric(2,3)')
+
+VVVS7 = Lorentz(name = 'VVVS7',
+                spins = [ 3, 3, 3, 1 ],
+                structure = 'P(3,1)*Metric(1,2) - P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) + P(1,2)*Metric(2,3)')
+
+VVVS8 = Lorentz(name = 'VVVS8',
+                spins = [ 3, 3, 3, 1 ],
+                structure = 'P(2,3)*Metric(1,3) - P(1,3)*Metric(2,3)')
+
+VVVS9 = Lorentz(name = 'VVVS9',
+                spins = [ 3, 3, 3, 1 ],
+                structure = 'P(2,4)*Metric(1,3) - P(1,4)*Metric(2,3)')
+
+VVVS10 = Lorentz(name = 'VVVS10',
+                 spins = [ 3, 3, 3, 1 ],
+                 structure = 'P(2,4)*Metric(1,3) + P(1,4)*Metric(2,3)')
+
+VVVV1 = Lorentz(name = 'VVVV1',
+                spins = [ 3, 3, 3, 3 ],
+                structure = 'Metric(1,4)*Metric(2,3)')
+
+VVVV2 = Lorentz(name = 'VVVV2',
+                spins = [ 3, 3, 3, 3 ],
+                structure = 'Metric(1,4)*Metric(2,3) - Metric(1,3)*Metric(2,4)')
+
+VVVV3 = Lorentz(name = 'VVVV3',
+                spins = [ 3, 3, 3, 3 ],
+                structure = 'Metric(1,4)*Metric(2,3) + Metric(1,3)*Metric(2,4) - 2*Metric(1,2)*Metric(3,4)')
+
+VVVV4 = Lorentz(name = 'VVVV4',
+                spins = [ 3, 3, 3, 3 ],
+                structure = 'Metric(1,4)*Metric(2,3) - Metric(1,2)*Metric(3,4)')
+
+VVVV5 = Lorentz(name = 'VVVV5',
+                spins = [ 3, 3, 3, 3 ],
+                structure = 'Metric(1,3)*Metric(2,4) - Metric(1,2)*Metric(3,4)')
+
+VVVV6 = Lorentz(name = 'VVVV6',
+                spins = [ 3, 3, 3, 3 ],
+                structure = 'Metric(1,4)*Metric(2,3) - (Metric(1,3)*Metric(2,4))/2. - (Metric(1,2)*Metric(3,4))/2.')
+
+VVVV7 = Lorentz(name = 'VVVV7',
+                spins = [ 3, 3, 3, 3 ],
+                structure = 'Metric(1,3)*Metric(2,4) + Metric(1,2)*Metric(3,4)')
+
+VVSSS1 = Lorentz(name = 'VVSSS1',
+                 spins = [ 3, 3, 1, 1, 1 ],
+                 structure = 'P(1,3)*P(2,1) + P(1,4)*P(2,1) + P(1,5)*P(2,1) - P(-1,1)*P(-1,3)*Metric(1,2) - P(-1,1)*P(-1,4)*Metric(1,2) - P(-1,1)*P(-1,5)*Metric(1,2)')
+
+VVSSS2 = Lorentz(name = 'VVSSS2',
+                 spins = [ 3, 3, 1, 1, 1 ],
+                 structure = 'P(1,3)*P(2,1) + P(1,4)*P(2,1) + P(1,5)*P(2,1) + P(1,2)*P(2,3) + P(1,2)*P(2,4) + P(1,2)*P(2,5) - P(-1,1)*P(-1,3)*Metric(1,2) - P(-1,2)*P(-1,3)*Metric(1,2) - P(-1,1)*P(-1,4)*Metric(1,2) - P(-1,2)*P(-1,4)*Metric(1,2) - P(-1,1)*P(-1,5)*Metric(1,2) - P(-1,2)*P(-1,5)*Metric(1,2)')
+
+VVSSS3 = Lorentz(name = 'VVSSS3',
+                 spins = [ 3, 3, 1, 1, 1 ],
+                 structure = 'P(1,3)*P(2,1) + P(1,4)*P(2,1) + P(1,5)*P(2,1) - P(1,2)*P(2,3) - P(1,2)*P(2,4) - P(1,2)*P(2,5) - P(-1,1)*P(-1,3)*Metric(1,2) + P(-1,2)*P(-1,3)*Metric(1,2) - P(-1,1)*P(-1,4)*Metric(1,2) + P(-1,2)*P(-1,4)*Metric(1,2) - P(-1,1)*P(-1,5)*Metric(1,2) + P(-1,2)*P(-1,5)*Metric(1,2)')
+
+VVVSS1 = Lorentz(name = 'VVVSS1',
+                 spins = [ 3, 3, 3, 1, 1 ],
+                 structure = 'P(3,1)*Metric(1,2) - P(2,1)*Metric(1,3)')
+
+VVVSS2 = Lorentz(name = 'VVVSS2',
+                 spins = [ 3, 3, 3, 1, 1 ],
+                 structure = 'P(3,1)*Metric(1,2) - (P(3,4)*Metric(1,2))/2. - (P(3,5)*Metric(1,2))/2. - P(2,1)*Metric(1,3) + (P(2,4)*Metric(1,3))/2. + (P(2,5)*Metric(1,3))/2.')
+
+VVVSS3 = Lorentz(name = 'VVVSS3',
+                 spins = [ 3, 3, 3, 1, 1 ],
+                 structure = 'P(3,1)*Metric(1,2) + P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) - P(1,2)*Metric(2,3)')
+
+VVVSS4 = Lorentz(name = 'VVVSS4',
+                 spins = [ 3, 3, 3, 1, 1 ],
+                 structure = 'P(2,3)*Metric(1,3) - P(1,3)*Metric(2,3)')
+
+VVVSS5 = Lorentz(name = 'VVVSS5',
+                 spins = [ 3, 3, 3, 1, 1 ],
+                 structure = 'P(3,4)*Metric(1,2) + P(3,5)*Metric(1,2) + P(2,4)*Metric(1,3) + P(2,5)*Metric(1,3) - 2*P(1,4)*Metric(2,3) - 2*P(1,5)*Metric(2,3)')
+
+VVVSS6 = Lorentz(name = 'VVVSS6',
+                 spins = [ 3, 3, 3, 1, 1 ],
+                 structure = 'P(3,4)*Metric(1,2) + P(3,5)*Metric(1,2) - (P(2,4)*Metric(1,3))/2. - (P(2,5)*Metric(1,3))/2. - (P(1,4)*Metric(2,3))/2. - (P(1,5)*Metric(2,3))/2.')
+
+VVVSS7 = Lorentz(name = 'VVVSS7',
+                 spins = [ 3, 3, 3, 1, 1 ],
+                 structure = 'P(3,1)*Metric(1,2) - P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) + (P(2,4)*Metric(1,3))/2. + (P(2,5)*Metric(1,3))/2. + P(1,2)*Metric(2,3) - (P(1,4)*Metric(2,3))/2. - (P(1,5)*Metric(2,3))/2.')
+
+VVVSS8 = Lorentz(name = 'VVVSS8',
+                 spins = [ 3, 3, 3, 1, 1 ],
+                 structure = 'P(2,3)*Metric(1,3) - (P(2,4)*Metric(1,3))/2. - (P(2,5)*Metric(1,3))/2. - P(1,3)*Metric(2,3) + (P(1,4)*Metric(2,3))/2. + (P(1,5)*Metric(2,3))/2.')
+
+VVVVS1 = Lorentz(name = 'VVVVS1',
+                 spins = [ 3, 3, 3, 3, 1 ],
+                 structure = 'Metric(1,4)*Metric(2,3) + Metric(1,3)*Metric(2,4) - 2*Metric(1,2)*Metric(3,4)')
+
+VVVVS2 = Lorentz(name = 'VVVVS2',
+                 spins = [ 3, 3, 3, 3, 1 ],
+                 structure = 'Metric(1,3)*Metric(2,4) - Metric(1,2)*Metric(3,4)')
+
+VVVVS3 = Lorentz(name = 'VVVVS3',
+                 spins = [ 3, 3, 3, 3, 1 ],
+                 structure = 'Metric(1,4)*Metric(2,3) - (Metric(1,3)*Metric(2,4))/2. - (Metric(1,2)*Metric(3,4))/2.')
+
+VVSSSS1 = Lorentz(name = 'VVSSSS1',
+                  spins = [ 3, 3, 1, 1, 1, 1 ],
+                  structure = 'P(1,3)*P(2,1) + P(1,4)*P(2,1) + P(1,5)*P(2,1) + P(1,6)*P(2,1) - P(-1,1)*P(-1,3)*Metric(1,2) - P(-1,1)*P(-1,4)*Metric(1,2) - P(-1,1)*P(-1,5)*Metric(1,2) - P(-1,1)*P(-1,6)*Metric(1,2)')
+
+VVSSSS2 = Lorentz(name = 'VVSSSS2',
+                  spins = [ 3, 3, 1, 1, 1, 1 ],
+                  structure = 'P(1,3)*P(2,1) + P(1,4)*P(2,1) + P(1,5)*P(2,1) + P(1,6)*P(2,1) + P(1,2)*P(2,3) + P(1,2)*P(2,4) + P(1,2)*P(2,5) + P(1,2)*P(2,6) - P(-1,1)*P(-1,3)*Metric(1,2) - P(-1,2)*P(-1,3)*Metric(1,2) - P(-1,1)*P(-1,4)*Metric(1,2) - P(-1,2)*P(-1,4)*Metric(1,2) - P(-1,1)*P(-1,5)*Metric(1,2) - P(-1,2)*P(-1,5)*Metric(1,2) - P(-1,1)*P(-1,6)*Metric(1,2) - P(-1,2)*P(-1,6)*Metric(1,2)')
+
+VVSSSS3 = Lorentz(name = 'VVSSSS3',
+                  spins = [ 3, 3, 1, 1, 1, 1 ],
+                  structure = 'P(1,3)*P(2,1) + P(1,4)*P(2,1) + P(1,5)*P(2,1) + P(1,6)*P(2,1) - P(1,2)*P(2,3) - P(1,2)*P(2,4) - P(1,2)*P(2,5) - P(1,2)*P(2,6) - P(-1,1)*P(-1,3)*Metric(1,2) + P(-1,2)*P(-1,3)*Metric(1,2) - P(-1,1)*P(-1,4)*Metric(1,2) + P(-1,2)*P(-1,4)*Metric(1,2) - P(-1,1)*P(-1,5)*Metric(1,2) + P(-1,2)*P(-1,5)*Metric(1,2) - P(-1,1)*P(-1,6)*Metric(1,2) + P(-1,2)*P(-1,6)*Metric(1,2)')
+
+VVVSSS1 = Lorentz(name = 'VVVSSS1',
+                  spins = [ 3, 3, 3, 1, 1, 1 ],
+                  structure = 'P(3,1)*Metric(1,2) - P(2,1)*Metric(1,3)')
+
+VVVSSS2 = Lorentz(name = 'VVVSSS2',
+                  spins = [ 3, 3, 3, 1, 1, 1 ],
+                  structure = 'P(3,1)*Metric(1,2) - (P(3,4)*Metric(1,2))/2. - (P(3,5)*Metric(1,2))/2. - (P(3,6)*Metric(1,2))/2. - P(2,1)*Metric(1,3) + (P(2,4)*Metric(1,3))/2. + (P(2,5)*Metric(1,3))/2. + (P(2,6)*Metric(1,3))/2.')
+
+VVVSSS3 = Lorentz(name = 'VVVSSS3',
+                  spins = [ 3, 3, 3, 1, 1, 1 ],
+                  structure = 'P(3,1)*Metric(1,2) + P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) - P(1,2)*Metric(2,3)')
+
+VVVSSS4 = Lorentz(name = 'VVVSSS4',
+                  spins = [ 3, 3, 3, 1, 1, 1 ],
+                  structure = 'P(2,3)*Metric(1,3) - P(1,3)*Metric(2,3)')
+
+VVVSSS5 = Lorentz(name = 'VVVSSS5',
+                  spins = [ 3, 3, 3, 1, 1, 1 ],
+                  structure = 'P(3,4)*Metric(1,2) + P(3,5)*Metric(1,2) + P(3,6)*Metric(1,2) + P(2,4)*Metric(1,3) + P(2,5)*Metric(1,3) + P(2,6)*Metric(1,3) - 2*P(1,4)*Metric(2,3) - 2*P(1,5)*Metric(2,3) - 2*P(1,6)*Metric(2,3)')
+
+VVVSSS6 = Lorentz(name = 'VVVSSS6',
+                  spins = [ 3, 3, 3, 1, 1, 1 ],
+                  structure = 'P(3,4)*Metric(1,2) + P(3,5)*Metric(1,2) + P(3,6)*Metric(1,2) - (P(2,4)*Metric(1,3))/2. - (P(2,5)*Metric(1,3))/2. - (P(2,6)*Metric(1,3))/2. - (P(1,4)*Metric(2,3))/2. - (P(1,5)*Metric(2,3))/2. - (P(1,6)*Metric(2,3))/2.')
+
+VVVSSS7 = Lorentz(name = 'VVVSSS7',
+                  spins = [ 3, 3, 3, 1, 1, 1 ],
+                  structure = 'P(3,1)*Metric(1,2) - P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) + (P(2,4)*Metric(1,3))/2. + (P(2,5)*Metric(1,3))/2. + (P(2,6)*Metric(1,3))/2. + P(1,2)*Metric(2,3) - (P(1,4)*Metric(2,3))/2. - (P(1,5)*Metric(2,3))/2. - (P(1,6)*Metric(2,3))/2.')
+
+VVVSSS8 = Lorentz(name = 'VVVSSS8',
+                  spins = [ 3, 3, 3, 1, 1, 1 ],
+                  structure = 'P(2,3)*Metric(1,3) - (P(2,4)*Metric(1,3))/2. - (P(2,5)*Metric(1,3))/2. - (P(2,6)*Metric(1,3))/2. - P(1,3)*Metric(2,3) + (P(1,4)*Metric(2,3))/2. + (P(1,5)*Metric(2,3))/2. + (P(1,6)*Metric(2,3))/2.')
+
+VVVVSS1 = Lorentz(name = 'VVVVSS1',
+                  spins = [ 3, 3, 3, 3, 1, 1 ],
+                  structure = 'Metric(1,4)*Metric(2,3) + Metric(1,3)*Metric(2,4) - 2*Metric(1,2)*Metric(3,4)')
+
+VVVVSS2 = Lorentz(name = 'VVVVSS2',
+                  spins = [ 3, 3, 3, 3, 1, 1 ],
+                  structure = 'Metric(1,3)*Metric(2,4) - Metric(1,2)*Metric(3,4)')
+
+VVVVSS3 = Lorentz(name = 'VVVVSS3',
+                  spins = [ 3, 3, 3, 3, 1, 1 ],
+                  structure = 'Metric(1,4)*Metric(2,3) - (Metric(1,3)*Metric(2,4))/2. - (Metric(1,2)*Metric(3,4))/2.')
+
+VVVSSSS1 = Lorentz(name = 'VVVSSSS1',
+                   spins = [ 3, 3, 3, 1, 1, 1, 1 ],
+                   structure = 'P(3,1)*Metric(1,2) - P(2,1)*Metric(1,3)')
+
+VVVSSSS2 = Lorentz(name = 'VVVSSSS2',
+                   spins = [ 3, 3, 3, 1, 1, 1, 1 ],
+                   structure = 'P(3,1)*Metric(1,2) - (P(3,4)*Metric(1,2))/2. - (P(3,5)*Metric(1,2))/2. - (P(3,6)*Metric(1,2))/2. - (P(3,7)*Metric(1,2))/2. - P(2,1)*Metric(1,3) + (P(2,4)*Metric(1,3))/2. + (P(2,5)*Metric(1,3))/2. + (P(2,6)*Metric(1,3))/2. + (P(2,7)*Metric(1,3))/2.')
+
+VVVSSSS3 = Lorentz(name = 'VVVSSSS3',
+                   spins = [ 3, 3, 3, 1, 1, 1, 1 ],
+                   structure = 'P(3,1)*Metric(1,2) + P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) - P(1,2)*Metric(2,3)')
+
+VVVSSSS4 = Lorentz(name = 'VVVSSSS4',
+                   spins = [ 3, 3, 3, 1, 1, 1, 1 ],
+                   structure = 'P(2,3)*Metric(1,3) - P(1,3)*Metric(2,3)')
+
+VVVSSSS5 = Lorentz(name = 'VVVSSSS5',
+                   spins = [ 3, 3, 3, 1, 1, 1, 1 ],
+                   structure = 'P(3,4)*Metric(1,2) + P(3,5)*Metric(1,2) + P(3,6)*Metric(1,2) + P(3,7)*Metric(1,2) + P(2,4)*Metric(1,3) + P(2,5)*Metric(1,3) + P(2,6)*Metric(1,3) + P(2,7)*Metric(1,3) - 2*P(1,4)*Metric(2,3) - 2*P(1,5)*Metric(2,3) - 2*P(1,6)*Metric(2,3) - 2*P(1,7)*Metric(2,3)')
+
+VVVSSSS6 = Lorentz(name = 'VVVSSSS6',
+                   spins = [ 3, 3, 3, 1, 1, 1, 1 ],
+                   structure = 'P(3,4)*Metric(1,2) + P(3,5)*Metric(1,2) + P(3,6)*Metric(1,2) + P(3,7)*Metric(1,2) - (P(2,4)*Metric(1,3))/2. - (P(2,5)*Metric(1,3))/2. - (P(2,6)*Metric(1,3))/2. - (P(2,7)*Metric(1,3))/2. - (P(1,4)*Metric(2,3))/2. - (P(1,5)*Metric(2,3))/2. - (P(1,6)*Metric(2,3))/2. - (P(1,7)*Metric(2,3))/2.')
+
+VVVSSSS7 = Lorentz(name = 'VVVSSSS7',
+                   spins = [ 3, 3, 3, 1, 1, 1, 1 ],
+                   structure = 'P(3,1)*Metric(1,2) - P(3,2)*Metric(1,2) - P(2,1)*Metric(1,3) + (P(2,4)*Metric(1,3))/2. + (P(2,5)*Metric(1,3))/2. + (P(2,6)*Metric(1,3))/2. + (P(2,7)*Metric(1,3))/2. + P(1,2)*Metric(2,3) - (P(1,4)*Metric(2,3))/2. - (P(1,5)*Metric(2,3))/2. - (P(1,6)*Metric(2,3))/2. - (P(1,7)*Metric(2,3))/2.')
+
+VVVSSSS8 = Lorentz(name = 'VVVSSSS8',
+                   spins = [ 3, 3, 3, 1, 1, 1, 1 ],
+                   structure = 'P(2,3)*Metric(1,3) - (P(2,4)*Metric(1,3))/2. - (P(2,5)*Metric(1,3))/2. - (P(2,6)*Metric(1,3))/2. - (P(2,7)*Metric(1,3))/2. - P(1,3)*Metric(2,3) + (P(1,4)*Metric(2,3))/2. + (P(1,5)*Metric(2,3))/2. + (P(1,6)*Metric(2,3))/2. + (P(1,7)*Metric(2,3))/2.')
+
+VVVVSSS1 = Lorentz(name = 'VVVVSSS1',
+                   spins = [ 3, 3, 3, 3, 1, 1, 1 ],
+                   structure = 'Metric(1,4)*Metric(2,3) + Metric(1,3)*Metric(2,4) - 2*Metric(1,2)*Metric(3,4)')
+
+VVVVSSS2 = Lorentz(name = 'VVVVSSS2',
+                   spins = [ 3, 3, 3, 3, 1, 1, 1 ],
+                   structure = 'Metric(1,3)*Metric(2,4) - Metric(1,2)*Metric(3,4)')
+
+VVVVSSS3 = Lorentz(name = 'VVVVSSS3',
+                   spins = [ 3, 3, 3, 3, 1, 1, 1 ],
+                   structure = 'Metric(1,4)*Metric(2,3) - (Metric(1,3)*Metric(2,4))/2. - (Metric(1,2)*Metric(3,4))/2.')
+
+VVVVSSSS1 = Lorentz(name = 'VVVVSSSS1',
+                    spins = [ 3, 3, 3, 3, 1, 1, 1, 1 ],
+                    structure = 'Metric(1,4)*Metric(2,3) + Metric(1,3)*Metric(2,4) - 2*Metric(1,2)*Metric(3,4)')
+
+VVVVSSSS2 = Lorentz(name = 'VVVVSSSS2',
+                    spins = [ 3, 3, 3, 3, 1, 1, 1, 1 ],
+                    structure = 'Metric(1,3)*Metric(2,4) - Metric(1,2)*Metric(3,4)')
+
+VVVVSSSS3 = Lorentz(name = 'VVVVSSSS3',
+                    spins = [ 3, 3, 3, 3, 1, 1, 1, 1 ],
+                    structure = 'Metric(1,4)*Metric(2,3) - (Metric(1,3)*Metric(2,4))/2. - (Metric(1,2)*Metric(3,4))/2.')
+

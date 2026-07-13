@@ -1,0 +1,668 @@
+%Automatically generated Feynman rules file for SMEFT
+
+\documentclass[11pt]{article}
+\usepackage{axodraw}
+\usepackage{amsmath, amssymb}
+\usepackage{slashed}
+\usepackage{breqn}
+\setkeys{breqn}{breakdepth={3}}
+\textwidth = 16cm
+
+\textheight = 24cm
+
+\topmargin=-2cm
+\oddsidemargin=0cm
+\evensidemargin=\oddsidemargin
+\begin{document}
+
+\appendix
+
+\bigskip
+\bigskip
+\bigskip
+\section{SMEFT interaction vertices}
+
+{\bf CAUTION:} interaction vertices printed below are shown including only terms up to mass dimension-6. Interactions proportional to products of dimension-6 Wilson coefficients, even if calculated and included in other output formats (Mathematica, Feynarts, UFO etc.), are too complicated for printout and for manual calculations. If necessary, they can be inspected visually displaying relevant variables (for their list see {\tt SmeftFR} manual) in the Mathematica notebook.
+\bigskip
+\bigskip
+\subsection{Lepton--gauge vertices}
+
+%Vertex Aee
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ e^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$e^{f_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$A^0_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/LeptonGaugeVerticesLatex/Aee.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex evW
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$\nu^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$e^{f_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Line(57.,0)(63.,-6.)
+\Line(57.,0)(63.,6.)
+\Text(80,0)[l]{$W^+_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/LeptonGaugeVerticesLatex/evW.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex eeZ
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ e^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$e^{f_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$Z^0_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/LeptonGaugeVerticesLatex/eeZ.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex vvZ
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$\nu^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$\nu^{f_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$Z^0_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/LeptonGaugeVerticesLatex/vvZ.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+\bigskip
+\bigskip
+\subsection{Lepton--Higgs--gauge vertices}
+
+%Vertex eeh
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ e^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$e^{f_2}$}
+\DashLine(75,0)(40,0){3}
+\Text(80,0)[l]{$h$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/LeptonHiggsGaugeVerticesLatex/eeh.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+\bigskip
+\bigskip
+\subsection{Quark--gauge vertices}
+
+%Vertex Adqdq
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ d^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$d^{f_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$A^0_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/QuarkGaugeVerticesLatex/Adqdq.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex Auquq
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ u^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$u^{f_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$A^0_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/QuarkGaugeVerticesLatex/Auquq.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex dquqW
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ u^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$d^{f_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Line(57.,0)(63.,-6.)
+\Line(57.,0)(63.,6.)
+\Text(80,0)[l]{$W^+_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/QuarkGaugeVerticesLatex/dquqW.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex dqdqZ
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ d^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$d^{f_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$Z^0_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/QuarkGaugeVerticesLatex/dqdqZ.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex uquqZ
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ u^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$u^{f_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$Z^0_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/QuarkGaugeVerticesLatex/uquqZ.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+\bigskip
+\bigskip
+\subsection{Quark--Higgs--gauge vertices}
+
+%Vertex dqdqh
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ d^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$d^{f_2}$}
+\DashLine(75,0)(40,0){3}
+\Text(80,0)[l]{$h$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/QuarkHiggsGaugeVerticesLatex/dqdqh.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex huquq
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ u^{f_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$u^{f_2}$}
+\DashLine(75,0)(40,0){3}
+\Text(80,0)[l]{$h$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/QuarkHiggsGaugeVerticesLatex/huquq.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+\bigskip
+\bigskip
+\subsection{Quark-gluon vertices}
+
+%Vertex dqdqg
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ d^{f_1}_{m_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$d^{f_2}_{m_2}$}
+\Gluon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$g^{a_3}_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/QuarkGluonVerticesLatex/dqdqg.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex guquq
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\ArrowLine(40,0)(5,0)
+\Text(0,0)[r]{$ u^{f_1}_{m_1}$}
+\ArrowLine(40,50)(40,0)
+\Text(45,45)[l]{$u^{f_2}_{m_2}$}
+\Gluon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$g^{a_3}_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/QuarkGluonVerticesLatex/guquq.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+\bigskip
+\bigskip
+\subsection{Gauge self interaction vertices}
+
+%Vertex AWW
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\Photon(5,0)(40,0){3}{4}
+\Text(0,0)[r]{$A^0_{\mu_1}$}
+\Photon(40,50)(40,0){3}{4}
+\Line(40.,25.)(46.,31.)
+\Line(40.,25.)(34.,31.)
+\Text(45,45)[l]{$W^+_{\mu_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Line(57.,0)(63.,-6.)
+\Line(57.,0)(63.,6.)
+\Text(80,0)[l]{$W^-_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeSelfVerticesLatex/AWW.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex WWZ
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\Photon(5,0)(40,0){3}{4}
+\Line(23.,0)(17.,6.)
+\Line(23.,0)(17.,-6.)
+\Text(0,0)[r]{$W^+_{\mu_1}$}
+\Photon(40,50)(40,0){3}{4}
+\Line(40.,25.)(46.,31.)
+\Line(40.,25.)(34.,31.)
+\Text(45,45)[l]{$W^-_{\mu_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$Z^0_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeSelfVerticesLatex/WWZ.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex AAWW
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,100)(0,50)
+\Photon(5,50)(40,50){3}{4}
+\Text(0,50)[r]{$A^0_{\mu_1}$}
+\Photon(40,100)(40,50){3}{4}
+\Text(45,95)[l]{$A^0_{\mu_2}$}
+\Photon(75,50)(40,50){3}{4}
+\Line(57.,50.)(63.,44.)
+\Line(57.,50.)(63.,56.)
+\Text(80,50)[l]{$W^+_{\mu_3}$}
+\Photon(40,0)(40,50){3}{4}
+\Line(40.,25.)(34.,19.)
+\Line(40.,25.)(46.,19.)
+\Text(45,5)[l]{$W^-_{\mu_4}$}
+\Vertex(40,50){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeSelfVerticesLatex/AAWW.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex WWWW
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,100)(0,50)
+\Photon(5,50)(40,50){3}{4}
+\Line(23.,50.)(17.,56.)
+\Line(23.,50.)(17.,44.)
+\Text(0,50)[r]{$W^+_{\mu_1}$}
+\Photon(40,100)(40,50){3}{4}
+\Line(40.,75.)(46.,81.)
+\Line(40.,75.)(34.,81.)
+\Text(45,95)[l]{$W^+_{\mu_2}$}
+\Photon(75,50)(40,50){3}{4}
+\Line(57.,50.)(63.,44.)
+\Line(57.,50.)(63.,56.)
+\Text(80,50)[l]{$W^-_{\mu_3}$}
+\Photon(40,0)(40,50){3}{4}
+\Line(40.,25.)(34.,19.)
+\Line(40.,25.)(46.,19.)
+\Text(45,5)[l]{$W^-_{\mu_4}$}
+\Vertex(40,50){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeSelfVerticesLatex/WWWW.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex AWWZ
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,100)(0,50)
+\Photon(5,50)(40,50){3}{4}
+\Text(0,50)[r]{$A^0_{\mu_1}$}
+\Photon(40,100)(40,50){3}{4}
+\Line(40.,75.)(46.,81.)
+\Line(40.,75.)(34.,81.)
+\Text(45,95)[l]{$W^+_{\mu_2}$}
+\Photon(75,50)(40,50){3}{4}
+\Line(57.,50.)(63.,44.)
+\Line(57.,50.)(63.,56.)
+\Text(80,50)[l]{$W^-_{\mu_3}$}
+\Photon(40,0)(40,50){3}{4}
+\Text(45,5)[l]{$Z^0_{\mu_4}$}
+\Vertex(40,50){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeSelfVerticesLatex/AWWZ.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex WWZZ
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,100)(0,50)
+\Photon(5,50)(40,50){3}{4}
+\Line(23.,50.)(17.,56.)
+\Line(23.,50.)(17.,44.)
+\Text(0,50)[r]{$W^+_{\mu_1}$}
+\Photon(40,100)(40,50){3}{4}
+\Line(40.,75.)(46.,81.)
+\Line(40.,75.)(34.,81.)
+\Text(45,95)[l]{$W^-_{\mu_2}$}
+\Photon(75,50)(40,50){3}{4}
+\Text(80,50)[l]{$Z^0_{\mu_3}$}
+\Photon(40,0)(40,50){3}{4}
+\Text(45,5)[l]{$Z^0_{\mu_4}$}
+\Vertex(40,50){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeSelfVerticesLatex/WWZZ.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+\bigskip
+\bigskip
+\subsection{Higgs--gauge vertices}
+
+%Vertex hhh
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\DashLine(5,0)(40,0){3}
+\Text(0,0)[r]{$h$}
+\DashLine(40,50)(40,0){3}
+\Text(45,45)[l]{$h$}
+\DashLine(75,0)(40,0){3}
+\Text(80,0)[l]{$h$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeHiggsVerticesLatex/hhh.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex hWW
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\DashLine(5,0)(40,0){3}
+\Text(0,0)[r]{$h$}
+\Photon(40,50)(40,0){3}{4}
+\Line(40.,25.)(46.,31.)
+\Line(40.,25.)(34.,31.)
+\Text(45,45)[l]{$W^+_{\mu_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Line(57.,0)(63.,-6.)
+\Line(57.,0)(63.,6.)
+\Text(80,0)[l]{$W^-_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeHiggsVerticesLatex/hWW.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex hZZ
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\DashLine(5,0)(40,0){3}
+\Text(0,0)[r]{$h$}
+\Photon(40,50)(40,0){3}{4}
+\Text(45,45)[l]{$Z^0_{\mu_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$Z^0_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeHiggsVerticesLatex/hZZ.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex hhhh
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,100)(0,50)
+\DashLine(5,50)(40,50){3}
+\Text(0,50)[r]{$h$}
+\DashLine(40,100)(40,50){3}
+\Text(45,95)[l]{$h$}
+\DashLine(75,50)(40,50){3}
+\Text(80,50)[l]{$h$}
+\DashLine(40,0)(40,50){3}
+\Text(45,5)[l]{$h$}
+\Vertex(40,50){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeHiggsVerticesLatex/hhhh.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex hhWW
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,100)(0,50)
+\DashLine(5,50)(40,50){3}
+\Text(0,50)[r]{$h$}
+\DashLine(40,100)(40,50){3}
+\Text(45,95)[l]{$h$}
+\Photon(75,50)(40,50){3}{4}
+\Line(57.,50.)(63.,44.)
+\Line(57.,50.)(63.,56.)
+\Text(80,50)[l]{$W^+_{\mu_3}$}
+\Photon(40,0)(40,50){3}{4}
+\Line(40.,25.)(34.,19.)
+\Line(40.,25.)(46.,19.)
+\Text(45,5)[l]{$W^-_{\mu_4}$}
+\Vertex(40,50){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeHiggsVerticesLatex/hhWW.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex hhZZ
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,100)(0,50)
+\DashLine(5,50)(40,50){3}
+\Text(0,50)[r]{$h$}
+\DashLine(40,100)(40,50){3}
+\Text(45,95)[l]{$h$}
+\Photon(75,50)(40,50){3}{4}
+\Text(80,50)[l]{$Z^0_{\mu_3}$}
+\Photon(40,0)(40,50){3}{4}
+\Text(45,5)[l]{$Z^0_{\mu_4}$}
+\Vertex(40,50){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeHiggsVerticesLatex/hhZZ.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+\bigskip
+\bigskip
+\subsection{Gluon self interaction vertices}
+
+%Vertex ggg
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\Gluon(5,0)(40,0){3}{4}
+\Text(0,0)[r]{$g^{a_1}_{\mu_1}$}
+\Gluon(40,50)(40,0){3}{4}
+\Text(45,45)[l]{$g^{a_2}_{\mu_2}$}
+\Gluon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$g^{a_3}_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GluonSelfVerticesLatex/ggg.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+%Vertex gggg
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,100)(0,50)
+\Gluon(5,50)(40,50){3}{4}
+\Text(0,50)[r]{$g^{a_1}_{\mu_1}$}
+\Gluon(40,100)(40,50){3}{4}
+\Text(45,95)[l]{$g^{a_2}_{\mu_2}$}
+\Gluon(75,50)(40,50){3}{4}
+\Text(80,50)[l]{$g^{a_3}_{\mu_3}$}
+\Gluon(40,0)(40,50){3}{4}
+\Text(45,5)[l]{$g^{a_4}_{\mu_4}$}
+\Vertex(40,50){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GluonSelfVerticesLatex/gggg.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
+\bigskip
+\bigskip
+\subsection{Higgs--gluon vertices}
+
+\bigskip
+\bigskip
+\subsection{Four
+lepton vertices}
+
+\bigskip
+\bigskip
+\subsection{Two quark--two lepton vertices}
+
+\bigskip
+\bigskip
+\subsection{Four quark vertices}
+
+\bigskip
+\bigskip
+\subsection{Baryon and lepton
+number violating four fermion vertices}
+
+\end{document}

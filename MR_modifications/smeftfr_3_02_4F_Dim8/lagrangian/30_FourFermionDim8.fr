@@ -1,0 +1,79 @@
+(* SmeftFR v3.0 package *)
+(* dim-8 4 fermion operators *)
+(* Operators: {LQl3ephiDn3,  LQle3phiDn1 and LQl2e2D2n1, LQl2e2D2n2, LQl4D2n1, LQl4D2n2, LQe4D2} *)
+
+LQl3ephiDn3 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,ii,jj,nu,aux},
+
+aux = I (LLbar[sp1,ii,ff1] . Ga[nu,sp1,sp2] . LL[sp2,ii,ff2]) . (DC[LLbar[sp3,jj,ff3],nu] . lR[sp3,ff4]) Phi[jj];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "l3ephiDn3"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2W, SU2D} ];
+
+aux + HC[aux] 
+];
+
+LQle3phiDn1 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,ii,jj,nu,aux},
+
+aux = I (lRbar[sp1,ff1] . Ga[nu,sp1,sp2] . lR[sp2,ff2]) . (DC[lRbar[sp3,ff3],nu] . LL[sp3,jj,ff4]) Phi[jj];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "le3phiDn1"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2W, SU2D} ];
+
+aux + HC[aux] 
+];
+
+
+LQl2e2D2n1 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,ii,jj,nu,aux},
+
+aux = del[(LLbar[sp1,ii,ff1] Ga[mu,sp1,sp2] LL[sp2,ii,ff2]),nu] del[(lRbar[sp3,ff3] Ga[mu,sp3,sp4] lR[sp4,ff4]),nu];
+
+(*For now only derivative, maybe in the future also include covariant derivative? NO HC!!!*)
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "l2e2D2n1"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2W, SU2D} ];
+
+aux 
+];
+
+LQl2e2D2n2 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,ii,jj,nu,aux},
+
+aux = (LLbar[sp1,ii,ff1] Ga[mu,sp1,sp2] del[LL[sp2,ii,ff2],nu] - del[LLbar[sp1,ii,ff1],nu] Ga[mu,sp1,sp2] LL[sp2,ii,ff2])  
+(lRbar[sp3,ff3] Ga[mu,sp3,sp4] del[lR[sp4,ff4],nu] - del[lRbar[sp3,ff3],nu] Ga[mu,sp3,sp4] lR[sp4,ff4]);
+
+(*For now only derivative, maybe in the future also include covariant derivative?*)
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "l2e2D2n2"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2W, SU2D} ];
+
+aux 
+];
+
+LQl4D2n1 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,ii,jj,nu,aux},
+
+aux = del[(LLbar[sp1,ii,ff1] Ga[mu,sp1,sp2] LL[sp2,ii,ff2]),nu] del[(LLbar[sp3,jj,ff3] Ga[mu,sp3,sp4] LL[sp4,jj,ff4]),nu];
+
+(*For now only derivative, maybe in the future also include covariant derivative?*)
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "l4D2n1"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2W, SU2D} ];
+
+aux  
+];
+
+LQl4D2n2 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,ii,jj,nu,aux},
+
+aux = (LLbar[sp1,ii,ff1] Ga[mu,sp1,sp2] del[LL[sp2,ii,ff2],nu] - del[LLbar[sp1,ii,ff1],nu] Ga[mu,sp1,sp2] LL[sp2,ii,ff2])  
+(LLbar[sp3,jj,ff3] Ga[mu,sp3,sp4] del[LL[sp4,jj,ff4],nu] - del[LLbar[sp3,jj,ff3],nu] Ga[mu,sp3,sp4] LL[sp4,jj,ff4]);
+
+(*For now only derivative, maybe in the future also include covariant derivative?*)
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "l4D2n2"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2W, SU2D} ];
+
+aux 
+];
+
+LQe4D2 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,ii,jj,nu,aux},
+
+aux = del[(lRbar[sp1,ff1] Ga[mu,sp1,sp2] lR[sp2,ff2]),nu] del[(lRbar[sp3,ff3] Ga[mu,sp3,sp4] lR[sp4,ff4]),nu];
+
+(*For now only derivative, maybe in the future also include covariant derivative?*)
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "e4D2"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2W, SU2D} ];
+
+aux  
+];
