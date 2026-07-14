@@ -1,0 +1,89 @@
+We start by considering the various uses of the word operator.
+See Ref.~\cite{Fonseca:2019yya} for further discussion.
+We a define operator to be a gauge and Lorentz invariant contraction of fields and derivatives with specific flavor indices.
+A Lagrangian term, or just term or short, collects all of operators with the same gauge and Lorentz structure into a single unit, \textit{i.e.} a term collapses the flavor indices of otherwise identical operators.
+By construction, a Lagrangian term of mass dimension $d \leq 8$ may contain no more than $n_g^4$ operators.\footnote{Starting at dimension-9 $n_g^6$ is possible.}
+Ref.~\cite{Fonseca:2019yya} defines a type of operator as the collection of terms with the combination of fields (and derivatives) with conjugate counted separately.
+In this work we use a broader definition of a type of operator where the conjugate fields are counted in unison with the un-conjugated fields.
+Our types of operators are therefore supersets of those in~\cite{Fonseca:2019yya}, of which there are 541 to our 231.
+This definition of a type of operator allows us systematically label the operators in a  phenomenologically friendly way.
+The largest set of operators we consider is a class where the operators are grouped by the number of fields of a given spin as well as the number of derivatives.
+It is useful to consider subclasses when discussing the RGE of the dimension-8 operators. 
+Subclasses treat conjugate fields separately.
+For example, class 1 has three subclasses, $\{X_L^4, X_L^2 X_R^2, X_R^4\} \in X^4$, and class 18 also has three subclasses, $\{\psi^4 H^2, \psi^2 \bar \psi^2 H^2, \bar \psi^4 H^2\} \in \psi^4 H^2$.
+We tolerate a slight abuse of notation between classes and subclasses relying on context to distinguish which set is being discussed.
+
+Moving onto physics conventions, the SM Lagrangian is given by
+\begin{align}
+\label{eq:sm}
+\mathcal L_{\rm SM} &= - \frac{1}{4} \sum_X X_{\mu\nu} X^{\mu\nu} + (D_\mu H^\dag) (D^\mu H) + \sum_\psi \bar \psi i \slashed D \psi \\
+&- \lambda \left(H^\dag H - \frac{v^2}{2}\right)^2 - \left[H^\dag_j \bar d\, Y_d q^j + \widetilde H^\dag_j \bar u\, Y_u q^j + H^\dag_j \bar e\, Y_e l^j + \hc \right] . \nonumber
+\end{align}
+In Eq~\eqref{eq:sm}, and throughout this work, we generically refer to field strengths as $X = \{G^A, W^I, B\}$, and to fermions as $\psi = \{l, e, q, u, d\}$.
+
+The gauge covariant derivative is
+\begin{equation}
+(D_\mu q)^{j \alpha} = ((\partial_\mu + i g_1 \hyp B_\mu) \delta_\beta^\alpha \delta_k^j  + i g_2 (t^I)_k^j W^I_\mu \delta_\beta^\alpha + i g_3 (T^A)_\beta^\alpha A^A_\mu \delta_k^j) q^{k \beta} ,
+\end{equation}
+where the generators of $SU(3)_c$ and $SU(2)_w$ are $T^a$ and $t^I = \tau^I / 2$, respectively.
+The $U(1)_y$ hypercharge is given by $\hyp$ with $Q = \tau^3 + \hyp$.
+For $SU(3)_c$ fundamental and adjoint indices are denoted $\alpha, \beta, \gamma$ and $A, B, C$, respectively, while for $SU(2)_w$ the fundamental and adjoint indices are respectively labeled $j, k, m$ and $I, J, K$.
+
+Anti-symmetrization of indices is denoted by a pair of square brackets, $[\mu\nu]$, and symmetrization is denoted by a pair of round brackets, $(\mu\nu)$.
+The definition of $\widetilde H$ is
+\begin{equation}
+\widetilde H_j = \epsilon_{jk} H^{\dag k}
+\end{equation}
+where $\epsilon_{jk} = \epsilon_{[jk]}$ is the $SU(2)$ invariant tensor with $\epsilon_{12} = 1$.
+The dual field strength is defined as
+\begin{equation}
+\widetilde X_{\mu\nu} = \tfrac{1}{2} \epsilon_{\mu\nu\rho\sigma} X^{\rho\sigma}
+\end{equation}
+with $\epsilon_{0123} = 1$. 
+
+We will sometimes refer to the following combinations of field strength as they are typically what are used when counting coefficients,
+\begin{equation}
+X_{L,R}^{\mu\nu} = \tfrac{1}{2} (X^{\mu\nu} \mp i \widetilde X^{\mu\nu}) .
+\end{equation}
+These field strengths have simple Lorentz transformation properties, $X_L \sim (1, 0)$, $X_R \sim (0, 1)$ under $SU(2)_L \otimes SU(2)_R$.
+Similarly $l$ and $q$ are left-handed fermion fields, whereas $e$, $u$, and $d$ are right-handed fields.
+When necessary Lorentz indices in the fundamental representations are indicated by $a, b, \dot a, \dot b$, \textit{e.g.} $q_L \sim (q_L)_a$, $B_R \sim (B_R)_{(\dot a \dot b)}$.
+
+The SMEFT extends the SM by adding all of the higher-dimensional operator that are gauge invariant under the SM with the caveat that redundant operators should not be included
+\begin{equation}
+\mathcal L_{\rm SMEFT} = \mathcal L_{\rm SM} + \sum_{d > 4} \mathcal{L}^{(d)} .
+\end{equation}
+For the dimension-6 operators we keep notation that has been well-established in the literature, see \textit{e.g.}~\cite{Alonso:2013hga}.
+On the other hand, we use a systematic, if at times cumbersome, notation for labelling the operators of mass-dimension 7 and above.
+For types of operators with a single Lagrangian term we label them as follows
+\begin{equation}
+\mathcal{L}^{(d)} \supset \sum_{\rm type} C_{\rm type} Q_{\rm type} , \quad n_{\rm term} = 1,
+\end{equation}
+where $n_{\rm term}$ is the number of terms of a given type.
+The type of operator is denoted as the fields and the derivatives in the operator raised to the power of the number of times that type of object appears in the operator, \textit{e.g} the label $leBH^3$ indicates that this term has one left-handed lepton field, one right-handed electron field, one hypercharge field strength, and three Higgs fields.
+If a type of operator has multiple terms, not counting Hermitian conjugates, we instead label the operators as
+\begin{equation}
+\mathcal{L}^{(d)} \supset \sum_{\rm type} \sum_{i = 1}^{n_{\rm term}} C_{\rm type}^{(i)} Q_{\rm type}^{(i)} , \quad n_{\rm term} > 1 .
+\end{equation}
+Consider as an explicit example,
+\begin{equation}
+\label{eq:notex}
+\mathcal{L}^{(d=8)} \supset C_{\substack{u^2GH^2D \\ pr}}^{(1)} Q_{\substack{u^2GH^2D \\ pr}}^{(1)} + C_{\substack{u^2GH^2D \\ pr}}^{(2)} Q_{\substack{u^2GH^2D\\ pr}}^{(2)} + \left[C_{\substack{leBH^3 \\ pr}} Q_{\substack{leBH^3 \\ pr}} + \hc\right] ,
+\end{equation}
+with
+\begin{align}
+Q_{\substack{u^2GH^2D \\ pr}}^{(1)} &= (\bar u_p \gamma^\nu T^A u_r) D^\mu (H^\dag H) G^A_{\mu\nu} , \nn
+Q_{\substack{u^2GH^2D\\ pr}}^{(2)} &= (\bar u_p \gamma^\nu T^A u_r) D^\mu (H^\dag H) \widetilde G^A_{\mu\nu} , \nn
+Q_{\substack{leBH^3 \\ pr}} &= (\bar l_p \sigma^{\mu\nu} e_r) H (H^\dag H) B_{\mu\nu} .
+\end{align}
+Flavor indices explicitly appear in Eq.~\eqref{eq:notex}.
+Fermion fields have a flavor index $p, r, s, t$ that runs over 1, 2, 3 for three generations.
+The fermion fields themselves are in the weak eigenstate basis.
+The Yukawa matrices, $Y_{e, u, d}$, in Eq.~\eqref{eq:sm} are matrices in flavor space.
+
+Note that we do not explicitly label the transpose of a spinor in fermion bilinears involving a charge conjugation operator, \textit{e.g.} $\psi_1 C \psi_2 \equiv \psi_1^T C \psi_2$, $\psi_1 C \sigma_{\mu\nu} \psi_2 \equiv \psi_1^\top C \sigma_{\mu\nu} \psi_2$.
+Finally, it is convenient to define Hermitian derivatives \textit{e.g.}
+\begin{align}
+i H^\dag \overleftrightarrow{D}_\mu H &= i H^\dag (D_\mu H) - i (D_\mu H^\dag) H , \nn
+i H^\dag \overleftrightarrow{D}^I_\mu H &= i H^\dag \tau^I (D_\mu H) - i (D_\mu H^\dag) \tau^I H .
+\end{align}

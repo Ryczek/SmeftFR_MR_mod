@@ -1,0 +1,11 @@
+(* SmeftFR v4.0 - class 209 (psi^2 X^2 H) operator: leB2phin1 *)
+
+(* Q_leB2phi^(1) = (lbar_p e_r) H B_{mu nu} B^{mu nu} + h.c. *)
+LQleB2phin1 := Module[{sp,ii,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leB2phin1"][ff1,ff2]
+  LL8bar[sp,ii,ff1].lR8[sp,ff2] Phi8[ii] FS[B8,mu,nu] FS[B8,mu,nu],
+  FlavorExpand->{SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

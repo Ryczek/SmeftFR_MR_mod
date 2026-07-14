@@ -1,0 +1,474 @@
+Having defined our notation in Sec.~\ref{sec:note} we can more precisely state our goal.
+We are trying to find the minimum number of Lagrangian terms needed to give all of the operators at dimension-8 subject to the constraint that no term may contain more than $n_g^4$ operators.
+For bosonic and two-fermion operators this constraint is trivially satisfied as those terms always contain one and $n_g^2$ operators, respectively.
+Four-fermion operators where two or more of the fields are identical constitute the interesting cases.
+
+We use existing results from the literature when they are available.
+All of the bosonic operators have been classified previously~\cite{Morozov:1985ef, Hays:2018zze, Remmen:2019cyz}.
+Ref.~\cite{Hays:2018zze} also gave partial results for three of the two-fermion classes that were sufficient to allow us to deduce the remaining operators in those classes.
+As this work was being finalized Refs.~\cite{Alioli:2020kez, Remmen:2020vts} appeared, which classified a subset of four-fermion operators with two derivatives.
+However there are still non-trivial results for us to work out in that class.
+
+When classifying the dimension-8 operators we exploit the fact that not only are the types of operators known, but the number of operators is also known, see Ref.~\cite{Henning:2015alf}.
+In particular, we leverage the Python package $\mathtt{BasisGen}$~\cite{Criado:2019ugp}, which we use to get the number of operators for each type of operator.
+Additionally, we use the Mathematica program $\mathtt{Sym2Int}$~\cite{Fonseca:2017lem}, which not only gives the number of operators per type, but also the flavor representations when there are identical particles in the operator.
+Furthermore, $\mathtt{Sym2Int}$ gives the number of Lagrangian terms per type of operator except when the operator contains both derivatives and identical particles. 
+In that case a range is given because the permutation symmetry of operators with derivatives is ambiguous due to integration by parts (IBP) redundancies.
+
+Beyond getting the number of terms correct we need to ensure that the operators in our basis are independent.
+Operators with derivatives can be related through integration by parts.
+When there are multiple derivatives care must be taken to select operators for the basis that span the entire space of possible operators for that class.
+See the discussion of class 16 below for an example of this.
+Operators can also be related to each other through the equations of motion (EOM).
+We use the EOM the remove redundant terms, trading them for basis operators in the same class, operators with fewer derivatives, and sometimes operators of lower mass dimension.
+See the discussion of class 17 below for an example of this, and see \textit{e.g.}~\cite{Jenkins:2013zja} for the SM equations of motion.
+Our basis does not explicitly contain an EOM.
+Operators with derivatives can be IBP, and some of the resulting terms contain an EOM.
+However it is never the case that all of the resulting terms have an EOM.
+Lastly, there are various tensor and spinor identities that relate operators to each other.
+There are the Fierz identities, for example for $SU(2)$
+\begin{equation}
+\label{eq:fierz}
+(\tau^I)_j^k (\tau^I)_m^n = 2 \delta_j^n \delta_m^k - \delta_j^k \delta_m^n .
+\end{equation}
+There are identities involving the Levi-Civita symbol, \textit{e.g.} in two-dimensions
+\begin{equation}
+\label{eq:lc}
+\epsilon_{jk} \epsilon_{mn} + \epsilon_{jm} \epsilon_{nk} + \epsilon_{jn} \epsilon_{km} = 0
+\end{equation}
+There are identities for products of Dirac matrices, \textit{e.g.} the anti-symmetric Dirac tensor is self-dual
+\begin{equation}
+\label{eq:dsd}
+\epsilon^{\rho\tau\mu\nu} \sigma_{\mu\nu} P_R = 2 i \sigma^{\rho\tau} P_R .
+\end{equation}
+
+%--------------------------------------------------------------------------------------------------------------
+\subsection{Bosonic Operators}
+
+\begin{enumerate}
+%--------------------------------------------------------------------------------------------------------------
+\item $X^4$ \\
+The $X^4$ operators for a single Yang-Mills field were classified in Ref.~\cite{Morozov:1985ef}.
+Ref.~\cite{Remmen:2019cyz} generalized this result to the SM field content.
+Note that dimension-8 is the lowest dimension where a subclass of operators contains both $X_L$ and $X_R$.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $H^8$ \\
+$(H^\dag H)^4$ is the only possibility.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $H^6D^2$ \\
+The $H^6D^2$ operators were classified in Ref.~\cite{Hays:2018zze}.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $H^4D^4$ \\
+Both Refs.~\cite{Hays:2018zze} and~\cite{Remmen:2019cyz} classified the $H^4D^4$ operators.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $X^3H^2$ \\
+The $X^3H^2$ operators were classified in Ref.~\cite{Hays:2018zze}.
+Note that the two terms in $Q_{W^2BH^2}^{(2)}$ are equivalent via the identity
+\begin{equation}
+\widetilde X_{\mu\rho} Y^{\rho\nu} = - X^{\nu\rho} \widetilde Y_{\rho\mu} - \frac{1}{2} X_{\alpha\beta} \widetilde Y^{\alpha\beta} \delta_\mu^\nu .
+\end{equation}
+For backwards compatibility we construct our basis with $Q_{W^2BH^2}^{(2)}$ as originally defined by Ref.~\cite{Hays:2018zze} as opposed to, say, only keeping the second term.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $X^2H^4$ \\
+The $X^2H^4$ operators were classified in Ref.~\cite{Hays:2018zze}.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $X^2H^2D^2$ \\
+Both Refs.~\cite{Hays:2018zze} and~\cite{Remmen:2019cyz} classified the $X^2H^2D^2$ operators.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $XH^4D^2$ \\
+The $XH^4D^2$ operators were classified in Ref.~\cite{Hays:2018zze}.
+
+%--------------------------------------------------------------------------------------------------------------
+\subsection{Two-Fermion Operators}
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^2X^2H$ \\
+For the dimension-8 class $\psi^2X^2H$, 24 terms arise from joining a field strength to a dimension-6 operator of the form $\psi^2XH$, whereas 48 terms come from the product of two field strengths and a Yukawa interaction, $(X^2) (\psi^2H)$.
+See Table~\ref{tab:smeft6ops} for the dimension-6 operators.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^2XH^3$ \\
+In the class $\psi^2XH^3$, 16 of the 22 terms are identical to the dimension-6 terms $\psi^2XH$ up to an extra factor of $(H^{\dag} H)$.
+The remaining six terms, all involving $W^I_{\mu\nu}$, instead have the dimension-2 covariant $(H^{\dag} \tau^I H)$.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^2H^2D^3$ \\
+Ref.~\cite{Hays:2018zze} classified the four terms involving $q^2H^2D^3$.
+The remaining 12 terms in the class can be deduced from the results of Ref.~\cite{Hays:2018zze}.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^2H^5$ \\
+The class $\psi^2H^5$ is identical to the dimension-6 class $\psi^2H^3$ up to an extra factor of $(H^{\dag} H)$.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^2H^4D$ \\
+Ref.~\cite{Hays:2018zze} classified the four operators involving $q^2H^4D$.
+The term $Q_{q^2H^4D}^{(2)}$ contains a sum
+\begin{equation}
+\label{eq:q2H4D}
+Q_{q^2H^4D}^{(2)} = Q_{q^2H^4D}^{(2l)} + Q_{q^2H^4D}^{(2r)} .
+\end{equation}
+
+The term $Q_{q^2H^4D}^{(3)}$ is related to the righthand side of Eq.~\eqref{eq:q2H4D} as follows
+\begin{equation}
+\label{eq:Q3}
+i Q_{q^2H^4D}^{(3)} = - Q_{q^2H^4D}^{(2l)} + Q_{q^2H^4D}^{(2r)} .
+\end{equation}
+This can be seen using the following variation of Eq.~\eqref{eq:fierz}
+\begin{equation}
+\label{eq:fierz_ep}
+\delta_j^k (\tau^I)_m^n - (\tau^I)_j^k \delta_m^n = i \epsilon^{IJK} (\tau^J)_j^n (\tau^K)_m^k .
+\end{equation}
+As was the case with the class 5 operator $Q_{W^2BH^2}^{(2)}$ we choose to keep $Q_{q^2H^4D}^{(2)}$ and $Q_{q^2H^4D}^{(3)}$ is our basis as opposed to their summands for backwards compatibility.
+The remaining nine terms in the class can be deduced from the results of Ref.~\cite{Hays:2018zze}.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^2X^2D$ \\
+We use integration by parts to place the derivative on a fermion field.
+Then in order for the operator to not be ``reduced'' to a class with fewer derivatives through the use of the equations of motion the fermionic component of the operator must not be Lorentz invariant.
+Class 7 also contains two field strengths, see above, and a subset of the operators in class 7 have covariants formed from Higgs fields and derivatives that transform as $(1, 1)$ under $SU(2)_L \otimes SU(2)_R$.
+We take the field strength components of that subset of class 7 operators and use them for the class 14 operators, contracting them with fermionic covariants of the form $\bar \psi \gamma^\mu D^\nu \psi$.
+In particular, we use $Q_{G^2H^2D^2}^{(1)}$ as the template for when a fermion is not charged under a gauge group, $Q_{W^2H^2D^2}^{(1, 4-6)}$ when it is charged under a gauge group, and $Q_{WBH^2D^2}^{(1, 4-6)}$ when it is charged under two gauge groups.
+Three terms are not covered by this procedure.
+They involve quarks and two gluon field strength where the $SU(3)_c$ adjoint indices are contracted with the symmetric $d^{ABC}$ symbol.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^2XH^2D$ \\
+Ref.~\cite{Hays:2018zze} classified the 12 terms involving $q^2WH^2D$.
+Of the remaining 74 terms, 68 of them have a form analogous to those classified by Ref.~\cite{Hays:2018zze}.
+The final six terms in the class are instead analogous to the dimension-6 operator $Q_{Hud}$ with the addition of a field strength.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^2XHD^2$ \\
+Things become more complicated when there are two or more derivatives in the operator.
+As such it is useful to introduce some additional machinery to classify the operators.
+We use the procedure given in Ref.~\cite{Lehman:2015via} for removing terms that are reducible through the use of the equations of motion.
+In a nutshell, the procedure says Lorentz indices should be symmetrized for representations that are triplets or higher under either $SU(2)_L$ or $SU(2)_R$.
+In terms of Lorentz indices we have for example
+\begin{equation}
+\label{eq:eom}
+D \psi_L \sim (D \psi_L)_{(a b), \dot a}, \quad D X_R \sim (D X_R)_{a, (\dot a \dot b \dot c)}, \quad D^2 H \sim (D^2 H)_{(a b), (\dot a \dot b)} .
+\end{equation} 
+
+We now work through a representative example with field content $\bar l, e, H, B_L$ following the procedure laid out in Ref.~\cite{Hays:2018zze}.
+Using relations like those in~\eqref{eq:eom} we see that operators with a derivative acting on the field strength or two derivatives acting on a fermion can be reduced using the EOM. Ignoring for the time being constraints from IBP this leaves us with four possibilities
+\begin{align}
+\label{eq:cand}
+x_1 &= (D \bar l)_{a, (\dot a \dot c)} e_{\dot d} (D H)_{b, \dot b} B_{(c d)} \epsilon^{a c} \epsilon^{b d} \epsilon^{\dot a \dot d} \epsilon^{\dot c \dot b}, \nn
+x_2 &= \bar l_{\dot c} (D e)_{a, (\dot a \dot d)} (D H)_{b, \dot b} B_{(c d)} \epsilon^{a c} \epsilon^{b d} \epsilon^{\dot a \dot c} \epsilon^{\dot d \dot b}, \nn
+x_3 &= (D \bar l)_{a, (\dot a \dot c)} (D e)_{b, (\dot b \dot d)} H B_{(c d)} \epsilon^{a c} \epsilon^{b d} \epsilon^{\dot a \dot b} \epsilon^{\dot c \dot d}, \nn
+x_4 &= \bar l_{\dot c} e_{\dot d} (D^2 H)_{(a b), (\dot a \dot b)} B_{(c d)} \epsilon^{a c} \epsilon^{b d} \epsilon^{\dot a \dot c} \epsilon^{\dot b \dot d},
+\end{align} 
+where we have not shown the $SU(2)_w$ contraction as it is trivial.
+
+To determine redundancies coming from integration by parts we need operators transforming as $(\tfrac{1}{2}, \tfrac{1}{2})$ under the Lorentz group with one fewer derivative than the operators of interest.
+There are three possibilities in this example
+\begin{align}
+\label{eq:ibp}
+y_1 &= (D \bar l)_{a, (\dot a \dot c)} e_{\dot d} H B_{(c d)} \epsilon^{a c} \epsilon^{\dot a \dot d}, \nn
+y_2 &= \bar l_{\dot c} (D e)_{a, (\dot a \dot d)} H B_{(c d)} \epsilon^{a c} \epsilon^{\dot a \dot c}, \nn
+y_3 &= \bar l_{\dot c} e_{\dot d} (D H)_{a, \dot a} B_{(c d)} \tfrac{1}{2} \epsilon^{a c} (\epsilon^{\dot a \dot c} + \epsilon^{\dot a \dot d}) . 
+\end{align}
+The derivatives of the $y_i$ show which of the $x_i$ are related by IBP
+\begin{align}
+\label{eq:const}
+D_{b, \dot b}\, y_1 &= x_1 + x_3 = 0 ,\nn
+D_{b, \dot b}\, y_2 &= x_2 + x_3 = 0 ,\nn
+D_{b, \dot b}\, y_3 &= \tfrac{1}{2} x_1 + \tfrac{1}{2} x_2 + x_4 = 0 ,
+\end{align}
+where the appropriate contraction of the remaining Lorentz indices in the leftmost terms is understood.
+By inspection of~\eqref{eq:const} we see that any of the four candidate operator can be transformed into any of the remaining three through the use of IBP.
+
+We repeat the same procedure, omitting the details here, to find the class 17 operators with field content $\bar l, e, H, B_R$.
+In this case there are eight candidate operators, $x_i$, and six operators in the Lorentz four-vector representation, $y_i$.
+Given the larger number of operators in this case we use Mathematica to solve the system of constraints, yielding two operators.
+
+We are left with a total of three $Q_{leHBD^2}$ terms ($+ \hc$)
+\begin{align}
+&\epsilon^{a c} \epsilon^{b d} \epsilon^{\dot a \dot b} \epsilon^{\dot c \dot d} \bar l_{\dot a} (D e)_{a, (\dot b \dot c)} (D H)_{b, \dot d} (B_L)_{c d} , \nn
+&\epsilon^{ab} \epsilon^{\dot a \dot b} \epsilon^{\dot c \dot e} \epsilon^{\dot d \dot f} \bar l_{\dot a} (D e)_{a, (\dot b \dot c)} (D H)_{b, \dot d} (B_R)_{(\dot e \dot f)} , \nn
+&\epsilon^{ab} \epsilon^{\dot a \dot d} \epsilon^{\dot b \dot e} \epsilon^{\dot c \dot f} \bar l_{\dot a} e_{\dot b} (D H)_{a, \dot c} (D B_R)_{b, (\dot d \dot e \dot f)} ,
+\end{align}
+which matches the counting we found using $\mathtt{BasisGen}$.
+Translating the Lorentz contractions from $SU(2)_L \otimes SU(2)_R$ to $SO(3, 1)$ and translating $B_L$ and $B_R$ to $B$ and $\widetilde B$ we find
+\begin{align}
+\label{eq:lebhd2}
+Q_{leBHD^2}^{(1)} &= (\bar l_p \sigma^{\mu\nu} D^\rho e_r) (D_\nu H) B_{\rho\mu} \nn
+Q_{leBHD^2}^{(2)} &= (\bar l_p D^\rho e_r) (D^\nu H) \widetilde B_{\rho\nu} \nn
+Q_{leBHD^2}^{(3)} &= (\bar l_p \sigma^{\mu\nu} e_r) (D^\rho H) (D_\rho B_{\mu\nu}) .
+\end{align}
+The remaining 42 terms in class 17 can be deduced from the $Q_{leHBD^2}$ operators in~\eqref{eq:lebhd2} $+ \hc$.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^2H^3D^2$ \\
+Starting with relations like those in~\eqref{eq:eom} we see that any operator in this class with two derivatives acting on the same field can be reduced using the EOM.
+Therefore an operator with one derivative on each of the two fermion fields can be traded for an operator with one derivative on a Higgs field, one derivative on a fermion plus operators with fewer derivatives.
+From here we extend the results of Ref.~\cite{Grzadkowski:2010es} to move any remaining derivatives acting on fermions onto Higgs fields, again plus operators with fewer derivatives.
+The first relation is
+\begin{align}
+\label{eq:ten}
+H^\dag H (D_\mu H) \bar \psi \sigma^{\mu\nu} D_\nu \psi &= \tfrac{i}{2} H^\dag H (D_\mu H) \bar \psi (\gamma^\mu \slashed D - \slashed D \gamma^\mu) \psi \nn
+&= i H^\dag H (D_\mu H) \bar \psi \gamma^\mu \slashed D \psi - i H^\dag H (D_\mu H) \bar \psi D^\mu \psi \nn
+&= - i H^\dag H (D_\mu H) \bar \psi D^\mu \psi + \fbox{$\psi^2H^4D$} + \fbox{$E$} ,
+\end{align}
+where \fbox{$E$} represents operators that vanish via the EOM.
+The other relation we need is
+\begin{align}
+2 H^\dag H (D_\mu H) \bar \psi D^\mu \psi &= H^\dag H (D_\mu H) \bar \psi (\gamma^\mu \slashed D + \slashed D \gamma^\mu) \psi \nn
+&= \left(H^\dag H (D_\mu H) \bar \psi \gamma^\mu \slashed D \psi - H^\dag H (D_\mu H) (\slashed D \bar \psi) \gamma^\mu \psi \right. \nn
+&\left. - D_\nu [H^\dag H (D_\mu H)] \bar \psi \gamma^\nu \gamma^\mu \psi + \fbox{$T$}\right) \nn
+&= - D_\nu [H^\dag H (D_\mu H)] \bar \psi \gamma^\nu \gamma^\mu \psi + \fbox{$E$} + \fbox{$T$}
+\end{align}
+where \fbox{$T$} stands for a total derivative.
+
+After all this we are left with six terms $+ \hc$ where the derivatives act only on Higgs fields.
+In particular, having already established that operators in this class cannot have two derivatives acting on the same field, the derivatives can either act on $H$ and $H^\dag$ or there can be one derivative on each of the $H$ fields.
+For each of these cases the fermion pair can either be in the $(0, 0)$ or $(0, 1)$ representation of the Lorentz group.
+(The classification for the Hermitian conjugate operators proceeds in an identical fashion.)
+Finally when the derivatives act on $H$ and $H^\dag$ the covariants can either be $SU(2)_w$ singlets or adjoints.
+The same logic applies for all three choices for the pair of fermions.
+
+%--------------------------------------------------------------------------------------------------------------
+\subsection{Four-Fermion Operators}
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^4H^2$ \\
+All 38 of the $\psi^4$ dimension-6 terms can be multiplied by $(H^{\dag} H)$.
+Focusing on $B$ preserving operators, an additional 23 terms are formed by inserting a $\tau^I$ into a $\psi^4$ operator (with at least two left-handed fermions) and joining it to the dimension-2 covariant $(H^{\dag} \tau^I H)$.
+Operators of the type $Q_{l^2q^2H^2}$ provide three of the these terms, whereas all other types of operators provide one term $(+ \hc)$. 
+There are also 22 $\psi^4H^2$ terms that, schematically, are products of Yukawa interactions, $(\bar L R H) (\bar L R H)$ or $(\bar L R H) (H^\dag \bar R L)$.
+Among these there is one new type of operator, $Q_{l^2udH^2}$.
+Bi-Yukawa terms with four fields that are fundamentals under either $SU(2)_w$ or $SU(3)_c$ where two of those fields are identical can be contracted either as singlets or adjoints.
+There are some redundant operators involving identical left-handed fermions.
+For example, the terms
+\begin{align}
+\label{eq:4lredun}
+Q_{l^4H^2}^{(3)} &= (\bar l_p \gamma^\mu \tau^I l_r) (\bar l_s \gamma_\mu \tau^I l_t) (H^\dag H) , \nn
+Q_{l^4H^2}^{(4)} &= (\bar l_p \gamma^\mu \tau^I l_r) (\bar l_s \gamma_\mu l_t) (H^\dag \tau^I H) , \nn
+Q_{l^4H^2}^{(5)} &= \epsilon^{IJK} (\bar l_p \gamma^\mu \tau^I l_r) (\bar l_s \gamma_\mu \tau^J \tau^I l_t) (H^\dag \tau^K H) ,
+\end{align}
+are related to the operators in our basis 
+\begin{align}
+\label{eq:l5}
+Q_{\substack{l^4H^2 \\ prst}}^{(3)} &= 2 Q_{\substack{l^4H^2 \\ ptsr}}^{(1)} - Q_{\substack{l^4H^2 \\ prst}}^{(1)} , \nn
+Q_{\substack{l^4H^2 \\ prst}}^{(4)} &= Q_{\substack{l^4H^2 \\ stpr}}^{(2)}, \nn
+i Q_{\substack{l^4H^2 \\ prst}}^{(5)} &= Q_{\substack{l^4H^2 \\ ptsr}}^{(2)} - Q_{\substack{l^4H^2 \\ srpt}}^{(2)} .
+\end{align}
+This can be seen using Eqs.~\eqref{eq:fierz} and~\eqref{eq:fierz_ep}.
+On the other hand, the four-quark terms 
+\begin{align}
+Q_{q^4H^2}^{(3)} &= (\bar q_p \gamma^\mu \tau^I q_r) (\bar q_s \gamma_\mu \tau^I q_t) (H^\dag H) , \nn
+Q_{q^4H^2}^{(5)} &= \epsilon^{IJK} (\bar q_p \gamma^\mu \tau^I q_r) (\bar q_s \gamma_\mu \tau^J q_t) (H^\dag \tau^K H) ,
+\end{align}
+whose four-lepton analogs can be found in~\eqref{eq:4lredun}, are not redundant due to the non-trivial color representations of the quarks.
+Therefore these terms must be retained in our basis.
+The flavor structures of the four-quark, two-Higgs operators are
+\begin{align}
+\label{eq:Qflav}
+Q_{\substack{q^4H^2 \\ prst}}^{(1-3)} &\sim \left(\young(ps) \otimes \young(rt)\right) \oplus \left(\young(p,s) \otimes \young(r,t)\right) , \nn
+Q_{\substack{q^4H^2 \\ prst}}^{(4, 5)} &\sim \left(\young(ps) \otimes \young(r,t)\right) \oplus \left(\young(p,s) \otimes \young(rt)\right) .
+\end{align}
+In the last line of~\eqref{eq:Qflav} we define a particular combination of operators
+\begin{equation}
+Q_{\substack{q^4H^2 \\ prst}}^{(4)} = Q_{\substack{q^4H^2 \\ prst}}^{(1)} + Q_{\substack{q^4H^2 \\ prst}}^{(2)} + Q_{\substack{q^4H^2 \\ stpr}}^{(2)} + Q_{\substack{q^4H^2 \\ prst}}^{(3)} .
+\end{equation}
+The operators $Q_{q^4H^2}^{(4, 5)}$ vanish when there is only one generation of quarks.
+
+The terms for baryon number violating operators with dimension-6 analogs follow the logic laid out for the $B$ operators.
+However there are two interesting flavor structures.
+The dimension-6 operator $Q_{qque}$ is symmetric in its $q$ flavor indices~\cite{Abbott:1980zj}.
+This constraint is broken by the additional $SU(2)_w$ in $Q_{eq^2uH^2}$, giving it full flavor rank, $n_g^4$.
+The dimension-6 operator $Q_{qqql}$ also has a flavor constraint~\cite{Abbott:1980zj}
+\begin{equation}
+\label{eq:qqql}
+Q_{\substack{qqql \\ prst}} + Q_{\substack{qqql \\ rpst}} = Q_{\substack{qqql \\ sprt}} + Q_{\substack{qqql \\ srpt}},
+\end{equation}
+which can be derived using Eq.~\eqref{eq:lc}.
+The operators $Q_{lq^3H^2}^{(1, 2)}$ respect this constraint, leading to each of their Lagrangian terms $(+ \hc)$ containing $\tfrac{2}{3} n_g^2 (2 n_g^2 + 1)$ operators.
+On the other hand, $Q_{lq^3H^2}^{(3)}$ has mixed symmetry.
+It is symmetric in $p$ and $r$ and antisymmetric in $r$ and $s$, which causes it to vanish when there is only when generation of fermions.
+As a result of the six fundamental $SU(2)_w$ indices there are eight redundant operators
+\begin{align}
+\label{eq:lq3h2}
+Q_{lq^3H^2}^{(1a)} &= \epsilon_{\alpha\beta\gamma} \epsilon_{mj} \epsilon_{kn} (q_p^{m\alpha} C q_r^{j\beta}) (q_s^{k\gamma} C l_t^n) (H^\dag H) , \nn
+%
+Q_{lq^3H^2}^{(1b)} &= \epsilon_{\alpha\beta\gamma} (\tau^I \epsilon)_{mj} (\tau^I \epsilon)_{kn} (q_p^{m\alpha} C q_r^{j\beta}) (q_s^{k\gamma} C l_t^n) (H^\dag H) , \nn 
+%
+Q_{lq^3H^2}^{(2a)} &= \epsilon_{\alpha\beta\gamma} \epsilon_{mj} (\tau^I \epsilon)_{kn} (q_p^{m\alpha} C q_r^{j\beta}) (q_s^{k\gamma} C l_t^n) (H^\dag \tau^I H) , \nn
+%
+Q_{lq^3H^2}^{(2b)} &= \epsilon_{\alpha\beta\gamma} (\tau^I \epsilon)_{jn} \epsilon_{km}  (q_p^{m\alpha} C q_r^{j\beta}) (q_s^{k\gamma} C l_t^n) (H^\dag \tau^I H) , \nn
+%
+Q_{lq^3H^2}^{(3a)} &= \epsilon_{\alpha\beta\gamma} (\tau^I \epsilon)_{mj} \epsilon_{kn} (q_p^{m\alpha} C q_r^{j\beta}) (q_s^{k\gamma} C l_t^n) (H^\dag \tau^I H) , \nn
+%
+Q_{lq^3H^2}^{(3b)} &= \epsilon_{\alpha\beta\gamma} \epsilon_{jn} (\tau^I \epsilon)_{km} (q_p^{m\alpha} C q_r^{j\beta}) (q_s^{k\gamma} C l_t^n) (H^\dag \tau^I H) , \nn
+%
+Q_{lq^3H^2}^{(4a)} &= \epsilon_{\alpha\beta\gamma} \epsilon^{IJK} (\tau^I \epsilon)_{mn} (\tau^J \epsilon)_{jk} (q_p^{m\alpha} C q_r^{j\beta}) (q_s^{k\gamma} C l_t^n) (H^\dag \tau^K H) , \nn
+%
+Q_{lq^3H^2}^{(4b)} &= \epsilon_{\alpha\beta\gamma} \epsilon^{IJK} (\tau^I \epsilon)_{mj} (\tau^J \epsilon)_{kn} (q_p^{m\alpha} C q_r^{j\beta}) (q_s^{k\gamma} C l_t^n) (H^\dag \tau^K H) .
+\end{align}
+The operators in~\eqref{eq:lq3h2} can be written in terms of the operators in our basis using Eq.~\eqref{eq:fierz}, Eq.~\eqref{eq:fierz_ep}, and the following relations obtained from Eq.~\eqref{eq:fierz}
+\begin{align}
+\epsilon_{mj} (\tau^I \epsilon)_{kn} + (\tau^I \epsilon)_{mj} \epsilon_{kn} &= \epsilon_{mn} (\tau^I \epsilon)_{jk} - (\tau^I \epsilon)_{mn} \epsilon_{jk} , \nn
+i \epsilon^{IJK} [(\tau^J \epsilon)_{mn} (\tau^K \epsilon)_{jk} - \tfrac{1}{2} (\tau^J \epsilon)_{mj} (\tau^K \epsilon)_{kn}] &= \epsilon_{mn} (\tau^I \epsilon)_{jk} + (\tau^I \epsilon)_{mn} \epsilon_{jk} .
+\end{align} 
+In particular, the relations are
+\begin{align}
+- Q_{\substack{lq^3H^2 \\ prst}}^{(1a)} &= Q_{\substack{lq^3H^2 \\ prst}}^{(1)} + Q_{\substack{lq^3H^2 \\ rpst}}^{(1)} , \nn
+- Q_{\substack{lq^3H^2 \\ prst}}^{(1b)} &= Q_{\substack{lq^3H^2 \\ prst}}^{(1)} - Q_{\substack{lq^3H^2 \\ rpst}}^{(1)} , \nn
+%
+Q_{\substack{lq^3H^2 \\ prst}}^{(2b)} &= Q_{\substack{lq^3H^2 \\ rpst}}^{(2)} , \nn
+Q_{\substack{lq^3H^2 \\ prst}}^{(3b)} &= - Q_{\substack{lq^3H^2 \\ rpst}}^{(3)} , \nn
+%
+2 Q_{\substack{lq^3H^2 \\ prst}}^{(2a)} &= (Q_{\substack{lq^3H^2 \\ prst}}^{(2)} + Q_{\substack{lq^3H^2 \\ rpst}}^{(2)}) - (Q_{\substack{lq^3H^2 \\ prst}}^{(3)} + Q_{\substack{lq^3H^2 \\ rpst}}^{(3)}) , \nn
+%
+2 Q_{\substack{lq^3H^2 \\ prst}}^{(3a)} &= (Q_{\substack{lq^3H^2 \\ prst}}^{(2)} - Q_{\substack{lq^3H^2 \\ rpst}}^{(2)}) - (Q_{\substack{lq^3H^2 \\ prst}}^{(3)} - Q_{\substack{lq^3H^2 \\ rpst}}^{(3)}) , \nn
+%
+Q_{\substack{lq^3H^2 \\ prst}}^{(4a)} &= Q_{\substack{lq^3H^2 \\ rpst}}^{(2)} - Q_{\substack{lq^3H^2 \\ rpst}}^{(3)} , \nn
+%
+\tfrac{1}{2}Q_{\substack{lq^3H^2 \\ prst}}^{(4b)} &= - (Q_{\substack{lq^3H^2 \\ prst}}^{(2)} - Q_{\substack{lq^3H^2 \\ rpst}}^{(2)}) - (Q_{\substack{lq^3H^2 \\ prst}}^{(3)} + Q_{\substack{lq^3H^2 \\ rpst}}^{(3)}) .
+\end{align}
+
+In addition to $\slashed B$ operators with dimension-6 analogs, three new types of operators appear.
+These were three of the types of operators identified by Ref.~\cite{Henning:2015alf} as types that vanish in the absence of flavor structure.
+All three contain a Lorentz singlet pair of quarks in the antisymmetric $\bar 3$ representation of $SU(3)_c$, yielding $n_g^3 (n_g -1)$ independent operators.
+The operators of type $Q_{lq^3H^2}$ are different from these three (and others identified by~\cite{Henning:2015alf}) in that there is at least one Lagrangian term in the absence of flavor.
+However not all of the terms are present in the absence of flavor structure. 
+Dimension-8 is the lowest mass dimension where this happens.
+The vanishing of operators in the absence of flavor structure first occurs at dimension-7.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^4X$ \\
+For a pair of currents there are 114 terms formed an operator by contracting the currents with a field strength, and inserting $SU(2)_w$ and $SU(3)_c$ generators and invariants as necessary.
+There are at least two terms per $J J X$ operator type, one from $X_L$ and one from $X_R$.
+The largest number of terms is eight, which occurs for operator types $Q_{u^2d^2G}$, $Q_{q^2u^2G}$, and $Q_{q^2d^2G}$, where the $SU(3)_c$ combinations are $(8 \otimes 1 \otimes 8)$, $(1 \otimes 8 \otimes 8)$, $(8 \otimes 8 \otimes 8)_A$, and $(8 \otimes 8 \otimes 8)_S$ for the, say, $u$ current, $d$ current and $G$, respectively.
+
+There are five types of operators that were identified in~\cite{Henning:2015alf} involving identical currents contracted with the hypercharge field strength, \textit{e.g.} $(\bar l \gamma^\mu l) (\bar l \gamma^\nu l) B_{\mu\nu}$, which vanish in the absence of flavor structure as the contraction forces the fermions into an antisymmetric flavor representation.
+For each Lagrangian term the number of operators is
+\begin{equation}
+\label{eq:4f}
+\left(\overline{\yng(1)} \otimes \yng(1) \otimes \overline{\yng(1)} \otimes \yng(1)\right)_A = adj \oplus adj \oplus \bar a s \oplus \bar s a = \frac{1}{2} n_g^2 (n_g^2 - 1)
+\end{equation}
+The relevant group theory results can be found in \textit{e.g.}~\cite{Dashen:1994qi}.
+The electron is a special case as it does not have $SU(2)_w$ or $SU(3)_c$ indices.
+As such only half of the operators of this class 19 type are independent with the rest being related through a Fierz identity.
+
+For operators with fermion chirality $(\bar L R) (\bar R L)$ there are two possibilities per field strength, one with the left-handed field strength and the other with its right-handed counterpart.
+For operators with fermion chirality $(\bar L R) (\bar L R)$ there are instead three choices for the Lorentz contractions, all with $X_R$.
+Two of these terms involve a tensor bilinear and a scalar bilinear while the third has two tensor bilinears.
+Additionally when all the fermions are quarks there are two choices for the $SU(3)_c$ contractions.
+
+For the baryon number violating operators with two left-handed and two right-handed fermions there are two possible Lorentz contractions, one with $X_L$ and one with $X_R$.
+When these operators involve a gluon field strength there are also two possible arrangements of the $SU(3)_c$ indices, $8 \otimes 3 \otimes 3 \otimes 3 = (3 \oplus \bar 6 \ldots) \otimes 3 \otimes 3 = 1 \oplus 1 \ldots$.
+The operators of type $Q_{eq^2uX}$ with $X = W_R$ or $B_L$ are in antisymmetric flavor representations for the $q$ pair, and as such vanish in the absence of flavor structure.
+Instead $Q_{eq^2uX}$ with $X = W_L$ or $B_R$ are symmetric in $p$ and $r$.
+The types involving gluons have full flavor rank as the $q$ fields can either be a color $\bar 3$ or $6$, compensating for other (anti)symmetries of the operator.
+
+On the other hand, when the fermions all have the same chirality three Lorentz contractions are possible.
+For operators of the type $Q_{eu^2dB}$ the gauge contractions are fixed and it is the Lorentz contractions that dictate the flavor representation of the $u$ pair is, leading to one symmetric and one full rank term $+ \hc$.
+Instead for $Q_{eu^2dG}$ type operators, the additional freedom coming from the color indices of the gluon, allowing for full flavor rank, $n_g^4$, in all the Lagrangian terms.
+In the case of $Q_{lq^3X}$ only two of the three Lorentz contractions are independent due to the identical $q$ fields.
+There are two terms of $Q_{lq^3G}$ operators ($+ \hc$) that have the same flavor representations as the their dimension-6 analog, $Q_{qqql}$, along with one term of $Q_{lq^3W}$ and one term of $Q_{lq^3B}$, again $+ \hc$.
+For each of these types of operators there are an equal number of operator types that have mixed symmetry, $\tfrac{1}{3} n_g^2 (n_g^2 - 1)$, that vanish in the absence of flavor structure similar to $Q_{lq^3H^2}^{(3)}$.
+Finally there is a third term $+ \hc$ for the operators involving $W_{\mu\nu}^I$, $Q_{lq^3W}^{(2)}$, that is in a symmetric plus mixed flavor representation.
+
+Operators of the type $Q_{lq^3W}$ are another complicated case that deserve further discussion.
+Here the quarks can be in either the 2 or the 4 representation of both $SU(2)_w$ and the $SU(2)_L$ of the Lorentz group.
+Naively there are four terms ($+ \hc$) to consider with redundant operators handled in a similar fashion as the $Q_{lq^3H^2}$ case.
+However we can unambiguously combine the two terms that are Lorentz quartets into a single term, reducing the number of terms to three $+ \hc$.
+To see this consider the quark flavor symmetries of the four cases.
+Following Ref.~\cite{Fonseca:2019yya}, specifically its Table 2, we decompose the product of the gauge and Lorentz representations into irreducible representations of the permutation group of three objects, $S_3$, which gives us the flavor representations of the three quarks.
+As we have been seen before, when the quarks are in the 2 of both $SU(2)_w$ and $SU(2)_L$ they have symmetric, mixed, and antisymmetric flavor representations.
+When one of the two representations is a 2 and the other is a 4 there is only a mixed flavor representation.
+Finally, when both representations are the 4 there is only the symmetric representation.
+We can combine the two terms that are in the 4 of $SU(2)_L$ into $Q_{lq^3W}^{(2)}$ as they contain distinct flavor representations.
+This is not unambiguously possible for $Q_{lq^3W}^{(1)}$ and $Q_{lq^3W}^{(3)}$, or $Q_{lq^3H^2}^{(2)}$ and $Q_{lq^3H^2}^{(3)}$ as each of those terms contain a mixed representation.
+In equations, the naive terms that are in the 4 of $SU(2)_L$ are
+\begin{align}
+Q_{lq^3W}^{(2a)} &= \epsilon_{\alpha\beta\gamma} (\tau^I \epsilon)_{mn} \epsilon_{jk} (q_p^{m\alpha} C  \sigma^{\mu\nu}q_r^{j\beta}) (q_s^{k\gamma} C l_t^n) W^I_{\mu\nu} ,\nn
+%
+Q_{lq^3W}^{(2b)} &= \epsilon_{\alpha\beta\gamma} \epsilon_{mn} (\tau^I \epsilon)_{jk} (q_p^{m\alpha} C \sigma^{\mu\nu}q_r^{j\beta}) (q_s^{k\gamma} C  l_t^n) W^I_{\mu\nu} .
+\end{align}
+They can be combined as 
+\begin{equation}
+2 Q_{\substack{lq^3W \\ prst}}^{(2)} = (Q_{\substack{lq^3W \\ prst}}^{(2a)} - Q_{\substack{lq^3W \\ rpst}}^{(2a)}) - (Q_{\substack{lq^3W \\ prst}}^{(2b)} - Q_{\substack{lq^3W \\ rpst}}^{(2b)}) .
+\end{equation}
+Other combinations are possible of course, but this combination makes it clear there is a symmetric and a mixed flavor representation.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^4HD$ \\
+
+In class 20 the operators either have one fermion transforming as $(\tfrac{1}{2}, 0)$ and three transforming as $(0, \tfrac{1}{2})$ under the Lorentz group, or vice versa.
+When describing the classification of this class we assume the former case.
+Then, from~\eqref{eq:eom} the derivative cannot act on the left-handed fermion.
+Otherwise the operator would be reduced by the EOM.
+
+We start with the baryon number conserving operators.
+Consider the case when the four fermion fields are distinguishable, \textit{e.g.} $\bar d, d, \bar l, e$ (with conjugate fields are counted separately).
+Here there are two independent Lorentz contractions when the derivative acts on the Higgs field.
+A third Lorentz structure is related to the first two by Eq.~\eqref{eq:lc}.
+When the derivative acts on a fermion there is instead only one possible Lorentz contraction.
+We use type $Q_{led^2HD}$ as an example.
+It has the five aforementioned candidate terms
+\begin{align}
+x_1 &= \bar d_a d_{\dot a} \bar l_{\dot b} e_{\dot c} (D H)_{b \dot d} \epsilon^{ab} \epsilon^{\dot a \dot b} \epsilon^{\dot c \dot d} , \nn
+x_2 &= \bar d_a d_{\dot a} \bar l_{\dot b} e_{\dot c} (D H)_{b \dot d} \epsilon^{ab} \epsilon^{\dot a \dot d} \epsilon^{\dot c \dot b} , \nn
+x_3 &= \bar d_a (D d)_{b (\dot a \dot d)} \bar l_{\dot b} e_{\dot c} H \tfrac{1}{2} \epsilon^{ab} (2 \epsilon^{\dot a \dot b} \epsilon^{\dot c \dot d} - \epsilon^{\dot a \dot d} \epsilon^{\dot c \dot b}) , \nn
+x_4 &= \bar d_a d_{\dot a} (D \bar l)_{a (\dot b \dot d)} e_{\dot c} H \tfrac{1}{2} \epsilon^{ab} (\epsilon^{\dot a \dot b} \epsilon^{\dot c \dot d} + \epsilon^{\dot a \dot d} \epsilon^{\dot c \dot b}) , \nn
+x_5 &= \bar d_a d_{\dot a} l_{\dot b} (D e)_{a (\dot c \dot d)} H \tfrac{1}{2} \epsilon^{ab} \epsilon^{\dot a \dot b} \epsilon^{\dot c \dot d} ,
+\end{align}
+where Eq.~\eqref{eq:lc} is used to remove redundant Lorentz structures.
+There are two constraint equations
+\begin{align}
+D y_1 &= x_1 + x_3 + \tfrac{1}{2} x_4 + \tfrac{1}{2} x_5 = 0, \nn
+D y_2 &= x_2 - x_3 + \tfrac{1}{2} x_4 = 0,
+\end{align}
+and we choose to keep $x_1$, $x_2$, and $x_4$ in our basis.
+For other types of operators where all four fermions are distinguishable we keep the analogs of $x_1$, $x_2$, and $x_4$ as well.
+In addition, if there are four fields in the operator that are fundamentals under $SU(2)_w$ or $SU(3)_c$, including the Higgs, then there are two possible contractions of those gauge indices for each possible Lorentz contraction.
+
+The other possibility is that only three of the fermion fields are unique, \textit{e.g.} $\bar d, d, \bar q, d$.
+In this case there is only one way to contract the Lorentz indices when the derivative acts on the Higgs field, and only two possible ways to assign the derivative to fermions.
+When the derivative acts on the Higgs field or the repeated fermion there are four, two, and one possible gauge contractions when the repeated fermion is $q$, one of $\{l, u, d\}$, or $e$, respectively.
+Instead when the derivative acts on the fermion is not repeated, \textit{e.g.} $\bar d, d, (D \bar q), d$, there are two possible gauge contractions if the repeated fermion is $q$ and only one otherwise.
+Here the repeated fermion is in a symmetric Lorentz representation and so the gauge contractions must be antisymmetric, eliminating half the possibilities.
+
+The baryon number violating operators follow the same rules.
+There are a couple of non-trivial flavor cases.
+When there are duplicate right-handed fermions they form a symmetric flavor representation if the derivative acts on the Higgs field, and have full flavor rank if the derivative acts on the one of the duplicate fermions.
+For the term $Q_{eq^3HD}$, the derivative acts on one of the $q$ fields, breaking the flavor constrain, Eq.~\eqref{eq:qqql}, giving it full flavor rank.
+
+%--------------------------------------------------------------------------------------------------------------
+\item $\psi^4D^2$ \\
+
+We start with operators with equal numbers of left- and right-handed fermions, both $B$ and $\slashed B$.
+There are two ways to assign the derivatives to the fields that are not related by IBP.
+The first is to assign the derivatives to fermions that have the same Lorentz representation, and second is to assign the derivatives to fermions with conjugate Lorentz representations.
+The only exception to this is when both currents are electron currents in which case there is only one independent term.
+As previously mentioned this is due to the fact that the electron is a singlet both $SU(2)_w$ and $SU(3)_c$.
+As this work was being completed Ref.~\cite{Alioli:2020kez} appeared, which classified nine terms from class 19.
+Some of their operators subsume both derivatives into the d'Alembertian operator.
+Our logic is consistent with the results of Ref.~\cite{Alioli:2020kez}.
+The difference is we use relations like~\eqref{eq:eom} to reduce operators with two derivatives acting on the same fermion to classes with fewer derivatives.
+As such the $\psi^4D^2$ operators in our basis where derivatives act symmetrically take the form $D_\mu (\psi_1 \Gamma \psi_2) D^\mu (\psi_3 \Gamma \psi_4)$ where $\Gamma$ is some, possibly scalar, combination of gamma matrices. 
+The remaining 30 current-current terms and the four terms with chirality $(\bar L R) (\bar R L)$ in class 19 have a form analogous to the operators classified by Ref.~\cite{Alioli:2020kez}.
+Also, the derivatives in $Q_{eq^2uD^2}$ break the flavor constraint present in its dimension-6 analog $Q_{qque}$.
+
+For operators with either all left-handed or all right-handed fermions there are three possible Lorentz contractions, two where the fermions without derivatives form a scalar and a third where they form a tensor.
+An example of an IBP constraint equation for these types of operators is
+\begin{equation}
+Q_{lequD^2}^{(1)} + 2 (D_\mu \bar l_p^j D^\mu e_r) \epsilon_{jk} (\bar q_s^k u_t) =  \fbox{$E$} .
+\end{equation}
+There is a single term ($+ \hc$) for the type $Q_{lq^3D^2}$.
+As was the case with $Q_{eq^2uD^2}$, the derivatives in $Q_{lq^3D^2}$ break the flavor constraint present in some other operators of type $Q_{lq^3\ldots}$, allowing the term to have full flavor rank.
+On the other hand, for the first time we encounter a term of the type $Q_{eu^2d\ldots}$ that vanishes in the absence of flavor structure.
+There is also a second type of $Q_{eu^2dD^2}$ operator ($+ \hc$) that has full flavor rank.
+
+%%%
+\end{enumerate}

@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 215 (psi^2 X H^2 D) operator: udGphi2n2 *)
+
+(* Q_udGH2^(2) = (ubar_p ga^nu T^A d_r) (Htilde^dag <-> D^mu H) Gtilde_{mu nu} + h.c. *)
+LQudGphi2n2 := Module[{sp1,sp2,jj,kk,mm,nn,aa,mu,nu,al,be,ff1,ff2,aux},
+
+aux = uR8bar[sp1,ff1,mm].dR8[sp2,ff2,nn] Ga[nu,sp1,sp2] T8[aa,mm,nn]
+      Eps[jj,kk] (Phi8[kk] DC[Phi8[jj],mu] - DC[Phi8[kk],mu] Phi8[jj])
+      Eps[mu,nu,al,be]/2 HC[FS[Gl8,al,be,aa]];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "udGphi2n2"][ff1,ff2] aux,
+      FlavorExpand->{SU2D8} ];
+aux = ExpandIndices[ aux, FlavorExpand->{SU2W8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

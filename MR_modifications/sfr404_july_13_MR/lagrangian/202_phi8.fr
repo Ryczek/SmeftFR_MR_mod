@@ -1,0 +1,10 @@
+(* SmeftFR v4.0 package *)
+(* dim-8 operators from 2005.00059 - phi^8 class *)
+(* Operators: {phi8} *)
+
+LQphi8 := Module[{ii,aux},
+
+aux = ExpandIndices[ Phi8bar[ii].Phi8[ii], FlavorExpand->SU2D8 ];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "phi8"] ] aux^4 /. SMEFTGaugeRules
+];

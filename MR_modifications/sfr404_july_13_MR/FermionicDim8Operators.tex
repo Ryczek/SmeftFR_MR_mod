@@ -1,0 +1,263 @@
+%\pdfoutput=1
+
+\documentclass[a4paper,12pt]{article}
+%\usepackage{axodraw}
+\usepackage{slashed}
+%\usepackage[affil-sl,auth-sc]{authblk}
+\usepackage{amssymb,amsmath,amsbsy}
+\usepackage{mathrsfs}
+%\usepackage{mathbbol}
+\usepackage{bm}
+\usepackage{epsfig}
+%\usepackage{appendix}
+\usepackage{hyperref}
+\usepackage{mdframed}
+\usepackage{adjustbox}
+\usepackage[makeroom]{cancel}
+
+%\usepackage{graphicx}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+%\usepackage{cite}
+%\usepackage{float}
+\usepackage{xcolor}
+ 
+%% This list environment is used for the references in the
+%% Program Summary
+%%
+\newcounter{bla}
+\newenvironment{refnummer}{%
+\list{[\arabic{bla}]}%
+{\usecounter{bla}%
+ \setlength{\itemindent}{0pt}%
+ \setlength{\topsep}{0pt}%
+ \setlength{\itemsep}{0pt}%
+ \setlength{\labelsep}{2pt}%
+ \setlength{\listparindent}{0pt}%
+ \settowidth{\labelwidth}{[9]}%
+ \setlength{\leftmargin}{\labelwidth}%
+ \addtolength{\leftmargin}{\labelsep}%
+ \setlength{\rightmargin}{0pt}}}
+ {\endlist}
+
+\textheight=24cm
+\textwidth=17cm
+\topmargin=-2cm
+\evensidemargin=-5mm
+\oddsidemargin=\evensidemargin
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\code{{\tt SUSY\_FLAVOR}}
+\def\MMI{{\tt MassToMI}}
+\def\sfr{{\tt SmeftFR}~}
+\def\frules{{\tt FeynRules}~}
+\def\webpage{\url{www.fuw.edu.pl/smeft}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parskip}{1mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% Citing equations %%%%%%%%%%%
+\def\eq#1{eq.~(\ref{#1})}
+\def\Eq#1{Eq.~(\ref{#1})}
+\def\Eqs#1#2{Eqs.~(\ref{#1}) and (\ref{#2})}
+\def\eqs#1#2{eqs.~(\ref{#1}) and (\ref{#2})}
+\def\eqss#1#2#3{eqs.~(\ref{#1}), (\ref{#2}) and (\ref{#3})}
+\def\eqst#1#2{eqs.~(\ref{#1})--(\ref{#2})}
+\def\Eqst#1#2{Eqs.~(\ref{#1})--(\ref{#2})}
+\def\Ref#1{ref.~\cite{#1}}
+\def\Refs#1{refs.~\cite{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\ie}{{\it i.e., }}
+\newcommand{\eg}{{\it e.g., }}
+\newcommand{\Lu}{{\cal L}}
+\newcommand{\Ou}{{\cal O}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\nn}{\nonumber\\}
+\newcommand{\MeV}{\; \mathrm{MeV}}
+\newcommand{\GeV}{\; \mathrm{GeV}}
+\newcommand{\TeV}{\; \mathrm{TeV}}
+
+\newcommand{\bce}{\begin{center}}
+\newcommand{\ece}{\end{center}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee }{\end{equation}}
+\newcommand{\btb}{\begin{tabular}}
+\newcommand{\etb}{\end{tabular}}
+\newcommand{\f}{\frac}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\vp}{\varphi}
+
+\def\lcal{{\cal L}}
+\def\ocal{{\cal O}}
+\def\wt{\widetilde}
+
+\newcommand{\tvp}{\widetilde{\varphi}}
+\newcommand{\vpj }{\mbox{${\vp^\dag i\,\raisebox{2mm}{\boldmath
+        ${}^\leftrightarrow$}\hspace{-4mm} D_\mu\,\vp}$}}
+\newcommand{\vpjt}{\mbox{${\vp^\dag i\,\raisebox{2mm}{\boldmath
+        ${}^\leftrightarrow$}\hspace{-4mm} D_\mu^{\,I}\,\vp}$}}
+%
+
+
+\newcommand{\osum}[1]{\vspace{0.5cm}{\pmb{\Circle}}{\hspace{-0.4cm}\sum_{#1}\hspace{0.1cm}} }
+\newcommand{\oosum}[1]{\vspace{0.5cm}{\pmb{\Circle}}{\hspace{-0.49cm}\sum_{#1}\hspace{0.1cm}} }
+
+\usepackage{color}
+\newcommand{\tcl}{\textcolor}
+\definecolor{orange}{rgb}{0.9,0.2,0}
+\definecolor{brown}{rgb}{0.7,0.3,0.2}
+\definecolor{fuxia}{rgb}{1,0,1}
+\definecolor{skyblue}{rgb}{0,0.1,0.9}
+\definecolor{violetred}{rgb}{0.8,0.13,0.56}
+\definecolor{deeppink}{rgb}{1.00,0.08,0.5}
+\definecolor{pink}{rgb}{1.00,0.75,0.80}
+\definecolor{orchid}{rgb}{0.85,0.44,0.84}
+\definecolor{lightpink}{rgb}{1.00,0.71,0.76}
+\definecolor{bluish}{rgb}{0,0.6,0.8}
+\definecolor{lightgray}{rgb}{0.95,0.95,0.95}
+
+\newcommand{\red}[1]{\color{red} #1 \color{black}}
+\newcommand{\blue}[1]{\color{blue} #1 \color{black}}
+
+
+\numberwithin{equation}{section}
+
+
+\begin{document}
+
+\begin{center}
+  {\Large \bf Adding fermionic dimension-8 operators to \sfr v4}
+\end{center}
+
+As dimension-8 fermionic operators are very numerous, we did not
+include full set of them as a standard feature of published code, but
+we provide instructions on how to do that, illustrating it below on a
+chosen example of fermionic operator.  We are working in the basis
+of~\cite{Murphy:2020rsh}.  Below we list the steps which one should
+follow.
+\begin{itemize}
+  \item Define the Mathematica code for the operator itself.  We
+    present this on the example from Table 7 in
+    Ref.~\cite{Murphy:2020rsh}:
+\begin{equation*}
+Q_{e^2 W H^2 D}^{(4)}=\left(\bar{e}_p \gamma^\nu
+e_r\right)\left(H^{\dagger} \overleftrightarrow{D}^{I \mu} H\right)
+\widetilde{W}_{\mu \nu}^I
+\end{equation*}
+
+The corresponding definition should be placed in file {\tt
+  Lagrangian/215\_psiXphi2D.fr} (we follow the numeration of operator
+classes in~\cite{Murphy:2020rsh} - operator from class XX should be
+defined in the file {\tt lagrangian/2XX\_class\_name.fr} ):
+    
+\bigskip
+\noindent
+    {\small \tt LQe2Wphi2Dn4 :=
+      Module[\{sp1,sp2,m,ii,jj,ff1,ff2,mu,nu,al,be,aux\},
+
+    aux = 2 Ta[m,ii,jj] (Phi8bar[ii] DC[Phi8[jj],mu] -
+    DC[Phi8bar[ii],mu] Phi8[jj])*\\ lRbar[sp1,ff1].lR[sp2,ff2]
+    Ga[nu,sp1,sp2] Eps[mu,nu,al,be]/2 HC[FS[Wi,al,be,m]];
+    
+    aux = ExpandIndices[ ToExpression[SMEFT\$WB <> "e2Wphi2Dn4"][ff1,ff2] aux,\\
+        $\phantom{XXXXXXXXXXX}$
+         FlavorExpand->\{SU2W,SU2D\} ];
+
+    aux /. SMEFTGaugeRules ]; }
+
+\bigskip
+We follow standard FeynRules syntax (see SM Lagrangian definition
+included as an example in FeynRules distribution), with the exception
+of replacement of {\tt Phi $\to$ Phi8} used to speed up expansions in
+mass dimensions.  For consistency and to avoid accidental name
+repetitions, naming of operators in code should follow their naming
+in~\cite{Murphy:2020rsh} (preceded by ``L'' as ``Lagrangian''), in
+this case $Q_{e^2 W H^2 D}^{(4)}\to$ {\tt "e2Wphi2Dn4"} (in the
+operator names we also replace {\tt H} $\to$ {\tt phi}), with
+Lagrangian entry named {\tt LQe2Wphi2Dn4}, extra {\tt "LQ"} always
+preceding operator name.
+
+\item Open file {\tt/code/smeft\_variables.m} and:
+\begin{enumerate}
+\item Add operator name {\tt "e2Wphi2Dn4"} to the relevant list near
+  the top of file, their names are self-explanatory:\\ {\tt
+    SMEFT\$Dim8TwoFermionOperators,\\
+    SMEFT\$Dim8FourLeptonOperators,\\
+    SMEFT\$Dim8FourQuarkOperators,\\
+    SMEFT\$Dim8TwoQuarkTwoLeptonOperators,\\
+    SMEFT\$Dim8FourFermionBLVOperators}.\\[2mm]
+  In our example obviously one should include it in\\
+  {\tt SMEFT\$Dim8TwoFermionOperators=\{\dots,"e2Wphi2Dn4",\dots\} }.
+\item Add new line to the {\tt SMEFT\$TensorWC} table:\\[2mm]
+%
+  {\tt SMEFT\$TensorWC = \{\\
+%
+  $\phantom{XXXXX}$  \dots\\
+%
+  $\phantom{XXXXX}$  \{"e2Wphi2Dn4",\{VLR,VLR\},False,2\},\\
+    %
+    $\phantom{XXXXX}$ \\
+%
+   $\phantom{XXXXX}$  \dots \}
+  }
+  \newpage
+The syntax of the extra lines in {\tt SMEFT\$TensorWC} consist of:
+    \begin{itemize}
+    \item[$1^{st}$] entry: operator name
+    \item[$2^{nd}$] entry: list of fermionic rotation matrices. They
+      are denoted as {\tt VXY}, where {\tt X=(L,U,D)} is the fermion
+      type and {\tt Y} its chirality. For instance, for operator
+      containing fermionic current $l_L u_R$ one should add as a
+      $2^{nd}$ entry {\tt \{VLL, VUR\}}. Similar entry for 4-fermion
+      $q_L q_L d_R d_R $ operator would be {\tt \{VDL, VDL, VDR,
+        VDR\}}, and so on. For left $SU(2)$ doublet $q_L$ either {\tt
+        VUL} or {\tt VDL} can be used, it affects in which places CKM
+      matrix will appear in fermion mass basis interactions.
+    \item [$3^{rd}$] entry: is the operator $B$ or $L$ violating?
+      Always {\tt False} for 2-fermion dimension-8 operators.
+    \item [$4^{th}$] entry: operator ``symmetry class''. Here for
+      details see comments on index symmetries of WCs of dimension-6
+      fermionic operators (``Straub classes'') in file {\tt
+        code/smeft\_variables.m}, above the definition of {\tt
+        TensorInd} table. For dimension-8 fermionic operators, one can
+      usually assign for them one of the classes defined for
+      dimension-6 case. If flavor index symmetries for newly added
+      operator are not known or differ from dimension-6 ones, one can
+      assign class 1 for 2-fermion and class 9 for 4-fermion case,
+      corresponding to no symmetries imposed (they can still be
+      applied later at numerical level, initializing values of
+      WCs). Experienced and brave user can also define new types of
+      symmetry classes, modifying appropriately {\tt TensorInd} table
+      and {\tt TensorWCSymmetrize} routine in {\tt
+        code/smeft\_functions.m} file.
+      \end{itemize}
+\end{enumerate}
+\item Go to {\tt smeft\_fr\_init.m} (or {\tt SmeftFR-init.nb}) and add
+  operator name (here {\tt "e2Wphi2Dn4"}) to the {\tt OpList8} which
+  lists dimension-8 operators included in calculations.
+\end{itemize}
+
+
+\begin{thebibliography}{1}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Murphy:2020rsh} C.~W. Murphy, {Dimension-8 operators in the
+  Standard Model Effective Field Theory}, JHEP 10 (2020) 174.  \newblock
+  \href {http://arxiv.org/abs/2005.00059} {\path{arXiv:2005.00059}},
+  \href {https://doi.org/10.1007/JHEP10(2020)174}
+        {\path{doi:10.1007/JHEP10(2020)174}}.
+
+\end{thebibliography}
+
+
+\end{document}

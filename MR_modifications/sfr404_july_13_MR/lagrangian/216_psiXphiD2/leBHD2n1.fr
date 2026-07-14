@@ -1,0 +1,14 @@
+(* SmeftFR v4.0 - class 216 (psi^2 X H D^2) operator: leBHD2n1 *)
+
+(* Q_leBHD2^(1) = (lbar_p sigma^{mu nu} D^rho e_r) (D_nu H) B_{rho mu} + h.c. *)
+LQleBHD2n1 := Module[{sp1,sp2,ii,mu,nu,si,ff1,ff2,aux,tmp},
+
+tmp = ExpandIndices[ LL8bar[sp1,ii,ff1].DC[lR8[sp2,ff2],si]
+  Sigma[mu,nu,sp1,sp2] DC[Phi8[ii],nu] FS[B8,si,mu],
+  FlavorExpand->{SU2D8} ];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leBHD2n1"][ff1,ff2] tmp,
+  FlavorExpand->{SU2W8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

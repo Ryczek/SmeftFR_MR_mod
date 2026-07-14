@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 216 (psi^2 X H D^2) operator: quBHD2n2 *)
+
+(* Q_quBHD2^(2) = (qbar_p D^rho u_r) (D^nu Htilde) Btilde_{rho nu} + h.c. *)
+LQquBHD2n2 := Module[{sp,ii,kk,co,nu,si,al,be,ff1,ff2,aux,tmp},
+
+tmp = ExpandIndices[ QL8bar[sp,ii,ff1,co].DC[uR8[sp,ff2,co],si]
+  Eps[ii,kk] DC[Phi8bar[kk],nu]
+  Eps[si,nu,al,be]/2 HC[FS[B8,al,be]],
+  FlavorExpand->{SU2D8} ];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quBHD2n2"][ff1,ff2] tmp,
+  FlavorExpand->{SU2W8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

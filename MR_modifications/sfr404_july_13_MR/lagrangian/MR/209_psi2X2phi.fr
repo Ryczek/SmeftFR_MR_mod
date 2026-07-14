@@ -1,0 +1,643 @@
+(* SmeftFR v4.0 package *)
+(* dim-8 operators from 2005.00059 - psi^2X^2H class*)
+
+(* Operators implemented AD, 08/06/2026: leG2phin1 *)
+
+(* Class 9 (psi^2 X^2 H + h.c.) FULL TABLE of 2005.00059 completed, MR 16/06/2026:
+
+   First column (2005.00059, page 1 of class-9 table):
+   leptonic:  leG2phin1, leG2phin2, leW2phin1, leW2phin2, leW2phin3
+   up-quark:  quG2phin1..quG2phin5, quGWphin1..quGWphin3,
+              quGBphin1..quGBphin3, quW2phin1..quW2phin3,
+              quWBphin1..quWBphin3, quB2phin1, quB2phin2
+
+   Second column (2005.00059, continuation of class-9 table):
+   leptonic:    leWBphin1..leWBphin3, leB2phin1, leB2phin2
+   down-quark:  qdG2phin1..qdG2phin5, qdGWphin1..qdGWphin3,
+                qdGBphin1..qdGBphin3, qdW2phin1..qdW2phin3,
+                qdWBphin1..qdWBphin3, qdB2phin1, qdB2phin2
+
+   Conventions (cf. dim-6 files 05_psi2Xphi.fr, 03_psi2phi3.fr and
+   bosonic dim-8 files 04_X2phi2.fr, 205_X3phi2.fr):
+   - lepton scalar bilinear (lbar_p e_r) H : LLbar[sp,ii,ff1].lR[sp,ff2] Phi8[ii]
+   - up-quark scalar bilinear (qbar_p u_r) Htilde : Eps[ii,kk] HC[Phi8[kk]]
+   - down-quark scalar bilinear (qbar_p d_r) H : QLbar[sp,ii,ff1,cc].dR[sp,ff2,cc] Phi8[ii]
+     (NB: column 2 lepton and down-quark operators use the plain Higgs H,
+      contracting its doublet index with the left-doublet, exactly like
+      the dim-6 dphi/dG/dW operators; only the column-1 up-quark operators
+      use the conjugate Higgs Htilde = Eps[ii,kk] HC[Phi8[kk]].)
+   - tau^I doublet structure : 2 Ta[ll,ii,jj]
+   - dual field strength Xtilde_{mu nu} = 1/2 eps_{mu nu al be} X^{al be} :
+       Eps[mu,nu,al,be]/2 HC[FS[X,al,be,..]]
+   - SU(3) symmetric / antisymmetric constants : dSUN[A,B,C], f[A,B,C]
+   - `FlavorExpand`: operators with only `G`/`B` use `{SU2D}`; any operator
+     with `W` and/or `tau^I` uses two-step expansion: `{SU2D}` first, then
+     `{SU2W}` (cf. `LQl4Wn1` in `219_psi4X.fr`). Single-step
+     `FlavorExpand->{SU2W,SU2D}` can hit `$RecursionLimit`.
+   - eps^{IJK} (SU(2)) : Eps[I,J,K] resolved in the `{SU2W}` step.            *)
+
+
+(* ============================ leptonic ============================ *)
+
+(* Q_leG2phi^(1) = (lbar_p e_r) H G^A_{mu nu} G^{A mu nu} + h.c. *)
+LQleG2phin1 := Module[{sp,ii,mu,nu,aa,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leG2phin1"][ff1,ff2]
+  LLbar[sp,ii,ff1].lR[sp,ff2] Phi8[ii] FS[Gl,mu,nu,aa]
+  FS[Gl,mu,nu,aa], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_leG2phi^(2) = (lbar_p e_r) H Gtilde^A_{mu nu} G^{A mu nu} + h.c. *)
+LQleG2phin2 := Module[{sp,ii,mu,nu,al,be,aa,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leG2phin2"][ff1,ff2]
+  LLbar[sp,ii,ff1].lR[sp,ff2] Phi8[ii] Eps[mu,nu,al,be]/2
+  HC[FS[Gl,al,be,aa]] FS[Gl,mu,nu,aa], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_leW2phi^(1) = (lbar_p e_r) H W^I_{mu nu} W^{I mu nu} + h.c. *)
+LQleW2phin1 := Module[{sp,ii,mu,nu,ll,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leW2phin1"][ff1,ff2]
+  LLbar[sp,ii,ff1].lR[sp,ff2] Phi8[ii] FS[Wi,mu,nu,ll]
+  FS[Wi,mu,nu,ll], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_leW2phi^(2) = (lbar_p e_r) H Wtilde^I_{mu nu} W^{I mu nu} + h.c. *)
+LQleW2phin2 := Module[{sp,ii,mu,nu,al,be,ll,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leW2phin2"][ff1,ff2]
+  LLbar[sp,ii,ff1].lR[sp,ff2] Phi8[ii] Eps[mu,nu,al,be]/2
+  HC[FS[Wi,al,be,ll]] FS[Wi,mu,nu,ll], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_leW2phi^(3) = eps^{IJK} (lbar_p sigma^{mu nu} e_r) tau^I H W^J_{mu ro} W^{K ro}_nu + h.c. *)
+LQleW2phin3 := Module[{sp1,sp2,ii,jj,aa,bb,cc,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leW2phin3"][ff1,ff2]
+  Eps[aa,bb,cc] LLbar[sp1,ii,ff1].lR[sp2,ff2] Sigma[mu,nu,sp1,sp2]
+  2 Ta[aa,ii,jj] Phi8[jj] FS[Wi,mu,ro,bb] FS[Wi,nu,ro,cc],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* ============================== quark ============================= *)
+
+(* Q_quG2phi^(1) = (qbar_p u_r) Htilde G^A_{mu nu} G^{A mu nu} + h.c. *)
+LQquG2phin1 := Module[{sp,ii,kk,cc,mu,nu,aa,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quG2phin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].uR[sp,ff2,cc] Eps[ii,kk] HC[Phi8[kk]]
+  FS[Gl,mu,nu,aa] FS[Gl,mu,nu,aa], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quG2phi^(2) = (qbar_p u_r) Htilde Gtilde^A_{mu nu} G^{A mu nu} + h.c. *)
+LQquG2phin2 := Module[{sp,ii,kk,cc,mu,nu,al,be,aa,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quG2phin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].uR[sp,ff2,cc] Eps[ii,kk] HC[Phi8[kk]]
+  Eps[mu,nu,al,be]/2 HC[FS[Gl,al,be,aa]] FS[Gl,mu,nu,aa],
+  FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quG2phi^(3) = d^{ABC} (qbar_p T^A u_r) Htilde G^B_{mu nu} G^{C mu nu} + h.c. *)
+LQquG2phin3 := Module[{sp,ii,kk,mm,nn,aa,bb,cc,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quG2phin3"][ff1,ff2]
+  dSUN[aa,bb,cc] QLbar[sp,ii,ff1,mm].uR[sp,ff2,nn] T[aa,mm,nn]
+  Eps[ii,kk] HC[Phi8[kk]] FS[Gl,mu,nu,bb] FS[Gl,mu,nu,cc],
+  FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quG2phi^(4) = d^{ABC} (qbar_p T^A u_r) Htilde Gtilde^B_{mu nu} G^{C mu nu} + h.c. *)
+LQquG2phin4 := Module[{sp,ii,kk,mm,nn,aa,bb,cc,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quG2phin4"][ff1,ff2]
+  dSUN[aa,bb,cc] QLbar[sp,ii,ff1,mm].uR[sp,ff2,nn] T[aa,mm,nn]
+  Eps[ii,kk] HC[Phi8[kk]] Eps[mu,nu,al,be]/2 HC[FS[Gl,al,be,bb]]
+  FS[Gl,mu,nu,cc], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quG2phi^(5) = f^{ABC} (qbar_p sigma^{mu nu} T^A u_r) Htilde G^B_{mu ro} G^{C ro}_nu + h.c. *)
+LQquG2phin5 := Module[{sp1,sp2,ii,kk,mm,nn,aa,bb,cc,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quG2phin5"][ff1,ff2]
+  f[aa,bb,cc] QLbar[sp1,ii,ff1,mm].uR[sp2,ff2,nn] Sigma[mu,nu,sp1,sp2]
+  T[aa,mm,nn] Eps[ii,kk] HC[Phi8[kk]] FS[Gl,mu,ro,bb] FS[Gl,nu,ro,cc],
+  FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quGWphi^(1) = (qbar_p T^A u_r) tau^I Htilde G^A_{mu nu} W^{I mu nu} + h.c. *)
+LQquGWphin1 := Module[{sp,ii,jj,kk,mm,nn,aa,ll,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quGWphin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,mm].uR[sp,ff2,nn] T[aa,mm,nn] 2 Ta[ll,ii,jj]
+  Eps[jj,kk] HC[Phi8[kk]] FS[Gl,mu,nu,aa] FS[Wi,mu,nu,ll],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quGWphi^(2) = (qbar_p T^A u_r) tau^I Htilde Gtilde^A_{mu nu} W^{I mu nu} + h.c. *)
+LQquGWphin2 := Module[{sp,ii,jj,kk,mm,nn,aa,ll,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quGWphin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,mm].uR[sp,ff2,nn] T[aa,mm,nn] 2 Ta[ll,ii,jj]
+  Eps[jj,kk] HC[Phi8[kk]] Eps[mu,nu,al,be]/2 HC[FS[Gl,al,be,aa]]
+  FS[Wi,mu,nu,ll], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quGWphi^(3) = (qbar_p sigma^{mu nu} T^A u_r) tau^I Htilde G^A_{mu ro} W^{I ro}_nu + h.c. *)
+LQquGWphin3 := Module[{sp1,sp2,ii,jj,kk,mm,nn,aa,ll,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quGWphin3"][ff1,ff2]
+  QLbar[sp1,ii,ff1,mm].uR[sp2,ff2,nn] Sigma[mu,nu,sp1,sp2] T[aa,mm,nn]
+  2 Ta[ll,ii,jj] Eps[jj,kk] HC[Phi8[kk]] FS[Gl,mu,ro,aa] FS[Wi,nu,ro,ll],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quGBphi^(1) = (qbar_p T^A u_r) Htilde G^A_{mu nu} B^{mu nu} + h.c. *)
+LQquGBphin1 := Module[{sp,ii,kk,mm,nn,aa,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quGBphin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,mm].uR[sp,ff2,nn] T[aa,mm,nn] Eps[ii,kk] HC[Phi8[kk]]
+  FS[Gl,mu,nu,aa] FS[B,mu,nu], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quGBphi^(2) = (qbar_p T^A u_r) Htilde Gtilde^A_{mu nu} B^{mu nu} + h.c. *)
+LQquGBphin2 := Module[{sp,ii,kk,mm,nn,aa,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quGBphin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,mm].uR[sp,ff2,nn] T[aa,mm,nn] Eps[ii,kk] HC[Phi8[kk]]
+  Eps[mu,nu,al,be]/2 HC[FS[Gl,al,be,aa]] FS[B,mu,nu],
+  FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quGBphi^(3) = (qbar_p sigma^{mu nu} T^A u_r) Htilde G^A_{mu ro} B_nu^{ro} + h.c. *)
+LQquGBphin3 := Module[{sp1,sp2,ii,kk,mm,nn,aa,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quGBphin3"][ff1,ff2]
+  QLbar[sp1,ii,ff1,mm].uR[sp2,ff2,nn] Sigma[mu,nu,sp1,sp2] T[aa,mm,nn]
+  Eps[ii,kk] HC[Phi8[kk]] FS[Gl,mu,ro,aa] FS[B,nu,ro],
+  FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quW2phi^(1) = (qbar_p u_r) Htilde W^I_{mu nu} W^{I mu nu} + h.c. *)
+LQquW2phin1 := Module[{sp,ii,kk,cc,ll,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quW2phin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].uR[sp,ff2,cc] Eps[ii,kk] HC[Phi8[kk]]
+  FS[Wi,mu,nu,ll] FS[Wi,mu,nu,ll], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quW2phi^(2) = (qbar_p u_r) Htilde Wtilde^I_{mu nu} W^{I mu nu} + h.c. *)
+LQquW2phin2 := Module[{sp,ii,kk,cc,ll,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quW2phin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].uR[sp,ff2,cc] Eps[ii,kk] HC[Phi8[kk]]
+  Eps[mu,nu,al,be]/2 HC[FS[Wi,al,be,ll]] FS[Wi,mu,nu,ll],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quW2phi^(3) = eps^{IJK} (qbar_p sigma^{mu nu} u_r) tau^I Htilde W^J_{mu ro} W^{K ro}_nu + h.c. *)
+LQquW2phin3 := Module[{sp1,sp2,ii,jj,kk,cc,aa,bb,dd,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quW2phin3"][ff1,ff2]
+  Eps[aa,bb,dd] QLbar[sp1,ii,ff1,cc].uR[sp2,ff2,cc] Sigma[mu,nu,sp1,sp2]
+  2 Ta[aa,ii,jj] Eps[jj,kk] HC[Phi8[kk]] FS[Wi,mu,ro,bb] FS[Wi,nu,ro,dd],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quWBphi^(1) = (qbar_p u_r) tau^I Htilde W^I_{mu nu} B^{mu nu} + h.c. *)
+LQquWBphin1 := Module[{sp,ii,jj,kk,cc,ll,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quWBphin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].uR[sp,ff2,cc] 2 Ta[ll,ii,jj] Eps[jj,kk] HC[Phi8[kk]]
+  FS[Wi,mu,nu,ll] FS[B,mu,nu], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quWBphi^(2) = (qbar_p u_r) tau^I Htilde Wtilde^I_{mu nu} B^{mu nu} + h.c. *)
+LQquWBphin2 := Module[{sp,ii,jj,kk,cc,ll,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quWBphin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].uR[sp,ff2,cc] 2 Ta[ll,ii,jj] Eps[jj,kk] HC[Phi8[kk]]
+  Eps[mu,nu,al,be]/2 HC[FS[Wi,al,be,ll]] FS[B,mu,nu],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quWBphi^(3) = (qbar_p sigma^{mu nu} u_r) tau^I Htilde W^I_{mu ro} B_nu^{ro} + h.c. *)
+LQquWBphin3 := Module[{sp1,sp2,ii,jj,kk,cc,ll,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quWBphin3"][ff1,ff2]
+  QLbar[sp1,ii,ff1,cc].uR[sp2,ff2,cc] Sigma[mu,nu,sp1,sp2] 2 Ta[ll,ii,jj]
+  Eps[jj,kk] HC[Phi8[kk]] FS[Wi,mu,ro,ll] FS[B,nu,ro],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quB2phi^(1) = (qbar_p u_r) Htilde B_{mu nu} B^{mu nu} + h.c. *)
+LQquB2phin1 := Module[{sp,ii,kk,cc,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quB2phin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].uR[sp,ff2,cc] Eps[ii,kk] HC[Phi8[kk]]
+  FS[B,mu,nu] FS[B,mu,nu], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_quB2phi^(2) = (qbar_p u_r) Htilde Btilde_{mu nu} B^{mu nu} + h.c. *)
+LQquB2phin2 := Module[{sp,ii,kk,cc,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quB2phin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].uR[sp,ff2,cc] Eps[ii,kk] HC[Phi8[kk]]
+  Eps[mu,nu,al,be]/2 HC[FS[B,al,be]] FS[B,mu,nu], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* ===================== second column: leptonic ==================== *)
+
+(* Q_leWBphi^(1) = (lbar_p e_r) tau^I H W^I_{mu nu} B^{mu nu} + h.c. *)
+LQleWBphin1 := Module[{sp,ii,jj,ll,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leWBphin1"][ff1,ff2]
+  LLbar[sp,ii,ff1].lR[sp,ff2] 2 Ta[ll,ii,jj] Phi8[jj]
+  FS[Wi,mu,nu,ll] FS[B,mu,nu], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_leWBphi^(2) = (lbar_p e_r) tau^I H Wtilde^I_{mu nu} B^{mu nu} + h.c. *)
+LQleWBphin2 := Module[{sp,ii,jj,ll,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leWBphin2"][ff1,ff2]
+  LLbar[sp,ii,ff1].lR[sp,ff2] 2 Ta[ll,ii,jj] Phi8[jj]
+  Eps[mu,nu,al,be]/2 HC[FS[Wi,al,be,ll]] FS[B,mu,nu],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_leWBphi^(3) = (lbar_p sigma^{mu nu} e_r) tau^I H W^I_{mu ro} B_nu^{ro} + h.c. *)
+LQleWBphin3 := Module[{sp1,sp2,ii,jj,ll,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leWBphin3"][ff1,ff2]
+  LLbar[sp1,ii,ff1].lR[sp2,ff2] Sigma[mu,nu,sp1,sp2] 2 Ta[ll,ii,jj]
+  Phi8[jj] FS[Wi,mu,ro,ll] FS[B,nu,ro], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_leB2phi^(1) = (lbar_p e_r) H B_{mu nu} B^{mu nu} + h.c. *)
+LQleB2phin1 := Module[{sp,ii,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leB2phin1"][ff1,ff2]
+  LLbar[sp,ii,ff1].lR[sp,ff2] Phi8[ii] FS[B,mu,nu] FS[B,mu,nu],
+  FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_leB2phi^(2) = (lbar_p e_r) H Btilde_{mu nu} B^{mu nu} + h.c. *)
+LQleB2phin2 := Module[{sp,ii,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leB2phin2"][ff1,ff2]
+  LLbar[sp,ii,ff1].lR[sp,ff2] Phi8[ii] Eps[mu,nu,al,be]/2
+  HC[FS[B,al,be]] FS[B,mu,nu], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* =================== second column: down-quark ==================== *)
+
+(* Q_qdG2phi^(1) = (qbar_p d_r) H G^A_{mu nu} G^{A mu nu} + h.c. *)
+LQqdG2phin1 := Module[{sp,ii,cc,mu,nu,aa,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdG2phin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].dR[sp,ff2,cc] Phi8[ii] FS[Gl,mu,nu,aa]
+  FS[Gl,mu,nu,aa], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdG2phi^(2) = (qbar_p d_r) H Gtilde^A_{mu nu} G^{A mu nu} + h.c. *)
+LQqdG2phin2 := Module[{sp,ii,cc,mu,nu,al,be,aa,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdG2phin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].dR[sp,ff2,cc] Phi8[ii] Eps[mu,nu,al,be]/2
+  HC[FS[Gl,al,be,aa]] FS[Gl,mu,nu,aa], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdG2phi^(3) = d^{ABC} (qbar_p T^A d_r) H G^B_{mu nu} G^{C mu nu} + h.c. *)
+LQqdG2phin3 := Module[{sp,ii,mm,nn,aa,bb,cc,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdG2phin3"][ff1,ff2]
+  dSUN[aa,bb,cc] QLbar[sp,ii,ff1,mm].dR[sp,ff2,nn] T[aa,mm,nn]
+  Phi8[ii] FS[Gl,mu,nu,bb] FS[Gl,mu,nu,cc], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdG2phi^(4) = d^{ABC} (qbar_p T^A d_r) H Gtilde^B_{mu nu} G^{C mu nu} + h.c. *)
+LQqdG2phin4 := Module[{sp,ii,mm,nn,aa,bb,cc,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdG2phin4"][ff1,ff2]
+  dSUN[aa,bb,cc] QLbar[sp,ii,ff1,mm].dR[sp,ff2,nn] T[aa,mm,nn]
+  Phi8[ii] Eps[mu,nu,al,be]/2 HC[FS[Gl,al,be,bb]] FS[Gl,mu,nu,cc],
+  FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdG2phi^(5) = f^{ABC} (qbar_p sigma^{mu nu} T^A d_r) H G^B_{mu ro} G^{C ro}_nu + h.c. *)
+LQqdG2phin5 := Module[{sp1,sp2,ii,mm,nn,aa,bb,cc,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdG2phin5"][ff1,ff2]
+  f[aa,bb,cc] QLbar[sp1,ii,ff1,mm].dR[sp2,ff2,nn] Sigma[mu,nu,sp1,sp2]
+  T[aa,mm,nn] Phi8[ii] FS[Gl,mu,ro,bb] FS[Gl,nu,ro,cc],
+  FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdGWphi^(1) = (qbar_p T^A d_r) tau^I H G^A_{mu nu} W^{I mu nu} + h.c. *)
+LQqdGWphin1 := Module[{sp,ii,jj,mm,nn,aa,ll,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdGWphin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,mm].dR[sp,ff2,nn] T[aa,mm,nn] 2 Ta[ll,ii,jj]
+  Phi8[jj] FS[Gl,mu,nu,aa] FS[Wi,mu,nu,ll], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdGWphi^(2) = (qbar_p T^A d_r) tau^I H Gtilde^A_{mu nu} W^{I mu nu} + h.c. *)
+LQqdGWphin2 := Module[{sp,ii,jj,mm,nn,aa,ll,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdGWphin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,mm].dR[sp,ff2,nn] T[aa,mm,nn] 2 Ta[ll,ii,jj]
+  Phi8[jj] Eps[mu,nu,al,be]/2 HC[FS[Gl,al,be,aa]] FS[Wi,mu,nu,ll],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdGWphi^(3) = (qbar_p sigma^{mu nu} T^A d_r) tau^I H G^A_{mu ro} W^{I ro}_nu + h.c. *)
+LQqdGWphin3 := Module[{sp1,sp2,ii,jj,mm,nn,aa,ll,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdGWphin3"][ff1,ff2]
+  QLbar[sp1,ii,ff1,mm].dR[sp2,ff2,nn] Sigma[mu,nu,sp1,sp2] T[aa,mm,nn]
+  2 Ta[ll,ii,jj] Phi8[jj] FS[Gl,mu,ro,aa] FS[Wi,nu,ro,ll],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdGBphi^(1) = (qbar_p T^A d_r) H G^A_{mu nu} B^{mu nu} + h.c. *)
+LQqdGBphin1 := Module[{sp,ii,mm,nn,aa,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdGBphin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,mm].dR[sp,ff2,nn] T[aa,mm,nn] Phi8[ii]
+  FS[Gl,mu,nu,aa] FS[B,mu,nu], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdGBphi^(2) = (qbar_p T^A d_r) H Gtilde^A_{mu nu} B^{mu nu} + h.c. *)
+LQqdGBphin2 := Module[{sp,ii,mm,nn,aa,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdGBphin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,mm].dR[sp,ff2,nn] T[aa,mm,nn] Phi8[ii]
+  Eps[mu,nu,al,be]/2 HC[FS[Gl,al,be,aa]] FS[B,mu,nu],
+  FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdGBphi^(3) = (qbar_p sigma^{mu nu} T^A d_r) H G^A_{mu ro} B_nu^{ro} + h.c. *)
+LQqdGBphin3 := Module[{sp1,sp2,ii,mm,nn,aa,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdGBphin3"][ff1,ff2]
+  QLbar[sp1,ii,ff1,mm].dR[sp2,ff2,nn] Sigma[mu,nu,sp1,sp2] T[aa,mm,nn]
+  Phi8[ii] FS[Gl,mu,ro,aa] FS[B,nu,ro], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdW2phi^(1) = (qbar_p d_r) H W^I_{mu nu} W^{I mu nu} + h.c. *)
+LQqdW2phin1 := Module[{sp,ii,cc,ll,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdW2phin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].dR[sp,ff2,cc] Phi8[ii] FS[Wi,mu,nu,ll]
+  FS[Wi,mu,nu,ll], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdW2phi^(2) = (qbar_p d_r) H Wtilde^I_{mu nu} W^{I mu nu} + h.c. *)
+LQqdW2phin2 := Module[{sp,ii,cc,ll,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdW2phin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].dR[sp,ff2,cc] Phi8[ii] Eps[mu,nu,al,be]/2
+  HC[FS[Wi,al,be,ll]] FS[Wi,mu,nu,ll], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdW2phi^(3) = eps^{IJK} (qbar_p sigma^{mu nu} d_r) tau^I H W^J_{mu ro} W^{K ro}_nu + h.c. *)
+LQqdW2phin3 := Module[{sp1,sp2,ii,jj,cc,aa,bb,dd,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdW2phin3"][ff1,ff2]
+  Eps[aa,bb,dd] QLbar[sp1,ii,ff1,cc].dR[sp2,ff2,cc] Sigma[mu,nu,sp1,sp2]
+  2 Ta[aa,ii,jj] Phi8[jj] FS[Wi,mu,ro,bb] FS[Wi,nu,ro,dd],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdWBphi^(1) = (qbar_p d_r) tau^I H W^I_{mu nu} B^{mu nu} + h.c. *)
+LQqdWBphin1 := Module[{sp,ii,jj,cc,ll,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdWBphin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].dR[sp,ff2,cc] 2 Ta[ll,ii,jj] Phi8[jj]
+  FS[Wi,mu,nu,ll] FS[B,mu,nu], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdWBphi^(2) = (qbar_p d_r) tau^I H Wtilde^I_{mu nu} B^{mu nu} + h.c. *)
+LQqdWBphin2 := Module[{sp,ii,jj,cc,ll,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdWBphin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].dR[sp,ff2,cc] 2 Ta[ll,ii,jj] Phi8[jj]
+  Eps[mu,nu,al,be]/2 HC[FS[Wi,al,be,ll]] FS[B,mu,nu],
+  FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdWBphi^(3) = (qbar_p sigma^{mu nu} d_r) tau^I H W^I_{mu ro} B_nu^{ro} + h.c. *)
+LQqdWBphin3 := Module[{sp1,sp2,ii,jj,cc,ll,mu,nu,ro,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdWBphin3"][ff1,ff2]
+  QLbar[sp1,ii,ff1,cc].dR[sp2,ff2,cc] Sigma[mu,nu,sp1,sp2] 2 Ta[ll,ii,jj]
+  Phi8[jj] FS[Wi,mu,ro,ll] FS[B,nu,ro], FlavorExpand -> {SU2D} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdB2phi^(1) = (qbar_p d_r) H B_{mu nu} B^{mu nu} + h.c. *)
+LQqdB2phin1 := Module[{sp,ii,cc,mu,nu,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdB2phin1"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].dR[sp,ff2,cc] Phi8[ii] FS[B,mu,nu] FS[B,mu,nu],
+  FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
+
+
+(* Q_qdB2phi^(2) = (qbar_p d_r) H Btilde_{mu nu} B^{mu nu} + h.c. *)
+LQqdB2phin2 := Module[{sp,ii,cc,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qdB2phin2"][ff1,ff2]
+  QLbar[sp,ii,ff1,cc].dR[sp,ff2,cc] Phi8[ii] Eps[mu,nu,al,be]/2
+  HC[FS[B,al,be]] FS[B,mu,nu], FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

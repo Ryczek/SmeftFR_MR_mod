@@ -1,0 +1,16 @@
+(* SmeftFR v4.0 package *)
+(* dim-8 operators from 2005.00059 - psi^2H^5 class*)
+
+(* Operators implemented: qdphi5 *)
+
+LQqdphi5 := Module[{sp,ii,jj,kk,ff1,ff2,cc,aux,tmp},
+
+tmp = ExpandIndices[Phi8bar[jj] Phi8[jj], FlavorExpand -> {SU2D8} ];
+
+aux = tmp^2 ExpandIndices[ ToExpression[SMEFT$WB <> "qdphi5"][ff1,ff2]
+  QL8bar[sp,ii,ff1,cc].dR8[sp,ff2,cc] Phi8[ii],
+  FlavorExpand->{SU2D8} ];
+
+(aux + HC[aux]) /.SMEFTGaugeRules
+];
+

@@ -1,0 +1,14 @@
+(* SmeftFR v4.0 - class 210 (psi^2 X H^3) operator: leBphi3 *)
+
+(* Q_leBphi3 = (lbar_p sigma^{mu nu} e_r) H (H^dag H) B_{mu nu} + h.c. *)
+LQleBphi3 := Module[{sp1,sp2,ii,kk,mu,nu,ff1,ff2,aux,tmp},
+
+tmp = ExpandIndices[Phi8bar[kk] Phi8[kk], FlavorExpand -> {SU2D8} ];
+
+aux = LL8bar[sp1,ii,ff1].lR8[sp2,ff2] Sigma[mu,nu,sp1,sp2] Phi8[ii] FS[B8,mu,nu];
+
+aux = tmp ExpandIndices[ ToExpression[SMEFT$WB <> "leBphi3"][ff1,ff2] aux,
+  FlavorExpand -> {SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

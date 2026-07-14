@@ -1,0 +1,179 @@
+\documentclass[11pt,a4paper]{article}
+%\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
+             % images in pdf, png or jpg format)
+             
+\synctex=1
+\usepackage{float}
+\usepackage{jheppub} % for details on the use of the package, please
+                     % see the JHEP-author-manual
+
+\usepackage{braket,slashed,bm}
+\usepackage{array,multirow}
+\usepackage[normalem]{ulem}
+\usepackage{cancel}
+\usepackage[table]{xcolor}
+\usepackage[vcentermath]{youngtab}
+
+\usepackage[T1]{fontenc} % if needed
+
+\usepackage{mathrsfs}
+
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+
+\usepackage{soul}
+
+\usepackage{arydshln}
+\usepackage[utf8]{inputenc}
+
+\def\nn{\nonumber\\ }
+\def\hyp{\mathsf{y}}
+
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\hc}{\mathrm{h.c.}}
+
+\begin{document}
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\title{Dimension-8 Operators in the Standard Model Effective Field Theory}
+
+\author{Christopher W.~Murphy}
+
+\abstract{
+We present a complete basis of dimension-8 operators in the Standard Model Effective Field Theory.
+Attention is paid to operators that vanish in the absence of flavor structure.
+There are dimension-8 SMEFT 44,807 operators.
+We also briefly discuss a few aspects of phenomenology involving dimension-8 operators, including light-by-light scattering and electroweak precision data.
+}
+\maketitle
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Introduction}
+\label{sec:intro}
+
+\input{sections/intro_v5}
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Notation and Conventions}
+\label{sec:note}
+
+\input{sections/conventions_v2}
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Operator Classification}
+\label{sec:cls_ops}
+
+\input{sections/operator_classification_v5}
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{The Complete Set of Dimension-8 Operators}
+\label{sec:results}
+
+\input{sections/results_v5}
+
+%--------------------------------------------------------------------------------------------------------------
+\subsection{Results for Bosonic Operators}
+
+See Tables~\ref{tab:smeft8class_1_2_3_4} and \ref{tab:smeft8class_5_6_7_8}.
+
+\input{sections/dim8_classes_1_2_3_4}
+
+\input{sections/dim8_classes_5_6_7_8_v2}
+
+%--------------------------------------------------------------------------------------------------------------
+\subsection{Results for Two-Fermion Operators}
+
+See Tables~\ref{tab:smeft8class_9}, \ref{tab:smeft8class_10_11_12_13}, \ref{tab:smeft8class_14qud}, \ref{tab:smeft8class_14le_15RR}, \ref{tab:smeft8class_15LL}, and \ref{tab:smeft8class_16_17}.
+
+\input{sections/dim8_classes_9}
+
+\input{sections/dim8_classes_10_11_12_13_v2}
+
+\input{sections/dim8_classes_14_v2}
+
+\input{sections/dim8_classes_15}
+
+\input{sections/dim8_classes_16_17}
+
+%--------------------------------------------------------------------------------------------------------------
+\subsection{Results for Four-Fermion Operators}
+
+See Tables~\ref{tab:smeft8class_18_21}, \ref{tab:smeft8class_18},  \ref{tab:smeft8class_19_LL_RR}, \ref{tab:smeft8class_19_LLRR}, \ref{tab:smeft8class_19_LRRL_LRLR}, \ref{tab:smeft8class_19_slashedB}, \ref{tab:smeft8class_20_le_qu}, \ref{tab:smeft8class_20_qd_slashedB}, and \ref{tab:smeft8class_21}.
+
+
+\input{sections/dim8_classes_18_v6}
+
+\input{sections/dim8_classes_19_v6}
+
+\input{sections/dim8_classes_20}
+
+\input{sections/dim8_classes_21_v3}
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Phenomenology}
+\label{sec:pheno}
+
+\input{sections/pheno_v4}
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Comments on Renormalization Group Evolution}
+\label{sec:rge}
+
+\input{sections/rge}
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Conclusions}
+\label{sec:con}
+
+\input{sections/conclusion_v5}
+
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+We thank Renato Fonseca, Adam Martin, Grant Remmen, Nicholas Rodd, Ver\'onica Sanz, Michael Trott for useful discussions.
+The author is grateful for the privilege of being able to stay home and work on a project like this.
+Ref.~\cite{Li:2020gnx} appeared on the arXiv simultaneously with this work.
+It also presents a complete basis of dimension-8 SMEFT operators.
+We are especially grateful to Jing Shu and Jiang-Hao Yu for discussions of Ref.~\cite{Li:2020gnx}.
+
+Additionally, there were a few issues in original version of the paper.
+(v2 on the arXiv is the JHEP version.)
+We would also like to thank:
+\begin{itemize}
+\item [v3] Marco Ardu for finding a mistake in $Q_{leqdH^2}^{(4)}$
+\item [v4] Mikael Chala for finding a couple of mistakes in the matching in Section~\ref{sec:quartets}
+\item [v5] Serge Hamoudou, Jacky Kumar, and David London for demonstrating the flavor indices were incorrect on the right-hand side of the bottommost equation in~\eqref{eq:l5} and that the operator $Q_{q^4H^2}^{(5)}$ was originally missing from the basis
+\item [v6] Serge Hamoudou for helping identify that the combination $\epsilon \tau^I$ ($\tau^I \epsilon$) should go with a pair of $SU(2)_w$ (anti-)fermions.
+\end{itemize}
+
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\begin{appendix}
+
+
+\input{sections/appendix_v6}
+
+\end{appendix}
+
+\clearpage
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\bibliographystyle{JHEP}
+\bibliography{dim8}
+
+%%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\end{document}

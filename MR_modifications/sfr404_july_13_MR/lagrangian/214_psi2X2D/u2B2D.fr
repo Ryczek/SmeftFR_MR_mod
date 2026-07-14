@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 214 (psi^2 X^2 D) operator: u2B2D *)
+
+(* Q_u2B2D = i (ubar_p ga^mu <-> D^nu u_r) B_{mu ro} B_nu^{ro} *)
+LQu2B2D := Module[{sp1,sp2,co,mu,nu,ro,ff1,ff2,aux},
+
+aux = I (uR8bar[sp1,ff1,co].DC[uR8[sp2,ff2,co],nu] -
+       DC[uR8bar[sp1,ff1,co],nu].uR8[sp2,ff2,co]) Ga[mu,sp1,sp2]
+      FS[B8,mu,ro] FS[B8,nu,ro];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "u2B2D"][ff1,ff2] aux,
+      FlavorExpand->{SU2D8} ];
+aux = ExpandIndices[ aux, FlavorExpand->{SU2W8} ];
+
+aux /. SMEFTGaugeRules
+];

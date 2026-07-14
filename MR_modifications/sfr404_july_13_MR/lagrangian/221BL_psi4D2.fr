@@ -1,0 +1,4 @@
+(* SmeftFR v4.0 package *)
+(* dim-8 operators from 2005.00059 - psi^4D^2 class, BL violating operators*)
+
+(* Operators implemented: { }  *)

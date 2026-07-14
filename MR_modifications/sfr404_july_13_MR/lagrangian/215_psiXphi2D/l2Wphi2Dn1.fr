@@ -1,0 +1,16 @@
+(* SmeftFR v4.0 - class 215 (psi^2 X H^2 D) operator: l2Wphi2Dn1 *)
+
+(* Q_l2WH2D^(1) = (lbar_p ga^nu l_r) D^mu (H^dag tau H) W_{mu nu} *)
+LQl2Wphi2Dn1 := Module[{sp1,sp2,ii,kk,oo,ll,mu,nu,ff1,ff2,aux},
+
+aux = LL8bar[sp1,ii,ff1].LL8[sp2,ii,ff2] Ga[nu,sp1,sp2]
+      (DC[Phi8bar[kk],mu] 2 Ta8[ll,kk,oo] Phi8[oo] +
+       Phi8bar[kk] 2 Ta8[ll,kk,oo] DC[Phi8[oo],mu])
+      FS[Wi8,mu,nu,ll];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "l2Wphi2Dn1"][ff1,ff2] aux,
+      FlavorExpand->{SU2D8} ];
+aux = ExpandIndices[ aux, FlavorExpand->{SU2W8} ];
+
+aux /. SMEFTGaugeRules
+];

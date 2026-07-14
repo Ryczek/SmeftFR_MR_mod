@@ -1,0 +1,51 @@
+Hi guys,
+
+Many things... First, I am not playing with Dashboard now - it is very nice and in future important for publicity, but bit too early to polish it - still code options and internal structure keeps changing significantly  and later it needs to be passed to Dashboard anyway.
+
+I kept doing more basic changes:
+
+1. I realized the idea of "dim8 fields" for dim8 operators, i.e. without normalization factors. It required much more changes that I initially though of - one needs to define second copy of gauge groups with effective couplings, than define also copy of ALL fields, also fermions, to have dim8 fields coupling only to dim8 groups etc. Also representations must be distinguished, new groups must have indices SU2D8, SU2W8, Colour8 etc, otherwise FeynRules does stupid things or hangs forever. Eventually all fields are expressed in terms of physical fields which remained the same, so all these complication are internal only and invisible to users.
+
+Then I reviewed our dim8 operator set, and discovered some problems - e.g. in some 4 field tensor operators it was
+
+ExpandIndices[.... ] aux
+
+and should be
+
+ExpandIndices[.... aux]
+
+For SU2 it was harmless as ExpandIndices was done earlier. For gluons it was not done, and with this typo gluons remained in operators as unphysical fields, without transition. Anyway, it seems that this transition was done later when Feynrules calculated vertices from Lagrangian, so no real bug, but due to luck this time.
+
+Then I wrote small Perl script (in main dir, name is dim8.sh) which on disk automatically replaced all "normal" quantities in definitions of dim8 operators by "8" fields and other "8" quantities. It seems to work, but I tried few "new" dim8 operators only. Pleasy try some, too and eventually compare the CPU time with previous versions. Should be significant in some cases, like WWWW quadruple tensor.
+
+Even now some operators seem undoable: 4 gluon tensor G4n1 takes 20 min in smeft_fr_init and 1.5h to generate UFO - even if there are no flavor indices. I guess symmetrization of 8 gluon vertices takes forever. Later it runs in MG5, with the warning "non-QCD gluon interactions". But G4n9, with some exotic symmetric structure couplings and Gtilde tensot, simply after 1/2 hour hangs completely my PC, I need to cut the power to restart - probably fully exceeding PC memory?
+
+Anyway, this is done, just need to be checked.
+
+2. As I said, it would be better to load to memory only operators on the OpList. As an example, I created dir lagrangian/Dim8Class12 and put there all 3 operators from this class as files ephi5.fr  qdphi5.fr  quphi5.fr. Then in smeft_io.m one should replace line
+
+Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "212_psi2phi5.fr"}] ];
+
+by
+
+SMEFT$Dim8Class12 = {"lephi5", "quphi5", "qdphi5"};
+
+Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "Dim8Class12", # <> ".fr"}] ] & /@
+  Intersection[SMEFT$Dim8Class12, SMEFT$OperatorList];
+
+and only the useful operators are loaded. This is very simple as long as we split current files into subdirs with separate operators, should be a great job for AI :-)
+
+3. There are 4 dim6 BLV operators, previously I tested splitting into triples on duu, now I added also qqu,qqq,duq. With qqq there is a semi-problem - its messenger must carry 2 flavor, 1 color and 2 SU(2) indices, Xqqq[ff1,ff2,ii,jj,cc]. Then SU(2) Xqqq[1,1], [1,2] ... has different electric charges. UFO complains about vertices with Q non-conserved but still runs, I "launched" some processes. But this is annoying, do you have an idea how to define quantum numbers (hypercharge?) in model file for such an object to avoid non-conservation messages? Must be possible... Look e.g.  into smeft_field_WB_dirac.fr for current definition.
+
+4. I tried to attack Majorana 4-fermion issue. Here as a test I split "ll" operators into triples, named it "ll3" (messenger here is heavy neutral vector). Code runs, produces ebar e xll and vbar v xll vertices, in MajoranaNeutrino->True UFO is produced and accepted by MG5 - I imported UFO file with Oplist = {"vv", "ll3"}, generated e e->ve ve and ve ve->ve ve, both correctly "launched", if the result has any sense numerically, no idea of course.
+
+If it really works properly, then one can by hnd split remaining dim6 operators with neutrino and/or add full dim7 basis. And use it as a template for AI oding of dim8 BLV operators.
+
+Not now, but in the future I plan to kind of automate it - when user adds to list "ll" (or "duu" etc) operator, code should calculate both "ll" and "ll3" versions, store the result in separate output files, so one can be later used for latex, feynarts etc, second for UFO. No need to specify "3" at the operator end. This may take a while, so when I am back from Africa - later you can pass it to dashboard :-)
+
+Could you try all these new features? I am leaving Thursday, so you will have a lot of time for more serious tests, but if there are any immediate problems, I do not have much time to repair them.
+
+There was many changes, to keep track I changed version to 4.04.
+
+Cheers
+Janusz

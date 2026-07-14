@@ -1,0 +1,13 @@
+(* SmeftFR v4.0 - class 210 (psi^2 X H^3) operator: quWphi3n2 *)
+
+(* Q_quWphi3^(2) = (qbar_p sigma^{mu nu} u_r) Htilde (H^dag tau^I H) W^I_{mu nu} + h.c. *)
+LQquWphi3n2 := Module[{sp1,sp2,ii,kk,ll,mm,nn,cc,mu,nu,ff1,ff2,aux},
+
+aux = QL8bar[sp1,ii,ff1,cc].uR8[sp2,ff2,cc] Sigma[mu,nu,sp1,sp2] Eps[ii,kk] HC[Phi8[kk]]
+  Phi8bar[mm] 2 Ta8[ll,mm,nn] Phi8[nn] FS[Wi8,mu,nu,ll];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quWphi3n2"][ff1,ff2] aux,
+  FlavorExpand -> {SU2W8,SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

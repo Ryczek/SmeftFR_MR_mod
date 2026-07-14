@@ -1,0 +1,18 @@
+(* SmeftFR v4.0 package *)
+(* dim-8 operators from 2005.00059 - psi^4H^2 class, BL violating operators *)
+
+(* Operators implemented: {lqudphi2n1}  *)
+
+(* Q_lqudphi2^(1) = eps_abc eps_jk (d_p^a C u_r^b)(q_s^{j c} C l_t^k)(H^\dagger H) + h.c. *)
+LQlqudphi2n1 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,aa,bb,cc,jj,kk,tmp,aux},
+
+tmp = ExpandIndices[ Phi8bar[jj] Phi8[jj], FlavorExpand->{SU2D8} ];
+
+aux = tmp ExpandIndices[ ToExpression[SMEFT$WB <> "lqudphi2n1"][ff1,ff2,ff3,ff4]
+  Eps[aa,bb,cc] Eps[jj,kk]
+  HC[CC[dR8][sp1,ff1,aa]].Ga[0,sp1,sp2].uR8[sp2,ff2,bb]
+  HC[CC[QL8][sp3,jj,ff3,cc]].Ga[0,sp3,sp4].LL8[sp4,kk,ff4],
+  FlavorExpand->{SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

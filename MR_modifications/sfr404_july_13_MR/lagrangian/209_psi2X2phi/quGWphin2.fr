@@ -1,0 +1,14 @@
+(* SmeftFR v4.0 - class 209 (psi^2 X^2 H) operator: quGWphin2 *)
+
+(* Q_quGWphi^(2) = (qbar_p T^A u_r) tau^I Htilde Gtilde^A_{mu nu} W^{I mu nu} + h.c. *)
+LQquGWphin2 := Module[{sp,ii,jj,kk,mm,nn,aa,ll,mu,nu,al,be,ff1,ff2,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quGWphin2"][ff1,ff2]
+  QL8bar[sp,ii,ff1,mm].uR8[sp,ff2,nn] T8[aa,mm,nn] 2 Ta8[ll,ii,jj]
+  Eps[jj,kk] HC[Phi8[kk]] Eps[mu,nu,al,be]/2 HC[FS[Gl8,al,be,aa]]
+  FS[Wi8,mu,nu,ll], FlavorExpand -> {SU2D8} ];
+
+aux = ExpandIndices[aux, FlavorExpand -> {SU2W8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

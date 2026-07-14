@@ -1,0 +1,458 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     20257,        450]
+NotebookOptionsPosition[     19443,        427]
+NotebookOutlinePosition[     19867,        444]
+CellTagsIndexPosition[     19824,        441]
+WindowTitle->SmeftFR dashboard
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["SmeftFR v4 dashboard", "Title",ExpressionUUID->"26fb0e0d-243a-4d2e-8d22-19895deae081"],
+
+Cell["\<\
+This notebook loads the dashboard driver and opens a prototype front end for \
+the SmeftFR generation/export workflow.\
+\>", "Text",ExpressionUUID->"171773d8-8374-43dc-a9b8-970fc8debf68"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Get", "[", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<code\>\"", 
+      ",", "\"\<smeft_dashboard_driver.m\>\""}], "}"}], "]"}], "]"}], 
+  ";"}]], "Input",
+ CellLabel->"In[2]:=",ExpressionUUID->"a6ac6fc9-1952-4e9a-b264-5cdbe0f67e67"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SMEFTDashboard", "[", "]"}]], "Input",
+ CellLabel->"In[3]:=",ExpressionUUID->"d762e15b-bb9a-46a3-8cf9-29ab79051caa"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`cfg$$ = <|
+  "RootPath" -> "/home/sakis/Documents/PROJECTS/FeynRules/Models/SMEFT_4_03/",
+    "FeynRulesPath" -> "/home/sakis/Documents/PROJECTS/FeynRules/", 
+   "MajorVersion" -> "4", "MinorVersion" -> "03", "Operators6" -> {}, 
+   "Operators8" -> {"leW2phin2"}, "Gauge" -> "Rxi", "ExpansionOrder" -> 2, 
+   "WCXFInput" -> "", "InputScheme" -> "GF", "CKMInput" -> "no", "PMNSInput" -> 
+   "diagonal", "MajoranaNeutrino" -> False, "MaxParticles" -> 6, 
+   "MBExpansion" -> "user", "Include4Fermion" -> True, "IncludeBL4Fermion" -> 
+   False, "ExportWCXF" -> True, "ExportLatex" -> True, "ExportFeynArts" -> 
+   True, "ExportUFO" -> True, "UFORealParameters" -> False, "UFOOutput" -> 
+   Automatic, "FeynArtsOutput" -> Automatic, "FeynArtsMaxParticles" -> 
+   6|>, $CellContext`groups$$ = <|
+  "Dimension 6 / bosonic" -> {
+    "G", "Gtilde", "W", "Wtilde", "phi", "phiBox", "phiD", "phiW", "phiB", 
+     "phiWB", "phiWtilde", "phiBtilde", "phiWtildeB", "phiGtilde", "phiG"}, 
+   "Dimension 6 / two fermion" -> {
+    "ephi", "dphi", "uphi", "eW", "eB", "uG", "uW", "uB", "dG", "dW", "dB", 
+     "phil1", "phil3", "phie", "phiq1", "phiq3", "phiu", "phid", "phiud"}, 
+   "Dimension 6 / four fermion" -> {
+    "ll", "ee", "le", "qq1", "qq3", "uu", "dd", "ud1", "ud8", "qu1", "qu8", 
+     "qd1", "qd8", "quqd1", "quqd8", "lq1", "lq3", "eu", "ed", "lu", "ld", 
+     "qe", "ledq", "lequ1", "lequ3"}, 
+   "Dimension 6 / BLV four fermion" -> {"duq", "qqu", "qqq", "duu", "duu3"}, 
+   "Dimension 8 / bosonic" -> {
+    "phi8", "phi6Box", "phi6D2", "G2phi4n1", "G2phi4n2", "W2phi4n1", 
+     "W2phi4n2", "W2phi4n3", "W2phi4n4", "WBphi4n1", "WBphi4n2", "B2phi4n1", 
+     "B2phi4n2", "G4n1", "G4n2", "G4n3", "G4n4", "G4n5", "G4n6", "G4n7", 
+     "G4n8", "G4n9", "W4n1", "W4n2", "W4n3", "W4n4", "W4n5", "W4n6", "B4n1", 
+     "B4n2", "B4n3", "G3Bn1", "G3Bn2", "G3Bn3", "G3Bn4", "G2W2n1", "G2W2n2", 
+     "G2W2n3", "G2W2n4", "G2W2n5", "G2W2n6", "G2W2n7", "G2B2n1", "G2B2n2", 
+     "G2B2n3", "G2B2n4", "G2B2n5", "G2B2n6", "G2B2n7", "W2B2n1", "W2B2n2", 
+     "W2B2n3", "W2B2n4", "W2B2n5", "W2B2n6", "W2B2n7", "phi4D4n1", "phi4D4n2",
+      "phi4D4n3", "G3phi2n1", "G3phi2n2", "W3phi2n1", "W3phi2n2", "W2Bphi2n1",
+      "W2Bphi2n2", "G2phi2D2n1", "G2phi2D2n2", "G2phi2D2n3", "W2phi2D2n1", 
+     "W2phi2D2n2", "W2phi2D2n3", "W2phi2D2n4", "W2phi2D2n5", "W2phi2D2n6", 
+     "WBphi2D2n1", "WBphi2D2n2", "WBphi2D2n3", "WBphi2D2n4", "WBphi2D2n5", 
+     "WBphi2D2n6", "B2phi2D2n1", "B2phi2D2n2", "B2phi2D2n3", "Wphi4D2n1", 
+     "Wphi4D2n2", "Wphi4D2n3", "Wphi4D2n4", "Bphi4D2n1", "Bphi4D2n2"}, 
+   "Dimension 8 / two fermion" -> {
+    "leG2phin1", "leG2phin2", "leW2phin1", "leW2phin2", "leW2phin3", 
+     "quG2phin1", "quG2phin2", "quG2phin3", "quG2phin4", "quG2phin5", 
+     "quGWphin1", "quGWphin2", "quGWphin3", "quGBphin1", "quGBphin2", 
+     "quGBphin3", "quW2phin1", "quW2phin2", "quW2phin3", "quWBphin1", 
+     "quWBphin2", "quWBphin3", "quB2phin1", "quB2phin2", "leWBphin1", 
+     "leWBphin2", "leWBphin3", "leB2phin1", "leB2phin2", "qdG2phin1", 
+     "qdG2phin2", "qdG2phin3", "qdG2phin4", "qdG2phin5", "qdGWphin1", 
+     "qdGWphin2", "qdGWphin3", "qdGBphin1", "qdGBphin2", "qdGBphin3", 
+     "qdW2phin1", "qdW2phin2", "qdW2phin3", "qdWBphin1", "qdWBphin2", 
+     "qdWBphin3", "qdB2phin1", "qdB2phin2", "leWphi3n1", "leWphi3n2", 
+     "l2phi2D3n1", "lephi5", "quphi5", "qdphi5", "l2phi4Dn1", "l2G2D", 
+     "e2Bphi2Dn4", "leWHD2n1", "lephi3D2n1"}, 
+   "Dimension 8 / four fermion" -> {
+    "l4phi2n1", "l4phi2n2", "e4phi2", "l2e2phi2n1", "l2e2phi2n2", "l4Wn1", 
+     "l2e2Wn1", "l3eHDn1", "u4phi2", "u4Gn1", "q2u2Gn5", "q2udGn1", 
+     "leqdphi2n1", "leqdphi2n2", "ledqGn1", "leqdD2n1", "leqdD2n2"}, 
+   "Dimension 8 / BLV four fermion" -> {}|>, $CellContext`selected6$$ = {}, \
+$CellContext`selected8$$ = {"leW2phin2"}, $CellContext`selectedGroup$$ = 
+  "Dimension 8 / two fermion", $CellContext`selectedByGroup$$ = <|
+  "Dimension 6 / bosonic" -> {}, "Dimension 6 / two fermion" -> {}, 
+   "Dimension 6 / four fermion" -> {}, "Dimension 6 / BLV four fermion" -> {},
+    "Dimension 8 / bosonic" -> {}, "Dimension 8 / two fermion" -> {}, 
+   "Dimension 8 / four fermion" -> {}, 
+   "Dimension 8 / BLV four fermion" -> {}|>, $CellContext`gauge$$ = 
+  "Rxi", $CellContext`expansionOrder$$ = 2, $CellContext`maxParticles$$ = 
+  6, $CellContext`inputScheme$$ = "GF", $CellContext`ckmInput$$ = 
+  "no", $CellContext`pmnsInput$$ = "diagonal", $CellContext`mbExpansion$$ = 
+  "user", $CellContext`exportWCXF$$ = True, $CellContext`exportLatex$$ = 
+  True, $CellContext`exportFeynArts$$ = True, $CellContext`exportUFO$$ = 
+  True, $CellContext`ufoReal$$ = False, $CellContext`feynRulesPath$$ = 
+  "/home/sakis/Documents/PROJECTS/FeynRules/", $CellContext`wcxfInput$$ = 
+  "", $CellContext`status$$ = 
+  "Interface exports completed. Log: output/dashboard_interfaces.log", \
+$CellContext`lastResult$$ = <|
+  "ExitCode" -> 0, "LogFile" -> 
+   "/home/sakis/Documents/PROJECTS/FeynRules/Models/SMEFT_4_03/output/\
+dashboard_interfaces.log", "FeynArtsOutput" -> 
+   "/home/sakis/Documents/PROJECTS/FeynRules/Models/SMEFT_4_03/output/\
+FeynArts/FeynArts.mod", "OutputExists" -> True|>}, 
+  PanelBox[
+   TagBox[GridBox[{
+      {
+       StyleBox["\<\"SmeftFR dashboard\"\>",
+        StripOnInput->False,
+        FontSize->20,
+        FontWeight->Bold]},
+      {
+       StyleBox["\<\"Prototype front end for the existing SmeftFR two-stage \
+workflow.\"\>",
+        StripOnInput->False,
+        FontSize->11]},
+      {
+       TagBox[GridBox[{
+          {"\<\"FeynRules path\"\>", 
+           InputFieldBox[Dynamic[$CellContext`feynRulesPath$$], String,
+            FieldSize->55]},
+          {"\<\"WCXF input\"\>", 
+           InputFieldBox[Dynamic[$CellContext`wcxfInput$$], String,
+            FieldSize->55]},
+          {"\<\"Gauge\"\>", 
+           
+           PopupMenuBox[Dynamic[$CellContext`gauge$$], {
+            "Unitary"->"\<\"Unitary\"\>", "Rxi"->"\<\"Rxi\"\>"}]},
+          {"\<\"Expansion order\"\>", 
+           InterpretationBox[
+            StyleBox[GridBox[{
+               {
+                SetterBox[Dynamic[$CellContext`expansionOrder$$], {1}, "1"], 
+                SetterBox[Dynamic[$CellContext`expansionOrder$$], {2}, "2"]}
+              },
+              BaselinePosition->{1, 1},
+              GridBoxSpacings->{"Columns" -> {
+                  Offset[0.27999999999999997`], {
+                   Offset[0.]}, 
+                  Offset[0.27999999999999997`]}, "Rows" -> {
+                  Offset[0.2], {
+                   Offset[0.4]}, 
+                  Offset[0.2]}}],
+             Deployed->True],
+            SetterBar[
+             Dynamic[$CellContext`expansionOrder$$], {1, 2}]]},
+          {"\<\"MaxParticles\"\>", 
+           InterpretationBox[
+            StyleBox[GridBox[{
+               {
+                SetterBox[Dynamic[$CellContext`maxParticles$$], {3}, "3"], 
+                SetterBox[Dynamic[$CellContext`maxParticles$$], {4}, "4"], 
+                SetterBox[Dynamic[$CellContext`maxParticles$$], {5}, "5"], 
+                SetterBox[Dynamic[$CellContext`maxParticles$$], {6}, "6"], 
+                SetterBox[Dynamic[$CellContext`maxParticles$$], {7}, "7"], 
+                SetterBox[Dynamic[$CellContext`maxParticles$$], {8}, "8"]}
+              },
+              BaselinePosition->{1, 1},
+              GridBoxSpacings->{"Columns" -> {
+                  Offset[0.27999999999999997`], {
+                   Offset[0.]}, 
+                  Offset[0.27999999999999997`]}, "Rows" -> {
+                  Offset[0.2], {
+                   Offset[0.4]}, 
+                  Offset[0.2]}}],
+             Deployed->True],
+            SetterBar[
+             Dynamic[$CellContext`maxParticles$$], {3, 4, 5, 6, 7, 8}]]},
+          {"\<\"Input scheme\"\>", 
+           
+           PopupMenuBox[Dynamic[$CellContext`inputScheme$$], {
+            "GF"->"\<\"GF\"\>", "AEM"->"\<\"AEM\"\>"}]},
+          {"\<\"CKM input\"\>", 
+           
+           PopupMenuBox[Dynamic[$CellContext`ckmInput$$], {"no"->"\<\"no\"\>",
+             "yes"->"\<\"yes\"\>"}]},
+          {"\<\"PMNS input\"\>", 
+           PopupMenuBox[Dynamic[$CellContext`pmnsInput$$], {
+            "diagonal"->"\<\"diagonal\"\>", "yes"->"\<\"yes\"\>", 
+            "no"->"\<\"no\"\>"}]}
+         },
+         AutoDelete->False,
+         GridBoxAlignment->{"Columns" -> {{Left}}},
+         GridBoxItemSize->{
+          "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+        "Grid"]},
+      {
+       StyleBox["\<\"Operator selection\"\>",
+        StripOnInput->False,
+        FontSize->14,
+        FontWeight->Bold]},
+      {
+       TemplateBox[{"\"Group: \"", 
+         PopupMenuBox[
+          Dynamic[$CellContext`selectedGroup$$], {
+          "Dimension 6 / bosonic" -> "\"Dimension 6 / bosonic\"", 
+           "Dimension 6 / two fermion" -> "\"Dimension 6 / two fermion\"", 
+           "Dimension 6 / four fermion" -> "\"Dimension 6 / four fermion\"", 
+           "Dimension 6 / BLV four fermion" -> 
+           "\"Dimension 6 / BLV four fermion\"", "Dimension 8 / bosonic" -> 
+           "\"Dimension 8 / bosonic\"", "Dimension 8 / two fermion" -> 
+           "\"Dimension 8 / two fermion\"", "Dimension 8 / four fermion" -> 
+           "\"Dimension 8 / four fermion\"", "Dimension 8 / BLV four fermion" -> 
+           "\"Dimension 8 / BLV four fermion\""}]},
+        "RowDefault"]},
+      {
+       DynamicBox[ToBoxes[
+         Pane[
+          CheckboxBar[
+           Dynamic[
+            $CellContext`selectedByGroup$$[$CellContext`selectedGroup$$]], 
+           Lookup[$CellContext`groups$$, $CellContext`selectedGroup$$, {}], 
+           Appearance -> "Vertical"], {Automatic, 220}, Scrollbars -> True], 
+         StandardForm],
+        ImageSizeCache->{75.51890625, {107.673828125, 112.326171875}}]},
+      {
+       DynamicBox[ToBoxes[
+         If[
+          And[
+           $CellContext`knownFeynArtsRiskQ[
+            Flatten[
+             
+             Values[$CellContext`selectedByGroup$$]]], \
+$CellContext`exportFeynArts$$], 
+          Style[
+          "Warning: selected dual-field operators are known to be problematic \
+for FeynArts export.", Red, Bold], ""], StandardForm],
+        ImageSizeCache->{569.51953125, {3.36328125, 9.62109375}}]},
+      {
+       StyleBox["\<\"Exports\"\>",
+        StripOnInput->False,
+        FontSize->14,
+        FontWeight->Bold]},
+      {
+       TagBox[GridBox[{
+          {"\<\"Mass-basis expansion\"\>", 
+           
+           PopupMenuBox[Dynamic[$CellContext`mbExpansion$$], {
+            "none"->"\<\"none\"\>", "smeft"->"\<\"smeft\"\>", 
+            "user"->"\<\"user\"\>"}]},
+          {"\<\"WCXF\"\>", 
+           CheckboxBox[Dynamic[$CellContext`exportWCXF$$]]},
+          {"\<\"LaTeX\"\>", 
+           CheckboxBox[Dynamic[$CellContext`exportLatex$$]]},
+          {"\<\"FeynArts\"\>", 
+           CheckboxBox[Dynamic[$CellContext`exportFeynArts$$]]},
+          {"\<\"UFO\"\>", 
+           CheckboxBox[Dynamic[$CellContext`exportUFO$$]]},
+          {"\<\"UFO real parameters only\"\>", 
+           CheckboxBox[Dynamic[$CellContext`ufoReal$$]]}
+         },
+         AutoDelete->False,
+         GridBoxAlignment->{"Columns" -> {{Left}}},
+         GridBoxItemSize->{
+          "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+        "Grid"]},
+      {
+       TemplateBox[{
+         ButtonBox[
+         "\"Run generation\"", 
+          ButtonFunction :> ($CellContext`status$$ = 
+            "Running generation..."; $CellContext`selected6$$ = 
+            DeleteDuplicates[
+              Flatten[
+               Values[
+                
+                KeySelect[$CellContext`selectedByGroup$$, 
+                 StringStartsQ[#, 
+                  "Dimension 6"]& ]]]]; $CellContext`selected8$$ = 
+            DeleteDuplicates[
+              Flatten[
+               Values[
+                
+                KeySelect[$CellContext`selectedByGroup$$, 
+                 StringStartsQ[#, "Dimension 8"]& ]]]]; $CellContext`cfg$$ = 
+            Join[$CellContext`cfg$$, <|
+              "FeynRulesPath" -> $CellContext`feynRulesPath$$, 
+               "WCXFInput" -> $CellContext`wcxfInput$$, 
+               "Operators6" -> $CellContext`selected6$$, 
+               "Operators8" -> $CellContext`selected8$$, 
+               "Gauge" -> $CellContext`gauge$$, 
+               "ExpansionOrder" -> $CellContext`expansionOrder$$, 
+               "MaxParticles" -> $CellContext`maxParticles$$, 
+               "InputScheme" -> $CellContext`inputScheme$$, 
+               "CKMInput" -> $CellContext`ckmInput$$, 
+               "PMNSInput" -> $CellContext`pmnsInput$$, 
+               "IncludeBL4Fermion" -> \
+$CellContext`selectedBLVQ[$CellContext`selectedByGroup$$]|>]; \
+$CellContext`lastResult$$ = \
+$CellContext`SMEFTRunGenerationExternal[$CellContext`cfg$$]; \
+$CellContext`status$$ = If[
+              And[Lookup[$CellContext`lastResult$$, "ExitCode", -1] === 0, 
+               TrueQ[
+                Lookup[$CellContext`lastResult$$, "OutputExists", False]]], 
+              "Generation completed. Log: output/dashboard_generation.log", 
+              "Generation failed; see output/dashboard_generation.log."]; 
+           Null), Method -> "Queued", Appearance -> Automatic, Evaluator -> 
+          Automatic], 
+         TemplateBox[{10}, "Spacer1"], 
+         ButtonBox[
+         "\"Run WCXF/LaTeX/FeynArts exports\"", 
+          ButtonFunction :> ($CellContext`status$$ = 
+            "Running interface exports..."; $CellContext`selected6$$ = 
+            DeleteDuplicates[
+              Flatten[
+               Values[
+                
+                KeySelect[$CellContext`selectedByGroup$$, 
+                 StringStartsQ[#, 
+                  "Dimension 6"]& ]]]]; $CellContext`selected8$$ = 
+            DeleteDuplicates[
+              Flatten[
+               Values[
+                
+                KeySelect[$CellContext`selectedByGroup$$, 
+                 StringStartsQ[#, "Dimension 8"]& ]]]]; $CellContext`cfg$$ = 
+            Join[$CellContext`cfg$$, <|
+              "FeynRulesPath" -> $CellContext`feynRulesPath$$, 
+               "WCXFInput" -> $CellContext`wcxfInput$$, 
+               "Operators6" -> $CellContext`selected6$$, 
+               "Operators8" -> $CellContext`selected8$$, 
+               "MBExpansion" -> $CellContext`mbExpansion$$, 
+               "ExportWCXF" -> $CellContext`exportWCXF$$, 
+               "ExportLatex" -> $CellContext`exportLatex$$, 
+               "ExportFeynArts" -> $CellContext`exportFeynArts$$, 
+               "FeynArtsMaxParticles" -> $CellContext`maxParticles$$, 
+               "IncludeBL4Fermion" -> \
+$CellContext`selectedBLVQ[$CellContext`selectedByGroup$$]|>]; \
+$CellContext`lastResult$$ = \
+$CellContext`SMEFTRunInterfacesExternal[$CellContext`cfg$$]; \
+$CellContext`status$$ = If[
+              And[Lookup[$CellContext`lastResult$$, "ExitCode", -1] === 0, 
+               Or[
+                Not[$CellContext`exportFeynArts$$], 
+                TrueQ[
+                 Lookup[$CellContext`lastResult$$, "OutputExists", False]]]], 
+              "Interface exports completed. Log: \
+output/dashboard_interfaces.log", 
+              "Interface exports failed or FeynArts.mod was not produced; see \
+output/dashboard_interfaces.log."]; Null), Method -> "Queued", Appearance -> 
+          Automatic, Evaluator -> Automatic], 
+         TemplateBox[{10}, "Spacer1"], 
+         ButtonBox[
+         "\"Run UFO export\"", 
+          ButtonFunction :> ($CellContext`status$$ = 
+            "Running UFO export..."; $CellContext`selected6$$ = 
+            DeleteDuplicates[
+              Flatten[
+               Values[
+                
+                KeySelect[$CellContext`selectedByGroup$$, 
+                 StringStartsQ[#, 
+                  "Dimension 6"]& ]]]]; $CellContext`selected8$$ = 
+            DeleteDuplicates[
+              Flatten[
+               Values[
+                
+                KeySelect[$CellContext`selectedByGroup$$, 
+                 StringStartsQ[#, "Dimension 8"]& ]]]]; $CellContext`cfg$$ = 
+            Join[$CellContext`cfg$$, <|
+              "FeynRulesPath" -> $CellContext`feynRulesPath$$, 
+               "WCXFInput" -> $CellContext`wcxfInput$$, 
+               "Operators6" -> $CellContext`selected6$$, 
+               "Operators8" -> $CellContext`selected8$$, 
+               "MBExpansion" -> $CellContext`mbExpansion$$, 
+               "UFORealParameters" -> $CellContext`ufoReal$$, 
+               "IncludeBL4Fermion" -> \
+$CellContext`selectedBLVQ[$CellContext`selectedByGroup$$]|>]; \
+$CellContext`lastResult$$ = \
+$CellContext`SMEFTRunUFOExternal[$CellContext`cfg$$]; $CellContext`status$$ = 
+            If[Lookup[$CellContext`lastResult$$, "ExitCode", -1] === 0, 
+              "UFO export completed. Log: output/dashboard_ufo.log", 
+              "UFO export failed; see output/dashboard_ufo.log."]; Null), 
+          Method -> "Queued", Appearance -> Automatic, Evaluator -> 
+          Automatic]},
+        "RowDefault"]},
+      {
+       DynamicBox[ToBoxes[
+         Style[$CellContext`status$$, Bold], StandardForm],
+        ImageSizeCache->{302.390625, {2.63671875, 9.62109375}}]},
+      {
+       DynamicBox[ToBoxes[
+         If[
+          And[
+           
+           AssociationQ[$CellContext`lastResult$$], $CellContext`lastResult$$ =!= \
+<||>], 
+          Column[
+           Map[Row[{
+              Part[#, 1], ": ", 
+              Part[#, 2]}]& , 
+            Normal[$CellContext`lastResult$$]]], ""], StandardForm],
+        ImageSizeCache->{481.60546875, {27.589453125, 32.241796875}}]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{"Columns" -> {{Left}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+     GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{1.2}}}],
+    "Column"]],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{3.99131532888772*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"0be0ef1a-9bc6-4b4e-9695-279445317f70"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1440, 712.5},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"SmeftFR dashboard",
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"a490b882-c822-464b-b6d8-0b932dc22e75"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[607, 23, 92, 0, 96, "Title",ExpressionUUID->"26fb0e0d-243a-4d2e-8d22-19895deae081"],
+Cell[702, 25, 197, 3, 33, "Text",ExpressionUUID->"171773d8-8374-43dc-a9b8-970fc8debf68"],
+Cell[902, 30, 348, 9, 29, "Input",ExpressionUUID->"a6ac6fc9-1952-4e9a-b264-5cdbe0f67e67"],
+Cell[CellGroupData[{
+Cell[1275, 43, 140, 2, 29, "Input",ExpressionUUID->"d762e15b-bb9a-46a3-8cf9-29ab79051caa"],
+Cell[1418, 47, 17997, 376, 910, "Output",ExpressionUUID->"0be0ef1a-9bc6-4b4e-9695-279445317f70"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

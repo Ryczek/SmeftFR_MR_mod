@@ -1,0 +1,17 @@
+(* SmeftFR v4.0 - class 213 (psi^2 H^4 D) operator: l2phi4Dn2 *)
+
+(* Q_l2phi4D^(2) = i (lbar_p ga^mu tau^I l_r) [ (H^dag <-> D^I_mu H) (H^dag H)
+                                              + (H^dag <-> D_mu H) (H^dag tau^I H) ] *)
+LQl2phi4Dn2 := Module[{sp1,sp2,ii,jj,kk,ll,mm,nn,mu,ff1,ff2,aux,tmp1,tmp2,tmp3,tmp4,tmp5},
+
+tmp1 = ExpandIndices[ Phi8bar[kk] Phi8[kk], FlavorExpand -> {SU2D8} ];
+tmp2 = ExpandIndices[ LL8bar[sp1,ii,ff1].LL8[sp2,jj,ff2] 2 Ta8[ll,ii,jj], FlavorExpand -> {SU2D8} ];
+tmp3 = ExpandIndices[ 2 Ta8[ll,mm,nn] (Phi8bar[mm] DC[Phi8[nn],mu] - DC[Phi8bar[mm],mu] Phi8[nn]), FlavorExpand -> {SU2D8} ];
+tmp4 = ExpandIndices[ Phi8bar[mm] DC[Phi8[mm],mu] - DC[Phi8bar[mm],mu] Phi8[mm], FlavorExpand -> {SU2D8} ];
+tmp5 = ExpandIndices[ Phi8bar[mm] 2 Ta8[ll,mm,nn] Phi8[nn], FlavorExpand -> {SU2D8} ];
+
+aux = I ExpandIndices[ ToExpression[SMEFT$WB <> "l2phi4Dn2"][ff1,ff2]
+  tmp2 Ga[mu,sp1,sp2] (tmp3 tmp1 + tmp4 tmp5), FlavorExpand -> {SU2W8} ];
+
+aux /. SMEFTGaugeRules
+];

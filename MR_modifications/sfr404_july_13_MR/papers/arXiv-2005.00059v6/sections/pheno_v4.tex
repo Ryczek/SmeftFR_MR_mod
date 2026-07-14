@@ -1,0 +1,196 @@
+In this Section we briefly discuss a few aspects of phenomenology involving dimension-8 operators, focusing on processes that first start at dimension-8 and/or involve interplay between dimension-6 and -8 effects.
+In particular, we discuss light-by-light scattering and electroweak precision data.
+We also present a model where dimension-8 effects are arguably more important than dimension-6 effects.
+
+Note that sometimes we will explicitly write factors of the cutoff scale of the effective theory, $C_i \to c_i / \Lambda^{d-4}$, to better highlight the different orders in the EFT expansion in our phenomenological studies.
+
+%--------------------------------------------------------------------------------------------------------------
+\subsection{Light-by-Light Scattering}
+
+The possibility of non-linear processes involving solely photons had been discussed back in the 1930s~\cite{Halpern:1933dya, Euler:1935zz, Heisenberg:1935qt, Euler:1936oxn}.
+Later in the 1950s the cross section for elastic light-by-light scattering was computed in QED~\cite{Karplus:1950zza, Karplus:1950zz}.
+Almost 70 years would pass before this process was finally observed in vacuum in 2019 by the ATLAS collaboration at the LHC~\cite{Aad:2019ock}.
+Additionally, the CMS collaboration reports evidence for elastic light-by-light scattering in vacuum~\cite{Sirunyan:2018fhl}.
+
+Interactions in the SMEFT involving four photons first start at dimension-8
+\begin{equation}
+\label{eq:lbl}
+\mathcal{L}_{LbL} = \frac{\alpha^2}{90 M_e^4} \left[ \mathscr{C}_{LbL}^{(1)} \left(F_{\mu\nu} F^{\mu\nu}\right)^2 + \mathscr{C}_{LbL}^{(2)} \left(F_{\mu\nu} \widetilde F^{\mu\nu}\right)^2 + \widetilde{\mathscr{C}}_{LbL} \left(F_{\mu\nu} F^{\mu\nu}\right) \left(F_{\rho\sigma} \widetilde F^{\rho\sigma}\right) \right] ,
+\end{equation}
+where $F_{\mu\nu}$ is the photon field strength, $\alpha$ is the fine structure constant, and $M_e$ is the mass of the electron.
+The normalization is such that order one coefficients are generated when the electron is integrated out with $E \ll M_e$.
+
+On the other hand, for a less restrictive energy range, $E \ll \Lambda$, the SMEFT Wilson coefficients from Table~\ref{tab:smeft8class_1_2_3_4} appearing in Eq.~\eqref{eq:lbl} are
+\begin{align}
+\label{eq:lblco}
+\mathscr{C}_{LbL}^{(1)} &= \frac{90 M_e^4}{\Lambda^4} 16 \pi^2 \left[ \frac{1}{g_2^4} \left( c_{W^4}^{(1)} + c_{W^4}^{(3)} \right) + \frac{1}{g_1^4} c_{B^4}^{(1)} + \frac{1}{g_2^2 g_1^2} \left( c_{W^2B^2}^{(1)} + c_{W^2B^2}^{(3)} \right) \right] , \nn
+\mathscr{C}_{LbL}^{(2)} &= \frac{90 M_e^4}{\Lambda^4} 16 \pi^2 \left[ \frac{1}{g_2^4} \left( c_{W^4}^{(2)} + c_{W^4}^{(4)} \right) + \frac{1}{g_1^4} c_{B^4}^{(2)} + \frac{1}{g_2^2 g_1^2} \left( c_{W^2B^2}^{(2)} + c_{W^2B^2}^{(4)} \right)  \right] , \nn
+\widetilde{\mathscr{C}}_{LbL} &= \frac{90 M_e^4}{\Lambda^4} 16 \pi^2 \left[ \frac{1}{g_2^4} \left( c_{W^4}^{(5)} + c_{W^4}^{(6)} \right) + \frac{1}{g_1^4} c_{B^4}^{(3)} + \frac{1}{g_2^2 g_1^2} \left( c_{W^2B^2}^{(5)} + c_{W^2B^2}^{(6)} + c_{W^2B^2}^{(7)} \right)  \right] ,
+\end{align}
+where we have dropped terms that are not enhanced by $\O(16 \pi^2)$.
+If the physics beyond the SM (BSM) that generates~\eqref{eq:lblco} is loop suppressed then these additional terms must be included.
+
+Axiomatic principles of quantum field theory such as unitarity, analyticity, and crossing symmetry yield constraints on the parameters of a theory, see \textit{e.g.}~\cite{Manohar:2008tc, Bellazzini:2016xrt}. 
+For example, Refs.~\cite{Gunion:1990kf, Grinstein:2013fia} used a once-subtracted dispersion relation to derive sum rules for the couplings of an extended Higgs boson sector.
+Dimension-8 SMEFT operators with four derivatives are constrained by twice-subtracted dispersion relations, which lead to positivity bounds on Wilson coefficients~\cite{Bellazzini:2018paj, Zhang:2018shp, Bi:2019phv, Remmen:2019cyz, Remmen:2020vts}.
+This follows from the contour at infinity vanishing due to the Froissart bound~\cite{Froissart:1961ux}, and the crossed-channel branch-cut having the same sign the original-channel making the sum of non-vanishing integrals positive-definite by the optical theorem.
+
+The positivity bounds on the coefficients in~\eqref{eq:lblco} are~\cite{Remmen:2019cyz}
+\begin{align}
+\label{eq:posi}
+\mathscr{C}_{LbL}^{(1)} &> 0 , \nn
+\mathscr{C}_{LbL}^{(2)} &> 0 , \nn
+4 \mathscr{C}_{LbL}^{(1)} \mathscr{C}_{LbL}^{(2)} &> (\widetilde{\mathscr{C}}_{LbL})^2 .
+\end{align}
+Unsurprisingly QED satisfies these bounds, $\mathscr{C}_{LbL}^{(1)} = 1$ and $\mathscr{C}_{LbL}^{(2)} = 7 / 4$ when $E \ll M_e$ and the electron is integrated out at one-loop~\cite{Schwinger:1951nm}.
+The coefficient $\widetilde{\mathscr{C}}_{LbL}$ is not generated in QED as electromagnetic interactions conserve parity, which also satisfies~\eqref{eq:posi}.
+The bounds~\ref{eq:posi} can be combined with other positivity bounds coming from different initial scattering states to further constrain the $X^4$ SMEFT Wilson coefficients.
+
+%--------------------------------------------------------------------------------------------------------------
+\subsection{Electroweak Precision Data}
+
+Historically, the constraints on BSM physics from electroweak precision data were frequently summarized in terms of the parameters $S$, $T$, and $U$~\cite{Peskin:1990zt, Marciano:1990dp, Kennedy:1990ib, Holdom:1990tc, Golden:1990ig, Altarelli:1990zd}.
+The leading contributions to $S$ and $T$ come from dimension-6 operators, whereas $U$ first arises from a dimension-8 operator~\cite{Grinstein:1991cd} motivating its discussion here.
+Additionally this discussion will help frame the results of Sec.~\ref{sec:quartets}.
+However, for heavy BSM physics, it is important to keep in mind that the SMEFT is the preferred framework to use to describe electroweak precision data as it is completely general, unlike an $STU$ analysis.
+For example, the dimension-6 operators that contribute to $S$ and $T$ also contribute to Higgs and diboson processes, see \textit{e.g.}~\cite{Ellis:2018gqa}.
+To put a modern twist on this analysis we use the geometric interpretation of the SMEFT (geoSMEFT)~\cite{Helset:2018fgq, Helset:2020yio, Hays:2020scx} to formulate expressions for $S$, $T$, and $U$ to all orders in $v_T / \Lambda$, with $v_T$ defined in Eq.~\eqref{eq:vT}.
+
+Higher-dimensional operators change the definitions of SM parameters in a variety of ways.
+Field redefinitions are needed to relate these combinations of inputs to measured quantities.
+To start, consider the potential for the Higgs field in the SMEFT through dimension-8
+\begin{equation}
+\label{eq:V}
+V_{\rm SMEFT} = \lambda \left(H^\dag H - \frac{v^2}{2}\right)^2 - \frac{c_H}{\Lambda^2} (H^\dag H)^3 - \frac{c_{H^8}}{\Lambda^4} (H^\dag H)^4 .
+\end{equation}
+The dimension-8 operators relevant for EWPD are given in Tables~\ref{tab:smeft8class_1_2_3_4} and~\ref{tab:smeft8class_5_6_7_8}.
+Due to the presence of the higher-dimensional operators in Eq.~\eqref{eq:V}, the minimum of Higgs boson potential is shifted~\cite{Hays:2018zze, Helset:2020yio}
+\begin{equation}
+\label{eq:vT}
+\langle H^\dag H \rangle \equiv \frac{v_T^2}{2} = \frac{v^2}{2}\left(1 + \frac{v^2}{\Lambda^2} \frac{3 c_H}{4 \lambda} + \frac{v^4}{\Lambda^4} \frac{9 c_H^2 + 4 \lambda c_{H^8}}{8 \lambda^2} \right)
+\end{equation}
+with $v_T \approx 246$~GeV.
+
+Now we turn to canonically normalizing the electroweak gauge, Higgs, and Goldstone bosons.
+Care must be taken as the field redefinitions are matrix equations.
+The geometric interpretation provides an elegant way to perform these transformations to all-orders in $v_T / \Lambda$.
+The Higgs-derivative operators through dimension-8 are
+\begin{align}
+\label{eq:Hkin}
+\mathcal{L}_{H, \rm kin} &= (D_\mu H^\dag) (D^\mu H) + \frac{c_{H\Box}}{\Lambda^2} (H^\dag H) \Box (H^\dag H) + \frac{c_{HD}}{\Lambda^2} [(D_\mu H^\dag) H] [H^\dag (D^\mu H)] \nn
+&+\frac{c_{H^6D^2}^{(1)}}{\Lambda^4} (H^\dag H)^2 (D_\mu H^\dag D^\mu H) + \frac{c_{H^6D^2}^{(2)}}{\Lambda^4} (H^\dag H) (H^\dag \tau^I H) (D_\mu H^\dag \tau^I D^\mu H) .
+\end{align}
+Defining
+\begin{equation}
+H = \frac{1}{\sqrt{2}} 
+\begin{pmatrix}
+\phi_2 + i \phi_1 \\
+\phi_4 - i \phi_3
+\end{pmatrix} ,
+\end{equation}
+we can write Eq.~\eqref{eq:Hkin} in the language of the geoSMEFT as 
+\begin{equation}
+\mathcal{L}_{H, \rm kin} = \frac{1}{2} h_{\mathcal{I} \mathcal{J}}(\phi) \phi^\mathcal{I} \phi^\mathcal{J}  ,
+\end{equation}
+where $\phi_\mathcal{I} = (\phi_1, \phi_2, \phi_3, \phi_4)$ with $\langle \phi_\mathcal{I} \rangle = v_T \delta_{\mathcal{I} 4}$.
+The weak eigenstates are related to the mass eigenstates through a metric on Higgs field space, $h_{\mathcal{I} \mathcal{J}}$, and a unitary matrix not considered here.
+We are working with the weak eigenstates and have not introduced the mass eigenstates here as all we need is the metric $h_{\mathcal{I} \mathcal{J}}$ to define the $T$ parameter.
+See Ref.~\cite{Helset:2020yio} for expressions involving mass eigenstates.
+The gauge kinetic terms to all-orders in $v_T / \Lambda$ are
+\begin{align}
+\label{eq:lew}
+\mathcal{L}_{\rm EW,\, kin} &= - \frac{1}{4} W^I_{\mu\nu} W^{I\mu\nu} - \frac{1}{4}  B_{\mu\nu} B^{\mu\nu} \\
+&+ \frac{c_{HW}}{\Lambda^2} (H^\dag H) W^I_{\mu\nu} W^{I\mu\nu} + \frac{c_{HB}}{\Lambda^2} (H^\dag H) B_{\mu\nu} B^{\mu\nu} + \frac{c_{HWB}}{\Lambda^2} (H^\dag \tau^I H) W^I_{\mu\nu} B^{\mu\nu}  \nn
+&+ \sum_{n=0}^\infty \frac{H^{2n}}{\Lambda^{4+2n}} \left(c_{B^2H^{4+2n}}^{(1)}(H^\dag H)^2 B_{\mu\nu} B^{\mu\nu} + c_{W^2H^{4+2n}}^{(1)} (H^\dag H)^2 W^I_{\mu\nu} W^{I\mu\nu} \right. \nn
+&\left. + c_{WBH^{4+2n}}^{(1)} (H^\dag H) (H^\dag \tau^I H) W^I_{\mu\nu} B^{\mu\nu} + c_{W^2H^{4+2n}}^{(3)} (H^\dag \tau^I H) (H^\dag \tau^J H) W^I_{\mu\nu} W^{J\mu\nu} \right)\nonumber
+\end{align}
+In the geoSMEFT Eq.~\eqref{eq:lew} takes the form
+\begin{equation}
+\mathcal{L}_{\rm EW,\, kin} = - \frac{1}{4} g_{\mathcal{A} \mathcal{B}}(H) \mathcal{W}^\mathcal{A} \mathcal{W}^\mathcal{B} ,
+\end{equation}
+where $\mathcal{W}^\mathcal{A} = (W^I, B) = (W^1, W^2, W^3, B)$ and $g_{\mathcal{A} \mathcal{B}}$ is another metric on Higgs field space
+This metric, $g_{\mathcal{A} \mathcal{B}}$, again along with a unitary matrix not considered here, relates the weak eigenstate gauge bosons to the mass eigenstates.
+
+The geometric definitions of $S$, $T$, and $U$ are
+\begin{align}
+\label{eq:geostu}
+\frac{1}{16\pi} S &= \langle g_{34} \rangle + \langle g_{43} \rangle , \nn
+\bar \alpha\, T &= \langle h_{11} \rangle - \langle h_{33} \rangle = \langle h_{22} \rangle - \langle h_{33} \rangle , \nn
+\frac{1}{16\pi} U &= \langle g_{11} \rangle - \langle g_{33} \rangle = \langle g_{22} \rangle - \langle g_{33} \rangle
+\end{align}
+where $\bar \alpha$ takes into account shift in the definition of the fine structure constant due to the presence of higher-dimensional operators, see Appendix A of~\cite{Hays:2020scx} for an explicit expression.
+Note this shift does not affect our analysis of light-by-light scattering; since all of those effects start at dimension-8 we can freely trade $\alpha$ for $\bar\alpha$.
+Given~\eqref{eq:geostu} it straightforward to work out the contributions to $S$, $T$, and $U$
+\begin{align}
+\label{eq:stu}
+\frac{1}{16\pi} S &= \frac{v_T^2}{\Lambda^2} c_{HWB} + \sum_{n=0}^\infty \frac{v_T^{4+2n}}{2^n \Lambda^{4+2n}} c_{WBH^{4+2n}}^{(1)}, \nn
+\bar\alpha\, T &= - \frac{v_T^2}{2 \Lambda^2} c_{HD} - \frac{v_T^4}{2 \Lambda^4} c_{H^6D^2}^{(2)} , \nn
+\frac{1}{16\pi} U &= \sum_{n=0}^\infty \frac{v_T^{4+2n}}{2^n \Lambda^{4+2n}} c_{W^2H^{4+2n}}^{(3)} ,
+\end{align}
+where we give $T$ to $\mathcal{O}(v_T^4 / \Lambda^4)$ and $S$ and $U$ to all-orders in $v_T / \Lambda$.
+
+%--------------------------------------------------------------------------------------------------------------
+\subsection{Scalar $SU(2)_w$ Quartets}
+\label{sec:quartets}
+
+Although the dimension-6 operators are formally the leading terms in the EFT expansion, there are various reasons why it may be necessary to consider dimension-8 effects.
+Here we explore a scenario where the difference in experimental precision in different classes of measurements causes dimension-8 effects to be important.
+The measurements are double Higgs boson production for which only upper limits exists on the cross section exist~\cite{Sirunyan:2018ayu, Aad:2019yxi}, and EWPD, which as the name implies, is precisely measured.
+For example, one of the more precisely measured observables in this class is the width of the $Z$ boson, which has a relative precision of $9 \cdot 10^{-4}$~\cite{ALEPH:2005ab}.
+
+The models under consideration add to the SM field content a new scalar field, $\Theta$, that is an $SU(2)_w$ quartet with either $\hyp = 3/2$ or $1/2$. 
+The Lagrangian for the $\hyp = 3/2$ case is
+\begin{align}
+\label{eq:quar}
+\mathcal{L}_\Theta &= D_\mu \Theta^\dag D^\mu \Theta - M^2 \Theta^\dag \Theta  + [\lambda_1 \Theta_{jkm}^\dag H^j H^k H^m + \hc] \nn
+&- \lambda_{\alpha1} (H^\dag H) (\Theta^\dag \Theta)  - \lambda_{\alpha2} (H_n^\dag H^m) (\Theta_{jkm}^\dag \Theta^{jkn})  + \O(\Theta^4) .
+\end{align}
+For the $\hyp = 1/2$ case the term linear in $\Theta$ is instead $[\lambda_1 \Theta_{jkm}^\dag H^j H^k \widetilde H^m + \hc]$.
+Note that $\Theta$ is completely symmetric in its $SU(2)_w$ indices.
+Assuming $M \gg v_T$ we integrate out $\Theta$ and match to the SMEFT.
+In both cases only one dimension-6 operator, $(H^\dag H)^3$, is generated  at tree level~\cite{Henning:2014wua, Dawson:2017vgm, deBlas:2017xtg}
+\begin{equation}
+C_H = \frac{2\hyp}{3} \frac{|\lambda_1|^2}{M^2} 
+\end{equation}
+while at one-loop the triple $W$ operator, $Q_W$, is also generated~\cite{Henning:2014wua, Bakshi:2018ics}.
+At this stage the scalar quartets look like great candidates to enhance the double Higgs boson production rate.
+
+However things are not so simple.
+When electroweak symmetry is broken the term linear in $\Theta$ in Eq.~\eqref{eq:quar} will force $\Theta$ to have a non-zero vacuum expectation value (vev).
+If $\Theta$ gets a vev, $v_\Theta$, its quantum numbers dictate that it contributes to the $T$ parameter~\cite{Dawson:2017vgm}
+\begin{equation}
+1 + \bar\alpha\, T = \frac{v_T^2}{v_T^2 - 2 v_\Theta^2 [\tfrac{3}{2} (\tfrac{3}{2} + 1) - 3 \hyp^2]} 
+\end{equation}
+
+With this in mind we extend the matching to dimension-8 starting with the $\hyp = 3/2$ case.
+We find
+\begin{align}
+\label{eq:quar8}
+\mathcal{L}_\Theta^{(d=8)} &= - \frac{\lambda_\alpha |\lambda_1|^2}{M^4} (H^\dag H)^4 + \frac{3 |\lambda_1|^2}{M^4} (H^\dag H)^2 (D_\mu H^\dag) (D^\mu H) \nn
+&+ \frac{6 |\lambda_1|^2}{M^4} (H^\dag H) H^\dag_j H^k (D_\mu H^\dag_k) (D^\mu H^j)
+\end{align}
+with $\lambda_\alpha =  \lambda_{\alpha1} +  \lambda_{\alpha2}$.
+The last term on the right-hand side of Eq.~\eqref{eq:quar8} is not in our operator basis.
+We use the Fierz identity for Pauli matrices, Eq.~\eqref{eq:fierz}, to convert that operator into our basis, yielding for the $\hyp = 3/2$ case
+\begin{equation}
+C_{H^8} = - \frac{\lambda_\alpha |\lambda_1|^2}{M^4}, \quad C_{H^6D^2}^{(1)} = \frac{6 |\lambda_1|^2}{M^4}, \quad C_{H^6D^2}^{(2)} = \frac{3 |\lambda_1|^2}{M^4} .
+\end{equation}
+The $\hyp = 1/2$ case is slightly more complicated
+\begin{align}
+\mathcal{L}_\Theta^{(d=8)} &= - \frac{\lambda_\alpha |\lambda_1|^2}{3M^4} (H^\dag H)^4 + \frac{7|\lambda_1|^2}{3M^4} (H^\dag H)^2 (D_\mu H^\dag) (D^\mu H) \nn
+&+ \frac{2 |\lambda_1|^2}{3M^4} (H^\dag H) \left[-H^\dag_j H^k (D_\mu H^\dag_k) (D^\mu H^j)\right. \nn
+&\left. + H^\dag_j H^\dag_k (D_\mu H^k) (D^\mu H^j) + H^j H^k (D_\mu H^\dag_k) (D^\mu H^\dag_j) \right]
+\end{align}
+Integrating the last two terms by parts, applying the Higgs boson EOM to fields with two derivatives acting on them, and using Eq.~\eqref{eq:fierz} we find
+\begin{align}
+&C_H = \left(1 - \frac{4 \lambda v^2}{3M^2}\right) \frac{|\lambda_1|^2}{M^2},\quad C_{H^8} = \left(8 \lambda - \lambda_\alpha \right) \frac{|\lambda_1|^2}{3M^4},\nn
+&C_{H^6D^2}^{(1)} = \frac{2 |\lambda_1|^2}{3M^4},\quad C_{H^6D^2}^{(2)} = - \frac{|\lambda_1|^2}{M^4}, \nn
+&C_{leH^5} =  \frac{2}{3} Y_e^\dag \frac{ |\lambda_1|^2}{ M^4},\quad C_{quH^5} = \frac{2}{3} Y_u^\dag \frac{ |\lambda_1|^2}{ M^4},\quad C_{qdH^5} =  \frac{2}{3} Y_d^\dag \frac{ |\lambda_1|^2}{M^4} .
+\end{align}
+We included the dimension-6 coefficient $C_H$ here as it receives another contribution from mass term in the Higgs EOM, which was used to reduce a dimension-8 operator into operators in our basis. 
+This completes the matching of the scalar quartet models to the SMEFT at dimension-8.
+
+Using~\eqref{eq:stu} we see that $T_{\hyp=3/2} = - 3 T_{\hyp=1/2} = - \frac{3}{2\bar\alpha} |\lambda_1|^2 (\tfrac{v_T}{M})^4$.
+Our result for the contributions of these models to the $T$ parameter agrees with what was found in Ref.~\cite{Dawson:2017vgm}.
+The implication of our matching results is that these model cannot in fact provide a large enhancement to double Higgs boson production.
+This was unclear, from an EFT perspective at least, until the matching was done at dimension-8.

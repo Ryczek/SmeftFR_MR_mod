@@ -1,0 +1,73 @@
+(* SmeftFR v4.0 package *)
+(* Contains definitions of SMEFT parameters in mass basis *)
+
+(* *************************************** *)
+(* ***** Parameters (SM + dim6/dim8) ***** *)
+(* *************************************** *)
+
+M$Parameters = {
+
+fmv == {
+    ParameterType -> Internal,
+    Indices       -> {Index[Generation], Index[Generation]},
+    Definitions   -> {fmv[1, 1] -> mve,
+                      fmv[1, 2] -> 0,
+                      fmv[1, 3] -> 0,
+                      fmv[2, 1] -> 0,
+                      fmv[2, 2] -> mvm,
+                      fmv[2, 3] -> 0,
+                      fmv[3, 1] -> 0,
+                      fmv[3, 2] -> 0,
+                      fmv[3, 3] -> mvt},
+    TeX           -> Superscript[m, \[Nu]],
+    Description   -> "Neutrino masses"
+},
+
+fml == {
+    ParameterType -> Internal,
+    Indices       -> {Index[Generation], Index[Generation]},
+    Definitions   -> {fml[1, 1] -> mle,
+                      fml[1, 2] -> 0,
+                      fml[1, 3] -> 0,
+                      fml[2, 1] -> 0,
+                      fml[2, 2] -> mlm,
+                      fml[2, 3] -> 0,
+                      fml[3, 1] -> 0,
+                      fml[3, 2] -> 0,
+                      fml[3, 3] -> mlt},
+    TeX           -> Superscript[m, l],
+    Description   -> "Lepton pole masses"
+},
+
+fmd == {
+    ParameterType -> Internal,
+    Indices       -> {Index[Generation], Index[Generation]},
+    Definitions   -> {fmd[1, 1] -> mqd,
+                      fmd[1, 2] -> 0,
+                      fmd[1, 3] -> 0,
+                      fmd[2, 1] -> 0,
+                      fmd[2, 2] -> mqs,
+                      fmd[2, 3] -> 0,
+                      fmd[3, 1] -> 0,
+                      fmd[3, 2] -> 0,
+                      fmd[3, 3] -> mqb},
+    TeX           -> Superscript[m, d],
+    Description   -> "Bottom quark masses"
+},
+
+fmu == {
+    ParameterType -> Internal,
+    Indices       -> {Index[Generation], Index[Generation]},
+    Definitions   -> {fmu[1, 1] -> mqu,
+                      fmu[1, 2] -> 0,
+                      fmu[1, 3] -> 0,
+                      fmu[2, 1] -> 0,
+                      fmu[2, 2] -> mqc,
+                      fmu[2, 3] -> 0,
+                      fmu[3, 1] -> 0,
+                      fmu[3, 2] -> 0,
+                      fmu[3, 3] -> mqt},
+    TeX           -> Superscript[m, u],
+    Description   -> "Up quark masses"
+},
+

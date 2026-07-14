@@ -1,0 +1,16 @@
+(* SmeftFR v4.0 - class 214 (psi^2 X^2 D) operator: l2WBDn4 *)
+
+(* Q_l2WBD^(4) = i (lbar_p ga^mu tau^I <-> D^nu l_r) (B_{mu ro} Wtilde^I_nu^{ro} + B_{nu ro} Wtilde^I_mu^{ro}) *)
+LQl2WBDn4 := Module[{sp1,sp2,ii,jj,ll,mu,nu,ro,al,be,ff1,ff2,aux},
+
+aux = I (LL8bar[sp1,ii,ff1].DC[LL8[sp2,jj,ff2],nu] -
+       DC[LL8bar[sp1,ii,ff1],nu].LL8[sp2,jj,ff2]) Ga[mu,sp1,sp2]
+      2 Ta8[ll,ii,jj] (FS[B8,mu,ro] Eps[nu,ro,al,be]/2 HC[FS[Wi8,al,be,ll]] +
+       FS[B8,nu,ro] Eps[mu,ro,al,be]/2 HC[FS[Wi8,al,be,ll]]);
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "l2WBDn4"][ff1,ff2] aux,
+      FlavorExpand->{SU2D8} ];
+aux = ExpandIndices[ aux, FlavorExpand->{SU2W8} ];
+
+aux /. SMEFTGaugeRules
+];

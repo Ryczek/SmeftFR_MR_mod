@@ -1,0 +1,16 @@
+(* SmeftFR v4.0 - class 214 (psi^2 X^2 D) operator: q2GWDn1 *)
+
+(* Q_q2GWD^(1) = (qbar_p ga^mu T^A tau^I <-> D^nu q_r) (G^A_{mu ro} W^I_nu^{ro} - G^A_{nu ro} W^I_mu^{ro}) *)
+LQq2GWDn1 := Module[{sp1,sp2,ii,jj,mm,nn,aa,ll,mu,nu,ro,ff1,ff2,aux},
+
+aux = (QL8bar[sp1,ii,ff1,mm].DC[QL8[sp2,jj,ff2,nn],nu] -
+       DC[QL8bar[sp1,ii,ff1,mm],nu].QL8[sp2,jj,ff2,nn]) Ga[mu,sp1,sp2]
+      T8[aa,mm,nn] 2 Ta8[ll,ii,jj] (FS[Gl8,mu,ro,aa] FS[Wi8,nu,ro,ll] -
+       FS[Gl8,nu,ro,aa] FS[Wi8,mu,ro,ll]);
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "q2GWDn1"][ff1,ff2] aux,
+      FlavorExpand->{SU2D8} ];
+aux = ExpandIndices[ aux, FlavorExpand->{SU2W8} ];
+
+aux /. SMEFTGaugeRules
+];

@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 214 (psi^2 X^2 D) operator: q2B2D *)
+
+(* Q_q2B2D = i (qbar_p ga^mu <-> D^nu q_r) B_{mu ro} B_nu^{ro} *)
+LQq2B2D := Module[{sp1,sp2,ii,co,mu,nu,ro,ff1,ff2,aux},
+
+aux = I (QL8bar[sp1,ii,ff1,co].DC[QL8[sp2,ii,ff2,co],nu] -
+       DC[QL8bar[sp1,ii,ff1,co],nu].QL8[sp2,ii,ff2,co]) Ga[mu,sp1,sp2]
+      FS[B8,mu,ro] FS[B8,nu,ro];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "q2B2D"][ff1,ff2] aux,
+      FlavorExpand->{SU2D8} ];
+aux = ExpandIndices[ aux, FlavorExpand->{SU2W8} ];
+
+aux /. SMEFTGaugeRules
+];

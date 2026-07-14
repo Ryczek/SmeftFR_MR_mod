@@ -1,0 +1,38 @@
+The Standard Model (SM) is an extremely successful theory that has been rigorously tested at the Large Hadron Collider (LHC) and elsewhere.
+Nevertheless it is widely expected that the SM is only an effective field theory (EFT), valid up to some cutoff scale $\Lambda$.
+The Standard Model Effective Field Theory (SMEFT) generalizes the SM by adding a complete, but not over-complete basis of operators at every mass-dimension $d$ rather than stopping at $d=4$.\footnote{The SMEFT assumes there are no light hidden states such as sterile neutrinos or an axion, and that the Higgs boson form part of an $SU(2)_w$ doublet with hypercharge $\hyp = 1/2$. Other types of EFTs are possible where these assumptions are relaxed, but we do not consider them here.} 
+
+The counting and classification of operators in the SMEFT has a long history.
+Starting with dimension-5 there is a single type operator~\cite{Weinberg:1979sa}, $N_{\rm type} = 1$, and it violates lepton number.
+At dimension-6, Ref.~\cite{Grzadkowski:2010es} classified the 76 baryon number preserving ($B$) Lagrangian terms; see~\cite{Buchmuller:1985jz} for earlier work.
+The eight baryon number violating ($\slashed B$) terms were previously known~\cite{Abbott:1980zj}, yielding a total of $N_{\rm term} = 84$.
+In terms of actual operators rather than terms in the Lagrangian, the counts explode when flavor structure is allowed.
+For three generations of fermions, $n_g = 3$, there are $N_{\rm op} = 2499$ independent $B$ operators~\cite{Alonso:2013hga} and 546 $\slashed B$ operators~\cite{Alonso:2014zka}.
+Hilbert series methods were applied to the SMEFT in Refs.~\cite{Lehman:2015via, Henning:2015daa, Lehman:2015coa, Henning:2015alf}, providing an elegant way to count the number of operators for arbitrary dimension $d$.
+Computing tools $\mathtt{Sim2Int}$~\cite{Fonseca:2017lem}, $\mathtt{DEFT}$~\cite{Gripaios:2018zrz}, $\mathtt{BasisGen}$~\cite{Criado:2019ugp}, $\mathtt{ECO}$~\cite{Marinissen:2020jmb}, and $\mathtt{GrIP}$~\cite{Banerjee:2020bym} were subsequently developed, allowing for automated counting of operators.
+
+Beyond counting operators, work has been done on their explicit forms as well.
+Refs.~\cite{Lehman:2014jma, Liao:2016hru} classified the 18 dimension-7 operators.
+So far only partial sets of dimension-8 operators exist in the literature.
+This includes, however, all of the bosonic operators (in a basis where the number of derivatives is minimized)~\cite{Morozov:1985ef, Hays:2018zze, Remmen:2019cyz}.
+Our goal in this work is to find a complete set of dimension-8 operators.
+A subtlety in constructing the dimension-8 operator basis is that some operators vanish in the absence of flavor structure.
+Our basis contains 231 types of operators.
+For comparison, with $n_g = 1$ there are 993 operators, while for $n_g = 3$ there are instead 44807 operators~\cite{Henning:2015alf}.
+
+Although the counting and classification of operators is certainly interesting in its own right, there is also a wide range of phenomenological implications of dimension-8 operators as well.
+For some phenomena dimension-8 is the lowest dimension where the interactions become possible.
+Most famous among these processes is light-by-light scattering.
+Another area where dimension-8 effects have been studied is electroweak precision data (EWPD) where contributions to the $U$ parameter first arise at dimension-8~\cite{Grinstein:1991cd}.
+Formally the dimension-6 operators are the leading terms in the EFT expansion.
+However there are various scenarios in which this is not the case practically speaking.
+Perhaps the most obvious among these is when the interference between the dimension-6 amplitude and the SM amplitude is suppressed or even vanishes.
+Additionally there could be a difference in the experimental precision of the measurements being considered~\cite{Dawson:2017vgm}.
+Finally, we comment on the structure the renormalization group evolution (RGE) equations of the dimension-8 operators. 
+
+The rest of the paper is organized as follows.
+Section~\ref{sec:note} lays down the notation and conventions we use, including the semantics of number of operators versus number of types of operators.
+We then discuss how we performed the operator classification in Section~\ref{sec:cls_ops} with the results given in Sec.~\ref{sec:results}.
+We briefly explore light-by-light scattering, EWPD, as well as models involving scalar $SU(2)_w$ quartets where there is interesting interplay between dimension-6 and dimension-8 effects in Section~\ref{sec:pheno}.
+Additionally we comment on the renormalization group evolution (RGE) of the dimension-8 operators in Sec.~\ref{sec:rge} before concluding in Sec.~\ref{sec:con}.
+For convenience we provide tables of dimension-6 and -7 operators in Appendix~\ref{sec:app}.
