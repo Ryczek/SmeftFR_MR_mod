@@ -1,0 +1,12 @@
+(* SmeftFR v4.0 - class 218 (psi^4 H^2) operator: leqdphi2n2 *)
+
+(* Q_leqdphi2^(2) = (lbar_p^i e_r) tau^I_{ij} (dbar_s q_t^j) (H^\dagger tau^I H) + h.c. *)
+LQleqdphi2n2 := Module[{sp1,sp2,ff1,ff2,ff3,ff4,cc,ii,jj,kk,ll,aa,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "leqdphi2n2"][ff1,ff2,ff3,ff4]
+  2 Ta8[aa,ii,jj] 2 Ta8[aa,kk,ll] (LL8bar[sp1,ii,ff1].lR8[sp1,ff2]).
+  (dR8bar[sp2,ff3,cc].QL8[sp2,jj,ff4,cc]) Phi8bar[kk] Phi8[ll],
+  FlavorExpand->{SU2D8,SU2W8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

@@ -120,6 +120,7 @@ SMEFT$Dim8FourLeptonOperators = {
     "e4phi2",     (* RR RR *)
     "l2e2phi2n1", (* LL RR *)
     "l2e2phi2n2", (* LL RR *)
+    "l2e2phi2n3", (* LR LR *)
     (* class 19 *)
     "l4Wn1",      (* LL LL *)
     "l2e2Wn1",    (* LL RR *)
@@ -129,9 +130,32 @@ SMEFT$Dim8FourLeptonOperators = {
 
 SMEFT$Dim8FourQuarkOperators = {
     (* class 18 *)
+    "q4phi2n1",   (* LL LL *)
+    "q4phi2n2",   (* LL LL *)
+    "q4phi2n3",   (* LL LL *)
+    "q4phi2n5",   (* LL LL *)
     "u4phi2",     (* RR RR *)
+    "d4phi2",     (* RR RR *)
+    "u2d2phi2n1", (* RR RR *)
+    "u2d2phi2n2", (* RR RR *)
+    "q2u2phi2n1", (* LL RR *)
+    "q2u2phi2n2", (* LL RR *)
+    "q2u2phi2n3", (* LL RR *)
+    "q2u2phi2n4", (* LL RR *)
+    "q2d2phi2n1", (* LL RR *)
+    "q2d2phi2n2", (* LL RR *)
+    "q2d2phi2n3", (* LL RR *)
+    "q2d2phi2n4", (* LL RR *)
     "q2udphi2n1", (* LR LR *)
     "q2udphi2n2", (* LR LR *)
+    "q2udphi2n3", (* LR LR *)
+    "q2udphi2n4", (* LR LR *)
+    "q2u2phi2n5", (* LR LR *)
+    "q2u2phi2n6", (* LR LR *)
+    "q2d2phi2n5", (* LR LR *)
+    "q2d2phi2n6", (* LR LR *)
+    "q2udphi2n5", (* LR RL *)
+    "q2udphi2n6", (* LR RL *)
     (* class 19 *)
     "u4Gn1",      (* RR RR *)
     "q2u2Gn5",    (* LL RR *)
@@ -140,8 +164,29 @@ SMEFT$Dim8FourQuarkOperators = {
 
 SMEFT$Dim8TwoQuarkTwoLeptonOperators = {
     (* class 18 *)
-    "leqdphi2n1", (* LR LR *)
-    "leqdphi2n2", (* LR LR *)
+    "leqdphi2n1", (* LR RL *)
+    "leqdphi2n2", (* LR RL *)
+    "l2udphi2",   (* LR RL *)
+    "lequphi2n5", (* LR RL *)
+    "l2q2phi2n1", (* LL LL *)
+    "l2q2phi2n2", (* LL LL *)
+    "l2q2phi2n3", (* LL LL *)
+    "l2q2phi2n4", (* LL LL *)
+    "l2q2phi2n5", (* LL LL *)
+    "e2u2phi2",   (* RR RR *)
+    "e2d2phi2",   (* RR RR *)
+    "l2u2phi2n1", (* LL RR *)
+    "l2u2phi2n2", (* LL RR *)
+    "l2d2phi2n1", (* LL RR *)
+    "l2d2phi2n2", (* LL RR *)
+    "q2e2phi2n1", (* LL RR *)
+    "q2e2phi2n2", (* LL RR *)
+    "lequphi2n1", (* LR LR *)
+    "lequphi2n2", (* LR LR *)
+    "lequphi2n3", (* LR LR *)
+    "lequphi2n4", (* LR LR *)
+    "leqdphi2n3", (* LR LR *)
+    "leqdphi2n4", (* LR LR *)
     (* class 19 *)
     "ledqGn1",    (* LR RL *)
     (* class 21 *)
@@ -151,7 +196,16 @@ SMEFT$Dim8TwoQuarkTwoLeptonOperators = {
 
 SMEFT$Dim8FourFermionBLVOperators = {
     (* class 18 *)
-     "lqudphi2n1"
+     "lqudphi2n1",
+     "lqudphi2n2",
+     "eq2uphi2",
+     "lq3phi2n1",
+     "lq3phi2n2",
+     "eu2dphi2",
+     "lq3phi2n3",
+     "lqu2phi2",
+     "lqd2phi2",
+     "eq2dphi2"
     (* class 19 *)
     (* class 20 *)
     (* class 21 *)
@@ -822,19 +876,77 @@ SMEFT$TensorWC = {
               {"qdphi3D2n5", {VDL,VDR},False,1},
               {"qdphi3D2n6", {VDL,VDR},False,1},
               (* dim8 4-fermion *)
-              (* class 18 *)
+              (* class 18 - (LR)(RL) phi^2 + h.c. *)
               {"leqdphi2n1", {VLL,VLR,VDR,VDL},False,9},
               {"leqdphi2n2", {VLL,VLR,VDR,VDL},False,9},
+              {"l2udphi2",   {VLL,VDR,VUR,VLL},False,9},
+              {"lequphi2n5", {VLL,VLR,VUR,VUL},False,9},
+              {"q2udphi2n5", {VDL,VDR,VUR,VUL},False,9},
+              {"q2udphi2n6", {VDL,VDR,VUR,VUL},False,9},
+              (* class 18 - (LL)(LL) phi^2 *)
               {"l4phi2n1",   {VLL,VLL,VLL,VLL},False,4},
               {"l4phi2n2",   {VLL,VLL,VLL,VLL},False,9},
+              {"q4phi2n1",   {VDL,VDL,VDL,VDL},False,4},
+              {"q4phi2n2",   {VDL,VDL,VDL,VDL},False,9},
+              {"q4phi2n3",   {VDL,VDL,VDL,VDL},False,4},
+              {"l2q2phi2n1", {VLL,VLL,VDL,VDL},False,5},
+              {"l2q2phi2n2", {VLL,VLL,VDL,VDL},False,5},
+              {"l2q2phi2n3", {VLL,VLL,VDL,VDL},False,5},
+              {"l2q2phi2n4", {VLL,VLL,VDL,VDL},False,5},
+              {"l2q2phi2n5", {VLL,VLL,VDL,VDL},False,5},
+              {"q4phi2n5",   {VDL,VDL,VDL,VDL},False,9},
+              (* class 18 - (RR)(RR) phi^2 *)
 	      {"e4phi2",     {VLR,VLR,VLR,VLR},False,6},
               {"u4phi2",     {VUR,VUR,VUR,VUR},False,4},
+              {"d4phi2",     {VDR,VDR,VDR,VDR},False,4},
+              {"e2u2phi2",   {VLR,VLR,VUR,VUR},False,5},
+              {"e2d2phi2",   {VLR,VLR,VDR,VDR},False,5},
+              {"u2d2phi2n1", {VUR,VUR,VDR,VDR},False,5},
+              {"u2d2phi2n2", {VUR,VUR,VDR,VDR},False,5},
+              (* class 18 - (LL)(RR) phi^2 *)
               {"l2e2phi2n1", {VLL,VLL,VLR,VLR},False,5},
               {"l2e2phi2n2", {VLL,VLL,VLR,VLR},False,5},
+              {"l2u2phi2n1", {VLL,VLL,VUR,VUR},False,5},
+              {"l2u2phi2n2", {VLL,VLL,VUR,VUR},False,5},
+              {"l2d2phi2n1", {VLL,VLL,VDR,VDR},False,5},
+              {"l2d2phi2n2", {VLL,VLL,VDR,VDR},False,5},
+              {"q2e2phi2n1", {VDL,VDL,VLR,VLR},False,5},
+              {"q2e2phi2n2", {VDL,VDL,VLR,VLR},False,5},
+              {"q2u2phi2n1", {VDL,VDL,VUR,VUR},False,5},
+              {"q2u2phi2n2", {VDL,VDL,VUR,VUR},False,5},
+              {"q2u2phi2n3", {VDL,VDL,VUR,VUR},False,5},
+              {"q2u2phi2n4", {VDL,VDL,VUR,VUR},False,5},
+              {"q2d2phi2n1", {VDL,VDL,VDR,VDR},False,5},
+              {"q2d2phi2n2", {VDL,VDL,VDR,VDR},False,5},
+              {"q2d2phi2n3", {VDL,VDL,VDR,VDR},False,5},
+              {"q2d2phi2n4", {VDL,VDL,VDR,VDR},False,5},
+              (* class 18 - (LR)(LR) phi^2 + h.c. *)
               {"q2udphi2n1", {VUL,VUR,VDL,VDR},False,9},
               {"q2udphi2n2", {VUL,VUR,VDL,VDR},False,9},
+              {"q2udphi2n3", {VUL,VUR,VDL,VDR},False,9},
+              {"q2udphi2n4", {VUL,VUR,VDL,VDR},False,9},
+              {"lequphi2n1", {VLL,VLR,VUL,VUR},False,9},
+              {"lequphi2n2", {VLL,VLR,VUL,VUR},False,9},
+              {"lequphi2n3", {VLL,VLR,VUL,VUR},False,9},
+              {"lequphi2n4", {VLL,VLR,VUL,VUR},False,9},
+              {"l2e2phi2n3", {VLL,VLR,VLL,VLR},False,9},
+              {"leqdphi2n3", {VLL,VLR,VDL,VDR},False,9},
+              {"leqdphi2n4", {VLL,VLR,VDL,VDR},False,9},
+              {"q2u2phi2n5", {VUL,VUR,VUL,VUR},False,9},
+              {"q2u2phi2n6", {VUL,VUR,VUL,VUR},False,9},
+              {"q2d2phi2n5", {VDL,VDR,VDL,VDR},False,9},
+              {"q2d2phi2n6", {VDL,VDR,VDL,VDR},False,9},
               (* class 18 BLV *)
               {"lqudphi2n1", {VDR,VUR,VDL,VLL},True,7},
+              {"lqudphi2n2", {VDR,VUR,VDL,VLL},True,9},
+              {"eq2uphi2",   {VDL,VDL,VUR,VLR},True,9},
+              {"lq3phi2n1",  {VDL,VDL,VDL,VLL},True,9},
+              {"lq3phi2n2",  {VDL,VDL,VDL,VLL},True,9},
+              {"eu2dphi2",   {VDR,VUR,VUR,VLR},True,9},
+              {"lq3phi2n3",  {VDL,VDL,VDL,VLL},True,9},
+              {"lqu2phi2",   {VLL,VDL,VUR,VUR},True,9},
+              {"lqd2phi2",   {VLL,VDL,VDR,VDR},True,9},
+              {"eq2dphi2",   {VLR,VDR,VDL,VDL},True,9},
               (* class 19 *)
               {"l4Wn1",      {VLL,VLL,VLL,VLL},False,9},
               {"u4Gn1",      {VUR,VUR,VUR,VUR},False,9},

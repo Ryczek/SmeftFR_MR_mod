@@ -298,12 +298,29 @@ Scan[
   ]
 ];
 (* Load dim8 4-fermion operators *)
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "218_psi4phi2.fr"}] ];
+(* Load dim8 class-218 (psi^4 H^2) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "218_psi4phi2", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "218_psi4phi2", # <> ".fr"}] ] &
+  ]
+];
 Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "219_psi4X.fr"}] ];
 Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "220_psi4phiD.fr"}] ];
 Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "221_psi4D2.fr"}] ];
 (* Load dim8 4-fermion BLV operators *)
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "218BL_psi4phi2.fr"}] ];
+(* Load dim8 class-218 (psi^4 H^2) BLV operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "218BL_psi4phi2", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "218BL_psi4phi2", # <> ".fr"}] ] &
+  ]
+];
+Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "219BL_psi4X.fr"}] ];
 Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "219BL_psi4X.fr"}] ];
 Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "220BL_psi4phiD.fr"}] ];
 Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "221BL_psi4D2.fr"}] ];

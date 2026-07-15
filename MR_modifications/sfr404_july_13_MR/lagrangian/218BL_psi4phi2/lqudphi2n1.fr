@@ -1,7 +1,5 @@
-(* SmeftFR v4.0 package *)
-(* dim-8 operators from 2005.00059 - psi^4H^2 class, BL violating operators *)
-
-(* Operators implemented: {lqudphi2n1}  *)
+(* SmeftFR v4.0 - class 218 (psi^4 H^2) BLV operator: lqudphi2n1 *)
+(* WARNING: baryon and lepton number violating! *)
 
 (* Q_lqudphi2^(1) = eps_abc eps_jk (d_p^a C u_r^b)(q_s^{j c} C l_t^k)(H^\dagger H) + h.c. *)
 LQlqudphi2n1 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,aa,bb,cc,jj,kk,tmp,aux},

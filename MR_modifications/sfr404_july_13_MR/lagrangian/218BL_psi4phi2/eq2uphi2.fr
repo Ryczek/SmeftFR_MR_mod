@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 218 (psi^4 H^2) BLV operator: eq2uphi2 *)
+(* WARNING: baryon and lepton number violating! *)
+
+(* Q_eq2uphi2 = eps_abc eps_jk (q_p^{j a} C q_r^{m b})(u_s^c C e_t)(H^dag_m H^k) + h.c. *)
+LQeq2uphi2 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,aa,bb,cc,jj,kk,mm,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "eq2uphi2"][ff1,ff2,ff3,ff4]
+  Eps[aa,bb,cc] Eps[jj,kk]
+  HC[CC[QL8][sp1,jj,ff1,aa]].Ga[0,sp1,sp2].QL8[sp2,mm,ff2,bb]
+  HC[CC[uR8][sp3,ff3,cc]].Ga[0,sp3,sp4].lR8[sp4,ff4]
+  Phi8bar[mm] Phi8[kk],
+  FlavorExpand->{SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

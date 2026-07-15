@@ -230,6 +230,90 @@ For an operator from class `XX` in 2005.00059, three places must be edited:
   `le -> {VLL,VLR}`, `qu -> {VUL,VUR}`, `qd -> {VDL,VDR}` (same as
   classes 9/10/12).
 
+## Four-fermion conventions (class 18, applicable to 19-21)
+
+- **Class-18 tables**: the class spans `tab:smeft8class_18_21` (Table 10:
+  `(LR)(RL) H^2 + h.c.` block, 6 ops, + the `18(Bslash)` BLV block,
+  10 ops; the class-21 blocks of that table are NOT class 18) and
+  `tab:smeft8class_18` (Table 11: `(LL)(LL)` 11, `(RR)(RR)` 7,
+  `(LL)(RR)` 16, `(LR)(LR) + h.c.` 15). Total 65 operators.
+  NB: the paper numbering has NO `Q_{q^4H^2}^{(4)}` — the `q4phi2`
+  family is n1, n2, n3, n5 (n4 was removed in a paper revision); do not
+  "fix" the gap.
+- **Per-operator layout**: `lagrangian/218_psi4phi2/<name>.fr` (55 ops)
+  and — BLV operators marked by a separate directory —
+  `lagrangian/218BL_psi4phi2/<name>.fr` (10 ops, header comment
+  `BLV operator` + warning line). Both get their own
+  `Scan/Select/FileExistsQ` loader in `code/smeft_io.m`. BLV names are
+  registered in `SMEFT$Dim8FourFermionBLVOperators` (NOT in the
+  FourQuark/TwoQuarkTwoLepton/FourLepton lists) and carry `True` as the
+  3rd `SMEFT$TensorWC` entry.
+- **4F registration lists**: non-BLV names split by field content into
+  `SMEFT$Dim8FourLeptonOperators` / `SMEFT$Dim8FourQuarkOperators` /
+  `SMEFT$Dim8TwoQuarkTwoLeptonOperators` (e.g. `e2u2phi2` is
+  two-quark-two-lepton, `u2d2phi2*` is four-quark).
+- **Gamma currents**: two bilinears joined by Dot, one Ga per current:
+  `(F8bar[sp1,..,ff1].F8[sp2,..,ff2]).(G8bar[sp3,..,ff3].G8[sp4,..,ff4])
+  Ga[mu,sp1,sp2] Ga[mu,sp3,sp4]` (cf. authors' `l4phi2n1`). Scalar
+  bilinears reuse one `sp` per bilinear; tensor bilinears use 4 spinor
+  indices with `Sigma[mu,nu,sp1,sp2] Sigma[mu,nu,sp3,sp4]` (cf. dim-6
+  `lequ3`).
+- **Colour-octet pair**: `T8[aa,cc1,dd1] T8[aa,cc2,dd2]` with barred
+  fields carrying `cc1/cc2` and unbarred `dd1/dd2` (cf. dim-6 `quqd8`).
+- **`(tau^I eps)_{jk} x (H^dag tau^I H)` idiom** (authors' `q2udphi2n2`
+  template): `tmp = 2 Ta8[aa,mm,nn] 2 Ta8[aa,jj,ll] // SU2Simplify;`
+  then `tmp Eps[ll,kk] Phi8bar[mm] Phi8[nn]` with the first bilinear
+  carrying `jj`, the second `kk` — the adjoint index is eliminated
+  before ExpandIndices, so `FlavorExpand->{SU2D8}` suffices. Used for
+  all `(tau eps)`/`(eps tau)` LR-LR and BLV variants (implement the
+  eps/tau index order literally per table).
+- **FlavorExpand for 4F**: no derivatives/field strengths in class 18,
+  so: no `Ta8` -> `{SU2D8}` (with `(H^dag H)` pre-expanded as separate
+  `tmp`); explicit `2 Ta8 ... 2 Ta8` pairs -> single-step
+  `{SU2D8,SU2W8}` (authors' `l4phi2n2`/`l2e2phi2n2` style); the
+  `eps^{IJK}` three-`Ta8` ops (`l2q2phi2n5`, `q4phi2n5`) -> two-step
+  `{SU2D8}` then `{SU2W8}` (authors' `l4Wn1` style). Colour indices
+  never need FlavorExpand.
+- **(LR)(RL) `Htilde^dag` bilinears** (`l2udphi2`, `lequphi2n5`,
+  `q2udphi2n5/n6`): `(Fbar f H)` -> `Phi8[ii]` on the barred doublet
+  index; `(Htilde^dag ubar f)` -> `Eps[jj,kk] Phi8[kk]` on the unbarred
+  doublet index (same Htilde^dag rule as classes 13/15).
+- **`(qbar u Htilde)(qbar u Htilde)`** (`q2u2phi2n5/n6`): each Htilde as
+  `Eps[ii,kk] HC[Phi8[kk]]` (classic idiom).
+- **BLV bilinear** `(psi1 C psi2)`:
+  `HC[CC[X8][sp1,(doublet,)ff,(colour)]].Ga[0,sp1,sp2].Y8[sp2,...]`,
+  bilinears multiplied (not dotted), colour `Eps[aa,bb,cc]`
+  (cf. dim-6 `11_BL.fr` and authors' `lqudphi2n1`). BLV Higgs factors
+  are UN-barred: `H^k H^n -> Phi8[kk] Phi8[nn]`, `Htilde^k ->
+  Eps[kk,ww] HC[Phi8[ww]]`; `(H^dag_m H^k) -> Phi8bar[mm] Phi8[kk]`.
+  Paper typos: the `C` is missing in the first bilinears of
+  `Q_{lqd^2H^2}` and `Q_{eq^2dH^2}` in Table 10 — it is implied
+  (noted in the file headers).
+- **Class-18 Hermiticity / Straub classes / rotations**:
+  - `(LL)(LL)`, `(RR)(RR)`, `(LL)(RR)` blocks: Hermitian, plain `aux`,
+    no HC. Straub classes follow the dim-6 analogues: identical
+    currents -> `4` (`ll/qq/uu/dd`-like: `q4phi2n1/n3`, `d4phi2`),
+    `e4phi2` -> `6` (`ee`-like), two independent currents -> `5`
+    (`lq/qe/lu/ld/eu/ed/qu/qd/ud`-like, incl. the `eps^{IJK}`
+    `l2q2phi2n5`); `q4phi2n2` -> `9` mirroring the authors' choice for
+    `l4phi2n2` (tau on only one of two identical currents), and
+    `q4phi2n5` -> `9` (`eps^{IJK}` over identical currents).
+  - `(LR)(LR)`, `(LR)(RL)` and ALL BLV operators: `+ h.c.` ->
+    `(aux + HC[aux])`, Straub class `9`.
+  - Rotations: 4 entries in field order p,r,s,t. Dim-8 convention for
+    `q_L`: pick the V matching the partner in the bilinear — `q` paired
+    with `u` -> `VUL` (`q2udphi2*` = `{VUL,VUR,VDL,VDR}` per the
+    pre-existing samples, `lequphi2n1-4` = `{VLL,VLR,VUL,VUR}` — NB
+    differs from dim-6 `lequ1/quqd1` which use `VDL` there); Hermitian
+    `(qbar ... q)` currents -> `{VDL,VDL}`; BLV rows follow the dim-6
+    BLV analogues (`duq`, `qqu`, `duu`, `qqq` patterns).
+  - **FLAGGED, not changed**: pre-existing `lqudphi2n1` is registered
+    with Straub class `7` (= `qque`-like, symmetric in the first two
+    flavour indices), but its structure `eps_abc (d C u)(q C l)` has NO
+    p<->r symmetry and the identical dim-6 `duq` uses class `9`. Kept
+    as the authors registered it; `lqudphi2n2` (same field content)
+    uses `9`. Maintainer should confirm/fix `n1`.
+
 ## Progress log
 
 ### 2026-06-16 (MR, AI-assisted) — Class 9 (psi^2 X^2 H + h.c.), 1st column of 2005.00059
@@ -540,4 +624,68 @@ TODO / notes for future work:
   operators (`DC[FS[...]]`) especially deserve a runtime check, as they
   are the first use of a covariant derivative of a field strength in
   this codebase.
-- Classes 18-21 (4-fermion) still partially implemented in flat files.
+- Classes 19-21 (4-fermion) still partially implemented in flat files
+  (class 18 done, see 2026-07-15 entry).
+
+### 2026-07-15 (MR, AI-assisted) — Class 18 complete (psi^4 H^2, Tables 10-11 of 2005.00059)
+
+Implemented all 65 class-18 operators as per-operator files (generated
+from scratchpad `gen_class18.py`, audited 1:1 against the paper):
+
+- **B/L-conserving** — `lagrangian/218_psi4phi2/`, 55 operators
+  (45 new + 10 pre-existing moved with byte-identical bodies:
+  `leqdphi2n1/n2`, `l4phi2n1/n2`, `e4phi2`, `u4phi2`, `l2e2phi2n1/n2`,
+  `q2udphi2n1/n2`):
+  - `(LR)(RL) + h.c.` (Table 10): `leqdphi2n1/n2` (pre-existing),
+    `l2udphi2`, `lequphi2n5`, `q2udphi2n5/n6`.
+  - `(LL)(LL)` (Table 11): `l4phi2n1/n2`, `q4phi2n1/n2/n3/n5`,
+    `l2q2phi2n1..n5`.
+  - `(RR)(RR)`: `e4phi2`, `u4phi2`, `d4phi2`, `e2u2phi2`, `e2d2phi2`,
+    `u2d2phi2n1/n2`.
+  - `(LL)(RR)`: `l2e2phi2n1/n2`, `l2u2phi2n1/n2`, `l2d2phi2n1/n2`,
+    `q2e2phi2n1/n2`, `q2u2phi2n1..n4`, `q2d2phi2n1..n4`.
+  - `(LR)(LR) + h.c.`: `q2udphi2n1..n4`, `lequphi2n1..n4`,
+    `l2e2phi2n3`, `leqdphi2n3/n4`, `q2u2phi2n5/n6`, `q2d2phi2n5/n6`.
+- **BLV (marked)** — `lagrangian/218BL_psi4phi2/`, 10 operators
+  (9 new + pre-existing `lqudphi2n1` moved byte-identical); all headers
+  carry a BLV warning line; all `+ h.c.`: `lqudphi2n1/n2`, `eq2uphi2`,
+  `lq3phi2n1/n2/n3`, `eu2dphi2`, `lqu2phi2`, `lqd2phi2`, `eq2dphi2`.
+  (Below-dashed-line ops `lq3phi2n3`, `lqu2phi2`, `lqd2phi2`,
+  `eq2dphi2` — and non-BLV `q4phi2n5` — vanish for one generation;
+  implemented literally, class 9 keeps the redundant entries.)
+
+Files modified (same pattern as classes 9-17):
+- `code/smeft_io.m` — flat `Get`s for `218_psi4phi2.fr` /
+  `218BL_psi4phi2.fr` replaced by on-demand `Scan/Select/FileExistsQ`
+  loaders; the two flat files deleted.
+- `code/smeft_variables.m` — 55 non-BLV names distributed over
+  `SMEFT$Dim8FourLeptonOperators` (6) / `SMEFT$Dim8FourQuarkOperators`
+  (26) / `SMEFT$Dim8TwoQuarkTwoLeptonOperators` (23) and 10 BLV names
+  in `SMEFT$Dim8FourFermionBLVOperators` (paper-table order);
+  65 `SMEFT$TensorWC` rows per the Hermiticity/Straub/rotation rules in
+  the conventions section above (BLV rows `True`).
+- `smeft_fr_init.m` — Class 18 reference lists (BL conserving +
+  BL violating) completed.
+
+Verified: file inventory == paper Tables 10-11 == operator lists ==
+TensorWC rows == `LQ` symbols == WC strings (55+10, no duplicates);
+structural audit (HC exactly on the `(LR)(LR)`/`(LR)(RL)`/BLV ops,
+`T8` pairs exactly on the octet ops, `Sigma` exactly on
+`lequphi2n3/n4`/`leqdphi2n4`, `CC` exactly in the 10 BLV files,
+`Eps[aa,bb,cc]` exactly on `eps^{IJK}`+BLV(colour) ops, `Ta8` counts
+0/2/3 per family, no explicit `I` — the class has none); Module
+variable lists match used indices (only pre-existing `q2udphi2n2`
+carries an unused `ii`, kept byte-identical); all 65 files `Get`
+cleanly in wolframscript and define their `LQ<name>` symbols; edited
+`.m` files parse (`smeft_fr_init.m`/`smeft_io.m` via
+`ReadList[..,Hold[Expression]]`); all 11 pre-existing bodies
+diff-checked against the flat files before deletion.
+
+Status: two-fermion classes 9-17 AND four-fermion class 18 fully
+implemented as per-operator files. Remaining: classes 19-21
+(4-fermion), still sample-only in flat files 219/220/221(BL).
+Runtime TODO: no `SMEFTInitializeModel` run yet — suggested class-18
+smoke subset: `OpList8 = {"l2q2phi2n5", "q4phi2n5", "q2udphi2n4",
+"lequphi2n3", "q2u2phi2n6", "l2udphi2", "lqudphi2n2", "lq3phi2n3",
+"lqu2phi2", "eq2dphi2"}` (covers eps^IJK, tau-eps SU2Simplify, T8
+pairs, Htilde/Htilde^dag idioms and all BLV structure types).

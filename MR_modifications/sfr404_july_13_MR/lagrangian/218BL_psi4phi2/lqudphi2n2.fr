@@ -1,0 +1,17 @@
+(* SmeftFR v4.0 - class 218 (psi^4 H^2) BLV operator: lqudphi2n2 *)
+(* WARNING: baryon and lepton number violating! *)
+
+(* Q_lqudphi2^(2) = eps_abc (eps tau^I)_jk (d_p^a C u_r^b)(q_s^{j c} C l_t^k)(H^dag tau^I H) + h.c. *)
+LQlqudphi2n2 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,aa,bb,cc,jj,kk,ll,mm,nn,oo,tmp,aux},
+
+tmp = 2 Ta8[ll,nn,oo] 2 Ta8[ll,mm,kk] // SU2Simplify;
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "lqudphi2n2"][ff1,ff2,ff3,ff4]
+  Eps[aa,bb,cc] Eps[jj,mm] tmp
+  HC[CC[dR8][sp1,ff1,aa]].Ga[0,sp1,sp2].uR8[sp2,ff2,bb]
+  HC[CC[QL8][sp3,jj,ff3,cc]].Ga[0,sp3,sp4].LL8[sp4,kk,ff4]
+  Phi8bar[nn] Phi8[oo],
+  FlavorExpand->{SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];
