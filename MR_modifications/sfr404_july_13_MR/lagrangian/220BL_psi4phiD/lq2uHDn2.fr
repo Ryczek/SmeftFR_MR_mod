@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 220 (psi^4 H D) BLV operator: lq2uHDn2 *)
+(* WARNING: baryon and lepton number violating! *)
+
+(* Q_lq2uHD^(2) = i eps_{a b c} eps_{kn} eps_{jm} D_mu H^{n dag} (q_p^{m a} C ga^mu u_r^b) (q_s^{j c} C l_t^k) + h.c. *)
+LQlq2uHDn2 := Module[{sp1,sp2,sp3,sp4,sp5,ff1,ff2,ff3,ff4,jj,kk,mm,nn,aa,bb,cc,mu,aux},
+
+aux = Eps[aa,bb,cc] Eps[kk,nn] Eps[jj,mm] Ga[mu,sp2,sp3] DC[Phi8bar[nn],mu]
+  HC[CC[QL8][sp1,mm,ff1,aa]].Ga[0,sp1,sp2].uR8[sp3,ff2,bb]
+  HC[CC[QL8][sp4,jj,ff3,cc]].Ga[0,sp4,sp5].LL8[sp5,kk,ff4];
+
+aux = I ExpandIndices[ ToExpression[SMEFT$WB <> "lq2uHDn2"][ff1,ff2,ff3,ff4] aux,
+      FlavorExpand->{SU2W8,SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

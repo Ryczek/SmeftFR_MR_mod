@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 220 (psi^4 H D) BLV operator: equdHDn3 *)
+(* WARNING: baryon and lepton number violating! *)
+
+(* Q_equdHD^(3) = i eps_{a b c} eps_{jk} (q_p^{j a} C ga^mu u_r^b) (d_s^c C D_mu e_t) H^k + h.c. *)
+LQequdHDn3 := Module[{sp1,sp2,sp3,sp4,sp5,ff1,ff2,ff3,ff4,jj,kk,aa,bb,cc,mu,aux},
+
+aux = Eps[aa,bb,cc] Eps[jj,kk] Ga[mu,sp2,sp3] Phi8[kk]
+  HC[CC[QL8][sp1,jj,ff1,aa]].Ga[0,sp1,sp2].uR8[sp3,ff2,bb]
+  HC[CC[dR8][sp4,ff3,cc]].Ga[0,sp4,sp5].DC[lR8[sp5,ff4],mu];
+
+aux = I ExpandIndices[ ToExpression[SMEFT$WB <> "equdHDn3"][ff1,ff2,ff3,ff4] aux,
+      FlavorExpand->{SU2W8,SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

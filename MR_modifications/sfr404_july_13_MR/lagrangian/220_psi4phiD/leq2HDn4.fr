@@ -1,0 +1,12 @@
+(* SmeftFR v4.0 - class 220 (psi^4 H D) operator: leq2HDn4 *)
+
+(* Q_leq2HD^(4) = i (lbar_p ga^mu tau^I q_r^al) [(qbar_{s al} e_t) tau^I D_mu H] + h.c. *)
+LQleq2HDn4 := Module[{sp1,sp2,sp3,ff1,ff2,ff3,ff4,co1,ii,jj,kk,ll,aa,mu,aux},
+
+aux = I ExpandIndices[ ToExpression[SMEFT$WB <> "leq2HDn4"][ff1,ff2,ff3,ff4]
+  (LL8bar[sp1,ii,ff1].QL8[sp2,jj,ff2,co1]).(QL8bar[sp3,kk,ff3,co1].lR8[sp3,ff4])
+  Ga[mu,sp1,sp2] 2 Ta8[aa,ii,jj] 2 Ta8[aa,kk,ll] DC[Phi8[ll],mu],
+  FlavorExpand->{SU2W8,SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

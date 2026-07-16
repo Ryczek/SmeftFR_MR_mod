@@ -1,0 +1,16 @@
+(* SmeftFR v4.0 - class 221 (psi^4 D^2) operator: lequD2n2 *)
+
+(* Q_lequD2^(2) = D_mu(lbar_p^j u_r^al) eps_{jk} D^mu(qbar_{s al}^k e_t) + h.c. *)
+LQlequD2n2 := Module[{sp1,sp2,ff1,ff2,ff3,ff4,cc,jj,kk,mu,tmp1,tmp2,aux},
+
+tmp1 = DC[LL8bar[sp1,jj,ff1],mu].uR8[sp1,ff2,cc] +
+  LL8bar[sp1,jj,ff1].DC[uR8[sp1,ff2,cc],mu];
+
+tmp2 = DC[QL8bar[sp2,kk,ff3,cc],mu].lR8[sp2,ff4] +
+  QL8bar[sp2,kk,ff3,cc].DC[lR8[sp2,ff4],mu];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "lequD2n2"][ff1,ff2,ff3,ff4]
+  Eps[jj,kk] tmp1 tmp2, FlavorExpand->{SU2W8,SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

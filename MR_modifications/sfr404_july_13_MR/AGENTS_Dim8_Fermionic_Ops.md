@@ -314,6 +314,183 @@ For an operator from class `XX` in 2005.00059, three places must be edited:
     as the authors registered it; `lqudphi2n2` (same field content)
     uses `9`. Maintainer should confirm/fix `n1`.
 
+## Class-19 (psi^4 X) and class-21 (psi^4 D^2) conventions
+
+- **Class-19 tables**: Table 12 (`tab:smeft8class_19_LL_RR`, 30+30),
+  Table 13 (`tab:smeft8class_19_LLRR`, 54), Table 14
+  (`tab:smeft8class_19_LRRL_LRLR`, 6+21, all `+ h.c.`), Table 15
+  (`tab:smeft8class_19_slashedB`, 28 BLV, all `+ h.c.`) — 169 total.
+  Class-21 Table-10 blocks: `(LR)(RL) D^2 + h.c.` (`leqdD2n1/n2`) and
+  `21(Bslash) psi^4 D^2 + h.c.` (6 BLV).
+- **Layout**: `lagrangian/219_psi4X/`, `219BL_psi4X/`, `221_psi4D2/`,
+  `221BL_psi4D2/` with the usual on-demand loaders in `smeft_io.m`;
+  BLV marked by the `BL` directory + header warning + `True` rows, as
+  for class 18.
+- **JJX (Tables 12/13) template** (Hermitian, no HC): two gamma
+  currents dotted, one `Ga` per current with *distinct* Lorentz indices
+  contracting the field strength:
+  `(cur1).(cur2) Ga[mu,sp1,sp2] Ga[nu,sp3,sp4] <group factors>
+  FS[X8,mu,nu,adj]`; dual X -> `Eps[mu,nu,al,be]/2 HC[FS[X8,al,be,adj]]`
+  (in every family the even-n operator is the dual partner of the
+  preceding odd-n one). Colour fundamental indices are named `co1..co4`
+  (class-14 `co` rule — avoids the SU(2)-adjoint `cc` of the eps^{IJK}
+  ops).
+- Group-factor dictionary (JJX): tau contracting FS[Wi8] ->
+  `2 Ta8[aa,..]  FS[Wi8,mu,nu,aa]`; tau-tau (X=G/B) -> shared adjoint
+  `2 Ta8[bb,..] 2 Ta8[bb,..]`; `T8[aa,..] FS[Gl8,mu,nu,aa]`;
+  T8-pair (X=W/B) -> `T8[vv,..] T8[vv,..]`;
+  `f`/`d`-type -> `T8[vv,..] T8[ww,..] f|dSUN[vv,ww,aa] FS[Gl8,..,aa]`;
+  `eps^{IJK}` -> `Eps[aa,bb,cc] 2 Ta8[aa,..] 2 Ta8[bb,..]
+  FS[Wi8,..,cc]`.
+- JJX FlavorExpand: `{SU2D8}` single-step when no `Ta8`; two-step
+  `{SU2D8}` then `{SU2W8}` when `Ta8` present (matches sample `l4Wn1`;
+  pre-existing `l2e2Wn1` keeps its single-step `{SU2D8,SU2W8}` body).
+- **Table-14 sigma bilinears**: scalar bilinear reuses one `sp`; sigma
+  bilinear gets two `sp`s with `Sigma[mu,nu,spA,spB]` outside the Dot
+  (cf. sample `ledqGn1`/`q2udGn1`). The double-sigma ops
+  (`...n5/n6` G, `...n3` W/B) use `Sigma[mu,ro,sp1,sp2]
+  Sigma[ro,nu,sp3,sp4] FS[X8,mu,nu,..]` (shared `ro`).
+  `(tau^I eps)_{jk}` with W: `2 Ta8[aa,jj,ll] Eps[ll,kk]
+  FS[Wi8,mu,nu,aa]` (no SU2Simplify — the adjoint contracts the field
+  strength; two-step expansion).
+- **BLV C-bilinear with sigma** (Table 15):
+  `HC[CC[X8][sp1,..]].Ga[0,sp1,sp2].Y8[sp3,..] Sigma[mu,nu,sp2,sp3]`
+  — the extra spinor index hangs between the `Ga[0]` and the second
+  field; scalar C-bilinears keep the classic 2-index form.
+- **BLV colour structures** (Table 15): `(T^A)_gamma^delta
+  eps_{delta alpha beta}` -> `T8[vv,cc,dd] Eps[dd,aa,bb]` (fields on
+  `aa,bb`; the third field on `cc`; gluon adjoint `vv`);
+  symmetrized `(T^A)_{(alpha}^delta eps_{beta) gamma delta}` ->
+  `1/2 (T8[vv,aa,dd] Eps[bb,cc,dd] + T8[vv,bb,dd] Eps[aa,cc,dd])`
+  — weight-1/2 symmetrization, consistent with the authors' treatment
+  of `D_(mu D_nu)` in class 11 (see caveat C3 below).
+- **Class-21 derivative idioms** (from the authors' `leqdD2n1/n2`):
+  `D_mu(bilinear)` -> Leibniz sum with `DC` on each field in turn
+  (`DC` directly on the barred/CC'd field);
+  `(F <->D_mu f)` -> `F.DC[f,mu] - DC[F,mu].f`; derivative on one
+  field only (`(q C D_mu q)`) -> single `DC` term, no Leibniz.
+  For C-bilinears: `DC[HC[CC[X8][..]],mu].Ga[0,..].Y8[..]` (see caveat
+  C4). FlavorExpand single-step `{SU2W8,SU2D8}` (samples' pattern —
+  `DC` contains W bosons).
+- **Class-19/21 registration**: ALL rows Straub class `9` — this
+  matches all 6 pre-existing class-19 sample rows and both `leqdD2`
+  rows (see caveat C5). BLV rows `True`. Rotations by field order;
+  `q2udG/W/B -> {VDL,VUR,VDL,VDR}` and `lequG/W/B -> {VLL,VLR,VDL,VUR}`
+  (dim-6-like, matching sample `q2udGn1` — see caveat C2); BLV
+  `lqud* -> {VDR,VUR,VDL,VLL}`, `eq2u* -> {VDL,VDL,VUR,VLR}`,
+  `lq3* -> {VDL,VDL,VDL,VLL}`, `eu2d*`: n-dependent field order —
+  `eu2dGn1`/`eu2dBn1` are `(d,u,u,e) -> {VDR,VUR,VUR,VLR}` but
+  `eu2dGn2/n3`, `eu2dBn2`, `eu2dD2n1/n2` are `(u,u,d,e) ->
+  {VUR,VUR,VDR,VLR}` (paper's field orders differ per operator!).
+
+## Class-20 (psi^4 H D) and class-21 Table-18 conventions
+
+- **Class-20 tables**: Table 16 (`tab:smeft8class_20_le_qu`, 20+24) and
+  Table 17 (`tab:smeft8class_20_qd_slashedB`, 24 + 16 BLV) — 84 total,
+  ALL with an explicit `i` prefactor and `+ h.c.` (implement literally:
+  `aux = I ExpandIndices[...]`, `(aux + HC[aux])`).
+- **Naming exception (like class 16)**: the sample `l3eHDn1` keeps the
+  paper's `H` -> ALL class-20 names use the `<fields>HDnN` pattern
+  (`le3HD`, `leq2HD`, ..., `eq3HD` with no `n` suffix — the paper name
+  has no superscript).
+- **Class-20 template** (from the sample): gamma current (sp1,sp2)
+  dotted with a scalar bracket bilinear (single sp3), `Ga[mu,sp1,sp2]`
+  contracting the Higgs derivative; FlavorExpand single-step
+  `{SU2W8,SU2D8}`. Bracket-Higgs dictionary:
+  `[... D_mu H] -> DC[Phi8[jj],mu]`; `[... tau^I D_mu H] ->
+  2 Ta8[aa,kk,ll] DC[Phi8[ll],mu]` (shared adjoint with the current's
+  `2 Ta8[aa,ii,jj]`); `D_mu Htilde -> Eps[jj,kk] DC[Phi8bar[kk],mu]`;
+  `tau^I D_mu Htilde -> 2 Ta8[aa,kk,ll] Eps[ll,mm] DC[Phi8bar[mm],mu]`;
+  underived `H`/`Htilde` (the `(F D_mu f)`/`(D_mu Fbar f)` bracket
+  variants) -> `Phi8[jj]` / `Eps[jj,kk] HC[Phi8[kk]]`. Derivative on a
+  bracket fermion: `DC` on that field inside the Dot (fbar side:
+  `DC[QL8bar[...],mu].uR8[...]`). Colour-crossed currents (`leq2HDn2`
+  etc.): the current's colour index `co1` crosses into the bracket.
+- **Class-20 BLV**: C-bilinears WITH `ga^mu`:
+  `HC[CC[X8][sp1,..]].Ga[0,sp1,sp2].Y8[sp3,..] Ga[mu,sp2,sp3]` (the
+  gamma hangs between Ga[0] and the field, same index-hopping as the
+  sigma case); second bilinear scalar (sp4,sp5). Higgs factors:
+  `D_mu H^dag -> DC[Phi8bar[jj],mu]`, `D_mu H^k -> DC[Phi8[kk],mu]`,
+  underived analogues without DC. Derivatives on C'd fields via
+  `DC[HC[CC[X8][..]],mu]` (as in class-21 BLV).
+- **Class-21 Table-18 template**: per current
+  `tmpN = DC[Fbar,nu].F + Fbar.DC[F,nu]` (the `D^nu(J)` Leibniz form,
+  n-odd operators) or `Fbar.DC[F,nu] - DC[Fbar,nu].F` (the `<->D^nu`
+  form, n-even operators and `q2udD2n3`/`lequD2n3`), combined as
+  `tmp1 tmp2 Ga[mu,sp1,sp2] Ga[mu,sp3,sp4]` (+ `2 Ta8`/`T8` pairs with
+  shared adjoint for the n3/n4 variants); `<->D^{I nu}` = tau-weighted
+  `<->D^nu` (tau is constant). (LR)(LR) `q2udD2*`/`lequD2*`: scalar
+  bilinears with `Eps[jj,kk]`, `+ h.c.`; all other Table-18 blocks
+  Hermitian (plain `aux`). FlavorExpand `{SU2W8,SU2D8}` single-step
+  (samples' pattern).
+- **Registration**: class 20/21 rows ALL Straub class `9`; class-20
+  rows all `False`+h.c. handled in the operator; BLV `True`. Rotations
+  by field order; class-20 `q` paired with `u`/`Htilde` -> `VUL`
+  (classes 9-18 convention, NOT the class-19/21 `VDL` choice — caveat
+  C2), `q` paired with `d`/plain `H` -> `VDL`; class-20 BLV `q` ->
+  `VDL` everywhere (dim-6 BLV convention). Watch the crossed-current
+  ops: rotations follow the actual field order (`leq2HDn2` =
+  `{VLL,VDL,VDL,VLR}` vs `n1` = `{VDL,VDL,VLL,VLR}`, etc.).
+
+## CAVEATS / open items (revisit later)
+
+- **C1 — `lqudphi2n1` Straub class 7**: pre-existing registration
+  looks wrong (no p<->r flavour symmetry; dim-6 `duq` = 9; its own
+  sibling `lqudphi2n2` = 9). Kept unchanged. Fixing it to 9 would only
+  *add* independent WC entries.
+- **C2 — `q_L` rotation convention differs between classes**:
+  class-18 samples register the `q` paired with `u` as `VUL`
+  (`q2udphi2n1 = {VUL,VUR,VDL,VDR}`, followed for `lequphi2n1-4` etc.),
+  while the class-19 sample uses dim-6-style `VDL`
+  (`q2udGn1 = {VDL,VUR,VDL,VDR}`, followed for all class-19 `q2ud*`,
+  `lequ*` and for class-21 `q2udD2*`, `lequD2n1/n3`). Class 20 follows
+  the class-18/two-fermion `VUL` convention for its `qu`-type (Htilde)
+  brackets. Physics differs only in CKM placement, but analogous
+  operators are treated inconsistently across classes. Unify if the
+  maintainer prefers one convention.
+- **C3 — symmetrization weight in BLV colour structures**: the paper
+  only says "(..) denotes symmetrization". Implemented
+  `(T^A)_{(alpha}^delta eps_{beta) gamma delta}` with an explicit
+  **1/2**, by analogy with the authors' class-11 `D_(mu D_nu)`
+  implementation (`I/2` prefactor absorbing the 1/2). If Murphy's
+  convention is weight-1, the WCs of `lqudGn3/n4`, `eq2uGn2`,
+  `lq3Gn2/n3`, `eu2dGn3` differ by a factor 2 (affects WC matching /
+  RGE comparisons, not the operator basis).
+- **C4 — `DC` acting on `HC[CC[...]]` fields**: first use in this
+  codebase (class-21 BLV files `lqudD2n1/n2`, `eq2uD2`, `lq3D2`,
+  `eu2dD2n1/n2`; also class-20 BLV `lu2dHDn2`, `lud2HDn2`,
+  `lq2uHDn3`, `lq2dHDn3`, `eq3HD`, `equ2HDn2`). Parses fine; FeynRules
+  should distribute `DC` over the conjugated field, but this NEEDS a
+  runtime (`SMEFTInitializeModel`) check before trusting the vertices.
+- **C5 — Straub class 9 everywhere in classes 19/21** (following the
+  authors' sample rows), although e.g. the Hermitian JJX operators
+  satisfy the same hermiticity constraints as their class-18 analogues
+  that were registered as 4/5/6. Class 9 is never wrong (no symmetry
+  imposed, applied later at numerical level if desired), but WC
+  counting is redundant relative to class 18's treatment.
+- **C6 — Sigma / gamma inside C-bilinears** (`...Ga[0,sp1,sp2].
+  Y8[sp3,..] Sigma[mu,nu,sp2,sp3]` in class-19 BLV, and the analogous
+  `Ga[mu,sp2,sp3]` in class-20 BLV): index-hopping across the Dot is
+  the same trick the authors use for ordinary sigma bilinears
+  (`lequ3`, `ledqGn1`), but its combination with `CC` fields is new
+  here — include one BLV sigma operator and one class-20 BLV gamma
+  operator in the runtime smoke test.
+- **C7 — paper-table quirks implemented literally**: no
+  `Q_{q^4H^2}^{(4)}` exists (q4phi2 = n1,n2,n3,n5); `lq3Wn2` has the
+  unusual SU(2) pairing `(eps tau^I)_{mj} eps_{kn}`; the `eu2d*` field
+  orders flip between operators (see rotations above); the missing `C`
+  in Table 10's `lqd2phi2`/`eq2dphi2` first bilinears is a typo
+  (implemented with `C`); the `ga^nu` in Table 16's
+  `Q_{leq^2HD}^{(6)}` is a typo for `ga^mu` (implemented contracted
+  with `D_mu`, noted in the file header); Table 5's
+  `Q_{q^2H^2D^2}^{(4)}` is a typo for `q^2H^2D^3` (implemented as
+  `q2phi2D3n4`, 2026-07-13 log).
+- **C8 — RESOLVED 2026-07-16**: classes 20 and 21 are now complete
+  (see the 2026-07-16 class-20/21 log entry). ALL 645 fermionic dim-8
+  operators of classes 9-21 of 2005.00059 are implemented as
+  per-operator files, verified 1:1 against the paper tables by an
+  automated name diff (sole mismatch = the `q2phi2D3n4` typo of C7).
+
 ## Progress log
 
 ### 2026-06-16 (MR, AI-assisted) — Class 9 (psi^2 X^2 H + h.c.), 1st column of 2005.00059
@@ -624,8 +801,10 @@ TODO / notes for future work:
   operators (`DC[FS[...]]`) especially deserve a runtime check, as they
   are the first use of a covariant derivative of a field strength in
   this codebase.
-- Classes 19-21 (4-fermion) still partially implemented in flat files
-  (class 18 done, see 2026-07-15 entry).
+- ALL fermionic dim-8 classes 9-21 are now complete (see caveat C8 and
+  the 2026-07-16 entries); no operators remain to implement. Open
+  items: the runtime smoke tests (caveats C4/C6) and the convention
+  questions C1-C3/C5.
 
 ### 2026-07-15 (MR, AI-assisted) — Class 18 complete (psi^4 H^2, Tables 10-11 of 2005.00059)
 
@@ -689,3 +868,148 @@ smoke subset: `OpList8 = {"l2q2phi2n5", "q4phi2n5", "q2udphi2n4",
 "lequphi2n3", "q2u2phi2n6", "l2udphi2", "lqudphi2n2", "lq3phi2n3",
 "lqu2phi2", "eq2dphi2"}` (covers eps^IJK, tau-eps SU2Simplify, T8
 pairs, Htilde/Htilde^dag idioms and all BLV structure types).
+
+### 2026-07-16 (MR, AI-assisted) — Class 19 complete (psi^4 X, Tables 12-15) + class-21 Table-10 blocks (psi^4 D^2)
+
+Implemented all 169 class-19 operators and the class-21 blocks of
+Table 10 as per-operator files (generated from scratchpad
+`gen_class19_jjx.py` / `gen_class19_lr_blv.py`, audited against the
+paper):
+
+- **Class 19 B/L-conserving** — `lagrangian/219_psi4X/`, 141 operators
+  (135 new + 6 pre-existing moved byte-identical: `l4Wn1`, `u4Gn1`,
+  `l2e2Wn1`, `q2u2Gn5`, `ledqGn1`, `q2udGn1`):
+  - Table 12 `(LL)(LL)X` (30): `l4Wn1/n2`, `q4Gn1-4`, `q4Wn1-4`,
+    `l2q2Gn1-4`, `l2q2Wn1-6` (n5/n6 = eps^{IJK}), `l2q2Bn1-4`,
+    `l4Bn1/n2`, `q4Bn1-4`.
+  - Table 12 `(RR)(RR)X` (30): `u4Gn1/n2`, `d4Gn1/n2`, `e2u2Gn1/n2`,
+    `e2u2Bn1/n2`, `e2d2Gn1/n2`, `e2d2Bn1/n2`, `u2d2Gn1-8` (n5/n6 = f,
+    n7/n8 = d), `u2d2Bn1-4`, `e4Bn1/n2`, `u4Bn1/n2`, `d4Bn1/n2`.
+  - Table 13 `(LL)(RR)X` (54): `l2e2W/B`, `l2u2G/W/B`, `l2d2G/W/B`,
+    `q2e2G/W/B` (n1/n2 each), `q2u2Gn1-8`, `q2u2Wn1-4`, `q2u2Bn1-4`,
+    `q2d2Gn1-8`, `q2d2Wn1-4`, `q2d2Bn1-4`.
+  - Table 14 `(LR)(RL)X + h.c.` (6): `ledqGn1/n2`, `ledqWn1/n2`,
+    `ledqBn1/n2`; `(LR)(LR)X + h.c.` (21): `q2udGn1-6`, `q2udWn1-3`,
+    `q2udBn1-3`, `lequGn1-3`, `lequWn1-3`, `lequBn1-3` (the last n of
+    each G-family pair and the W/B n3's are the double-sigma type).
+- **Class 19 BLV (marked)** — `lagrangian/219BL_psi4X/`, 28 new
+  operators (Table 15, all `+ h.c.`): `lqudGn1-4`, `lqudWn1/n2`,
+  `lqudBn1/n2`, `eq2uGn1/n2`, `eq2uWn1/n2`, `eq2uBn1/n2`, `lq3Gn1-4`,
+  `lq3Wn1-3`, `lq3Bn1/n2`, `eu2dGn1-3`, `eu2dBn1/n2`. The
+  symmetrized-colour ops (`lqudGn3/n4`, `eq2uGn2`, `lq3Gn2/n3`,
+  `eu2dGn3`) use the weight-1/2 idiom (caveat C3).
+- **Class 21 (Table-10 blocks)** — `lagrangian/221_psi4D2/` with the
+  two pre-existing `(LR)(RL)D^2` ops `leqdD2n1/n2` moved
+  byte-identical, and `lagrangian/221BL_psi4D2/` with 6 new BLV ops
+  (all `+ h.c.`): `lqudD2n1/n2`, `eq2uD2`, `lq3D2`, `eu2dD2n1/n2`
+  (first use of `DC` on `HC[CC[..]]` fields — caveat C4). Table-18
+  class-21 blocks intentionally NOT implemented (caveat C8).
+
+Files modified (same pattern as classes 9-18):
+- `code/smeft_io.m` — flat `Get`s for `219_psi4X(.fr)`, `219BL_psi4X`,
+  `221_psi4D2`, `221BL_psi4D2` replaced by on-demand loaders; the four
+  flat files deleted; also removed a duplicated
+  `Get[...219BL_psi4X.fr]` line accidentally introduced in the
+  2026-07-15 class-18 edit.
+- `code/smeft_variables.m` — 141 class-19 names distributed over
+  FourLepton (10) / FourQuark (76) / TwoQuarkTwoLepton (55) lists;
+  28+6 BLV names in `SMEFT$Dim8FourFermionBLVOperators`; 175 new
+  `SMEFT$TensorWC` rows, ALL Straub class `9` (matching the six
+  pre-existing class-19 sample rows), BLV rows `True`, rotations per
+  the class-19/21 conventions section (incl. the `eu2d*` per-operator
+  field-order flips and the dim-6-like `VDL` choice of caveat C2).
+- `smeft_fr_init.m` — Class 19 (BL conserving + violating) and
+  class-21 reference lists completed.
+
+Verified: file inventories == paper Tables 12-15 + Table-10 class-21
+blocks == operator lists == TensorWC rows == `LQ` symbols == WC
+strings (141+28+2+6, no duplicates); structural audit (HC exactly on
+Table-14/15/21 ops; dual `Eps[mu,nu,al,be]/2` exactly on the even-n
+JJX partners; `CC` exactly in BLV files; `DC` exactly in class-21
+files; `FS[Wi8]` + `SU2W8` expansion exactly on W ops; no `SU2W8` on
+Ta8-less G/B ops); Module variable lists match used indices; all 177
+files `Get` cleanly in wolframscript and define their `LQ<name>`
+symbols; edited `.m` files parse; all 8 pre-existing bodies
+diff-checked against the flat files before deletion.
+
+Status: dim-8 fermionic classes 9-19 fully implemented as per-operator
+files; class 21 Table-10 blocks done. Remaining: class 20 (Tables
+16-17) and the class-21 Table-18 blocks.
+Runtime TODO: suggested class-19/21 smoke subset for
+`SMEFTInitializeModel`: `OpList8 = {"l2q2Wn5", "q4Wn3", "u2d2Gn7",
+"q2u2Gn6", "q2udWn3", "lequGn3", "ledqWn2", "lqudGn3", "lq3Wn2",
+"eu2dGn3", "lqudD2n1", "eq2uD2"}` (covers eps^{IJK}+FS, T8-pair+W,
+dSUN, f+dual, double-sigma, tau-eps+W, BLV sigma, symmetrized colour,
+and the DC-on-CC structures of caveats C4/C6).
+
+### 2026-07-16 (MR, AI-assisted) — Classes 20 and 21 complete (psi^4 H D, Tables 16-17; psi^4 D^2, Table 18) — ALL dim-8 fermionic classes done
+
+Implemented all 84 class-20 operators and the 45 remaining class-21
+(Table-18) operators as per-operator files (generated from scratchpad
+`gen_class20.py` / `gen_class21_t18.py`, audited against the paper):
+
+- **Class 20 B/L-conserving** — `lagrangian/220_psi4phiD/`,
+  68 operators (67 new + pre-existing `l3eHDn1` moved byte-identical):
+  - Table 16 le-column (20): `l3eHDn1-3`, `le3HDn1/n2`, `leq2HDn1-6`,
+    `leu2HDn1-3`, `led2HDn1-3`, `leudHDn1-3`.
+  - Table 16 qu-column (24, Htilde): `l2quHDn1-6`, `e2quHDn1-3`,
+    `q3uHDn1-6`, `qu3HDn1-3`, `qud2HDn1-6`.
+  - Table 17 qd-column (24, plain H): `l2qdHDn1-6`, `e2qdHDn1-3`,
+    `q3dHDn1-6`, `qu2dHDn1-6`, `qd3HDn1-3`.
+  All with explicit `I` and `(aux + HC[aux])`; names keep the paper's
+  `H` (`...HDnN`, class-16-style exception, per the sample).
+- **Class 20 BLV (marked)** — `lagrangian/220BL_psi4phiD/`, 16 new
+  operators: `lu2dHDn1/n2`, `lud2HDn1/n2`, `lq2uHDn1-3`, `lq2dHDn1-3`,
+  `eq3HD`, `equ2HDn1/n2`, `equdHDn1-3` — first use of gamma matrices
+  inside C-bilinears (`(psi1 C ga^mu psi2)`, caveat C6) and more
+  `DC[HC[CC[..]]]` derivatives (caveat C4).
+- **Class 21 Table-18** — 45 new files added to
+  `lagrangian/221_psi4D2/` (now 47 with `leqdD2n1/n2`):
+  `l4D2n1/n2`, `q4D2n1-4`, `l2q2D2n1-4`; `e4D2`, `u4D2n1/n2`,
+  `d4D2n1/n2`, `e2u2D2n1/n2`, `e2d2D2n1/n2`, `u2d2D2n1-4`;
+  `l2e2D2n1/n2`, `l2u2D2n1/n2`, `l2d2D2n1/n2`, `q2e2D2n1/n2`,
+  `q2u2D2n1-4`, `q2d2D2n1-4` (Hermitian, n-odd = Leibniz `D^nu(J)`,
+  n-even = `<->D^nu`); `q2udD2n1-3`, `lequD2n1-3` (`+ h.c.`).
+
+Files modified (same pattern as before):
+- `code/smeft_io.m` — flat `Get`s for `220_psi4phiD(.fr)` /
+  `220BL_psi4phiD.fr` replaced by on-demand loaders; flat files
+  deleted (`l3eHDn1` diff-checked first).
+- `code/smeft_variables.m` — class-20 names: FourLepton (5),
+  TwoQuarkTwoLepton (33), FourQuark (30), BLV (16); class-21 Table-18
+  names: FourLepton (5), FourQuark (23), TwoQuarkTwoLepton (17);
+  129 new `SMEFT$TensorWC` rows, ALL Straub class `9`, BLV `True`,
+  rotations per the class-20/21 conventions section.
+- `smeft_fr_init.m` — Class 20 (BL conserving + violating) and full
+  Class 21 reference lists completed.
+
+Verified: file inventories == paper Tables 16-18 == operator lists ==
+TensorWC rows == `LQ` symbols == WC strings; structural audit (`I`
+prefactor + HC exactly on all class-20 ops; HC exactly on
+`q2udD2`/`lequD2` in Table 18; Leibniz-vs-arrow forms per n-parity;
+`CC` exactly in BLV files; `DC` in every file; crossed-colour/doublet
+placements checked per operator); Module variable lists match used
+indices; all 131 files `Get` cleanly in wolframscript and define their
+`LQ<name>` symbols; edited `.m` files parse; global registration has
+no duplicate names, and every 4-fermion operator has a TensorWC row.
+
+**COMPLETENESS CHECK (classes 9-21)**: an automated diff of ALL
+operator names extracted from the paper's class-9-21 tables against
+the per-operator files found exact 1:1 agreement — 645 operators
+total (274 two-fermion + 311 four-fermion B-conserving + 60 BLV),
+with the single expected mismatch being the paper's
+`Q_{q^2H^2D^2}^{(4)}` typo (implemented as `q2phi2D3n4`, caveat C7).
+The paper's per-class operator counts (results-section summary table,
+h.c. partners counted separately there) all convert exactly to the
+implemented name counts: 9:48, 10:11, 11:15, 12:3, 13:12, 14:57,
+15:86, 16:24, 17:18, 18:55+10, 19:141+28, 20:68+16, 21:47+6.
+
+Status: the ENTIRE fermionic dim-8 sector of 2005.00059 (classes 9-21)
+is implemented as per-operator files. Remaining work is runtime
+validation only — no `SMEFTInitializeModel` run yet. Suggested
+class-20/21 smoke subset: `OpList8 = {"l3eHDn3", "leq2HDn4",
+"l2quHDn6", "q3uHDn4", "qud2HDn6", "leudHDn2", "lu2dHDn1", "lq2uHDn3",
+"eq3HD", "equdHDn3", "q4D2n4", "u2d2D2n3", "l2q2D2n3", "q2udD2n2",
+"lequD2n2"}` (covers crossed colour/doublet currents, tau-Htilde
+brackets, DC-on-bracket-fermion, gamma-C-bilinears, DC-on-CC, and the
+Leibniz/arrow D^2 currents).

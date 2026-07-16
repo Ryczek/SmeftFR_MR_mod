@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 219 (psi^4 X) operator: q2e2Wn1 *)
+
+(* Q_q2e2W^(1) = (qbar_p ga^mu tau^I q_r)(ebar_s ga^nu e_t) W^I_{mu nu} *)
+LQq2e2Wn1 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,co1,ii,jj,aa,mu,nu,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "q2e2Wn1"][ff1,ff2,ff3,ff4]
+  (QL8bar[sp1,ii,ff1,co1].QL8[sp2,jj,ff2,co1]).(lR8bar[sp3,ff3].lR8[sp4,ff4])
+  Ga[mu,sp1,sp2] Ga[nu,sp3,sp4] 2 Ta8[aa,ii,jj]
+  FS[Wi8,mu,nu,aa],
+  FlavorExpand->{SU2D8} ];
+
+aux = ExpandIndices[aux, FlavorExpand->{SU2W8}];
+
+aux /. SMEFTGaugeRules
+];

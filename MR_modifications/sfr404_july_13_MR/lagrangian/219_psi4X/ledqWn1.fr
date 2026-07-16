@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 219 (psi^4 X) operator: ledqWn1 *)
+
+(* Q_ledqW^(1) = (lbar_p sigma^{mu nu} e_r) tau^I (dbar_s q_t) W^I_{mu nu} + h.c. *)
+LQledqWn1 := Module[{sp1,sp2,sp3,ff1,ff2,ff3,ff4,ii,jj,aa,cc,mu,nu,aux},
+
+aux = (LL8bar[sp1,ii,ff1].lR8[sp2,ff2]).(dR8bar[sp3,ff3,cc].QL8[sp3,jj,ff4,cc])
+  Sigma[mu,nu,sp1,sp2] 2 Ta8[aa,ii,jj] FS[Wi8,mu,nu,aa];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "ledqWn1"][ff1,ff2,ff3,ff4] aux,
+      FlavorExpand->{SU2D8} ];
+
+aux = ExpandIndices[aux, FlavorExpand->{SU2W8}];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

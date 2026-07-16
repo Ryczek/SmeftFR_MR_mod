@@ -1,0 +1,12 @@
+(* SmeftFR v4.0 - class 220 (psi^4 H D) operator: qu3HDn3 *)
+
+(* Q_qu3HD^(3) = i (ubar_p ga^mu u_r) [(qbar_s D_mu u_t) Htilde] + h.c. *)
+LQqu3HDn3 := Module[{sp1,sp2,sp3,ff1,ff2,ff3,ff4,co1,co2,jj,kk,mu,aux},
+
+aux = I ExpandIndices[ ToExpression[SMEFT$WB <> "qu3HDn3"][ff1,ff2,ff3,ff4]
+  (uR8bar[sp1,ff1,co1].uR8[sp2,ff2,co1]).(QL8bar[sp3,jj,ff3,co2].DC[uR8[sp3,ff4,co2],mu])
+  Ga[mu,sp1,sp2] Eps[jj,kk] HC[Phi8[kk]],
+  FlavorExpand->{SU2W8,SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

@@ -1,0 +1,13 @@
+(* SmeftFR v4.0 - class 219 (psi^4 X) operator: q2udBn1 *)
+
+(* Q_q2udB^(1) = (qbar_p^j sigma^{mu nu} u_r) eps_{jk} (qbar_s^k d_t) B_{mu nu} + h.c. *)
+LQq2udBn1 := Module[{sp1,sp2,sp3,ff1,ff2,ff3,ff4,cc,dd,jj,kk,mu,nu,aux},
+
+aux = Sigma[mu,nu,sp1,sp2] Eps[jj,kk] FS[B8,mu,nu]
+  (QL8bar[sp1,jj,ff1,cc].uR8[sp2,ff2,cc]).(QL8bar[sp3,kk,ff3,dd].dR8[sp3,ff4,dd]);
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "q2udBn1"][ff1,ff2,ff3,ff4] aux,
+      FlavorExpand->{SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

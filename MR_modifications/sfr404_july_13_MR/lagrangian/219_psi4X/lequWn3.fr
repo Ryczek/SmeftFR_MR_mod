@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 219 (psi^4 X) operator: lequWn3 *)
+
+(* Q_lequW^(3) = (lbar_p^j sigma^{mu ro} e_r) (tau^I eps)_{jk} (qbar_s^k sigma_{ro nu} u_t) W^{I nu}_mu + h.c. *)
+LQlequWn3 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,aa,cc,jj,kk,ll,mu,nu,ro,aux},
+
+aux = Sigma[mu,ro,sp1,sp2] Sigma[ro,nu,sp3,sp4] 2 Ta8[aa,jj,ll] Eps[ll,kk] FS[Wi8,mu,nu,aa]
+  (LL8bar[sp1,jj,ff1].lR8[sp2,ff2]).(QL8bar[sp3,kk,ff3,cc].uR8[sp4,ff4,cc]);
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "lequWn3"][ff1,ff2,ff3,ff4] aux,
+      FlavorExpand->{SU2D8} ];
+
+aux = ExpandIndices[aux, FlavorExpand->{SU2W8}];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

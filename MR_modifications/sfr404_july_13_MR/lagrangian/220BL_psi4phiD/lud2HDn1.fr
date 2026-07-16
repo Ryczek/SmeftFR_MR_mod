@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 220 (psi^4 H D) BLV operator: lud2HDn1 *)
+(* WARNING: baryon and lepton number violating! *)
+
+(* Q_lud2HD^(1) = i eps_{a b c} eps_{jk} (d_p^a C ga^mu l_r^j) (d_s^b C u_t^c) D_mu H^k + h.c. *)
+LQlud2HDn1 := Module[{sp1,sp2,sp3,sp4,sp5,ff1,ff2,ff3,ff4,jj,kk,aa,bb,cc,mu,aux},
+
+aux = Eps[aa,bb,cc] Eps[jj,kk] Ga[mu,sp2,sp3] DC[Phi8[kk],mu]
+  HC[CC[dR8][sp1,ff1,aa]].Ga[0,sp1,sp2].LL8[sp3,jj,ff2]
+  HC[CC[dR8][sp4,ff3,bb]].Ga[0,sp4,sp5].uR8[sp5,ff4,cc];
+
+aux = I ExpandIndices[ ToExpression[SMEFT$WB <> "lud2HDn1"][ff1,ff2,ff3,ff4] aux,
+      FlavorExpand->{SU2W8,SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

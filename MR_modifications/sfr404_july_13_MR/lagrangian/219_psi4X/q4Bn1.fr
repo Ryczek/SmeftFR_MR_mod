@@ -1,0 +1,13 @@
+(* SmeftFR v4.0 - class 219 (psi^4 X) operator: q4Bn1 *)
+
+(* Q_q4B^(1) = (qbar_p ga^mu q_r)(qbar_s ga^nu q_t) B_{mu nu} *)
+LQq4Bn1 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,co1,co3,ii,kk,mu,nu,aux},
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "q4Bn1"][ff1,ff2,ff3,ff4]
+  (QL8bar[sp1,ii,ff1,co1].QL8[sp2,ii,ff2,co1]).(QL8bar[sp3,kk,ff3,co3].QL8[sp4,kk,ff4,co3])
+  Ga[mu,sp1,sp2] Ga[nu,sp3,sp4]
+  FS[B8,mu,nu],
+  FlavorExpand->{SU2D8} ];
+
+aux /. SMEFTGaugeRules
+];

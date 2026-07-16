@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 220 (psi^4 H D) BLV operator: eq3HD *)
+(* WARNING: baryon and lepton number violating! *)
+
+(* Q_eq3HD = i eps_{a b c} eps_{mn} eps_{jk} (q_p^{j a} C ga^mu e_r) (D_mu q_s^{k b} C q_t^{m c}) H^n + h.c. *)
+LQeq3HD := Module[{sp1,sp2,sp3,sp4,sp5,ff1,ff2,ff3,ff4,jj,kk,mm,nn,aa,bb,cc,mu,aux},
+
+aux = Eps[aa,bb,cc] Eps[mm,nn] Eps[jj,kk] Ga[mu,sp2,sp3] Phi8[nn]
+  HC[CC[QL8][sp1,jj,ff1,aa]].Ga[0,sp1,sp2].lR8[sp3,ff2]
+  DC[HC[CC[QL8][sp4,kk,ff3,bb]],mu].Ga[0,sp4,sp5].QL8[sp5,mm,ff4,cc];
+
+aux = I ExpandIndices[ ToExpression[SMEFT$WB <> "eq3HD"][ff1,ff2,ff3,ff4] aux,
+      FlavorExpand->{SU2W8,SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

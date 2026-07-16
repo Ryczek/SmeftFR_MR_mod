@@ -1,0 +1,16 @@
+(* SmeftFR v4.0 - class 221 (psi^4 D^2) BLV operator: eu2dD2n1 *)
+(* WARNING: baryon and lepton number violating! *)
+
+(* Q_eu2dD2^(1) = eps_{a b c} (u_p^a C D_mu u_r^b) D^mu(d_s^c C e_t) + h.c. *)
+LQeu2dD2n1 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,aa,bb,cc,mu,tmp1,tmp2,aux},
+
+tmp1 = HC[CC[uR8][sp1,ff1,aa]].Ga[0,sp1,sp2].DC[uR8[sp2,ff2,bb],mu];
+
+tmp2 = DC[HC[CC[dR8][sp3,ff3,cc]],mu].Ga[0,sp3,sp4].lR8[sp4,ff4] +
+  HC[CC[dR8][sp3,ff3,cc]].Ga[0,sp3,sp4].DC[lR8[sp4,ff4],mu];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "eu2dD2n1"][ff1,ff2,ff3,ff4]
+  Eps[aa,bb,cc] tmp1 tmp2, FlavorExpand->{SU2W8,SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

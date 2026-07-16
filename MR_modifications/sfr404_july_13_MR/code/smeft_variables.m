@@ -122,10 +122,28 @@ SMEFT$Dim8FourLeptonOperators = {
     "l2e2phi2n2", (* LL RR *)
     "l2e2phi2n3", (* LR LR *)
     (* class 19 *)
-    "l4Wn1",      (* LL LL *)
-    "l2e2Wn1",    (* LL RR *)
+    "l4Wn1",       (* LL LL *)
+    "l4Wn2",       (* LL LL *)
+    "l4Bn1",       (* LL LL *)
+    "l4Bn2",       (* LL LL *)
+    "e4Bn1",       (* RR RR *)
+    "e4Bn2",       (* RR RR *)
+    "l2e2Wn1",     (* LL RR *)
+    "l2e2Wn2",     (* LL RR *)
+    "l2e2Bn1",     (* LL RR *)
+    "l2e2Bn2",     (* LL RR *)
     (* class 20 *)
-    "l3eHDn1"
+    "l3eHDn1",
+    "l3eHDn2",
+    "l3eHDn3",
+    "le3HDn1",
+    "le3HDn2",
+    (* class 21 *)
+    "l4D2n1",
+    "l4D2n2",
+    "e4D2",
+    "l2e2D2n1",
+    "l2e2D2n2"
 };
 
 SMEFT$Dim8FourQuarkOperators = {
@@ -157,9 +175,137 @@ SMEFT$Dim8FourQuarkOperators = {
     "q2udphi2n5", (* LR RL *)
     "q2udphi2n6", (* LR RL *)
     (* class 19 *)
-    "u4Gn1",      (* RR RR *)
-    "q2u2Gn5",    (* LL RR *)
-    "q2udGn1"     (* LR LR *)
+    "q4Gn1",       (* LL LL *)
+    "q4Gn2",       (* LL LL *)
+    "q4Gn3",       (* LL LL *)
+    "q4Gn4",       (* LL LL *)
+    "q4Wn1",       (* LL LL *)
+    "q4Wn2",       (* LL LL *)
+    "q4Wn3",       (* LL LL *)
+    "q4Wn4",       (* LL LL *)
+    "q4Bn1",       (* LL LL *)
+    "q4Bn2",       (* LL LL *)
+    "q4Bn3",       (* LL LL *)
+    "q4Bn4",       (* LL LL *)
+    "u4Gn1",       (* RR RR *)
+    "u4Gn2",       (* RR RR *)
+    "d4Gn1",       (* RR RR *)
+    "d4Gn2",       (* RR RR *)
+    "u2d2Gn1",     (* RR RR *)
+    "u2d2Gn2",     (* RR RR *)
+    "u2d2Gn3",     (* RR RR *)
+    "u2d2Gn4",     (* RR RR *)
+    "u2d2Gn5",     (* RR RR *)
+    "u2d2Gn6",     (* RR RR *)
+    "u2d2Gn7",     (* RR RR *)
+    "u2d2Gn8",     (* RR RR *)
+    "u2d2Bn1",     (* RR RR *)
+    "u2d2Bn2",     (* RR RR *)
+    "u2d2Bn3",     (* RR RR *)
+    "u2d2Bn4",     (* RR RR *)
+    "u4Bn1",       (* RR RR *)
+    "u4Bn2",       (* RR RR *)
+    "d4Bn1",       (* RR RR *)
+    "d4Bn2",       (* RR RR *)
+    "q2u2Gn1",     (* LL RR *)
+    "q2u2Gn2",     (* LL RR *)
+    "q2u2Gn3",     (* LL RR *)
+    "q2u2Gn4",     (* LL RR *)
+    "q2u2Gn5",     (* LL RR *)
+    "q2u2Gn6",     (* LL RR *)
+    "q2u2Gn7",     (* LL RR *)
+    "q2u2Gn8",     (* LL RR *)
+    "q2u2Wn1",     (* LL RR *)
+    "q2u2Wn2",     (* LL RR *)
+    "q2u2Wn3",     (* LL RR *)
+    "q2u2Wn4",     (* LL RR *)
+    "q2u2Bn1",     (* LL RR *)
+    "q2u2Bn2",     (* LL RR *)
+    "q2u2Bn3",     (* LL RR *)
+    "q2u2Bn4",     (* LL RR *)
+    "q2d2Gn1",     (* LL RR *)
+    "q2d2Gn2",     (* LL RR *)
+    "q2d2Gn3",     (* LL RR *)
+    "q2d2Gn4",     (* LL RR *)
+    "q2d2Gn5",     (* LL RR *)
+    "q2d2Gn6",     (* LL RR *)
+    "q2d2Gn7",     (* LL RR *)
+    "q2d2Gn8",     (* LL RR *)
+    "q2d2Wn1",     (* LL RR *)
+    "q2d2Wn2",     (* LL RR *)
+    "q2d2Wn3",     (* LL RR *)
+    "q2d2Wn4",     (* LL RR *)
+    "q2d2Bn1",     (* LL RR *)
+    "q2d2Bn2",     (* LL RR *)
+    "q2d2Bn3",     (* LL RR *)
+    "q2d2Bn4",     (* LL RR *)
+    "q2udGn1",     (* LR LR *)
+    "q2udGn2",     (* LR LR *)
+    "q2udGn3",     (* LR LR *)
+    "q2udGn4",     (* LR LR *)
+    "q2udGn5",     (* LR LR *)
+    "q2udGn6",     (* LR LR *)
+    "q2udWn1",     (* LR LR *)
+    "q2udWn2",     (* LR LR *)
+    "q2udWn3",     (* LR LR *)
+    "q2udBn1",     (* LR LR *)
+    "q2udBn2",     (* LR LR *)
+    "q2udBn3",     (* LR LR *)
+    (* class 20 *)
+    "q3uHDn1",
+    "q3uHDn2",
+    "q3uHDn3",
+    "q3uHDn4",
+    "q3uHDn5",
+    "q3uHDn6",
+    "qu3HDn1",
+    "qu3HDn2",
+    "qu3HDn3",
+    "qud2HDn1",
+    "qud2HDn2",
+    "qud2HDn3",
+    "qud2HDn4",
+    "qud2HDn5",
+    "qud2HDn6",
+    "q3dHDn1",
+    "q3dHDn2",
+    "q3dHDn3",
+    "q3dHDn4",
+    "q3dHDn5",
+    "q3dHDn6",
+    "qu2dHDn1",
+    "qu2dHDn2",
+    "qu2dHDn3",
+    "qu2dHDn4",
+    "qu2dHDn5",
+    "qu2dHDn6",
+    "qd3HDn1",
+    "qd3HDn2",
+    "qd3HDn3",
+    (* class 21 *)
+    "q4D2n1",
+    "q4D2n2",
+    "q4D2n3",
+    "q4D2n4",
+    "u4D2n1",
+    "u4D2n2",
+    "d4D2n1",
+    "d4D2n2",
+    "u2d2D2n1",
+    "u2d2D2n2",
+    "u2d2D2n3",
+    "u2d2D2n4",
+    "q2u2D2n1",
+    "q2u2D2n2",
+    "q2u2D2n3",
+    "q2u2D2n4",
+    "q2d2D2n1",
+    "q2d2D2n2",
+    "q2d2D2n3",
+    "q2d2D2n4",
+    "q2udD2n1",
+    "q2udD2n2",
+    "q2udD2n3"
 };
 
 SMEFT$Dim8TwoQuarkTwoLeptonOperators = {
@@ -188,10 +334,115 @@ SMEFT$Dim8TwoQuarkTwoLeptonOperators = {
     "leqdphi2n3", (* LR LR *)
     "leqdphi2n4", (* LR LR *)
     (* class 19 *)
-    "ledqGn1",    (* LR RL *)
+    "l2q2Gn1",     (* LL LL *)
+    "l2q2Gn2",     (* LL LL *)
+    "l2q2Gn3",     (* LL LL *)
+    "l2q2Gn4",     (* LL LL *)
+    "l2q2Wn1",     (* LL LL *)
+    "l2q2Wn2",     (* LL LL *)
+    "l2q2Wn3",     (* LL LL *)
+    "l2q2Wn4",     (* LL LL *)
+    "l2q2Wn5",     (* LL LL *)
+    "l2q2Wn6",     (* LL LL *)
+    "l2q2Bn1",     (* LL LL *)
+    "l2q2Bn2",     (* LL LL *)
+    "l2q2Bn3",     (* LL LL *)
+    "l2q2Bn4",     (* LL LL *)
+    "e2u2Gn1",     (* RR RR *)
+    "e2u2Gn2",     (* RR RR *)
+    "e2u2Bn1",     (* RR RR *)
+    "e2u2Bn2",     (* RR RR *)
+    "e2d2Gn1",     (* RR RR *)
+    "e2d2Gn2",     (* RR RR *)
+    "e2d2Bn1",     (* RR RR *)
+    "e2d2Bn2",     (* RR RR *)
+    "l2u2Gn1",     (* LL RR *)
+    "l2u2Gn2",     (* LL RR *)
+    "l2u2Wn1",     (* LL RR *)
+    "l2u2Wn2",     (* LL RR *)
+    "l2u2Bn1",     (* LL RR *)
+    "l2u2Bn2",     (* LL RR *)
+    "l2d2Gn1",     (* LL RR *)
+    "l2d2Gn2",     (* LL RR *)
+    "l2d2Wn1",     (* LL RR *)
+    "l2d2Wn2",     (* LL RR *)
+    "l2d2Bn1",     (* LL RR *)
+    "l2d2Bn2",     (* LL RR *)
+    "q2e2Gn1",     (* LL RR *)
+    "q2e2Gn2",     (* LL RR *)
+    "q2e2Wn1",     (* LL RR *)
+    "q2e2Wn2",     (* LL RR *)
+    "q2e2Bn1",     (* LL RR *)
+    "q2e2Bn2",     (* LL RR *)
+    "ledqGn1",     (* LR RL *)
+    "ledqGn2",     (* LR RL *)
+    "ledqWn1",     (* LR RL *)
+    "ledqWn2",     (* LR RL *)
+    "ledqBn1",     (* LR RL *)
+    "ledqBn2",     (* LR RL *)
+    "lequGn1",     (* LR LR *)
+    "lequGn2",     (* LR LR *)
+    "lequGn3",     (* LR LR *)
+    "lequWn1",     (* LR LR *)
+    "lequWn2",     (* LR LR *)
+    "lequWn3",     (* LR LR *)
+    "lequBn1",     (* LR LR *)
+    "lequBn2",     (* LR LR *)
+    "lequBn3",     (* LR LR *)
+    (* class 20 *)
+    "leq2HDn1",
+    "leq2HDn2",
+    "leq2HDn3",
+    "leq2HDn4",
+    "leq2HDn5",
+    "leq2HDn6",
+    "leu2HDn1",
+    "leu2HDn2",
+    "leu2HDn3",
+    "led2HDn1",
+    "led2HDn2",
+    "led2HDn3",
+    "leudHDn1",
+    "leudHDn2",
+    "leudHDn3",
+    "l2quHDn1",
+    "l2quHDn2",
+    "l2quHDn3",
+    "l2quHDn4",
+    "l2quHDn5",
+    "l2quHDn6",
+    "e2quHDn1",
+    "e2quHDn2",
+    "e2quHDn3",
+    "l2qdHDn1",
+    "l2qdHDn2",
+    "l2qdHDn3",
+    "l2qdHDn4",
+    "l2qdHDn5",
+    "l2qdHDn6",
+    "e2qdHDn1",
+    "e2qdHDn2",
+    "e2qdHDn3",
     (* class 21 *)
-    "leqdD2n1",
-    "leqdD2n2"
+    "leqdD2n1",   (* LR RL *)
+    "leqdD2n2",   (* LR RL *)
+    "l2q2D2n1",
+    "l2q2D2n2",
+    "l2q2D2n3",
+    "l2q2D2n4",
+    "e2u2D2n1",
+    "e2u2D2n2",
+    "e2d2D2n1",
+    "e2d2D2n2",
+    "l2u2D2n1",
+    "l2u2D2n2",
+    "l2d2D2n1",
+    "l2d2D2n2",
+    "q2e2D2n1",
+    "q2e2D2n2",
+    "lequD2n1",
+    "lequD2n2",
+    "lequD2n3"
 };
 
 SMEFT$Dim8FourFermionBLVOperators = {
@@ -205,10 +456,60 @@ SMEFT$Dim8FourFermionBLVOperators = {
      "lq3phi2n3",
      "lqu2phi2",
      "lqd2phi2",
-     "eq2dphi2"
+     "eq2dphi2",
     (* class 19 *)
+     "lqudGn1",
+     "lqudGn2",
+     "lqudGn3",
+     "lqudGn4",
+     "lqudWn1",
+     "lqudWn2",
+     "lqudBn1",
+     "lqudBn2",
+     "eq2uGn1",
+     "eq2uGn2",
+     "eq2uWn1",
+     "eq2uWn2",
+     "eq2uBn1",
+     "eq2uBn2",
+     "lq3Gn1",
+     "lq3Gn2",
+     "lq3Gn3",
+     "lq3Gn4",
+     "lq3Wn1",
+     "lq3Wn2",
+     "lq3Wn3",
+     "lq3Bn1",
+     "lq3Bn2",
+     "eu2dGn1",
+     "eu2dGn2",
+     "eu2dGn3",
+     "eu2dBn1",
+     "eu2dBn2",
     (* class 20 *)
+     "lu2dHDn1",
+     "lu2dHDn2",
+     "lud2HDn1",
+     "lud2HDn2",
+     "lq2uHDn1",
+     "lq2uHDn2",
+     "lq2uHDn3",
+     "lq2dHDn1",
+     "lq2dHDn2",
+     "lq2dHDn3",
+     "eq3HD",
+     "equ2HDn1",
+     "equ2HDn2",
+     "equdHDn1",
+     "equdHDn2",
+     "equdHDn3",
     (* class 21 *)
+     "lqudD2n1",
+     "lqudD2n2",
+     "eq2uD2",
+     "lq3D2",
+     "eu2dD2n1",
+     "eu2dD2n2"
 };
 
 
@@ -948,17 +1249,317 @@ SMEFT$TensorWC = {
               {"lqd2phi2",   {VLL,VDL,VDR,VDR},True,9},
               {"eq2dphi2",   {VLR,VDR,VDL,VDL},True,9},
               (* class 19 *)
-              {"l4Wn1",      {VLL,VLL,VLL,VLL},False,9},
-              {"u4Gn1",      {VUR,VUR,VUR,VUR},False,9},
-              {"l2e2Wn1",    {VLL,VLL,VLR,VLR},False,9},
-              {"q2u2Gn5",    {VDL,VDL,VUR,VUR},False,9},
-              {"q2udGn1",    {VDL,VUR,VDL,VDR},False,9},
-              {"ledqGn1",    {VLL,VLR,VDR,VDL},False,9},
+              {"l4Wn1",        {VLL,VLL,VLL,VLL},False,9},
+              {"l4Wn2",        {VLL,VLL,VLL,VLL},False,9},
+              {"q4Gn1",        {VDL,VDL,VDL,VDL},False,9},
+              {"q4Gn2",        {VDL,VDL,VDL,VDL},False,9},
+              {"q4Gn3",        {VDL,VDL,VDL,VDL},False,9},
+              {"q4Gn4",        {VDL,VDL,VDL,VDL},False,9},
+              {"q4Wn1",        {VDL,VDL,VDL,VDL},False,9},
+              {"q4Wn2",        {VDL,VDL,VDL,VDL},False,9},
+              {"q4Wn3",        {VDL,VDL,VDL,VDL},False,9},
+              {"q4Wn4",        {VDL,VDL,VDL,VDL},False,9},
+              {"l2q2Gn1",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Gn2",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Gn3",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Gn4",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Wn1",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Wn2",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Wn3",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Wn4",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Wn5",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Wn6",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Bn1",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Bn2",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Bn3",      {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2Bn4",      {VLL,VLL,VDL,VDL},False,9},
+              {"l4Bn1",        {VLL,VLL,VLL,VLL},False,9},
+              {"l4Bn2",        {VLL,VLL,VLL,VLL},False,9},
+              {"q4Bn1",        {VDL,VDL,VDL,VDL},False,9},
+              {"q4Bn2",        {VDL,VDL,VDL,VDL},False,9},
+              {"q4Bn3",        {VDL,VDL,VDL,VDL},False,9},
+              {"q4Bn4",        {VDL,VDL,VDL,VDL},False,9},
+              {"u4Gn1",        {VUR,VUR,VUR,VUR},False,9},
+              {"u4Gn2",        {VUR,VUR,VUR,VUR},False,9},
+              {"d4Gn1",        {VDR,VDR,VDR,VDR},False,9},
+              {"d4Gn2",        {VDR,VDR,VDR,VDR},False,9},
+              {"e2u2Gn1",      {VLR,VLR,VUR,VUR},False,9},
+              {"e2u2Gn2",      {VLR,VLR,VUR,VUR},False,9},
+              {"e2u2Bn1",      {VLR,VLR,VUR,VUR},False,9},
+              {"e2u2Bn2",      {VLR,VLR,VUR,VUR},False,9},
+              {"e2d2Gn1",      {VLR,VLR,VDR,VDR},False,9},
+              {"e2d2Gn2",      {VLR,VLR,VDR,VDR},False,9},
+              {"e2d2Bn1",      {VLR,VLR,VDR,VDR},False,9},
+              {"e2d2Bn2",      {VLR,VLR,VDR,VDR},False,9},
+              {"u2d2Gn1",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Gn2",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Gn3",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Gn4",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Gn5",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Gn6",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Gn7",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Gn8",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Bn1",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Bn2",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Bn3",      {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2Bn4",      {VUR,VUR,VDR,VDR},False,9},
+              {"e4Bn1",        {VLR,VLR,VLR,VLR},False,9},
+              {"e4Bn2",        {VLR,VLR,VLR,VLR},False,9},
+              {"u4Bn1",        {VUR,VUR,VUR,VUR},False,9},
+              {"u4Bn2",        {VUR,VUR,VUR,VUR},False,9},
+              {"d4Bn1",        {VDR,VDR,VDR,VDR},False,9},
+              {"d4Bn2",        {VDR,VDR,VDR,VDR},False,9},
+              {"l2e2Wn1",      {VLL,VLL,VLR,VLR},False,9},
+              {"l2e2Wn2",      {VLL,VLL,VLR,VLR},False,9},
+              {"l2e2Bn1",      {VLL,VLL,VLR,VLR},False,9},
+              {"l2e2Bn2",      {VLL,VLL,VLR,VLR},False,9},
+              {"l2u2Gn1",      {VLL,VLL,VUR,VUR},False,9},
+              {"l2u2Gn2",      {VLL,VLL,VUR,VUR},False,9},
+              {"l2u2Wn1",      {VLL,VLL,VUR,VUR},False,9},
+              {"l2u2Wn2",      {VLL,VLL,VUR,VUR},False,9},
+              {"l2u2Bn1",      {VLL,VLL,VUR,VUR},False,9},
+              {"l2u2Bn2",      {VLL,VLL,VUR,VUR},False,9},
+              {"l2d2Gn1",      {VLL,VLL,VDR,VDR},False,9},
+              {"l2d2Gn2",      {VLL,VLL,VDR,VDR},False,9},
+              {"l2d2Wn1",      {VLL,VLL,VDR,VDR},False,9},
+              {"l2d2Wn2",      {VLL,VLL,VDR,VDR},False,9},
+              {"l2d2Bn1",      {VLL,VLL,VDR,VDR},False,9},
+              {"l2d2Bn2",      {VLL,VLL,VDR,VDR},False,9},
+              {"q2e2Gn1",      {VDL,VDL,VLR,VLR},False,9},
+              {"q2e2Gn2",      {VDL,VDL,VLR,VLR},False,9},
+              {"q2e2Wn1",      {VDL,VDL,VLR,VLR},False,9},
+              {"q2e2Wn2",      {VDL,VDL,VLR,VLR},False,9},
+              {"q2e2Bn1",      {VDL,VDL,VLR,VLR},False,9},
+              {"q2e2Bn2",      {VDL,VDL,VLR,VLR},False,9},
+              {"q2u2Gn1",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Gn2",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Gn3",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Gn4",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Gn5",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Gn6",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Gn7",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Gn8",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Wn1",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Wn2",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Wn3",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Wn4",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Bn1",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Bn2",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Bn3",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2Bn4",      {VDL,VDL,VUR,VUR},False,9},
+              {"q2d2Gn1",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Gn2",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Gn3",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Gn4",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Gn5",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Gn6",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Gn7",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Gn8",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Wn1",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Wn2",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Wn3",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Wn4",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Bn1",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Bn2",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Bn3",      {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2Bn4",      {VDL,VDL,VDR,VDR},False,9},
+              {"ledqGn1",      {VLL,VLR,VDR,VDL},False,9},
+              {"ledqGn2",      {VLL,VLR,VDR,VDL},False,9},
+              {"ledqWn1",      {VLL,VLR,VDR,VDL},False,9},
+              {"ledqWn2",      {VLL,VLR,VDR,VDL},False,9},
+              {"ledqBn1",      {VLL,VLR,VDR,VDL},False,9},
+              {"ledqBn2",      {VLL,VLR,VDR,VDL},False,9},
+              {"q2udGn1",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udGn2",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udGn3",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udGn4",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udGn5",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udGn6",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udWn1",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udWn2",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udWn3",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udBn1",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udBn2",      {VDL,VUR,VDL,VDR},False,9},
+              {"q2udBn3",      {VDL,VUR,VDL,VDR},False,9},
+              {"lequGn1",      {VLL,VLR,VDL,VUR},False,9},
+              {"lequGn2",      {VLL,VLR,VDL,VUR},False,9},
+              {"lequGn3",      {VLL,VLR,VDL,VUR},False,9},
+              {"lequWn1",      {VLL,VLR,VDL,VUR},False,9},
+              {"lequWn2",      {VLL,VLR,VDL,VUR},False,9},
+              {"lequWn3",      {VLL,VLR,VDL,VUR},False,9},
+              {"lequBn1",      {VLL,VLR,VDL,VUR},False,9},
+              {"lequBn2",      {VLL,VLR,VDL,VUR},False,9},
+              {"lequBn3",      {VLL,VLR,VDL,VUR},False,9},
+              (* class 19 BLV *)
+              {"lqudGn1",      {VDR,VUR,VDL,VLL},True,9},
+              {"lqudGn2",      {VDR,VUR,VDL,VLL},True,9},
+              {"lqudGn3",      {VDR,VUR,VDL,VLL},True,9},
+              {"lqudGn4",      {VDR,VUR,VDL,VLL},True,9},
+              {"lqudWn1",      {VDR,VUR,VDL,VLL},True,9},
+              {"lqudWn2",      {VDR,VUR,VDL,VLL},True,9},
+              {"lqudBn1",      {VDR,VUR,VDL,VLL},True,9},
+              {"lqudBn2",      {VDR,VUR,VDL,VLL},True,9},
+              {"eq2uGn1",      {VDL,VDL,VUR,VLR},True,9},
+              {"eq2uGn2",      {VDL,VDL,VUR,VLR},True,9},
+              {"eq2uWn1",      {VDL,VDL,VUR,VLR},True,9},
+              {"eq2uWn2",      {VDL,VDL,VUR,VLR},True,9},
+              {"eq2uBn1",      {VDL,VDL,VUR,VLR},True,9},
+              {"eq2uBn2",      {VDL,VDL,VUR,VLR},True,9},
+              {"lq3Gn1",       {VDL,VDL,VDL,VLL},True,9},
+              {"lq3Gn2",       {VDL,VDL,VDL,VLL},True,9},
+              {"lq3Gn3",       {VDL,VDL,VDL,VLL},True,9},
+              {"lq3Gn4",       {VDL,VDL,VDL,VLL},True,9},
+              {"lq3Wn1",       {VDL,VDL,VDL,VLL},True,9},
+              {"lq3Wn2",       {VDL,VDL,VDL,VLL},True,9},
+              {"lq3Wn3",       {VDL,VDL,VDL,VLL},True,9},
+              {"lq3Bn1",       {VDL,VDL,VDL,VLL},True,9},
+              {"lq3Bn2",       {VDL,VDL,VDL,VLL},True,9},
+              {"eu2dGn1",      {VDR,VUR,VUR,VLR},True,9},
+              {"eu2dGn2",      {VUR,VUR,VDR,VLR},True,9},
+              {"eu2dGn3",      {VUR,VUR,VDR,VLR},True,9},
+              {"eu2dBn1",      {VDR,VUR,VUR,VLR},True,9},
+              {"eu2dBn2",      {VUR,VUR,VDR,VLR},True,9},
               (* class 20 *)
               {"l3eHDn1",    {VLL,VLL,VLL,VLR},False,9},
+              {"l3eHDn2",      {VLL,VLL,VLL,VLR},False,9},
+              {"l3eHDn3",      {VLL,VLL,VLL,VLR},False,9},
+              {"le3HDn1",      {VLR,VLR,VLL,VLR},False,9},
+              {"le3HDn2",      {VLR,VLR,VLL,VLR},False,9},
+              {"leq2HDn1",     {VDL,VDL,VLL,VLR},False,9},
+              {"leq2HDn2",     {VLL,VDL,VDL,VLR},False,9},
+              {"leq2HDn3",     {VDL,VDL,VLL,VLR},False,9},
+              {"leq2HDn4",     {VLL,VDL,VDL,VLR},False,9},
+              {"leq2HDn5",     {VDL,VDL,VLL,VLR},False,9},
+              {"leq2HDn6",     {VDL,VDL,VLL,VLR},False,9},
+              {"leu2HDn1",     {VUR,VUR,VLL,VLR},False,9},
+              {"leu2HDn2",     {VUR,VLR,VLL,VUR},False,9},
+              {"leu2HDn3",     {VUR,VUR,VLL,VLR},False,9},
+              {"led2HDn1",     {VDR,VDR,VLL,VLR},False,9},
+              {"led2HDn2",     {VDR,VLR,VLL,VDR},False,9},
+              {"led2HDn3",     {VDR,VDR,VLL,VLR},False,9},
+              {"leudHDn1",     {VUR,VDR,VLR,VLL},False,9},
+              {"leudHDn2",     {VLR,VDR,VUR,VLL},False,9},
+              {"leudHDn3",     {VUR,VDR,VLR,VLL},False,9},
+              {"l2quHDn1",     {VLL,VLL,VUL,VUR},False,9},
+              {"l2quHDn2",     {VUL,VLL,VLL,VUR},False,9},
+              {"l2quHDn3",     {VLL,VLL,VUL,VUR},False,9},
+              {"l2quHDn4",     {VUL,VLL,VLL,VUR},False,9},
+              {"l2quHDn5",     {VLL,VLL,VUL,VUR},False,9},
+              {"l2quHDn6",     {VLL,VLL,VUL,VUR},False,9},
+              {"e2quHDn1",     {VLR,VLR,VUL,VUR},False,9},
+              {"e2quHDn2",     {VLR,VUR,VUL,VLR},False,9},
+              {"e2quHDn3",     {VLR,VLR,VUL,VUR},False,9},
+              {"l2qdHDn1",     {VLL,VLL,VDL,VDR},False,9},
+              {"l2qdHDn2",     {VDL,VLL,VLL,VDR},False,9},
+              {"l2qdHDn3",     {VLL,VLL,VDL,VDR},False,9},
+              {"l2qdHDn4",     {VDL,VLL,VLL,VDR},False,9},
+              {"l2qdHDn5",     {VLL,VLL,VDL,VDR},False,9},
+              {"l2qdHDn6",     {VLL,VLL,VDL,VDR},False,9},
+              {"e2qdHDn1",     {VLR,VLR,VDL,VDR},False,9},
+              {"e2qdHDn2",     {VLR,VDR,VDL,VLR},False,9},
+              {"e2qdHDn3",     {VLR,VLR,VDL,VDR},False,9},
+              {"q3uHDn1",      {VDL,VDL,VUL,VUR},False,9},
+              {"q3uHDn2",      {VDL,VDL,VUL,VUR},False,9},
+              {"q3uHDn3",      {VDL,VDL,VUL,VUR},False,9},
+              {"q3uHDn4",      {VDL,VDL,VUL,VUR},False,9},
+              {"q3uHDn5",      {VDL,VDL,VUL,VUR},False,9},
+              {"q3uHDn6",      {VDL,VDL,VUL,VUR},False,9},
+              {"qu3HDn1",      {VUR,VUR,VUL,VUR},False,9},
+              {"qu3HDn2",      {VUR,VUR,VUL,VUR},False,9},
+              {"qu3HDn3",      {VUR,VUR,VUL,VUR},False,9},
+              {"qud2HDn1",     {VDR,VDR,VUL,VUR},False,9},
+              {"qud2HDn2",     {VDR,VUR,VDL,VDR},False,9},
+              {"qud2HDn3",     {VDR,VDR,VUL,VUR},False,9},
+              {"qud2HDn4",     {VDR,VUR,VDL,VDR},False,9},
+              {"qud2HDn5",     {VDR,VDR,VUL,VUR},False,9},
+              {"qud2HDn6",     {VDR,VDR,VUL,VUR},False,9},
+              {"q3dHDn1",      {VDL,VDL,VDL,VDR},False,9},
+              {"q3dHDn2",      {VDL,VDL,VDL,VDR},False,9},
+              {"q3dHDn3",      {VDL,VDL,VDL,VDR},False,9},
+              {"q3dHDn4",      {VDL,VDL,VDL,VDR},False,9},
+              {"q3dHDn5",      {VDL,VDL,VDL,VDR},False,9},
+              {"q3dHDn6",      {VDL,VDL,VDL,VDR},False,9},
+              {"qu2dHDn1",     {VUR,VUR,VDL,VDR},False,9},
+              {"qu2dHDn2",     {VUR,VDR,VUL,VUR},False,9},
+              {"qu2dHDn3",     {VUR,VUR,VDL,VDR},False,9},
+              {"qu2dHDn4",     {VUR,VDR,VUL,VUR},False,9},
+              {"qu2dHDn5",     {VUR,VUR,VDL,VDR},False,9},
+              {"qu2dHDn6",     {VUR,VUR,VDL,VDR},False,9},
+              {"qd3HDn1",      {VDR,VDR,VDL,VDR},False,9},
+              {"qd3HDn2",      {VDR,VDR,VDL,VDR},False,9},
+              {"qd3HDn3",      {VDR,VDR,VDL,VDR},False,9},
+              (* class 20 BLV *)
+              {"lu2dHDn1",     {VUR,VLL,VUR,VDR},True,9},
+              {"lu2dHDn2",     {VUR,VLL,VUR,VDR},True,9},
+              {"lud2HDn1",     {VDR,VLL,VDR,VUR},True,9},
+              {"lud2HDn2",     {VDR,VLL,VDR,VUR},True,9},
+              {"lq2uHDn1",     {VDL,VUR,VDL,VLL},True,9},
+              {"lq2uHDn2",     {VDL,VUR,VDL,VLL},True,9},
+              {"lq2uHDn3",     {VDL,VUR,VDL,VLL},True,9},
+              {"lq2dHDn1",     {VDL,VDR,VDL,VLL},True,9},
+              {"lq2dHDn2",     {VDL,VDR,VDL,VLL},True,9},
+              {"lq2dHDn3",     {VDL,VDR,VDL,VLL},True,9},
+              {"eq3HD",        {VDL,VLR,VDL,VDL},True,9},
+              {"equ2HDn1",     {VUR,VDL,VUR,VLR},True,9},
+              {"equ2HDn2",     {VUR,VDL,VUR,VLR},True,9},
+              {"equdHDn1",     {VDL,VUR,VDR,VLR},True,9},
+              {"equdHDn2",     {VDL,VDR,VUR,VLR},True,9},
+              {"equdHDn3",     {VDL,VUR,VDR,VLR},True,9},
               (* class 21 *)
               {"leqdD2n1",   {VLL,VLR,VDR,VDL},False,9},
-              {"leqdD2n2",   {VLL,VLR,VDR,VDL},False,9}
+              {"leqdD2n2",   {VLL,VLR,VDR,VDL},False,9},
+              {"l4D2n1",       {VLL,VLL,VLL,VLL},False,9},
+              {"l4D2n2",       {VLL,VLL,VLL,VLL},False,9},
+              {"q4D2n1",       {VDL,VDL,VDL,VDL},False,9},
+              {"q4D2n2",       {VDL,VDL,VDL,VDL},False,9},
+              {"q4D2n3",       {VDL,VDL,VDL,VDL},False,9},
+              {"q4D2n4",       {VDL,VDL,VDL,VDL},False,9},
+              {"l2q2D2n1",     {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2D2n2",     {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2D2n3",     {VLL,VLL,VDL,VDL},False,9},
+              {"l2q2D2n4",     {VLL,VLL,VDL,VDL},False,9},
+              {"e4D2",         {VLR,VLR,VLR,VLR},False,9},
+              {"u4D2n1",       {VUR,VUR,VUR,VUR},False,9},
+              {"u4D2n2",       {VUR,VUR,VUR,VUR},False,9},
+              {"d4D2n1",       {VDR,VDR,VDR,VDR},False,9},
+              {"d4D2n2",       {VDR,VDR,VDR,VDR},False,9},
+              {"e2u2D2n1",     {VLR,VLR,VUR,VUR},False,9},
+              {"e2u2D2n2",     {VLR,VLR,VUR,VUR},False,9},
+              {"e2d2D2n1",     {VLR,VLR,VDR,VDR},False,9},
+              {"e2d2D2n2",     {VLR,VLR,VDR,VDR},False,9},
+              {"u2d2D2n1",     {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2D2n2",     {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2D2n3",     {VUR,VUR,VDR,VDR},False,9},
+              {"u2d2D2n4",     {VUR,VUR,VDR,VDR},False,9},
+              {"l2e2D2n1",     {VLL,VLL,VLR,VLR},False,9},
+              {"l2e2D2n2",     {VLL,VLL,VLR,VLR},False,9},
+              {"l2u2D2n1",     {VLL,VLL,VUR,VUR},False,9},
+              {"l2u2D2n2",     {VLL,VLL,VUR,VUR},False,9},
+              {"l2d2D2n1",     {VLL,VLL,VDR,VDR},False,9},
+              {"l2d2D2n2",     {VLL,VLL,VDR,VDR},False,9},
+              {"q2e2D2n1",     {VDL,VDL,VLR,VLR},False,9},
+              {"q2e2D2n2",     {VDL,VDL,VLR,VLR},False,9},
+              {"q2u2D2n1",     {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2D2n2",     {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2D2n3",     {VDL,VDL,VUR,VUR},False,9},
+              {"q2u2D2n4",     {VDL,VDL,VUR,VUR},False,9},
+              {"q2d2D2n1",     {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2D2n2",     {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2D2n3",     {VDL,VDL,VDR,VDR},False,9},
+              {"q2d2D2n4",     {VDL,VDL,VDR,VDR},False,9},
+              {"q2udD2n1",     {VDL,VUR,VDL,VDR},False,9},
+              {"q2udD2n2",     {VDL,VUR,VDL,VDR},False,9},
+              {"q2udD2n3",     {VDL,VUR,VDL,VDR},False,9},
+              {"lequD2n1",     {VLL,VLR,VDL,VUR},False,9},
+              {"lequD2n2",     {VLL,VUR,VDL,VLR},False,9},
+              {"lequD2n3",     {VLL,VLR,VDL,VUR},False,9},
+              (* class 21 BLV *)
+              {"lqudD2n1",     {VDR,VUR,VDL,VLL},True,9},
+              {"lqudD2n2",     {VDR,VDL,VUR,VLL},True,9},
+              {"eq2uD2",       {VDL,VDL,VUR,VLR},True,9},
+              {"lq3D2",        {VDL,VDL,VDL,VLL},True,9},
+              {"eu2dD2n1",     {VUR,VUR,VDR,VLR},True,9},
+              {"eu2dD2n2",     {VUR,VUR,VDR,VLR},True,9}
   };
 
 SMEFT$TensorClass = (#[[1]] -> #[[4]]) & /@ SMEFT$TensorWC;

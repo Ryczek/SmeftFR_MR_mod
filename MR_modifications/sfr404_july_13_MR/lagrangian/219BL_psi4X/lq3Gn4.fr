@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 219 (psi^4 X) BLV operator: lq3Gn4 *)
+(* WARNING: baryon and lepton number violating! *)
+
+(* Q_lq3G^(4) = (T^A)_c^d eps_{d a b} eps_{mn} eps_{jk} (q_p^{m a} C q_r^{j b})(q_s^{k c} C sigma^{mu nu} l_t^n) G^A_{mu nu} + h.c. *)
+LQlq3Gn4 := Module[{sp1,sp2,sp3,sp4,sp5,ff1,ff2,ff3,ff4,aa,bb,cc,dd,vv,jj,kk,mm,nn,mu,nu,aux},
+
+aux = T8[vv,cc,dd] Eps[dd,aa,bb] Eps[mm,nn] Eps[jj,kk] Sigma[mu,nu,sp4,sp5] FS[Gl8,mu,nu,vv]
+  HC[CC[QL8][sp1,mm,ff1,aa]].Ga[0,sp1,sp2].QL8[sp2,jj,ff2,bb]
+  HC[CC[QL8][sp3,kk,ff3,cc]].Ga[0,sp3,sp4].LL8[sp5,nn,ff4];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "lq3Gn4"][ff1,ff2,ff3,ff4] aux,
+      FlavorExpand->{SU2D8} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

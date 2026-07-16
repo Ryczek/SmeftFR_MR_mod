@@ -1,0 +1,14 @@
+(* SmeftFR v4.0 - class 219 (psi^4 X) operator: q2u2Gn5 *)
+
+(* Q_q2u2G^(5) = f^{ABC} (qbar_p gamma^mu T^A q_r) (ubar_s gamma^nu T^B u_t) G^C_{mu nu} *)
+LQq2u2Gn5 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,aa,bb,cc,dd,ee,rr,ss,ii,mu,nu,aux},
+		
+aux = T8[aa,dd,ee] T8[bb,rr,ss] f[aa,bb,cc]
+  (QL8bar[sp1,ii,ff1,dd].QL8[sp2,ii,ff2,ee]).(uR8bar[sp3,ff3,rr].uR8[sp4,ff4,ss])
+   Ga[mu,sp1,sp2] Ga[nu,sp3,sp4] FS[Gl8,mu,nu,cc];
+
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "q2u2Gn5"][ff1,ff2,ff3,ff4] aux,
+      FlavorExpand->{SU2D8} ];
+
+aux /. SMEFTGaugeRules
+];
