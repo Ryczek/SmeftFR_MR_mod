@@ -1,3 +1,8 @@
+(* ::Package:: *)
+
+Quit[]
+
+
 (* SmeftFR v4.0 package *)
 (* UFO interface - run smeft_fr_init.m prior to this code! *)
 
@@ -6,14 +11,12 @@ Quiet[Remove["Global`*"]];
 SMEFT$MajorVersion      = "4";
 SMEFT$MinorVersion      = "04";
 
-(* FeynRules and SmeftFR installation paths - set environment variable
-   FeynRulesPath (e.g. in shell: export FeynRulesPath =
-   /path/to/FeynRules) or alternatively edit hard-coded path *)
-
-$FeynRulesPath = If [ StringQ[Environment["FeynRulesPath"]] && Environment["FeynRulesPath"] =!= "",
-    Environment["FeynRulesPath"]
-,
-    FileNameJoin[{"/home","rosiek","FeynRules"}]
+(* FeynRules and SmeftFR package installation paths - edit if necessary *)
+$FeynRulesPath = FileNameJoin[{"/Users/michalryczkowski/Library/Mathematica/Applications/feynrules-current"}];
+SMEFT$Path = FileNameJoin[{"/Users/michalryczkowski/Documents/Programming/GitHub/SmeftFR_MR_mod/MR_modifications/sfr404_july_13_MR"}];
+If[ ! DirectoryQ[SMEFT$Path], 
+  Print["Directory " <> SMEFT$Path <> "does not exist, please check package setup"];
+  Abort[];
 ];
 Get["smeft_directory_check.m"];
 
@@ -41,7 +44,6 @@ CPUTime = TimeUsed[];
 (* choose the handling of complex parameters. Default: only real parts
    of parameters are transferred to UFO to speed up calculations *)
 
-SMEFT$UFORealParameters = True;
 SMEFT$UFORealParameters = False;
 
 If [SMEFT$UFORealParameters,
@@ -76,7 +78,10 @@ Print["\nMass basis Lagrangian loaded, time = ", TimeUsed[] - CPUTime,"\n"];
 
 (* UFO output *)
 SMEFTToUFO[ SMEFT$MBLagrangian,
-	    Output -> FileNameJoin[{SMEFT$Path, "output", "UFO"}],
+	    Output -> FileNameJoin[{SMEFT$Path, "output", "UFO_TEST_4FDim8_16_07+26"}],
 	    CorrectIO -> True ];
 Print["\nUFO output generated, time = ", TimeUsed[] - CPUTime,"\n"];
+
+
+
 

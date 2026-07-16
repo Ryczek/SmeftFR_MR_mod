@@ -1,3 +1,8 @@
+(* ::Package:: *)
+
+Quit[]
+
+
 (* SmeftFR v4.0 package *)
 (* main initialization sequence, generation of mass basis Lagrangian
 and Feynman rules in Mathematica format *)
@@ -13,11 +18,14 @@ SMEFT$MinorVersion      = "04";
    FeynRulesPath (e.g. in shell: export FeynRulesPath =
    /path/to/FeynRules) or alternatively edit hard-coded path *)
 
-$FeynRulesPath = If [ StringQ[Environment["FeynRulesPath"]] && Environment["FeynRulesPath"] =!= "",
-    Environment["FeynRulesPath"]
-,
-    FileNameJoin[{"/home","rosiek","FeynRules"}]
+(* FeynRules and SmeftFR package installation paths - edit if necessary *)
+$FeynRulesPath = FileNameJoin[{"/Users/michalryczkowski/Library/Mathematica/Applications/feynrules-current"}];
+SMEFT$Path = FileNameJoin[{"/Users/michalryczkowski/Documents/Programming/GitHub/SmeftFR_MR_mod/MR_modifications/sfr404_july_13_MR"}];
+If[ ! DirectoryQ[SMEFT$Path], 
+  Print["Directory " <> SMEFT$Path <> "does not exist, please check package setup"];
+  Abort[];
 ];
+
 Get["smeft_directory_check.m"];
 
 (* hack for Mathematica v14 *)
@@ -240,31 +248,9 @@ Class 21 BL violating:
 (* Example of subset of operators (using full list leads to lengthy
 calculations (may never end for full dim-8 set)!) *)
 
-OpList6 = { "phil1", "phil3", "ll", "lq1", "lq3", "le", "lu", "ld", "qq3"};
-
-OpList6 = { "phi", "phiWB", "ephi", "dphi", "uphi", "phil1", "ll",
-"lq1", "vv", "qq3", "lu", "ld", "qqq"};
-
-OpList6 = { "phi", "phiWB", "phil1", "phil3", "ephi", "dphi", "uphi",
-	    "ee", "ll", "vv", "qq1", "dd", "uu", "lq1", "lq3", "le",
-	    "lu", "ld", "qq1", "qq3", "eu", "ed", "qe", "ledq",
-	    "lequ1", "lequ3"};
-
 OpList6 = {};
 
-OpList8 = {"leG2phin1", "leWphi3n2", "leWphi3n2", "l2phi2D3n1",
-"lephi5", "quphi5", "qdphi5", "l2phi4Dn1", "l2G2D", "e2Bphi2Dn4",
-"leWHD2n1", "lephi3D2n1" };
-
-OpList8 = {"l4phi2n1", "l4phi2n2", "e4phi2", "l2e2phi2n1",
-    "l2e2phi2n2", "u4phi2", "leqdphi2n1", "leqdphi2n2", "q2udphi2n1",
-    "q2udphi2n2", "l4Wn1", "u4Gn1", "l2e2Wn1", "q2u2Gn5", "ledqGn1",
-    "q2udGn1", "l3eHDn1", "leqdD2n1", "leqdD2n2", "lqudphi2n1"};
-OpList8 = {(*"G4n9",*) "G4n1", "ledqGn1", "W2phi2D2n1", "quphi5", "qdphi5" };
-
-OpList6 = {"phi", "duq3", "qqu3", "qqq3", "duu3"};
-OpList8 = {};
-OpList6 = {"vv", "ll3"};
+OpList8 = {"leWHD2n1"};
 
 OpList = Union[OpList6, OpList8];
 
@@ -282,7 +268,7 @@ SMEFTInitializeModel[Operators -> OpList,
                      WCXFInitFile -> WCXFInput,
                      InputScheme -> "GF",
                      CKMInput -> "no",
-		     MajoranaNeutrino -> True,
+		     MajoranaNeutrino -> False,
 		     PMNSInput -> "diagonal",
                      MaxParticles -> 6];
 
@@ -325,3 +311,7 @@ SelectVertices[GaugeHiggsVerticesExp, SelectParticles -> {H, A, A}]];
 (* To produce other output formats (Latex, WCxf, FeynArts, UFO) it is
 now necessary to Quit[] this session and run smeft_fr_interfaces.m or
 smeft_fr_ufo.m in new Mathematica kernel *)
+
+
+
+

@@ -1013,3 +1013,20 @@ class-20/21 smoke subset: `OpList8 = {"l3eHDn3", "leq2HDn4",
 "lequD2n2"}` (covers crossed colour/doublet currents, tau-Htilde
 brackets, DC-on-bracket-fermion, gamma-C-bilinears, DC-on-CC, and the
 Leibniz/arrow D^2 currents).
+
+### 2026-07-16 (MR, AI-assisted) — Runtime note: benign LeptonNumber warnings with Majorana neutrinos
+
+First runtime (`smeft_fr_init.m`) observation, from a run including the
+authors' pre-existing sample `leqdD2n1`: FeynRules emits
+`QN::NonConserv ... LeptonNumber not conserved in vertex {dq~, l, vl, uq(, A/W/Z ...)}`
+for every charged-current-like 4-fermion vertex. This is **expected and
+harmless**, NOT an operator bug: with `MajoranaNeutrino -> True`
+(`smeft_fr_init.m`), `vl` is declared `SelfConjugate -> True` yet keeps
+`QuantumNumbers -> {LeptonNumber -> 1}`
+(`definitions/smeft_fields_MB_majorana.fr`), so a nubar in a vertex is
+counted as `L = +1` instead of `-1` and the check sums to 2. The flagged
+vertices are exactly the correct `(nubar e_R)(dbar u_L)` + gauge-boson
+components of `Q_leqdD2^(1)`; the same warning arises for stock dim-6
+`ledq`/`lequ` in Majorana mode. Ignore it (vertices are still computed:
+"30 vertices obtained"), or silence via `MajoranaNeutrino -> False` /
+dropping `LeptonNumber` from `vl`.

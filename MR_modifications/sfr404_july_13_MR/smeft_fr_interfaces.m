@@ -1,3 +1,8 @@
+(* ::Package:: *)
+
+Quit[]
+
+
 (* SmeftFR v4.0 package *)
 (* WCXF, Latex and FeynArts interfaces - run smeft_fr_init.m prior to
 this code! *)
@@ -11,11 +16,14 @@ SMEFT$MinorVersion      = "04";
    FeynRulesPath (e.g. in shell: export FeynRulesPath =
    /path/to/FeynRules) or alternatively edit hard-coded path *)
 
-$FeynRulesPath = If [ StringQ[Environment["FeynRulesPath"]] && Environment["FeynRulesPath"] =!= "",
-    Environment["FeynRulesPath"]
-,
-    FileNameJoin[{"/home","rosiek","FeynRules"}]
+(* FeynRules and SmeftFR package installation paths - edit if necessary *)
+$FeynRulesPath = FileNameJoin[{"/Users/michalryczkowski/Library/Mathematica/Applications/feynrules-current"}];
+SMEFT$Path = FileNameJoin[{"/Users/michalryczkowski/Documents/Programming/GitHub/SmeftFR_MR_mod/MR_modifications/sfr404_july_13_MR"}];
+If[ ! DirectoryQ[SMEFT$Path], 
+  Print["Directory " <> SMEFT$Path <> "does not exist, please check package setup"];
+  Abort[];
 ];
+
 Get["smeft_directory_check.m"];
 
 (* hack for Mathematica v14 *)
@@ -64,6 +72,4 @@ WriteFeynArtsOutput[ SMEFT$MBLagrangian,
 Print["\nVertices stored in FeynArts format in directory ",
        Style[FileNameJoin[{SMEFT$Path, "output", "FeynArts"}] ,Bold] ];
 Print["\nTotal CPU time used = ", TimeUsed[] - CPUTime];
-
-
 
