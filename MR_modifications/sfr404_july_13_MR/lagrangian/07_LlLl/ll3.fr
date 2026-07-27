@@ -1,0 +1,16 @@
+(* SmeftFR v4.0 - class 07 (dim-6 (Lbar L)(Lbar L)) operator: ll3 *)
+
+(* BLV 4-fermion vertices split into triple interactions *)
+
+LQll3 := Module[{sp1,sp2,ff1,ff2,ff3,ff4,ii,nu,aux1,aux2},
+
+aux1 = ExpandIndices[ ToExpression[SMEFT$WB <> "ll3"][ff1,ff2,ff3,ff4]
+  Xll[nu,ff3,ff4] LLbar[sp1,ii,ff1].LL[sp2,ii,ff2] Ga[nu,sp1,sp2],
+  FlavorExpand->{SU2D} ];
+
+aux2 = UFOOrder ExpandIndices[ MX^2 Xllbar[nu,ff3,ff4] 
+  LLbar[sp1,ii,ff3].LL[sp2,ii,ff4] Ga[nu,sp1,sp2],
+  FlavorExpand->{SU2D} ];
+		
+aux1 + aux2 + HC[aux1] + HC[aux2]	 
+];

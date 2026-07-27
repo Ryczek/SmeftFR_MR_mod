@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 05 (dim-6 psi^2 X phi) operator: dB *)
+
+LQdB := Module[{sp1,sp2,ii,cc,si,nu,ff1,ff2,aux},
+
+aux = QLbar[sp1,ii,ff1,cc].dR[sp2,ff2,cc] Sigma[si,nu,sp1,sp2] Phi[ii] FS[B,si,nu];
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "dB"][ff1,ff2] aux, FlavorExpand->{SU2W,SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

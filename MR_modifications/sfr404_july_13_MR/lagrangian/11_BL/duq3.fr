@@ -1,0 +1,17 @@
+(* SmeftFR v4.0 - class 11 (dim-5/6 B/L violating) operator: duq3 *)
+
+(* BLV 4-fermion vertices split into triple interactions *)
+
+LQduq3 := Module[{sp1,sp2,ff1,ff2,ff3,ff4,aa,bb,cc,jj,kk,aux1,aux2},
+
+aux1 = ExpandIndices[ ToExpression[SMEFT$WB <> "duq3"][ff1,ff2,ff3,ff4]
+  Xduq[ff3,ff4,cc] Eps[aa,bb,cc]
+  HC[CC[dR][sp1,ff1,aa]].Ga[0,sp1,sp2].uR[sp2,ff2,bb],
+  FlavorExpand->{SU2D} ];
+
+aux2 = UFOOrder ExpandIndices[ MX^2 Xduqbar[ff3,ff4,cc] Eps[jj,kk]
+  HC[CC[QL][sp1,jj,ff3,cc]].Ga[0,sp1,sp2].LL[sp2,kk,ff4],
+  FlavorExpand->{SU2D} ];
+
+aux1 + aux2 + HC[aux1] + HC[aux2]	 
+];

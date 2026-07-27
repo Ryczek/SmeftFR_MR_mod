@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 04 (dim-6 X^2 phi^2) operator: phiBtilde *)
+
+LQphiBtilde := Module[{ii,mu,nu,al,be,aux},
+
+aux = Phibar[ii] Phi[ii] Eps[mu,nu,al,be]/2 HC[FS[B,al,be]] FS[B,mu,nu];
+aux = ExpandIndices[ aux, FlavorExpand->{SU2W,SU2D} ];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "phiBtilde"] ] aux /.SMEFTGaugeRules
+];

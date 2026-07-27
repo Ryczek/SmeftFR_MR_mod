@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 08 (dim-6 (Rbar R)(Rbar R)) operator: ee *)
+
+LQee := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,nu,aux},
+
+aux = (lRbar[sp1,ff1].lR[sp2,ff2]).(lRbar[sp3,ff3].lR[sp4,ff4]) Ga[nu,sp1,sp2] Ga[nu,sp3,sp4];
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "ee"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2D} ];
+
+aux
+];

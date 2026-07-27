@@ -195,26 +195,178 @@ SMEFTGaugeRules = If[ ! SMEFT$RxiGaugeStatus, {G0|GP|GPbar ->0}, {} ];
 (* Load SM Lagrangian *)
 Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "00_sm.fr"}] ];
 (* Load dim6 operators *)
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "01_X3.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "02_phi6.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "03_psi2phi3.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "04_X2phi2.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "05_psi2Xphi.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "06_psi2phi2D.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "07_LlLl.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "08_RrRr.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "09_LlRr.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "10_LrRl.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "11_BL.fr"}] ];
+(* Load dim6 class-01 (X^3) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "01_X3", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "01_X3", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim6 class-02 (phi^6 / phi^4 D^2) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "02_phi6", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "02_phi6", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim6 class-03 (psi^2 phi^3) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "03_psi2phi3", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "03_psi2phi3", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim6 class-04 (X^2 phi^2) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "04_X2phi2", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "04_X2phi2", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim6 class-05 (psi^2 X phi) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "05_psi2Xphi", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "05_psi2Xphi", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim6 class-06 (psi^2 phi^2 D) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "06_psi2phi2D", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "06_psi2phi2D", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim6 class-07 ((Lbar L)(Lbar L)) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "07_LlLl", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "07_LlLl", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim6 class-08 ((Rbar R)(Rbar R)) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "08_RrRr", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "08_RrRr", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim6 class-09 ((Lbar L)(Rbar R)) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "09_LlRr", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "09_LlRr", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim6 class-10 ((Lbar R)(Rbar L), (Lbar R)(Lbar R)) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "10_LrRl", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "10_LrRl", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim6 class-11 (dim-5/6 B/L violating) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "11_BL", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "11_BL", # <> ".fr"}] ] &
+  ]
+];
 (* Load dim8 bosonic operators *)
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "201_X4.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "202_phi8.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "203_phi6D2.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "204_phi4D4.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "205_X3phi2.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "206_X2phi4.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "207_X2phi2D2.fr"}] ];
-Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "208_Xphi4D2.fr"}] ];	
+(* Load dim8 class-201 (X^4) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "201_X4", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "201_X4", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim8 class-202 (phi^8) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "202_phi8", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "202_phi8", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim8 class-203 (phi^6 D^2) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "203_phi6D2", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "203_phi6D2", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim8 class-204 (phi^4 D^4) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "204_phi4D4", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "204_phi4D4", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim8 class-205 (X^3 phi^2) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "205_X3phi2", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "205_X3phi2", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim8 class-206 (X^2 phi^4) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "206_X2phi4", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "206_X2phi4", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim8 class-207 (X^2 phi^2 D^2) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "207_X2phi2D2", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "207_X2phi2D2", # <> ".fr"}] ] &
+  ]
+];
+(* Load dim8 class-208 (X phi^4 D^2) operators on demand *)
+Scan[
+  Function[op,
+    Get[ FileNameJoin[{SMEFT$Path, "lagrangian", "208_Xphi4D2", op <> ".fr"}] ]
+  ],
+  Select[ SMEFT$OperatorList,
+    FileExistsQ[ FileNameJoin[{SMEFT$Path, "lagrangian", "208_Xphi4D2", # <> ".fr"}] ] &
+  ]
+];
 (* Load dim8 2-fermion operators *)
 (* Load dim8 class-209 (psi^2 X^2 H) operators on demand *)
 Scan[

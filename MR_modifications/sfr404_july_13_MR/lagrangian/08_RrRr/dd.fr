@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 08 (dim-6 (Rbar R)(Rbar R)) operator: dd *)
+
+LQdd := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,cc,dd,nu,aux},
+
+aux = (dRbar[sp1,ff1,cc].dR[sp2,ff2,cc]).(dRbar[sp3,ff3,dd].dR[sp4,ff4,dd]) Ga[nu,sp1,sp2] Ga[nu,sp3,sp4];
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "dd"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2D} ];
+
+aux
+];

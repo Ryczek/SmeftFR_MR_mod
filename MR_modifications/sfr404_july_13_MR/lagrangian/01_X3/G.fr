@@ -1,0 +1,8 @@
+(* SmeftFR v4.0 - class 01 (dim-6 X^3) operator: G *)
+
+LQG := Module[{mu,nu,ro,aa,bb,cc,aux},
+
+aux = f[aa,bb,cc] FS[Gl,mu,nu,aa] FS[Gl,nu,ro,bb] FS[Gl,ro,mu,cc];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "G" ] aux ]
+];

@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 01 (dim-6 X^3) operator: Wtilde *)
+
+LQWtilde := Module[{ii,jj,kk,mu,nu,ro,aux},
+
+aux = Eps[ii,jj,kk] Eps[mu,nu,al,be]/2 HC[FS[Wi,al,be,ii]] FS[Wi,nu,ro,jj] FS[Wi,ro,mu,kk];
+aux = ExpandIndices[ aux , FlavorExpand->SU2W ];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "Wtilde"] ]  aux
+];

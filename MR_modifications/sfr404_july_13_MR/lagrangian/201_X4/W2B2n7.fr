@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 201 (X^4) operator: W2B2n7 *)
+
+LQW2B2n7 := Module[{ii,mu,nu,ro,si,ga,de,aux},
+
+aux = (FS[B8,mu,nu] FS[Wi8,mu,nu,ii]) (FS[B8,ro,si] Eps[ro,si,ga,de]/2 HC[FS[Wi8,ga,de,ii]]);
+aux = ExpandIndices[ aux, FlavorExpand->SU2W8 ];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "W2B2n7"] aux ] /. SMEFTGaugeRules
+];

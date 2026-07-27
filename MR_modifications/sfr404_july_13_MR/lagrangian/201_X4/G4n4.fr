@@ -1,0 +1,8 @@
+(* SmeftFR v4.0 - class 201 (X^4) operator: G4n4 *)
+
+LQG4n4 := Module[{aa,bb,mu,nu,ro,si,al,be,ga,de,aux},
+
+aux = (FS[Gl8,mu,nu,aa] Eps[mu,nu,al,be]/2 HC[FS[Gl8,al,be,bb]]) (FS[Gl8,ro,si,aa] Eps[ro,si,ga,de]/2 HC[FS[Gl8,ga,de,bb]]);
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "G4n4"] aux ] /. SMEFTGaugeRules
+];

@@ -1,0 +1,8 @@
+(* SmeftFR v4.0 - class 01 (dim-6 X^3) operator: Gtilde *)
+
+LQGtilde := Module[{mu,nu,ro,al,be,aa,bb,cc,aux},
+
+aux = f[aa,bb,cc] Eps[mu,nu,al,be]/2 HC[FS[Gl,al,be,aa]] FS[Gl,nu,ro,bb] FS[Gl,ro,mu,cc];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "Gtilde"] aux ]
+];

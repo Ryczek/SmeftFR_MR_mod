@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 201 (X^4) operator: G2W2n3 *)
+
+LQG2W2n3 := Module[{aa,ii,mu,nu,ro,si,aux},
+
+aux = (FS[Wi8,mu,nu,ii] FS[Gl8,mu,nu,aa]) (FS[Wi8,ro,si,ii] FS[Gl8,ro,si,aa]);
+aux = ExpandIndices[ aux, FlavorExpand->SU2W8 ];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "G2W2n3"] aux ] /. SMEFTGaugeRules
+];

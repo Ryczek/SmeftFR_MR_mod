@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 11 (dim-5/6 B/L violating) operator: duu *)
+
+LQduu := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,aa,bb,cc,aux},
+
+aux = Eps[aa,bb,cc] HC[CC[dR][sp1,ff1,aa]].Ga[0,sp1,sp2].uR[sp2,ff2,bb] HC[CC[uR][sp3,ff3,cc]].Ga[0,sp3,sp4].lR[sp4,ff4];
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "duu"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2D} ];
+
+aux + HC[aux]
+];

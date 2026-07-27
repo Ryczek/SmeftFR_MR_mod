@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 01 (dim-6 X^3) operator: W *)
+
+LQW := Module[{ii,jj,kk,mu,nu,ro,al,be,aux},
+
+aux = Eps[ii,jj,kk] FS[Wi,mu,nu,ii] FS[Wi,nu,ro,jj] FS[Wi,ro,mu,kk];
+aux = ExpandIndices[ aux, FlavorExpand->SU2W ];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "W"] ] aux
+];

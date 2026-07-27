@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 06 (dim-6 psi^2 phi^2 D) operator: phiud *)
+
+LQphiud := Module[{sp1,sp2,ii,jj,kk,cc,si,nu,ff1,ff2,aux},
+
+aux = I Eps[jj,kk] HC[Phibar[kk]] DC[Phi[jj],si] uRbar[sp1,ff1,cc].dR[sp2,ff2,cc] Ga[si,sp1,sp2];
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "phiud"][ff1,ff2] aux, FlavorExpand->{SU2W,SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

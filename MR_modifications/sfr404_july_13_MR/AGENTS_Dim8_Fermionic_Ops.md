@@ -1030,3 +1030,55 @@ components of `Q_leqdD2^(1)`; the same warning arises for stock dim-6
 `ledq`/`lequ` in Majorana mode. Ignore it (vertices are still computed:
 "30 vertices obtained"), or silence via `MajoranaNeutrino -> False` /
 dropping `LeptonNumber` from `vl`.
+
+### 2026-07-17 (MR, AI-assisted) — Per-operator split extended to ALL remaining Lagrangian files (dim-5/6 + bosonic dim-8)
+
+At the maintainer's request, the per-operator file layout used for the
+fermionic dim-8 classes (2XX) was applied to every remaining flat
+Lagrangian file. `lagrangian/00_sm.fr` (SM) is intentionally left flat.
+
+- **Split**: `01_X3`, `02_phi6`, `03_psi2phi3`, `04_X2phi2`,
+  `05_psi2Xphi`, `06_psi2phi2D`, `07_LlLl`, `08_RrRr`, `09_LlRr`,
+  `10_LrRl`, `11_BL` (dim-5/6, 69 ops incl. dim-5 `vv`) and `201_X4`,
+  `202_phi8`, `203_phi6D2`, `204_phi4D4`, `205_X3phi2`, `206_X2phi4`,
+  `207_X2phi2D2`, `208_Xphi4D2` (bosonic dim-8, 89 ops) — 158
+  per-operator files total, directory name = old flat-file name without
+  `.fr`, file name = operator name (= `LQ` suffix = WC name, matching
+  `SMEFT$OperatorList` entries). Each file gets a one-line
+  `(* SmeftFR v4.0 - class NN (<desc>) operator: <name> *)` header;
+  the `LQ<name> := Module[...]` bodies were extracted mechanically
+  (scratchpad `split_flat_lagrangians.py`) and verified byte-identical
+  by in-memory reassembly against the originals before deletion.
+  Interstitial comments were attached to the operator they precede
+  (`(* BLV 4-fermion vertices split into triple interactions *)` ->
+  `ll3.fr` in 07 and `duq3.fr` in 11; the `X^3 X'` / `X^2 X'^2`
+  subclass headers in 201 -> `G3Bn1.fr` / `G2W2n1.fr`).
+- **`code/smeft_io.m`**: the 19 flat `Get`s in `SMEFTLoadLagrangian`
+  replaced by on-demand `Scan`/`Select` loaders (identical pattern to
+  the 209-221 ones), same order, under the existing
+  `(* Load dim6 operators *)` / `(* Load dim8 bosonic operators *)`
+  section comments. NB placement quirks preserved: `ll3` (registered in
+  `SMEFT$Dim6FourFermionBLVOperators`) lives in `07_LlLl/`, dim-5 `vv`
+  in `11_BL/` — the loaders match on file existence, so list
+  membership vs. directory location doesn't matter.
+- **Safety audit done before the switch**: with on-demand loading,
+  `LQ<name>` is only defined for selected operators. All direct/string
+  `LQ` uses were checked to be gated on `SMEFT$OperatorList`:
+  `smeft_initialization.m` (MemberQ guards on all
+  Gauge*/TwoFermion* sums), `smeft_4fermion.m`
+  (`FindFourFermionVertices` always called on
+  `Intersection[SMEFT$OperatorList, ...]`), `smeft_gaugeint.m:95`
+  (`LQvv` behind `MemberQ[..., "vv"]`). `SMEFT$OperatorList` is set
+  (smeft_initialization.m:86) before `SMEFTLoadLagrangian[]` (line
+  260), so the mechanism is identical to the already-working 2XX case.
+- **No changes** to `smeft_variables.m` (operator lists unchanged) or
+  `smeft_fr_init.m` (names unchanged).
+
+Verified: per-directory inventories == `SMEFT$AllOperators` sublists
+(69 dim-5/6, 89 bosonic dim-8, no missing/extra); all 158 files `Get`
+cleanly in wolframscript and define their `LQ<name>` (OwnValues)
+symbols; edited `smeft_io.m` parses; functional gating test (fake
+`SMEFT$OperatorList` incl. a nonexistent name) loads exactly the
+selected ops and nothing else. Full `SMEFTInitializeModel` runtime NOT
+run (per policy) — behaviour should be identical since the flat files
+were plain sequences of delayed `LQ` definitions.

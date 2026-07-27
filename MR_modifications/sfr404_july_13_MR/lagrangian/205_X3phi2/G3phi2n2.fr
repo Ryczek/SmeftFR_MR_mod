@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 205 (X^3 phi^2) operator: G3phi2n2 *)
+
+LQG3phi2n2 := Module[{mu,nu,ro,al,be,aa,bb,cc,ii,aux},
+
+aux = f[aa,bb,cc] (Phi8bar[ii].Phi8[ii]) FS[Gl8,mu,nu,aa] FS[Gl8,nu,ro,bb] Eps[ro,mu,al,be]/2 HC[FS[Gl8,al,be,cc]];
+aux = ExpandIndices[ aux, FlavorExpand->SU2D8 ];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "G3phi2n2"] ] aux /. SMEFTGaugeRules
+];

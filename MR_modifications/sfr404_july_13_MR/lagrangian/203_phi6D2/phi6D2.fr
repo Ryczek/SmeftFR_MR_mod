@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 203 (phi^6 D^2) operator: phi6D2 *)
+
+LQphi6D2 := Module[{ii,jj,kk,mu,aux},
+
+aux = Phi8bar[ii].Phi8[ii] HC[Phi8bar[jj] DC[Phi8[jj],mu]] (Phi8bar[kk] DC[Phi8[kk],mu]);
+aux = ExpandIndices[ aux, FlavorExpand->{SU2W8,SU2D8} ];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "phi6D2"] aux ] /. SMEFTGaugeRules
+];

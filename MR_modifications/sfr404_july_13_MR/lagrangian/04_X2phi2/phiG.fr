@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 04 (dim-6 X^2 phi^2) operator: phiG *)
+
+LQphiG := Module[{ii,mu,nu,a,aux},
+
+aux = Phibar[ii] Phi[ii] FS[Gl,mu,nu,a] FS[Gl,mu,nu,a];
+aux = ExpandIndices[ aux, FlavorExpand->{SU2D} ];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "phiG"] ] aux /. SMEFTGaugeRules
+];

@@ -1,0 +1,15 @@
+(* SmeftFR v4.0 - class 11 (dim-5/6 B/L violating) operator: duu3 *)
+
+LQduu3 := Module[{sp1,sp2,ff1,ff2,ff3,ff4,ff5,ff6,aa,bb,cc,aux1,aux2},
+
+aux1 = ExpandIndices[ ToExpression[SMEFT$WB <> "duu3"][ff1,ff2,ff3,ff4]
+  Xduu[ff3,ff4,cc] Eps[aa,bb,cc]
+  HC[CC[dR][sp1,ff1,aa]].Ga[0,sp1,sp2].uR[sp2,ff2,bb],
+  FlavorExpand->{SU2D} ];
+
+aux2 = UFOOrder ExpandIndices[ MX^2 Xduubar[ff5,ff6,cc]
+  HC[CC[uR][sp1,ff5,cc]].Ga[0,sp1,sp2].lR[sp2,ff6],
+  FlavorExpand->{SU2D} ];
+
+aux1 + aux2 + HC[aux1] + HC[aux2]
+];

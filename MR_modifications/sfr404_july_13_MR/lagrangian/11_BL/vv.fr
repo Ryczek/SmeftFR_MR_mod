@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 11 (dim-5/6 B/L violating) operator: vv *)
+
+LQvv := Module[{sp1,sp2,jj,kk,mm,nn,ff1,ff2,aux},
+
+aux = Eps[jj,kk] Eps[mm,nn] Phi[jj] Phi[mm] HC[CC[LL][sp1,kk,ff1]].Ga[0,sp1,sp2].LL[sp2,nn,ff2];
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "vv"][ff1,ff2] aux, FlavorExpand->{SU2D} ];
+
+(aux + HC[aux]) /. SMEFTGaugeRules
+];

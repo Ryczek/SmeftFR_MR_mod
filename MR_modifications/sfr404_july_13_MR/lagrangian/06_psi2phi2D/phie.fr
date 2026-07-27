@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 06 (dim-6 psi^2 phi^2 D) operator: phie *)
+
+LQphie := Module[{sp1,sp2,jj,si,ff1,ff2,aux},
+
+aux = I (Phibar[jj] DC[Phi[jj],si] - DC[Phibar[jj],si] Phi[jj]) lRbar[sp1,ff1].lR[sp2,ff2] Ga[si,sp1,sp2];
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "phie"][ff1,ff2] aux, FlavorExpand->{SU2W,SU2D} ];
+
+aux /. SMEFTGaugeRules
+];

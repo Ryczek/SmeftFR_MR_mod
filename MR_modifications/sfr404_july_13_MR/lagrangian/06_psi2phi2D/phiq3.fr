@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 06 (dim-6 psi^2 phi^2 D) operator: phiq3 *)
+
+LQphiq3 := Module[{sp1,sp2,ii,jj,ll,nn,cc,m,si,ff1,ff2,aux},
+
+aux = I (Phibar[ii] DC[Phi[jj],si] - DC[Phibar[ii],si] Phi[jj]) QLbar[sp1,ll,ff1,cc].QL[sp2,nn,ff2,cc] 2 Ta[m,ii,jj] 2 Ta[m,ll,nn] Ga[si,sp1,sp2];
+aux = ExpandIndices[ ToExpression[SMEFT$WB <> "phiq3"][ff1,ff2] aux, FlavorExpand->{SU2W,SU2D} ];
+
+aux /. SMEFTGaugeRules
+];

@@ -1,0 +1,9 @@
+(* SmeftFR v4.0 - class 206 (X^2 phi^4) operator: WBphi4n2 *)
+
+LQWBphi4n2 := Module[{ii,jj,kk,ll,mu,nu,aux},
+
+aux = Phi8bar[ii].Phi8[ii] Phi8bar[jj] 2 Ta8[ll,jj,kk] Phi8[kk] Eps[mu,nu,al,be]/2 HC[FS[Wi8,al,be,ll]] FS[B8,mu,nu];
+aux = ExpandIndices[ aux, FlavorExpand->{SU2W8,SU2D8} ];
+
+ExpandIndices[ ToExpression[SMEFT$WB <> "WBphi4n2"] ] aux /. SMEFTGaugeRules
+];
