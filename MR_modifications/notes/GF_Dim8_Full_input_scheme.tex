@@ -1,0 +1,348 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newcommand{\Q}[1]{Q_{#1}}
+\newcommand{\hc}{\text{h.c.}}
+
+\title{Dimension-8 SMEFT fermionic operators potentially relevant\\
+to muon decay ($G_F$ input scheme) --- initial survey}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Purpose and scope}
+
+This note is a first pass at identifying which \emph{fermionic} dimension-8
+SMEFT operators of Murphy's basis (arXiv:2005.00059) can contribute at tree
+level to the process used to define the Fermi constant,
+\[
+\mu^-(p_1) \to e^-(p_3)\, \bar\nu_e(p_4)\, \nu_\mu(p_2) ,
+\]
+i.e.\ muon decay. The goal at this stage is only a \textbf{candidate list}:
+no Feynman rules, amplitudes, or Wilson-coefficient combinations are worked
+out here. All 2- and 4-fermion dimension-8 classes (9--21 of the paper) are
+already implemented in this repository's active tree
+(\texttt{MR\_modifications/sfr404\_july\_13\_MR/lagrangian/2XX\_.../*.fr},
+per \texttt{AGENTS\_Dim8\_Fermionic\_Ops.md}, status: ``the ENTIRE fermionic
+dim-8 sector of 2005.00059 (classes 9--21)'' is done), so every operator
+named below already exists as a \texttt{.fr} file and can be dropped into an
+\texttt{OpList8} run.
+
+The dimension-6 analogue of this calculation is worked out in full in the
+BSc thesis \texttt{papers/1100-LIC-FZ-296243.pdf} (Ch.~2--3). That
+calculation is the template for the diagram topology and operator-selection
+logic used below.
+
+\section{Diagram topology (dim-6 thesis, generalises unchanged to dim-8)}
+
+The thesis identifies four tree diagrams contributing to
+$\mu^- \to e^- \bar\nu_e \nu_\mu$ in SMEFT (Sec.~2.3, eqs.~2.31--2.34):
+\begin{enumerate}
+\item \textbf{4-fermion contact diagram} --- a single 4-lepton vertex
+  connecting all external legs directly, no propagator.
+\item \textbf{$W^\pm$-propagator diagram} --- $\mu$--$\nu_\mu$ and
+  $e$--$\nu_e$ currents connected by an internal $W$.
+\item \textbf{$Z^0$-propagator diagram} --- $\mu$--$e$ and
+  $\nu_\mu$--$\bar\nu_e$ currents connected by an internal $Z$ (non-zero
+  once Wilson coefficients carry off-diagonal flavour indices).
+\item \textbf{$h$-propagator diagram} --- $\mu$--$e$ and
+  $\nu_\mu$--$\bar\nu_e$ currents connected by an internal Higgs, i.e.\ a
+  Yukawa-type vertex on each side.
+\end{enumerate}
+Table~2.1 of the thesis lists the dimension-6 operators feeding these
+diagrams: $\Q{eW}, \Q{eB}$ (dipole $\to$ $W/Z$-propagator diagrams),
+$\Q{\phi l}^{(1)}, \Q{\phi l}^{(3)}, \Q{\phi e}$ (Higgs-current $\to$
+$W/Z$-propagator diagrams), $\Q{e\phi}$ (Yukawa $\to$ $h$-propagator
+diagram), $\Q{ll}, \Q{le}$ (4-fermion diagram), plus the purely bosonic
+$\Q{\phi WB}, \Q{\phi}, \Q{\phi D}$, which shift $v$, $Z_h$, $M_W$, $M_Z$
+(input-scheme redefinitions rather than new vertices). $\Q{ee}$ is also
+listed in Table~2.1, but it does not actually appear in the thesis's
+amplitude formula eq.~(3.9) for the 4-fermion diagram: $(\bar e\gamma e)(\bar
+e\gamma e)$ has no neutrino field and cannot by itself produce the
+$\nu_\mu\bar\nu_e$ final state at tree level. Treat it as not contributing
+directly to this particular amplitude; the dim-8 analogue ($e^4H^2$,
+$e^4D^2$, \ldots) is excluded below for the same reason.
+
+\section{Selection rule (revised)}
+\label{sec:rule}
+
+\textbf{An earlier version of this note used the heuristic ``at most one
+explicit field strength $X$ is safe.'' That heuristic is wrong and has been
+replaced by the argument below (single field strength is neither necessary
+nor sufficient).}
+
+The question that actually matters is: does the bosonic content of the
+operator have a branch with \emph{exactly} the number of propagating quanta
+needed for one of the four diagrams above (exactly 1 for a propagator
+diagram, exactly 0 for the contact diagram)? This is decided by a single
+Lorentz-invariance fact:
+
+\begin{quote}
+Any bosonic building block carrying an \emph{open Lorentz index} ---
+a bare covariant derivative on a Higgs bilinear, $D_\mu H$, $D_\mu(H^\dagger
+H)$, $D_\mu(H^\dagger\tau^I H)$, \ldots, or a field strength $X_{\mu\nu}$
+(and any further derivative of either) --- has \textbf{zero} vacuum
+expectation value, because a Lorentz vector/tensor cannot have a
+Lorentz-invariant vev. Such a building block is therefore \emph{always} at
+least one dynamical quantum (never a pure constant). Only fully contracted,
+undifferentiated Higgs scalars ($H$, $H^\dagger H$, $H^\dagger\tau^I H$)
+can sit at their vev and contribute \emph{zero} propagating particles.
+\end{quote}
+
+Consequences for counting the minimum number of propagating bosons in an
+operator:
+\begin{itemize}
+\item An \textbf{undifferentiated} $H$, $H^\dagger H$, or $H^\dagger\tau^I H$
+  factor contributes a range $\{0, 1, 2, \ldots\}$ (however many powers of
+  $H$ it contains) --- in particular it \emph{has} a 0-particle (pure vev)
+  branch.
+\item A \textbf{differentiated} Higgs building block ($D_\mu H$,
+  $D_{(\mu}D_{\nu)}(H^\dagger H)$, a Hermitian-derivative current
+  $H^\dagger i\overleftrightarrow D_\mu H$, \ldots) or an explicit field
+  strength $X_{\mu\nu}$ contributes a range starting at \textbf{1}, never 0.
+  (Extra derivatives stacked on the \emph{same} building block, e.g.\ the
+  second derivative in class 11's $D_{(\mu}D_{\nu)}(H^\dagger H)$, do not
+  raise this floor --- they just add momentum factors to the same single
+  quantum.)
+\item If an operator's bosonic content is a \textbf{product of two or more
+  independently-mandatory} (floor $\geq 1$) building blocks --- e.g.\ an
+  explicit $X$ times a differentiated Higgs current, or $(D_\mu H)^\dagger
+  (D^\mu H)$ (two copies of the same mandatory object, self-contracted,
+  structurally the same as the purely-bosonic input-scheme operator
+  $Q_{\phi D}$) --- the true floor is the \emph{sum} of the individual
+  floors, i.e.\ $\geq 2$. There is no way to bring such a term down to
+  exactly 1 (or 0) propagating boson.
+\end{itemize}
+
+Applying this:
+\begin{itemize}
+\item \textbf{Two-fermion operators} (classes 9--17) can feed a
+  propagator diagram only if their bosonic content has an
+  \emph{exactly-1} branch: either a single mandatory object (field
+  strength \emph{alone}, or a single differentiated-Higgs object)
+  multiplying only undifferentiated Higgs factors. Classes 10, 11, 12, 13
+  satisfy this. Classes 9 and 14 fail (two explicit field strengths, floor
+  $\geq 2$). Classes 15 and 16 fail (field strength $\times$ differentiated
+  Higgs current, floor $\geq 2$). Class 17 fails ($(D_\mu H)^\dagger
+  (D^\mu H)$, floor $\geq 2$, plus an independently-undifferentiated Yukawa
+  factor that does not help).
+\item \textbf{Four-fermion operators} (classes 18--21) can feed the
+  contact diagram only if their bosonic content has an \emph{exactly-0}
+  branch: no field strength, and any Higgs factor present must be
+  undifferentiated. Class 18 ($H^\dagger H$, undifferentiated) and class 21
+  (no Higgs at all --- derivatives act only on the external fermion legs,
+  contributing momentum factors, not new particles) satisfy this. Class 19
+  fails (explicit $X$). Class 20 is \emph{mixed} and needs a per-operator
+  (not per-class) check: most of its terms put the derivative on $H$
+  itself ($D_\mu H$, no 0-particle branch --- unavoidably a 5-point,
+  4 fermions + 1 boson, vertex), but a few terms instead put the
+  derivative on one of the fermion fields and leave $H$ plain
+  (undifferentiated, genuine 0-particle/contact branch present). See
+  Sec.~\ref{sec:class20} for the explicit split.
+\end{itemize}
+Any operator whose minimal field content requires quark fields, or that is
+baryon/lepton-number violating (all ``BL'' directories), is excluded on
+general grounds ($\mu^-\to e^-\bar\nu_e\nu_\mu$ has $B=L=0$ and only
+lepton fields). Operators built only from $e$ (no $l$) are excluded because
+they supply no neutrino field (cf.\ the $\Q{ee}$ remark above).
+
+\section{Two-fermion classes (9--17)}
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Class & Paper name & Bosonic content / floor & Verdict \\
+\midrule
+9  & $\psi^2X^2H$   & two $X$'s, floor 2 & excluded \\
+10 & $\psi^2XH^3$    & $X$ alone (floor 1) $\times$ undiff.\ $H,H^\dagger H$ & \textbf{included} \\
+11 & $\psi^2H^2D^3$  & one diff.\ Higgs bilinear (floor 1), contracted with fermion current & \textbf{included} \\
+12 & $\psi^2H^5$     & undiff.\ $H(H^\dagger H)^2$, has a floor-1 branch (single $h$) & \textbf{included} \\
+13 & $\psi^2H^4D$    & one Hermitian-derivative current (floor 1) $\times$ undiff.\ $H^\dagger H$ & \textbf{included} \\
+14 & $\psi^2X^2D$    & two $X$'s, floor 2 & excluded \\
+15 & $\psi^2XH^2D$   & $X$ (floor 1) $\times$ diff.\ Higgs current (floor 1) $\Rightarrow$ floor 2 & excluded \\
+16 & $\psi^2XHD^2$   & $X$ (floor 1) $\times$ $D_\mu H$ (floor 1) $\Rightarrow$ floor 2 & excluded \\
+17 & $\psi^2H^3D^2$  & $(D_\mu H)^\dagger(D^\mu H)$, floor 2 (cf.\ $Q_{\phi D}$-like) & excluded \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Lepton-only ($l,e$; no $q,u,d,G$) operator names in the included classes,
+as already implemented in \texttt{lagrangian/2XX\_.../}:
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Class (dir.) & Operators & Paper formula (schematic) \\
+\midrule
+10 (\texttt{210\_psi2Xphi3})
+  & \texttt{leBphi3} & $(\bar l_p\sigma^{\mu\nu}e_r) H (H^\dagger H) B_{\mu\nu} + \hc$ \\
+  & \texttt{leWphi3n1} & $(\bar l_p\sigma^{\mu\nu}e_r)\tau^I H (H^\dagger H) W^I_{\mu\nu} + \hc$ \\
+  & \texttt{leWphi3n2} & $(\bar l_p\sigma^{\mu\nu}e_r) H (H^\dagger \tau^I H) W^I_{\mu\nu} + \hc$ \\
+\midrule
+11 (\texttt{211\_psi2phi2D3})
+  & \texttt{l2phi2D3n1--n4} & $i(\bar l_p\gamma^\mu D^\nu l_r)\, D_{(\mu}D_{\nu)}(H^\dagger H)$-type,
+    plain \& $\tau^I$ versions \\
+  & \texttt{e2phi2D3n1--n2} & same with $e_p,e_r$ (no $\tau^I$, singlet) \\
+\midrule
+12 (\texttt{212\_psi2phi5})
+  & \texttt{lephi5} & $(H^\dagger H)^2(\bar l_p e_r H) + \hc$ \\
+\midrule
+13 (\texttt{213\_psi2phi4D})
+  & \texttt{l2phi4Dn1--n4} & $i(\bar l_p\gamma^\mu l_r)(H^\dagger\overleftrightarrow D_\mu H)(H^\dagger H)$-type,
+    plain \& $\tau^I/\epsilon^{IJK}$ versions \\
+  & \texttt{e2phi4D} & $i(\bar e_p\gamma^\mu e_r)(H^\dagger\overleftrightarrow D_\mu H)(H^\dagger H)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Excluded for the record (classes 15--17)}
+These were included in an earlier version of this note and are excluded
+now: \texttt{l2Bphi2Dn1--n8}, \texttt{l2Wphi2Dn1--n12},
+\texttt{e2Bphi2Dn1--n4}, \texttt{e2Wphi2Dn1--n4} (class 15);
+\texttt{leBHD2n1--n3}, \texttt{leWHD2n1--n3} (class 16);
+\texttt{lephi3D2n1--n6} (class 17). Each pairs an explicit field strength
+(or a second derivative-on-$H$ factor) with an independently-mandatory
+differentiated-Higgs object, so the vertex always carries $\geq 2$
+propagating bosonic quanta and cannot be inserted into a single-propagator
+exchange diagram for a purely-4-external-fermion process.
+
+\section{Four-fermion classes (18--21)}
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Class & Paper name & Bosonic content / floor & Verdict \\
+\midrule
+18 & $\psi^4H^2$ & undiff.\ $H^\dagger H$, has a floor-0 branch (4-fermion diagram) & \textbf{included} \\
+19 & $\psi^4X$ (``JJX'') & explicit $X$, floor 1 & excluded \\
+20 & $\psi^4HD$ & \emph{depends on the term} --- see below & \textbf{mixed} \\
+21 & $\psi^4D^2$ & no Higgs; derivatives on external fermion legs only, floor 0 & \textbf{included} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\label{sec:class20}
+Class 20 is not uniformly excluded: it needs a per-\emph{operator} check,
+not a per-\emph{class} one. Its five lepton-only terms split as follows
+(cf.\ the paper table and the \texttt{.fr} files in
+\texttt{220\_psi4phiD/}):
+\begin{itemize}
+\item \texttt{l3eHDn1} $= i(\bar l_p\gamma^\mu l_r)[(\bar l_s e_t)D_\mu H]$,
+  \texttt{l3eHDn2} (same with $\tau^I D_\mu H$), \texttt{le3HDn2}
+  $= i(\bar e_p\gamma^\mu e_r)[(\bar l_s e_t)D_\mu H]$: the derivative sits
+  \emph{on $H$} (\texttt{DC[Phi8[...],mu]} in the \texttt{.fr} code) ---
+  floor 1, no contact branch. \textbf{Excluded.}
+\item \texttt{l3eHDn3} $= i(\bar l_p\gamma^\mu l_r)[(D_\mu\bar l_s e_t)H]$,
+  \texttt{le3HDn1} $= i(\bar e_p\gamma^\mu e_r)[(\bar l_s D_\mu e_t)H]$: the
+  derivative sits \emph{on a fermion field}
+  (\texttt{DC[LL8bar[...],mu]}/\texttt{DC[lR8[...],mu]}), and $H$ appears
+  \emph{plain} (undifferentiated, \texttt{Phi8[jj]} with no \texttt{DC}).
+  The Higgs factor therefore has its usual 0-particle (vev) branch, and
+  the operator reduces to a genuine 4-fermion contact term (one derivative
+  acting as a momentum insertion on an external fermion leg, plus an
+  overall factor of $v$ from $H\to v/\sqrt2$) --- structurally the same as
+  class 21 but with one derivative instead of two. \textbf{Included.}
+\end{itemize}
+(All ``BL''-suffixed directories, i.e.\ baryon/lepton-number-violating
+four-fermion operators, are excluded on general grounds: $\mu^-\to
+e^-\bar\nu_e\nu_\mu$ conserves both $B$ and $L$, and in any case every BLV
+type in this basis requires quark fields.)
+
+Lepton-only operator names ($l^4$, $l^2e^2$; \emph{not} $e^4$, cf.\ the
+$\Q{ee}$ remark above) in the included classes:
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Class (dir.) & Operators & Paper formula (schematic) \\
+\midrule
+18 (\texttt{218\_psi4phi2})
+  & \texttt{l4phi2n1} & $(\bar l_p\gamma^\mu l_r)(\bar l_s\gamma_\mu l_t)(H^\dagger H)$ \\
+  & \texttt{l4phi2n2} & $(\bar l_p\gamma^\mu l_r)(\bar l_s\gamma_\mu\tau^I l_t)(H^\dagger\tau^I H)$ \\
+  & \texttt{l2e2phi2n1} & $(\bar l_p\gamma^\mu l_r)(\bar e_s\gamma_\mu e_t)(H^\dagger H)$ \\
+  & \texttt{l2e2phi2n2} & $(\bar l_p\gamma^\mu\tau^I l_r)(\bar e_s\gamma_\mu e_t)(H^\dagger\tau^I H)$ \\
+  & \texttt{l2e2phi2n3} & $(\bar l_p e_r H)(\bar l_s e_t H)$ \quad(scalar channel) \\
+\midrule
+21 (\texttt{221\_psi4D2})
+  & \texttt{l4D2n1} & $D^\nu(\bar l_p\gamma^\mu l_r)\,D_\nu(\bar l_s\gamma_\mu l_t)$ \\
+  & \texttt{l4D2n2} & $(\bar l_p\gamma^\mu\overleftrightarrow D^\nu l_r)(\bar l_s\gamma_\mu\overleftrightarrow D_\nu l_t)$ \\
+  & \texttt{l2e2D2n1} & $D^\nu(\bar l_p\gamma^\mu l_r)\,D_\nu(\bar e_s\gamma_\mu e_t)$ \\
+  & \texttt{l2e2D2n2} & $(\bar l_p\gamma^\mu\overleftrightarrow D^\nu l_r)(\bar e_s\gamma_\mu\overleftrightarrow D_\nu e_t)$ \\
+\midrule
+20 (\texttt{220\_psi4phiD}, partial ---see discussion above)
+  & \texttt{l3eHDn3} & $i(\bar l_p\gamma^\mu l_r)[(D_\mu\bar l_s e_t)H]$ \\
+  & \texttt{le3HDn1} & $i(\bar e_p\gamma^\mu e_r)[(\bar l_s D_\mu e_t)H]$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Excluded for the record (class 20, remainder)}
+\texttt{l3eHDn1}, \texttt{l3eHDn2}, \texttt{le3HDn2}: the derivative sits
+on $H$ in each of these ($D_\mu H$, or $\tau^I D_\mu H$), which is
+mandatorily $\geq 1$ propagating boson with no contact branch (see the
+class-20 discussion above). These describe a genuine 5-point vertex
+(4 leptons + 1 $W$/$Z$/$\gamma$/$h$), relevant to processes like $\mu\to
+e\nu\nu +$ boson or as a loop-level (tadpole-closed) insertion, not to the
+tree-level 4-fermion contact diagram of $\mu\to e\nu\nu$.
+
+\section{Consolidated candidate list (26 operators)}
+
+\begin{verbatim}
+Two-fermion (15):
+  leBphi3, leWphi3n1, leWphi3n2,                         (class 10)
+  l2phi2D3n1, l2phi2D3n2, l2phi2D3n3, l2phi2D3n4,
+  e2phi2D3n1, e2phi2D3n2,                                (class 11)
+  lephi5,                                                (class 12)
+  l2phi4Dn1, l2phi4Dn2, l2phi4Dn3, l2phi4Dn4, e2phi4D     (class 13)
+
+Four-fermion (11):
+  l4phi2n1, l4phi2n2, l2e2phi2n1, l2e2phi2n2, l2e2phi2n3, (class 18)
+  l3eHDn3, le3HDn1,                                       (class 20, partial)
+  l4D2n1, l4D2n2, l2e2D2n1, l2e2D2n2                      (class 21)
+\end{verbatim}
+
+\section{Caveats and next steps}
+
+\begin{itemize}
+\item This is a \emph{field-content/Lorentz-structure} screen only. It says
+  an operator \emph{can} contribute a diagram of the right topology; it
+  does not yet check that the specific Lorentz/flavour contraction survives
+  the external on-shell spinors and interferes with the SM amplitude (some
+  structures may vanish or be relatively suppressed, as already happens at
+  dim-6, e.g.\ tensor operators not interfering with the SM $V-A$ amplitude
+  in the massless-electron limit used in the thesis). A full recalculation
+  (Sec.~3 of the thesis, generalised) is needed to confirm which of the 26
+  candidates actually enter $\Gamma_\mu$ at $O(1/\Lambda^4)$ and with what
+  kinematic/mass suppression.
+\item Purely \textbf{bosonic} dimension-8 operators (classes 1--8: $H^8$,
+  $H^6D^2$, $H^4D^4$, $X^2H^4$, $XH^4D^2$, \ldots) are \emph{not} covered by
+  this note (scoped to fermionic operators only) but will be needed for a
+  ``full'' $G_F$ input-scheme derivation, since they shift $v$, $Z_h$,
+  $M_W$, $M_Z$ at dimension 8 just as $\Q\phi, \Q{\phi D}, \Q{\phi WB}$ do
+  at dimension 6 (Sec.~2.1 of the thesis). Note that $(D_\mu H)^\dagger
+  (D^\mu H)$-type building blocks (the reason class 17 was excluded above)
+  are precisely the kind of object that belongs in \emph{this} bosonic,
+  input-scheme sector, not in a fermionic vertex list.
+\item Mixed-chirality/flavour bookkeeping (CKM-/PMNS-like rotation
+  matrices, as in thesis eq.~(2.14)--(2.16) and the $U_{g_4I}$ factors in
+  eq.~(3.9)) will need to be re-derived at dimension 8; the flavour
+  index structure of several operators above (e.g.\ the $\tau^I,
+  \epsilon^{IJK}$ terms in classes 11/13, or the two independent flavour
+  tensors of $\Q{l^4H^2}$ noted in the paper's classification section) is
+  more involved than the dim-6 case.
+\item All 26 operators listed already exist as \texttt{.fr} files in this
+  repository and are registered in \texttt{code/smeft\_variables.m}; a
+  restricted \texttt{OpList8} containing just this list (plus SM) would be
+  the natural next step for a first numerical/Feynman-rule check.
+\end{itemize}
+
+\end{document}

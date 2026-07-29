@@ -250,7 +250,7 @@ calculations (may never end for full dim-8 set)!) *)
 
 OpList6 = {};
 
-OpList8 = {"leWHD2n1"};
+OpList8 = {"B2phi4n1"};
 
 OpList = Union[OpList6, OpList8];
 
@@ -311,6 +311,7 @@ SelectVertices[GaugeHiggsVerticesExp, SelectParticles -> {H, A, A}]];
 (* To produce other output formats (Latex, WCxf, FeynArts, UFO) it is
 now necessary to Quit[] this session and run smeft_fr_interfaces.m or
 smeft_fr_ufo.m in new Mathematica kernel *)
+
 
 
 

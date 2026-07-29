@@ -1082,3 +1082,80 @@ symbols; edited `smeft_io.m` parses; functional gating test (fake
 selected ops and nothing else. Full `SMEFTInitializeModel` runtime NOT
 run (per policy) — behaviour should be identical since the flat files
 were plain sequences of delayed `LQ` definitions.
+
+### 2026-07-29 (MR, AI-assisted) — Muon-decay ($G_F$ input scheme) dim-8 fermionic operator survey
+
+Created `MR_modifications/notes/GF_Dim8_Full_input_scheme.tex`: a
+candidate-list survey (no Feynman rules/amplitudes derived yet) of which
+already-implemented fermionic dim-8 operators (classes 9-21) can
+contribute at tree level to $\mu^- \to e^- \bar\nu_e \nu_\mu$, the process
+used to define $G_F$. Method: took the dim-6 diagram topology (4-fermion
+contact, $W^\pm$-, $Z^0$-, $h$-propagator diagrams) from the BSc thesis
+`papers/1100-LIC-FZ-296243.pdf` (Ch. 2-3, Table 2.1) as the template and
+generalised the operator-selection logic to dim-8.
+
+**New selection-rule convention (worth reusing for any future
+diagram/process survey of this kind)**: whether an operator can feed a
+single-propagator exchange diagram (2-fermion classes) or the pure
+4-fermion contact diagram (4-fermion classes) is decided by counting the
+*minimum number of propagating bosonic quanta* in its bosonic content,
+using the fact that any building block with an open Lorentz index — a bare
+$D_\mu H$, $D_\mu(H^\dagger H)$, $D_\mu(H^\dagger\tau^I H)$, or a field
+strength $X_{\mu\nu}$ (and further derivatives thereof) — has **zero**
+vacuum expectation value (a Lorentz vector/tensor cannot have a
+Lorentz-invariant vev), hence is *always* at least 1 dynamical quantum.
+Only fully-contracted, undifferentiated Higgs scalars ($H$, $H^\dagger H$,
+$H^\dagger\tau^I H$) can sit at their vev and contribute 0 particles. A
+product of two or more independently-mandatory (floor-$\geq1$) building
+blocks has floor $\geq 2$ and can never collapse to the single boson (or
+zero boson) a tree diagram with only 4 external fermions needs.
+**Important correction made during review** (flagged by the maintainer,
+twice, before I caught the third instance myself): an earlier draft of the
+note used the naive heuristic "at most one explicit field strength $X$ is
+safe," which is wrong. Under the correct rule:
+- Two-fermion classes 10 ($\psi^2XH^3$), 11 ($\psi^2H^2D^3$), 12
+  ($\psi^2H^5$), 13 ($\psi^2H^4D$) survive (exactly-1-boson branch
+  exists). Classes 9, 14 (two field strengths), **and also 15
+  ($\psi^2XH^2D$), 16 ($\psi^2XHD^2$), 17 ($\psi^2H^3D^2$)** are excluded
+  — 15/16 because they multiply an explicit $X$ by an independently-
+  mandatory differentiated-Higgs current (floor 2); 17 because
+  $(D_\mu H)^\dagger(D^\mu H)$ is a self-contracted product of two
+  mandatory objects, structurally the same kind of object as the
+  *bosonic* input-scheme operator $Q_{\phi D}$ (mass/kinetic-term-like,
+  not a single-boson vertex).
+- Four-fermion classes 18 ($\psi^4H^2$) and 21 ($\psi^4D^2$, no Higgs at
+  all) survive (exactly-0-boson/contact branch exists). Class 19
+  ($\psi^4X$) is excluded (explicit $X$). **Class 20 ($\psi^4HD$) is
+  mixed and needs a per-operator, not per-class, check** — caught by the
+  maintainer after I first excluded the whole class: most class-20 terms
+  put the derivative on $H$ (`l3eHDn1`, `l3eHDn2`, `le3HDn2`: `DC[Phi8[...],mu]`
+  in the `.fr` code) and are excluded as before (no zero-particle branch).
+  But `l3eHDn3` and `le3HDn1` instead put the derivative on a *fermion*
+  field (`DC[LL8bar[...],mu]` / `DC[lR8[...],mu]`) and leave `Phi8[jj]`
+  plain/undifferentiated — so the Higgs factor has the usual vev branch,
+  and the operator reduces to a genuine 4-fermion contact term (one
+  derivative as a momentum insertion, plus a factor of $v$), structurally
+  like class 21 with one derivative instead of two. These two **are
+  included**.
+- All BL-violating directories and pure-$e^4$/$e^2$-only operators
+  (no `l` doublet, hence no neutrino field) are excluded on general
+  grounds regardless of the above.
+
+**Takeaway for future surveys of this kind**: the "does this class have a
+0- or 1-particle branch" question must be asked per Lagrangian *term*
+(per `.fr` file), not assumed uniform across a whole paper class — classes
+can and do mix "derivative on boson" and "derivative on fermion" terms
+under the same class name.
+
+Final candidate list: 26 lepton-only operators (15 two-fermion: classes
+10/11/12/13 only; 11 four-fermion: classes 18/21 plus `l3eHDn3`/`le3HDn1`
+from class 20) — see the note for the full per-operator table with paper
+formulas. All 26 already exist as `.fr` files and are registered in
+`smeft_variables.m`; no code was changed, this was a survey/note only.
+
+Not yet done (flagged as next steps in the note itself): confirming the
+26 candidates actually survive on-shell interference with the SM
+amplitude (this screen is Lorentz-structure/field-content only, not a
+full amplitude calculation); the purely bosonic dim-8 classes 1-8 that
+shift $v$/$Z_h$/$M_W$/$M_Z$ (out of scope, fermionic-only survey); dim-8
+CKM/PMNS-like flavour bookkeeping.

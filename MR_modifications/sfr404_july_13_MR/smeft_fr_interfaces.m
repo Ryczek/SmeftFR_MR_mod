@@ -68,8 +68,11 @@ Print["\nLatex output generated, time = ", TimeUsed[] - CPUTime];
 
 (* FeynArts output *)
 WriteFeynArtsOutput[ SMEFT$MBLagrangian,
-		     Output -> FileNameJoin[{SMEFT$Path, "output", "FeynArts", "FeynArts"}] ];
+		     Output -> FileNameJoin[{SMEFT$Path, "output", "FeynArts", "FeynArts_B2phi4n1"}] ];
 Print["\nVertices stored in FeynArts format in directory ",
-       Style[FileNameJoin[{SMEFT$Path, "output", "FeynArts"}] ,Bold] ];
+       Style[FileNameJoin[{SMEFT$Path, "output", "FeynArts_B2phi4n1"}] ,Bold] ];
 Print["\nTotal CPU time used = ", TimeUsed[] - CPUTime];
+
+
+
 

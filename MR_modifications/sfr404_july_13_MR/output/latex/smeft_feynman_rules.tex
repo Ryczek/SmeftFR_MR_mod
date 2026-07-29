@@ -490,6 +490,25 @@
 
 \bigskip
 
+%Vertex hZZ
+\noindent \begin{tabular}{cp{1mm}l}
+\begin{picture}(90,55)(0,15)
+\DashLine(5,0)(40,0){3}
+\Text(0,0)[r]{$h$}
+\Photon(40,50)(40,0){3}{4}
+\Text(45,45)[l]{$Z^0_{\mu_2}$}
+\Photon(75,0)(40,0){3}{4}
+\Text(80,0)[l]{$Z^0_{\mu_3}$}
+\Vertex(40,0){2}
+\end{picture}
+&&
+\begin{minipage}[c]{0.8\linewidth}
+\input vertices/GaugeHiggsVerticesLatex/hZZ.tex
+\end{minipage}
+\end{tabular}
+
+\bigskip
+
 %Vertex hWW
 \noindent \begin{tabular}{cp{1mm}l}
 \begin{picture}(90,55)(0,15)
@@ -508,25 +527,6 @@
 &&
 \begin{minipage}[c]{0.8\linewidth}
 \input vertices/GaugeHiggsVerticesLatex/hWW.tex
-\end{minipage}
-\end{tabular}
-
-\bigskip
-
-%Vertex hZZ
-\noindent \begin{tabular}{cp{1mm}l}
-\begin{picture}(90,55)(0,15)
-\DashLine(5,0)(40,0){3}
-\Text(0,0)[r]{$h$}
-\Photon(40,50)(40,0){3}{4}
-\Text(45,45)[l]{$Z^0_{\mu_2}$}
-\Photon(75,0)(40,0){3}{4}
-\Text(80,0)[l]{$Z^0_{\mu_3}$}
-\Vertex(40,0){2}
-\end{picture}
-&&
-\begin{minipage}[c]{0.8\linewidth}
-\input vertices/GaugeHiggsVerticesLatex/hZZ.tex
 \end{minipage}
 \end{tabular}
 
@@ -553,31 +553,6 @@
 
 \bigskip
 
-%Vertex hhWW
-\noindent \begin{tabular}{cp{1mm}l}
-\begin{picture}(90,100)(0,50)
-\DashLine(5,50)(40,50){3}
-\Text(0,50)[r]{$h$}
-\DashLine(40,100)(40,50){3}
-\Text(45,95)[l]{$h$}
-\Photon(75,50)(40,50){3}{4}
-\Line(57.,50.)(63.,44.)
-\Line(57.,50.)(63.,56.)
-\Text(80,50)[l]{$W^+_{\mu_3}$}
-\Photon(40,0)(40,50){3}{4}
-\Line(40.,25.)(34.,19.)
-\Line(40.,25.)(46.,19.)
-\Text(45,5)[l]{$W^-_{\mu_4}$}
-\Vertex(40,50){2}
-\end{picture}
-&&
-\begin{minipage}[c]{0.8\linewidth}
-\input vertices/GaugeHiggsVerticesLatex/hhWW.tex
-\end{minipage}
-\end{tabular}
-
-\bigskip
-
 %Vertex hhZZ
 \noindent \begin{tabular}{cp{1mm}l}
 \begin{picture}(90,100)(0,50)
@@ -599,49 +574,26 @@
 
 \bigskip
 
-%Vertex hhhhh
+%Vertex hhWW
 \noindent \begin{tabular}{cp{1mm}l}
 \begin{picture}(90,100)(0,50)
 \DashLine(5,50)(40,50){3}
 \Text(0,50)[r]{$h$}
-\DashLine(20,95)(40,50){3}
-\Text(15,90)[r]{$h$}
-\DashLine(60,95)(40,50){3}
-\Text(65,90)[l]{$h$}
-\DashLine(75,50)(40,50){3}
-\Text(80,50)[l]{$h$}
-\DashLine(40,0)(40,50){3}
-\Text(45,5)[l]{$h$}
+\DashLine(40,100)(40,50){3}
+\Text(45,95)[l]{$h$}
+\Photon(75,50)(40,50){3}{4}
+\Line(57.,50.)(63.,44.)
+\Line(57.,50.)(63.,56.)
+\Text(80,50)[l]{$W^+_{\mu_3}$}
+\Photon(40,0)(40,50){3}{4}
+\Line(40.,25.)(34.,19.)
+\Line(40.,25.)(46.,19.)
+\Text(45,5)[l]{$W^-_{\mu_4}$}
 \Vertex(40,50){2}
 \end{picture}
 &&
 \begin{minipage}[c]{0.8\linewidth}
-\input vertices/GaugeHiggsVerticesLatex/hhhhh.tex
-\end{minipage}
-\end{tabular}
-
-\bigskip
-
-%Vertex hhhhhh
-\noindent \begin{tabular}{cp{1mm}l}
-\begin{picture}(90,100)(0,50)
-\DashLine(5,50)(40,50){3}
-\Text(0,50)[r]{$h$}
-\DashLine(20,95)(40,50){3}
-\Text(15,90)[r]{$h$}
-\DashLine(60,95)(40,50){3}
-\Text(65,90)[l]{$h$}
-\DashLine(75,50)(40,50){3}
-\Text(80,50)[l]{$h$}
-\DashLine(20,5)(40,50){3}
-\Text(15,10)[r]{$h$}
-\DashLine(60,5)(40,50){3}
-\Text(65,10)[l]{$h$}
-\Vertex(40,50){2}
-\end{picture}
-&&
-\begin{minipage}[c]{0.8\linewidth}
-\input vertices/GaugeHiggsVerticesLatex/hhhhhh.tex
+\input vertices/GaugeHiggsVerticesLatex/hhWW.tex
 \end{minipage}
 \end{tabular}
 
@@ -712,81 +664,5 @@ lepton vertices}
 \bigskip
 \subsection{Baryon and lepton
 number violating four fermion vertices}
-
-%Vertex euqc<>xduu<>
-\noindent \begin{tabular}{cp{1mm}l}
-\begin{picture}(90,55)(0,15)
-\ArrowLine(40,0)(5,0)
-\Text(0,0)[r]{$ e^{f_1}_{s_1}$}
-\ArrowLine(40,50)(40,0)
-\Text(45,45)[l]{$(u^C)^{f_2}_{m_2 s_2}$}
-Switch[{}, 1, \DashLine<>s$79889<>f$79889<>{3}, 2, \DashArrowLine<>s$79889<>f$79889<>{3}, 3, \Gluon<>s$79889<>f$79889<>{3}{4}, 4, \Photon<>s$79889<>f$79889<>{3}{4}, 5, \ArrowLine<>f$79889<>s$79889<>, 6, \ArrowLine<>s$79889<>f$79889<>, 7, \Photon<>s$79889<>f$79889<>{3}{4}<>a1$79889<>     <>a2$79889<>, 8, \ZigZag<>s$79889<>f$79889<>{3}{4}, 9, \ZigZag<>s$79889<>f$79889<>{3}{4}]
-                                                                                                                                                                                                                                                                         \Line             \Line\Text(80,0)[l]{$~~{}~~Switch[{}, 0, , 1, ^{f_~~is$79890~~}~~If[2 == 2, _{s_~~is$79890~~}, ], 2, ^{f_~~is$79890~~}~~Switch[2, 1, _{m_~~is$79890~~}, 2, _{m_~~is$79890~~ s_~~is$79890~~}, _, ], 3, ^{a_~~is$79890~~}_{\mu_~~is$79890~~}, 4, _{\mu_~~is$79890~~}, 5, ^{a_~~is$79890~~}]~~$}
-\Vertex(40,0){2}
-\end{picture}
-&&
-\begin{minipage}[c]{0.8\linewidth}
-\input vertices/BLViolatingVerticesLatex/~~euqc<>xduu~~.tex
-\end{minipage}
-\end{tabular}
-
-\bigskip
-
-%Vertex dqcuq<>xduu<>
-\noindent \begin{tabular}{cp{1mm}l}
-\begin{picture}(90,55)(0,15)
-\ArrowLine(40,0)(5,0)
-\Text(0,0)[r]{$(d^C)^{f_1}_{m_1 s_1}$}
-\ArrowLine(40,50)(40,0)
-\Text(45,45)[l]{$u^{f_2}_{m_2 s_2}$}
-Switch[{}, 1, \DashLine<>s$80020<>f$80020<>{3}, 2, \DashArrowLine<>s$80020<>f$80020<>{3}, 3, \Gluon<>s$80020<>f$80020<>{3}{4}, 4, \Photon<>s$80020<>f$80020<>{3}{4}, 5, \ArrowLine<>f$80020<>s$80020<>, 6, \ArrowLine<>s$80020<>f$80020<>, 7, \Photon<>s$80020<>f$80020<>{3}{4}<>a1$80020<>     <>a2$80020<>, 8, \ZigZag<>s$80020<>f$80020<>{3}{4}, 9, \ZigZag<>s$80020<>f$80020<>{3}{4}]
-                                                                                                                                                                                                                                                                         \Line             \Line\Text(80,0)[l]{$~~{}~~Switch[{}, 0, , 1, ^{f_~~is$80021~~}~~If[2 == 2, _{s_~~is$80021~~}, ], 2, ^{f_~~is$80021~~}~~Switch[2, 1, _{m_~~is$80021~~}, 2, _{m_~~is$80021~~ s_~~is$80021~~}, _, ], 3, ^{a_~~is$80021~~}_{\mu_~~is$80021~~}, 4, _{\mu_~~is$80021~~}, 5, ^{a_~~is$80021~~}]~~$}
-\Vertex(40,0){2}
-\end{picture}
-&&
-\begin{minipage}[c]{0.8\linewidth}
-\input vertices/BLViolatingVerticesLatex/~~dqcuq<>xduu~~.tex
-\end{minipage}
-\end{tabular}
-
-\bigskip
-
-%Vertex ecuq<>xduubar<>
-\noindent \begin{tabular}{cp{1mm}l}
-\begin{picture}(90,55)(0,15)
-\ArrowLine(40,0)(5,0)
-\Text(0,0)[r]{$(e^C)^{f_1}_{s_1}$}
-\ArrowLine(40,50)(40,0)
-\Text(45,45)[l]{$u^{f_2}_{m_2 s_2}$}
-Switch[{}, 1, \DashLine<>s$80097<>f$80097<>{3}, 2, \DashArrowLine<>s$80097<>f$80097<>{3}, 3, \Gluon<>s$80097<>f$80097<>{3}{4}, 4, \Photon<>s$80097<>f$80097<>{3}{4}, 5, \ArrowLine<>f$80097<>s$80097<>, 6, \ArrowLine<>s$80097<>f$80097<>, 7, \Photon<>s$80097<>f$80097<>{3}{4}<>a1$80097<>     <>a2$80097<>, 8, \ZigZag<>s$80097<>f$80097<>{3}{4}, 9, \ZigZag<>s$80097<>f$80097<>{3}{4}]
-                                                                                                                                                                                                                                                                         \Line             \Line\Text(80,0)[l]{$~~{}~~Switch[{}, 0, , 1, ^{f_~~is$80098~~}~~If[2 == 2, _{s_~~is$80098~~}, ], 2, ^{f_~~is$80098~~}~~Switch[2, 1, _{m_~~is$80098~~}, 2, _{m_~~is$80098~~ s_~~is$80098~~}, _, ], 3, ^{a_~~is$80098~~}_{\mu_~~is$80098~~}, 4, _{\mu_~~is$80098~~}, 5, ^{a_~~is$80098~~}]~~$}
-\Vertex(40,0){2}
-\end{picture}
-&&
-\begin{minipage}[c]{0.8\linewidth}
-\input vertices/BLViolatingVerticesLatex/~~ecuq<>xduubar~~.tex
-\end{minipage}
-\end{tabular}
-
-\bigskip
-
-%Vertex dquqc<>xduubar<>
-\noindent \begin{tabular}{cp{1mm}l}
-\begin{picture}(90,55)(0,15)
-\ArrowLine(40,0)(5,0)
-\Text(0,0)[r]{$ d^{f_1}_{m_1 s_1}$}
-\ArrowLine(40,50)(40,0)
-\Text(45,45)[l]{$(u^C)^{f_2}_{m_2 s_2}$}
-Switch[{}, 1, \DashLine<>s$80182<>f$80182<>{3}, 2, \DashArrowLine<>s$80182<>f$80182<>{3}, 3, \Gluon<>s$80182<>f$80182<>{3}{4}, 4, \Photon<>s$80182<>f$80182<>{3}{4}, 5, \ArrowLine<>f$80182<>s$80182<>, 6, \ArrowLine<>s$80182<>f$80182<>, 7, \Photon<>s$80182<>f$80182<>{3}{4}<>a1$80182<>     <>a2$80182<>, 8, \ZigZag<>s$80182<>f$80182<>{3}{4}, 9, \ZigZag<>s$80182<>f$80182<>{3}{4}]
-                                                                                                                                                                                                                                                                         \Line             \Line\Text(80,0)[l]{$~~{}~~Switch[{}, 0, , 1, ^{f_~~is$80183~~}~~If[2 == 2, _{s_~~is$80183~~}, ], 2, ^{f_~~is$80183~~}~~Switch[2, 1, _{m_~~is$80183~~}, 2, _{m_~~is$80183~~ s_~~is$80183~~}, _, ], 3, ^{a_~~is$80183~~}_{\mu_~~is$80183~~}, 4, _{\mu_~~is$80183~~}, 5, ^{a_~~is$80183~~}]~~$}
-\Vertex(40,0){2}
-\end{picture}
-&&
-\begin{minipage}[c]{0.8\linewidth}
-\input vertices/BLViolatingVerticesLatex/~~dquqc<>xduubar~~.tex
-\end{minipage}
-\end{tabular}
-
-\bigskip
 
 \end{document}
