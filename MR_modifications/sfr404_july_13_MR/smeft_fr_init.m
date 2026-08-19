@@ -250,7 +250,7 @@ calculations (may never end for full dim-8 set)!) *)
 
 OpList6 = {};
 
-OpList8 = {"B2phi4n1"};
+OpList8 = {"udWphi2n2"};
 
 OpList = Union[OpList6, OpList8];
 
@@ -316,3 +316,200 @@ smeft_fr_ufo.m in new Mathematica kernel *)
 
 
 
+dd={{(-\!\(\*SubsuperscriptBox[\(G\), \(W\), \(4\)]\) (-1+Superscript[C,B2\[Phi]4n1] (1/\[CapitalLambda]^2)^2 vev^4)^2+\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(4\)]\  \((\(-1\) + \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)] - \*
+SuperscriptBox[
+RowBox[{"(", 
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"], ")"}], "2"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(4\)]\  
+\*SuperscriptBox[\(vev\), \(8\)])\)\)+\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)]\  
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\  \((\(-2\) + 3\  \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)] - 3\  \*
+SuperscriptBox[
+RowBox[{"(", 
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"], ")"}], "2"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(4\)]\  
+\*SuperscriptBox[\(vev\), \(8\)] + \*
+SuperscriptBox[
+RowBox[{"(", 
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"], ")"}], "3"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(6\)]\  
+\*SuperscriptBox[\(vev\), \(12\)])\)\))/((\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)] + 
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\)) (-1+Superscript[C,B2\[Phi]4n1] (1/\[CapitalLambda]^2)^2 vev^4) (\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)] + \(
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\  \((1 - \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)])\)\)\))),(Superscript[C,B2\[Phi]4n1] Subscript[G, 1] Subscript[G, W] (1/\[CapitalLambda]^2)^2 vev^4 (\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)]\  \((\(-1\) + \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)] + \*
+SqrtBox[
+RowBox[{"1", "-", 
+RowBox[{
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"], " ", 
+SuperscriptBox[
+RowBox[{"(", 
+FractionBox["1", 
+SuperscriptBox["\[CapitalLambda]", "2"]], ")"}], "2"], " ", 
+SuperscriptBox["vev", "4"]}]}]])\)\)+\!\(
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\  \((\(-1\) + 2\  \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)] - \*
+SuperscriptBox[
+RowBox[{"(", 
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"], ")"}], "2"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(4\)]\  
+\*SuperscriptBox[\(vev\), \(8\)] + \*
+SqrtBox[
+RowBox[{"1", "-", 
+RowBox[{
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"], " ", 
+SuperscriptBox[
+RowBox[{"(", 
+FractionBox["1", 
+SuperscriptBox["\[CapitalLambda]", "2"]], ")"}], "2"], " ", 
+SuperscriptBox["vev", "4"]}]}]])\)\)))/((\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)] + 
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\)) (-1+Superscript[C,B2\[Phi]4n1] (1/\[CapitalLambda]^2)^2 vev^4) (\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)] + \(
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\  \((1 - \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)])\)\)\)))},{(Superscript[C,B2\[Phi]4n1] Subscript[G, 1] Subscript[G, W] (1/\[CapitalLambda]^2)^2 vev^4 (\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)]\  \((\(-1\) + \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)] + \*
+SqrtBox[
+RowBox[{"1", "-", 
+RowBox[{
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"], " ", 
+SuperscriptBox[
+RowBox[{"(", 
+FractionBox["1", 
+SuperscriptBox["\[CapitalLambda]", "2"]], ")"}], "2"], " ", 
+SuperscriptBox["vev", "4"]}]}]])\)\)+\!\(
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\  \((\(-1\) + 2\  \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)] - \*
+SuperscriptBox[
+RowBox[{"(", 
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"], ")"}], "2"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(4\)]\  
+\*SuperscriptBox[\(vev\), \(8\)] + \*
+SqrtBox[
+RowBox[{"1", "-", 
+RowBox[{
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"], " ", 
+SuperscriptBox[
+RowBox[{"(", 
+FractionBox["1", 
+SuperscriptBox["\[CapitalLambda]", "2"]], ")"}], "2"], " ", 
+SuperscriptBox["vev", "4"]}]}]])\)\)))/((\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)] + 
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\)) (-1+Superscript[C,B2\[Phi]4n1] (1/\[CapitalLambda]^2)^2 vev^4) (\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)] + \(
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\  \((1 - \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)])\)\)\))),(\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(4\)] + \(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)]\  
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\  \((2 - \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)])\)\) + \(
+\*SubsuperscriptBox[\(G\), \(W\), \(4\)]\  \((1 - \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)] + \*
+SuperscriptBox[
+RowBox[{"(", 
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"], ")"}], "2"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(4\)]\  
+\*SuperscriptBox[\(vev\), \(8\)])\)\)\))/((\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)] + 
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\)) (\!\(
+\*SubsuperscriptBox[\(G\), \(1\), \(2\)] + \(
+\*SubsuperscriptBox[\(G\), \(W\), \(2\)]\  \((1 - \*
+TemplateBox[{"C", "B2\[Phi]4n1"},
+"Superscript"]\  
+\*SuperscriptBox[\((
+\*FractionBox[\(1\), 
+SuperscriptBox[\(\[CapitalLambda]\), \(2\)]])\), \(2\)]\  
+\*SuperscriptBox[\(vev\), \(4\)])\)\)\)))}} ;
+
+
+dd//FullSimplify
+
+
+GaugeSectorDiagonalization[]
+
+
+MGKin1

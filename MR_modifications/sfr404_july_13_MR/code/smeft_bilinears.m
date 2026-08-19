@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* SmeftFR v3.0 package *)
 (* rediagonalization of SMEFT Lagrangian, field and couplings redefinitions *)
 
@@ -132,6 +134,7 @@ If [ SMEFT$RxiGaugeStatus,
 
 ]]
 (* end of HiggsSectorDiagonalization *)
+
 ]
 
 
@@ -215,7 +218,7 @@ cc = MGKin1[[2,2]];
 
 U1 = {{cc,0},{-bb, Sqrt[aa cc - bb^2]}};
 
-SMEFT$AZnorm = U0.U1/Sqrt[cc (aa cc - bb^2)] // Simplify;
+SMEFT$AZnorm = U0 . U1/Sqrt[cc (aa cc - bb^2)] // Simplify;
 
 MGKin1 = MGKin;
 MGMass1 = MGMass;
@@ -229,7 +232,8 @@ For[aa=1,aa<3,aa++,
 MGKin1 = MGKin1 // Simplify;
 MGMass1 = MGMass1 //Simplify;
 
-If [ (MGKin1 =!= {{1,0},{0,1}}) || (MGMass1[[2,2]] =!=0), Print["Incorrect gauge sector diagonalization!"]; Abort[]; ];
+If [ (MGKin1 =!= {{1,0},{0,1}}) || (MGMass1[[2,2]] =!=0), Print["Incorrect gauge sector diagonalization!",MGKin1,MGMass1]; Abort[]; ];
+
 
 (* Corrected Z mass and expanded AZ mixing*)
 SMEFT$MZ2 = MGMass1[[1,1]] /. gwnorm -> SMEFT$gwnorm /. g1norm -> SMEFT$g1norm;
@@ -279,6 +283,8 @@ SMEFT$Gnorm = CombineCommonPowers[tmp,Lam,SMEFT$ExpansionOrder];
 
 ]
 (* end of GaugeSectorDiagonalization *)
+Print[MGKin2m,MGMass2];
+
 ];
 
 
@@ -291,11 +297,11 @@ Module[{aa, bb, cc, k, LFeff, KinF, KinF0, MassF, Flist, MLL, MUU, MDD, lhs, sol
 xl, xd, xu, f1, f2, g1, g2},
 
 KinF0 = I IndexDelta[Index[Generation, Generation$1], Index[Generation, Generation$2]]
-        ((dqbar[SP$1, Generation$1, Colour$1].del[dq[SP$2, Generation$2, Colour$1], mu$1] +
-          lbar[SP$1, Generation$1].del[l[SP$2, Generation$2], mu$1] +
-	  uqbar[SP$1, Generation$1, Colour$1].del[uq[SP$2, Generation$2, Colour$1], mu$1]) *
+        ((dqbar[SP$1, Generation$1, Colour$1] . del[dq[SP$2, Generation$2, Colour$1], mu$1] +
+          lbar[SP$1, Generation$1] . del[l[SP$2, Generation$2], mu$1] +
+	  uqbar[SP$1, Generation$1, Colour$1] . del[uq[SP$2, Generation$2, Colour$1], mu$1]) *
 	   Ga[mu$1, SP$1, SP$2] +
-	  vlbar[SP$1, Generation$1].del[vl[SP$2, Generation$2], mu$1] *
+	  vlbar[SP$1, Generation$1] . del[vl[SP$2, Generation$2], mu$1] *
 	   TensDot[Ga[mu$1], ProjM][SP$1, SP$2]) // OptimizeIndex;
 
 LFeff = SMEFT$LGFmass /. Z[___] -> 0 /. A[___] -> 0 /. W[___] -> 0 /.

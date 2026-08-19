@@ -491,6 +491,20 @@ For an operator from class `XX` in 2005.00059, three places must be edited:
   per-operator files, verified 1:1 against the paper tables by an
   automated name diff (sole mismatch = the `q2phi2D3n4` typo of C7).
 
+- **C9 — `$RecursionLimit` truncates dual/derived-`W` operators SILENTLY
+  (found 2026-08-19, see the progress-log entry of that date)**: FeynRules
+  sets `$RecursionLimit = 2500` (`FeynRulesPackage.m:1622`), which is too
+  small for the final `(aux + HC[aux])` of dim-8 operators combining a
+  dualized (`Eps[mu,nu,al,be]/2 HC[FS[Wi8,..]]`) or differentiated
+  (`DC[FS[Wi8,mu,nu,ll],si]`) NON-ABELIAN field strength with `2 Ta8` and
+  `+ h.c.`. The run does NOT stop: `TerminatedEvaluation[RecursionLimit]`
+  drops the h.c. half, `SMEFTOutput` still writes a file, and the operator
+  contributes ZERO vertices. Fix: raise the limit in `smeft_fr_init.m`
+  (see log entry). ALWAYS grep the generated
+  `output/smeft_feynman_rules.m` for `C<opname>` after a dim-8 run —
+  the operator name appearing in the header comment and in
+  `SMEFT$OperatorList` proves nothing.
+
 ## Progress log
 
 ### 2026-06-16 (MR, AI-assisted) — Class 9 (psi^2 X^2 H + h.c.), 1st column of 2005.00059
@@ -1159,3 +1173,120 @@ amplitude (this screen is Lorentz-structure/field-content only, not a
 full amplitude calculation); the purely bosonic dim-8 classes 1-8 that
 shift $v$/$Z_h$/$M_W$/$M_Z$ (out of scope, fermionic-only survey); dim-8
 CKM/PMNS-like flavour bookkeeping.
+
+### 2026-08-19 (MR, AI-assisted) — Runtime: FeynRules `$RecursionLimit` silently drops dim-8 operators with dual / differentiated `W` field strengths
+
+First real runtime investigation of the fermionic dim-8 files. Reported
+symptom: `$RecursionLimit::reclim: Recursion depth of 2500 exceeded`
+during `smeft_fr_init.m` for four operators —
+`leWHD2n3`, `qdWHD2n3`, `quWHD2n2` (class 16) and `udWphi2n2` (class 15).
+
+**The operator files are CORRECT.** All four were re-checked 1:1 against
+the paper (Table 9, `sections/dim8_classes_16_17.tex`, for the class-16
+ones; Table 7 for `udWphi2n2`) — index structure, `Sigma`/scalar
+bilinear, `tau^I`, `Htilde` and dual-`W` idioms all match. Do NOT
+"simplify" or rewrite them; the problem is a Mathematica stack limit,
+not the physics.
+
+**Where it fails** (measured for `udWphi2n2`, `Gauge -> Unitary`,
+`ExpansionOrder -> 2`, `MaxParticles -> 6`, one operator in `OpList8`):
+
+| step in the `.fr` body                   | result                       |
+|------------------------------------------|------------------------------|
+| `ExpandIndices[..., FlavorExpand->{SU2D8}]` | ok, 189 terms             |
+| `ExpandIndices[..., FlavorExpand->{SU2W8}]` | ok, 2646 terms / 253475 leaves |
+| `(aux + HC[aux])`                        | **`reclim` -> `TerminatedEvaluation`** |
+
+So the `FlavorExpand` steps are NOT the problem (contrary to the
+class-9 `leW2phin3` note earlier in this file, which is about a
+different, expansion-stage overflow). The overflow is in `HC` applied to
+the *fully expanded* sum. Root cause: FeynRules' `HC[sum_Plus] := HC /@ sum`
+(`Core/Initialisation.m:1326`) evaluates the mapped results inside an
+unevaluated `Flat`+`Orderless` `Plus`; with ~2600 large terms the
+repeated flattening/sorting exceeds the stack. Verified by conjugating
+the 2646 terms one at a time: **2646 good, 0 bad** — no individual term
+is pathological.
+
+The sibling with a plain (non-dual) `W`, `udWphi2n1`, completes at the
+stock limit (285 s, 1134 terms), which is what isolates the dual
+`Eps[mu,nu,al,be]/2 HC[FS[Wi8,al,be,ll]]` and the differentiated
+`DC[FS[Wi8,mu,nu,ll],si]` forms (always times `2 Ta8`, always with
+`+ h.c.`) as the expensive structures. `FS[Wi8]` is non-abelian, so both
+forms multiply the term count several-fold before `HC` ever runs.
+
+**DANGER — the failure is silent.** `TerminatedEvaluation` kills only the
+h.c. half of that one Lagrangian term; `SMEFTLoadModel` returns,
+`SMEFTFindMassBasis` / `SMEFTFeynmanRules` / `SMEFTOutput` all run to
+completion and write a normal-looking output file in which the operator
+contributes NOTHING. Confirmed on the maintainer's own 18:10 run of
+2026-08-19: in `output/smeft_feynman_rules.m` the string `udWphi2n2`
+occurs exactly twice — the header comment and `SMEFT$OperatorList` — and
+no vertex carries `CudWphi2n2`. **Verification rule: after any dim-8 run,
+grep the generated Feynman-rule file for `C<opname>`, not for `<opname>`.**
+
+**End-to-end confirmation** (2026-08-19): with the limit raised and
+`lagrangian/215_psiXphi2D/udWphi2n2.fr` COMPLETELY UNMODIFIED, the full
+pipeline runs `LoadModel 831 s -> FindMassBasis 840 s -> FeynmanRules
+1693 s -> Output 1694 s`, and the generated `smeft_feynman_rules.m`
+contains **1256** occurrences of `CudWphi2n2` (real vertices such as
+`{{uqbar,1},{dq,2},{W,3}}`), against **0** in the truncated run at the
+stock limit. That 0-vs-1256 is the cleanest signature of this bug.
+
+**Fix (recommended)** — one line in `smeft_fr_init.m`, after
+`Get[.../FeynRules.m]` and before `SMEFTLoadModel[]`:
+
+```mathematica
+Unprotect[$RecursionLimit]; $RecursionLimit = 100000;
+```
+
+No operator file is touched. Measured on `udWphi2n2`: `5000` already
+suffices (894 s), `100000` gives headroom (660 s); both give the
+identical expression (1236 terms, LeafCount 115139, no `Hold`
+fragments). Kernel memory stayed ~150-200 MB, so a large limit is not
+risky here.
+
+**Fix (alternative, per file, works at the stock 2500)** — keep `HC`
+after `ExpandIndices` but assemble the conjugate sum term by term:
+
+```mathematica
+hc = If[ Head[aux] === Plus, Total[ HC /@ (List @@ aux) ], HC[aux] ];
+(aux + hc) /. SMEFTGaugeRules
+```
+
+461 s, and byte-for-byte the same result as the raised-limit run
+(1236 terms, LeafCount 115139). Use this only if a global
+`$RecursionLimit` change is unwanted.
+
+**REJECTED — do not take the h.c. before `ExpandIndices`.** Writing
+`aux = aux + HC[aux]` on the compact expression and expanding afterwards
+completes (655 s) and gives 1236 terms, but a *different* representation
+(LeafCount 128273) that was never shown to be equivalent. `HC` must stay
+after `ExpandIndices`, as in all 320 operator files — conjugating first
+leaves `Ta8`/`Eps` index structures whose expansion was not verified.
+
+**Noise to ignore**: FeynRules `Core/VertexRoutine.m:113` contains a
+leftover debug print
+`If[SessionTime[]-utime>0.1, Print[InputForm[expr]];];`
+which dumps a partially-expanded term (unexpanded `Index[SU2W8,..]`,
+`PauliSigma[..]`, mixed `QL8bar . dq`, ...) whenever that simplification
+step takes >0.1 s. It fires for UNMODIFIED operator files too and is not
+an error. Likewise the 36 `Quantum number Q not conserved in vertex
+{uqbar, dq, ...}` messages appear identically in working runs (cf. the
+benign `LeptonNumber` warnings logged 2026-07-16).
+
+**Timing reference** (single operator, 12-core M-series Mac, several runs
+in parallel — treat as upper bounds): operator-body evaluation
+`udWphi2n1` 285 s, `udWphi2n2` 660-894 s; full pipeline
+(`SMEFTInitializeModel` -> `SMEFTOutput`) for `udWphi2n1` ~1385 s. Model
+load + `SMEFTInitializeModel` alone is only ~7 s, so essentially all the
+time is the operator expansion and the vertex calculation.
+
+**Method note for future debugging**: reproduce with a *copy* of the
+model tree (`cp -R` to a scratch dir, set `SMEFT$Path` to it and skip
+`smeft_directory_check.m`, which otherwise forces
+`$FeynRulesPath/Models/SMEFT_4_04`) so runs never overwrite `output/` in
+the git tree; then evaluate `LQ<name>` directly after
+`SMEFTLoadModelFiles["smeft_par_WB.fr"]; SMEFTLoadLagrangian[];`
+instead of running the whole pipeline. Splitting the `.fr` body into its
+individual steps with `LeafCount`/`Length` printouts is what localised
+the failure to `HC`.
