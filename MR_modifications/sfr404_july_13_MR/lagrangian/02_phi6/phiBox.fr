@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 02 (dim-6 phi^6 / phi^4 D^2) operator: phiBox *)
-
-LQphiBox := Module[{ii,jj,kk,mu,aux},
-
-aux = Phibar[ii] Phi[ii] del[del[Phibar[jj] Phi[jj],mu],mu];
-aux = ExpandIndices[ aux, FlavorExpand->SU2D ];
-
-ExpandIndices[ ToExpression[SMEFT$WB <> "phiBox"] ] aux /. SMEFTGaugeRules
-];

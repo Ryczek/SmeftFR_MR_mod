@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 10 (dim-6 (Lbar R)(Rbar L) and (Lbar R)(Lbar R)) operator: quqd1 *)
-
-LQquqd1 := Module[{sp1,sp2,ff1,ff2,ff3,ff4,cc,dd,ii,jj,aux},
-
-aux = (QLbar[sp1,ii,ff1,dd].uR[sp1,ff2,dd]).(QLbar[sp2,jj,ff3,cc].dR[sp2,ff4,cc]) Eps[ii,jj];
-aux = ExpandIndices[ ToExpression[SMEFT$WB <> "quqd1"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2D} ];
-
-aux + HC[aux]
-];

@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 207 (X^2 phi^2 D^2) operator: B2phi2D2n3 *)
-
-LQB2phi2D2n3 := Module[{mu,nu,ro,ii,al,be,aux},
-
-aux = (DC[Phi8bar[ii],mu] DC[Phi8[ii],mu]) FS[B8,nu,ro] Eps[nu,ro,al,be]/2 HC[FS[B8,al,be]];
-aux = ExpandIndices[ aux, FlavorExpand->{SU2W8,SU2D8} ];
-
-ExpandIndices[ ToExpression[SMEFT$WB <> "B2phi2D2n3"] ] aux /. SMEFTGaugeRules
-];

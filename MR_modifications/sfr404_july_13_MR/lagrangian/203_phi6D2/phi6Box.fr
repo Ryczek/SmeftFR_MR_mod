@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 203 (phi^6 D^2) operator: phi6Box *)
-
-LQphi6Box := Module[{ii,jj,kk,mu,aux},
-
-aux = Phi8bar[ii].Phi8[ii] Phi8bar[jj].Phi8[jj] del[del[Phi8bar[kk] Phi8[kk],mu],mu];
-aux = ExpandIndices[ aux, FlavorExpand->SU2D8 ];
-
-ExpandIndices[ ToExpression[SMEFT$WB <> "phi6Box"] aux ] /. SMEFTGaugeRules
-];

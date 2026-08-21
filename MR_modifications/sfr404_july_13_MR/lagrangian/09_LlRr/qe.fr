@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 09 (dim-6 (Lbar L)(Rbar R)) operator: qe *)
-
-LQqe := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,cc,ii,si,nu,aux},
-
-aux = (QLbar[sp1,ii,ff1,cc].QL[sp2,ii,ff2,cc]).(lRbar[sp3,ff3].lR[sp4,ff4]) Ga[nu,sp1,sp2] Ga[nu,sp3,sp4];
-aux = ExpandIndices[ ToExpression[SMEFT$WB <> "qe"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2D} ];
-
-aux
-];

@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 10 (dim-6 (Lbar R)(Rbar L) and (Lbar R)(Lbar R)) operator: lequ3 *)
-
-LQlequ3 := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,cc,ii,jj,mu,nu,aux},
-
-aux = (LLbar[sp1,ii,ff1].lR[sp2,ff2]).(QLbar[sp3,jj,ff3,cc].uR[sp4,ff4,cc]) Sigma[nu,mu,sp1,sp2] Sigma[nu,mu,sp3,sp4] Eps[ii,jj];
-aux = ExpandIndices[ ToExpression[SMEFT$WB <> "lequ3"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2D} ];
-
-aux + HC[aux]
-];

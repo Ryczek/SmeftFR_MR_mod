@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 10 (dim-6 (Lbar R)(Rbar L) and (Lbar R)(Lbar R)) operator: ledq *)
-
-LQledq := Module[{sp1,sp2,ff1,ff2,ff3,ff4,cc,ii,aux},
-
-aux = (LLbar[sp1,ii,ff1].lR[sp1,ff2]).(dRbar[sp2,ff3,cc].QL[sp2,ii,ff4,cc]);
-aux = ExpandIndices[ ToExpression[SMEFT$WB <> "ledq"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2D} ];
-
-aux + HC[aux]
-];

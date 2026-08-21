@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 04 (dim-6 X^2 phi^2) operator: phiW *)
-
-LQphiW := Module[{ii,mu,nu,ll,aux},
-
-aux = Phibar[ii] Phi[ii] FS[Wi,mu,nu,ll] FS[Wi,mu,nu,ll];
-aux = ExpandIndices[ aux, FlavorExpand->{SU2W,SU2D} ];
-
-ExpandIndices[ ToExpression[SMEFT$WB <> "phiW"] ] aux /. SMEFTGaugeRules
-];

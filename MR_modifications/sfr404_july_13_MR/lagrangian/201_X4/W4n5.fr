@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 201 (X^4) operator: W4n5 *)
-
-LQW4n5 := Module[{ii,jj,mu,nu,ro,si,al,be,ga,de,aux},
-
-aux = (FS[Wi8,mu,nu,ii] FS[Wi8,mu,nu,ii]) (FS[Wi8,ro,si,jj] Eps[ro,si,ga,de]/2 HC[FS[Wi8,ga,de,jj]]);
-aux = ExpandIndices[ aux, FlavorExpand->SU2W8 ];
-
-ExpandIndices[ ToExpression[SMEFT$WB <> "W4n5"] aux ] /. SMEFTGaugeRules
-];

@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 204 (phi^4 D^4) operator: phi4D4n3 *)
-
-LQphi4D4n3 := Module[{ii,jj,mu,nu,aux},
-
-aux = (DC[Phi8bar[ii],mu] DC[Phi8[ii],mu]) (DC[Phi8bar[jj],nu] DC[Phi8[jj],nu]) ;
-
-ExpandIndices[ ToExpression[SMEFT$WB <> "phi4D4n3"] aux,
-  FlavorExpand->{SU2W8,SU2D8} ] /. SMEFTGaugeRules
-];

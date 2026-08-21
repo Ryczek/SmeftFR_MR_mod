@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 03 (dim-6 psi^2 phi^3) operator: ephi *)
-
-LQephi := Module[{sp,ii,jj,ff1,ff2,aux},
-
-aux = Phibar[jj] Phi[jj] LLbar[sp,ii,ff1].lR[sp,ff2] Phi[ii];
-aux = ExpandIndices[ ToExpression[SMEFT$WB <> "ephi"][ff1,ff2] aux, FlavorExpand->{SU2D} ];
-
-(aux + HC[aux]) /. SMEFTGaugeRules
-];

@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 09 (dim-6 (Lbar L)(Rbar R)) operator: ld *)
-
-LQld := Module[{sp1,sp2,sp3,sp4,ff1,ff2,ff3,ff4,ii,si,nu,cc,aux},
-
-aux = (LLbar[sp1,ii,ff1].LL[sp2,ii,ff2]).(dRbar[sp3,ff3,cc].dR[sp4,ff4,cc]) Ga[nu,sp1,sp2] Ga[nu,sp3,sp4];
-aux = ExpandIndices[ ToExpression[SMEFT$WB <> "ld"][ff1,ff2,ff3,ff4] aux, FlavorExpand->{SU2D} ];
-
-aux
-];

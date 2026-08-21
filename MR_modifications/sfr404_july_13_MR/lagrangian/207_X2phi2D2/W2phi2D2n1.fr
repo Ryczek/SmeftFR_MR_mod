@@ -1,9 +1,0 @@
-(* SmeftFR v4.0 - class 207 (X^2 phi^2 D^2) operator: W2phi2D2n1 *)
-
-LQW2phi2D2n1 := Module[{mu,nu,ro,aa,ii,aux},
-
-aux = (DC[Phi8bar[aa],mu] DC[Phi8[aa],nu]) FS[Wi8,mu,ro,ii] FS[Wi8,nu,ro,ii];
-aux = ExpandIndices[ aux, FlavorExpand->{SU2W8,SU2D8} ];
-
-ExpandIndices[ ToExpression[SMEFT$WB <> "W2phi2D2n1"] ] aux /. SMEFTGaugeRules
-];
